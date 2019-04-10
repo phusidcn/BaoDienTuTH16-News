@@ -1,9 +1,12 @@
 /*Main CSS to custom*/
 
+/* =============== GENERAL =============== */
 *,
 *::after,
 *::before {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
@@ -13,16 +16,50 @@ body {
     background-color: #fff;
 }
 
-.logo {
-    width: 100%;
-    height: 50px;
+/*=========================================*/
+
+/* ============= NAVBAR ==================*/
+.combine-nav {
+    width: 1250px;
+    height: 130px;
+    display: flex;
+    flex-direction: column;
 }
 
-.navbar {
+.top-nav {
+    padding-left: 20px;
+    padding-right: 20px;
     margin-left: 95px;
     margin-right: 95px;
+    color: rgba(0,0,0,.54);
+    background: #fff;
+    height: 65px;
+    width: 1024px;
+    display: flex;
+
 }
 
+.navbar-brand {
+    margin: 8px;
+}
+
+.bottom-nav {
+    display: flex;
+    width: 1024px;
+    height: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 95px;
+    margin-right: 95px;
+    color: rgba(0,0,0,.54);
+    background: #fff;
+}
+
+.navbar-nav li {
+    margin-right: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
 
 
