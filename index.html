@@ -3,98 +3,194 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0 maximum-scale=1.0 user-scalable=0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description" content="magazine news website">
-    <meta name="author" content="">
+    <meta name="author" content="Quang Si Thai">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Minimum - An E-Magazine for you</title>
     <!--Bootstrap Core CSS-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!--Fonts-->
+    <!--Font Awesome Icon-->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
-    <!--Custom style for website-->
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700"
+        rel="stylesheet">
+    <!--Main CSS-->
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
-    <!-- Begin Nav
-================================================== -->
-    <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top mediumnavigation">
+    <!--------------------------------------
+    NAVBAR
+    --------------------------------------->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-white fixed-top main-navbar">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="container">
-            <!-- Begin Logo -->
-            <a class="navbar-brand" href="index.html">
-                <img class="logo" src="assets/img/logo.png" alt="logo">
-            </a>
-            <!-- End Logo -->
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <!-- Begin Search -->
-                <form class="form-inline my-2 my-lg-0 ml-auto">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <span class="search-icon"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
-                            <path
-                                d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z">
-                            </path>
-                        </svg></span>
-                </form>
-                <!-- End Search -->
-                <!-- Begin Menu -->
-                <ul class="navbar-nav">
+        <div class="container combine-nav">
+            <div class="top-nav">
+                <a class="navbar-brand" href="index.html">
+                    <strong>Minimum</strong>
+                </a>
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <form class="form-inline my-2 my-lg-0 ml-auto">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <span class="search-icon"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
+                                <path
+                                    d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z">
+                                </path>
+                            </svg></span>
+                    </form>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Become a member</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color:#029E74" href="#">Sign in</a>
+                        </li>
+                        <li class="nav-item highlight">
+                            <a class="nav-link"
+                                style="border: 1px solid #029E74; border-radius: 5px; color:#029E74; padding: 6px 25px;"
+                                href="#">Get started</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="bottom-nav">
+                <ul class="navbar-nav mr-auto d-flex align-items-center">
                     <li class="nav-item">
-                        <a class="nav-link become-a-member" href="#">Become a member <span
-                                class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="./index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign in</a>
+                        <a class="nav-link" href="./article.html">Culture</a>
                     </li>
-                    <li class="nav-item highlight">
-                        <a class="nav-link btn btn-outline-success" href="#">Get start</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./article.html">Tech</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./article.html">Politics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./article.html">Health</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./article.html">Startups</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./docs.html">More</a>
                     </li>
                 </ul>
-
-                <!-- End Menu -->
             </div>
-            
         </div>
     </nav>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-white mediumnavigation">
-    <div class="" id="navbarColor02">
-            <ul class="navbar-nav mr-auto d-flex align-items-center">
-                <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Intro <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Culture</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Tech</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Politics</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Health</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Collections</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./docs.html">More</a>
-                </li>
-            </ul>
+    <!-- End Navbar-->
+
+    <!--------------------------------------
+    HEADER
+    --------------------------------------->
+
+    <div class="main-header container pb-4">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card border-0 mb-4 box-shadow h-xl-300">
+                    <div
+                        style="background-image: url(./assets/img/1.jpg); height: 150px; background-size: cover; background-repeat: no-repeat;">
+                    </div>
+                    <div class="card-body px-0 pb-0 d-flex flex-column align-items-start" style="padding-top: 20px;">
+                        <h2 class="h4 font-weight-bold">
+                            <a class="text-dark" href="./article.html">Brain Stimulation Relieves Depression</a>
+                        </h2>
+                        <p class="card-text">
+                            Researchers have found an effective target in the brain for electrical stimulation to
+                            improve mood in people suffering from depression.
+                        </p>
+                        <div>
+                            <small class="d-block"><a class="text-muted" href="./author.html">Favid Rick</a></small>
+                            <small class="text-muted">Dec 12 &middot; 5 min read</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="flex-md-row mb-4 box-shadow h-xl-300">
+                    <div class="mb-3 d-flex align-items-center">
+                        <img height="80" src="./assets/img/blog4.jpg">
+                        <div class="pl-3">
+                            <h2 class="mb-2 h6 font-weight-bold">
+                                <a class="text-dark" href="./article.html">Nasa's IceSat space laser makes height maps
+                                    of Earth</a>
+                            </h2>
+                            <div class="card-text text-muted small">
+                                Jake Bittle in LOVE/HATE
+                            </div>
+                            <small class="text-muted">Dec 12 &middot; 5 min read</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex align-items-center">
+                        <img height="80" src="./assets/img/blog5.jpg">
+                        <div class="pl-3">
+                            <h2 class="mb-2 h6 font-weight-bold">
+                                <a class="text-dark" href="./article.html">Underwater museum brings hope to Lake
+                                    Titicaca</a>
+                            </h2>
+                            <div class="card-text text-muted small">
+                                Jake Bittle in LOVE/HATE
+                            </div>
+                            <small class="text-muted">Dec 12 &middot; 5 min read</small>
+                        </div>
+                    </div>
+                    <div class="mb-3 d-flex align-items-center">
+                        <img height="80" src="./assets/img/blog6.jpg">
+                        <div class="pl-3">
+                            <h2 class="mb-2 h6 font-weight-bold">
+                                <a class="text-dark" href="./article.html">Sun-skimming probe starts calling home</a>
+                            </h2>
+                            <div class="card-text text-muted small">
+                                Jake Bittle in LOVE/HATE
+                            </div>
+                            <small class="text-muted">Dec 12 &middot; 5 min read</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="card border-0 mb-4 box-shadow h-xl-300">
+                    <div
+                        style="background-image: url(./assets/img/10.jpg); height: 150px; background-size: cover; background-repeat: no-repeat;">
+                    </div>
+                    <div class="card-body px-0 pb-0 d-flex flex-column align-items-start" style="padding-top: 15px;">
+                        <h2 class="h4 font-weight-bold">
+                            <a class="text-dark" href="./article.html">Brain Stimulation Relieves Depression</a>
+                        </h2>
+                        <p class="card-text">
+                            Researchers have found an effective target in the brain for electrical stimulation to
+                            improve mood in people suffering from depression.
+                        </p>
+                        <div>
+                            <small class="d-block"><a class="text-muted" href="./author.html">Favid Rick</a></small>
+                            <small class="text-muted">Dec 12 &middot; 5 min read</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </nav>
-    
-    <!-- End Nav
-    ================================================== -->
+        <div class="row" style="float:right;">
+            <div style="padding-right:50px;font-size: 14px;">
+                <a style="color: #03a87c;" href="#">SEE ALL FEATURED >
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Header-->
 </body>
 
 </html>
