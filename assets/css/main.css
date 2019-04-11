@@ -10,15 +10,29 @@
 }
 
 body {
-    padding-top: 10rem;
+    /* padding-top: 10rem; */
     color: #212529;
     line-height: 1.6;
     background-color: #fff;
 }
 
+a {
+    color: inherit;
+    font-size: inherit;
+}
+a:hover {
+    color: #03a87c;
+    text-decoration: none; 
+    background-color: transparent;
+}
 /*=========================================*/
 
 /* ============= NAVBAR ==================*/
+.main-navbar {
+    position: relative;
+    padding: 0;
+}
+
 .combine-nav {
     width: 1250px;
     height: 130px;
@@ -83,14 +97,17 @@ a:hover {
 	transition:all 0.2s;
 }
 
+/* ============= HEADER ==================*/
 
-.mainheading {
-    padding:1rem 0rem;
-    width: 100%;
-    max-width: 1208px;
-    border:1px solid rgba(0,0,0,.15);
+.main-header {
+    width: 1208px;
+    position: absolute;
+    margin-right: 27px;
+    margin-left: 27px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
 }
 
+/* =======================================*/
 
 
 
