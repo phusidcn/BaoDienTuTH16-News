@@ -30,6 +30,7 @@ a:hover {
 /* ============= NAVBAR ==================*/
 nav {
     padding: 0;
+    width: 100%;
 }
 
 @media (min-width:992px) {
@@ -82,6 +83,7 @@ li {
     top: 0px;
     background-color:rgba(255,255,255, .97);
     z-index: 1;
+    width: 100%;
 }
 /* =======================================*/
 
@@ -89,6 +91,7 @@ li {
 
 .main-header {
     width: 1208px;
+    /* position: relative; */
     margin-right: 27px;
     margin-left: 27px;
     border-bottom: 1px solid rgba(0,0,0,.15);
@@ -97,6 +100,30 @@ li {
 /* =======================================*/
 
 
+/* ============= SIGNUP ==================*/
+.signup {
+    width: 80%;
+    background: #FAFAFA;
+    margin-left:115px; 
+    margin-right:115px;
+}
+
+.title-signup {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
+
+input {
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+    padding: 5px 20px;
+}
+
+.btn-signup {
+    background: #212529;
+    color: #fff;
+}
 
 
 
