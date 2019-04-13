@@ -125,6 +125,8 @@ input {
     color: #fff;
 }
 
+
+
 .share {
 	text-align:center;
 	margin-top:20px;
@@ -144,7 +146,7 @@ input {
 	padding-left:0;
 	margin-left:0;
 }
-.svgIcon {
+.svgIcon-use {
 	vertical-align:middle;
 }
 @media (min-width:1024px) {
@@ -155,6 +157,10 @@ input {
 	.share ul li {
 		display:block;
 	}
+}
+.share,.share a {
+	color:rgba(0,0,0,.44);
+	fill:rgba(0,0,0,.44);
 }
 
 .sep {
@@ -227,3 +233,4 @@ input {
 	margin-left:3px;
 	margin-right:3px;
 }
+
