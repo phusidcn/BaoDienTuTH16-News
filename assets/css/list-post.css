@@ -125,7 +125,7 @@ input {
     color: #fff;
 }
 
-
+/* ============= LEFT SIDE ==================*/
 
 .share {
 	text-align:center;
@@ -135,9 +135,7 @@ input {
 	margin-bottom:10px;
 	font-size:0.95rem;
 }
-.share {
-	display:none;
-}
+
 .share ul li {
 	display:inline-block;
 	margin-bottom:5px;
@@ -158,7 +156,8 @@ input {
 		display:block;
 	}
 }
-.share,.share a {
+.share,
+.share a {
 	color:rgba(0,0,0,.44);
 	fill:rgba(0,0,0,.44);
 }
@@ -170,6 +169,8 @@ input {
 	margin:0px auto;
 	margin-bottom:1.2rem;
 }
+
+/* ==================================*/
 
 .mainheading {
 	padding:1rem 0rem;
