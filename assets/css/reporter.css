@@ -81,10 +81,6 @@ a, a:hover{
 	border-radius: 5px;
 }
 
-#sidebar li:focus{
-	border-radius: 10px;
-}
-
 #sidebar ul li.active>a, a[aria-expanded="true"] {
 	color: #1C1A1A;
 	background: #EEEEEE;
@@ -97,8 +93,15 @@ a[data-toggle="collapse"] {
 	display: block;
 	position: absolute;
 	top: 50%;
-	right: 20px;
+	right: 20px;s
 	transform: translateY(-50%);
+}
+
+.avt-wrapper{
+	border-bottom: 1px solid #EEEEEE; 
+	border-top: 1px solid #EEEEEE; 
+	padding-top: 10px;
+	margin-bottom: 10px;
 }
 
 .avt{
