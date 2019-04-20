@@ -1,4 +1,9 @@
 /*Main CSS to custom*/
+/* My Color
+rgba(255, 210, 128, 0.56)
+#ffd280
+
+*/
 
 /* =============== GENERAL =============== */
 *,
@@ -10,7 +15,6 @@
 }
 
 body {
-    /* padding-top: 5rem; */
     color: #212529;
     line-height: 1.6;
     background-color: #fff;
@@ -31,6 +35,8 @@ a:hover {
 nav {
     padding: 0;
     width: 100%;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
 }
 
 @media (min-width:992px) {
@@ -77,21 +83,66 @@ li {
     padding-bottom: 10px;
 }
 
+/*============================================*/
+
+/* ============= STICKY DIV ==================*/
 .sticky {
     position: -webkit-sticky;
     position: sticky;
     top: 0px;
-    background-color:rgba(255,255,255, .97);
+    background-color: #ffd280;
     z-index: 1;
     width: 100%;
 }
+
+.main-div-nav {
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.main-div-nav a {
+    padding: 10px 25px;
+}
+
+.drop-nav {
+    background: rgba(255,255,255, .97);
+    position: absolute;
+    display: none;
+}
+
+.dropdown {
+    position: relative;
+}
+.dropdown:after {
+    content: "";
+    font-size: 12px;
+    display: block;
+    position: absolute;
+    top: 30%;
+}
+
+.dropdown li {
+    border-bottom: 1px solid rgba(0, 0, 0, .04);
+}
+
+.drop-nav li a {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.dropdown:hover > .drop-nav {
+    display: block;
+    width: 150%;
+}
+
 /* =======================================*/
 
 /* ============= HEADER ==================*/
 
 .main-header {
     width: 1208px;
-    /* position: relative; */
     margin-right: 27px;
     margin-left: 27px;
     border-bottom: 1px solid rgba(0,0,0,.15);

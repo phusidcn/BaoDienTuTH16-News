@@ -9,14 +9,14 @@
     <meta name="description" content="magazine news website">
     <meta name="author" content="Quang Si Thai">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Minimum - An E-Magazine for you</title>
+    <title>Minimum - E-Magazine cả thế giới của bạn</title>
     <!--Bootstrap Core CSS-->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!--Font Awesome Icon-->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!--Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Source+Sans+Pro:400,600,700"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500" rel="stylesheet">
     <!--Main CSS-->
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -40,7 +40,7 @@
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <!-- Begin Search -->
                 <form class="form-inline my-2 my-lg-0 ml-auto">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm">
                     <span class="search-icon"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
                             <path
                                 d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z">
@@ -51,58 +51,71 @@
                 <!-- Begin Menu -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Become a member</a>
+                        <a class="nav-link" href="#">Thành viên VIP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color:#029E74" href="#">Sign in</a>
+                        <a class="nav-link" style="color:#029E74" href="#">Đăng nhập</a>
                     </li>
                     <li class="nav-item highlight">
                         <a class="nav-link"
                             style="border: 1px solid #029E74; border-radius: 5px; color:#029E74; padding: 6px 25px;"
-                            href="#">Get started</a>
+                            href="#">Bắt đầu</a>
                     </li>
                 </ul>
                 <!-- End Menu -->
             </div>
         </div>
     </nav>
-    <!-- End Navbar -->
+    <!-- END NAVBAR -->
 
     <!--------------------------------------
     STICKY DIV
     --------------------------------------->
     <div class="sticky">
         <div class="container">
-
-            <ul class="mr-auto d-flex align-items-center">
+            <ul class="mr-auto d-flex align-items-center main-div-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="./index.html">Home</a>
+                    <a class="nav-link" href="./index.html">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Culture</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="./article.html">Thời sự</a>
+                    <ul class="drop-nav">
+                        <li><a href="#">Tin tức</a></li>
+                        <li><a href="#">Pháp luật</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Tech</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="./article.html">Kinh tế vĩ mô</a>
+                    <ul class="drop-nav">
+                        <li><a href="#">Tài chính</a></li>
+                        <li><a href="#">Chính sách</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Politics</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="./article.html">Kinh doanh</a>
+                    <ul class="drop-nav">
+                        <li><a href="#">Quản trị</a></li>
+                        <li><a href="#">Nhân vật</a></li>
+                        <li><a href="#">Thương hiệu</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Health</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="./article.html">Công nghệ</a>
+                    <ul class="drop-nav">
+                        <li><a href="#">Doanh nghiệp</a></li>
+                        <li><a href="#">Startup</a></li>
+                        <li><a href="#">Khoa học</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./article.html">Startups</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./about.html">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./docs.html">More</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="./article.html">Sống</a>
                 </li>
             </ul>
         </div>
     </div>
-    <!-- End Sticky div -->
+    <!-- END STICKY DIV -->
 
 
 
@@ -217,7 +230,8 @@
                     <p class="title-signup"><strong>Never miss a story</strong></p>
                 </div>
                 <div>
-                    <p style="font-size: 18px; color: #8D8C8D">Sign up for Medium’s Daily Digest and get the best of Medium, tailored for you.</p>
+                    <p style="font-size: 18px; color: #8D8C8D">Sign up for Medium’s Daily Digest and get the best of
+                        Medium, tailored for you.</p>
                 </div>
                 <div>
                     <form action="">
