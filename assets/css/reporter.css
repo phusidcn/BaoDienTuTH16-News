@@ -9,7 +9,6 @@ p{
 	font-size: 1.1em;
 	font-weight: 300;
 	line-height: 1.7em;
-	color: #EEEEEE;
 }
 a, a:hover{
 	color: #EEEEEE;
@@ -61,6 +60,10 @@ a, a:hover{
 #sidebar ul.components{
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul{
+	visibility: visible !important;
 }
 
 #sidebar ul p{
@@ -193,8 +196,18 @@ a.logOut, a.logOut:hover {
 	color: #EEEEEE;
 }
 
+.image-edit-post-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-end;
+}
 
-
+.image-edit-post-wrapper button{
+	width: 50%;
+	box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+	border: 0;
+}
 
 
 
