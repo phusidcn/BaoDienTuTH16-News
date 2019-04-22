@@ -2,7 +2,7 @@
 /* My Color
 rgba(255, 210, 128, 0.56)
 #ffd280
-
+box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 */
 
 /* =============== GENERAL =============== */
@@ -175,6 +175,19 @@ input {
     background: #212529;
     color: #fff;
 }
+/* =================================*/
 
 
+/* ============= ARTICLES ==================*/
+.spanborder {
+    border-bottom: 1px solid #e8f3ec;
+    margin-bottom: 2rem; 
+}
+  
+.spanborder span {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.44);
+    display: inline-block;
+    padding-bottom: 20px;
+    margin-bottom: -1px; 
+}
 

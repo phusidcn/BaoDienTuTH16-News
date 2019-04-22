@@ -11,7 +11,6 @@
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
   <title></title>
 </head>
 <body>                              
@@ -101,39 +100,27 @@
   </div>
 </nav>
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button type="button" class="btn btn-secondary">
-      <i class="fa fa-flag-o"></i>
-    </button>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
   </div>
-  <input type="text" class="form-control" placeholder="Tiêu đề" aria-label="Username" aria-describedby="basic-addon1">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button type="button" class="btn btn-secondary">
-      <i class="fa fa-folder-o"></i>
-    </button>
-  </div>
-  <input type="text" class="form-control" placeholder="Chuyên mục" aria-label="Username" aria-describedby="basic-addon1">
 </div>
-
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button type="button" class="btn btn-secondary">
-      <i class="fa fa-tags"></i>
-    </button>
-  </div>
-  <input type="text" class="form-control" placeholder="Gán nhãn" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-
-<form action="submit" method="post"> 
-  <textarea name="editor" cols="200" rows="10">fwljfnưlèwnfòiwoeiefiờiẹwèoiwjfơièc akcakmck</textarea>
-  <div class = "submit">
-    <input type="submit" value="Đăng bài" name="submit_post">
-  </div>
-</form> 
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -147,8 +134,6 @@
     $('#sidebar').toggleClass('active');
   });
  });  
-
- CKEDITOR.replace('editor');
 </script>
 
 </body>
