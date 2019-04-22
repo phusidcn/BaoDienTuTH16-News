@@ -182,8 +182,3 @@ a.logOut:hover {
         display: none;
     }
 }
-
-#contextMenu {
-    position: absolute;
-    display: none;
-}

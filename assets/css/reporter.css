@@ -9,6 +9,7 @@ p{
 	font-size: 1.1em;
 	font-weight: 300;
 	line-height: 1.7em;*/
+
 }
 a, a:hover{
 	color: #EEEEEE;
@@ -96,7 +97,7 @@ a[data-toggle="collapse"] {
 	display: block;
 	position: absolute;
 	top: 50%;
-	right: 20px;s
+	right: 20px;
 	transform: translateY(-50%);
 }
 
