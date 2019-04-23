@@ -139,3 +139,15 @@ blockquote {
 	font-style:italic;
 	color:rgba(0,0,0,.5);
 }
+
+.card-inner{
+    margin-left: 4rem;
+}
+
+.card {
+	border: none;
+}
+
+.img {
+	border-radius: 50%;
+}

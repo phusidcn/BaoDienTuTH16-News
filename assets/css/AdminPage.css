@@ -51,6 +51,7 @@ a:hover {
     min-width: 250px;
     max-width: 250px;
     background: #14919B;
+    /* background: linear-gradient(-90deg, #84CF6A, #16C0B0); */
     color: black;
     transition: all 0.3s;
     box-shadow: 5px 7px 25px #999;
