@@ -1,0 +1,14 @@
+#contextMenu {
+  position: absolute;
+  display: none;
+}
+
+.dropdown-item a {
+  color: #000000;
+}
+
+.wrap {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}

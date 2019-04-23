@@ -18,8 +18,12 @@
     <link
         href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
         rel='stylesheet' type='text/css'>
-    <!-- <script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script> -->
-    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="assets//js/jqcontextmenu.css" />
+    <script type="text/javascript" src="/assets/js/jqcontextmenu.js"></script>
     <title>Admin Page</title>
 </head>
 
@@ -108,6 +112,8 @@
              </div>
            </nav>
 
+           <script src="assets/js/context.js"></script>
+
            <table class="table table-striped">
                <thead>
                    <tr>
@@ -132,6 +138,18 @@
                    </tr>
                </tbody>
            </table>
+
+           <!--Context menu list-->
+           <div id="contextMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-item">
+                    <i class="fa fa-align-center fa-lg"></i>
+                    <a href="#">Xem bài viết</a>
+                </div>
+                <div class="dropdown-item">
+                    <i class="fa fa-edit fa-lg"></i>
+                    <a href="#">Đăng bài</a>
+                </div>
+            </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
