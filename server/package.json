@@ -1,0 +1,19 @@
+{
+  "name": "baodientu",
+  "version": "1.0.0",
+  "description": "Do An Cuoi Ki ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "lequocduyquang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "standard": "^12.0.1"
+  }
+}
