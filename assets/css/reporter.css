@@ -5,11 +5,11 @@ body{
 }
 
 p{
-	font-family: 'Poppins', sans-serif;
+	/*font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
 	font-weight: 300;
-	line-height: 1.7em;
-	/* color: #EEEEEE; */
+	line-height: 1.7em;*/
+
 }
 a, a:hover{
 	color: #EEEEEE;
@@ -21,7 +21,7 @@ a, a:hover{
 	background: #fff;
 	border: none;
 	border-radius: 0;
-	margin-bottom: 40px;
+	margin-bottom: 10px;
 	box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
 }
 
@@ -61,6 +61,10 @@ a, a:hover{
 #sidebar ul.components{
 	padding: 20px 0px;
 	border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul{
+	visibility: visible !important;
 }
 
 #sidebar ul p{
@@ -193,9 +197,24 @@ a.logOut, a.logOut:hover {
 	color: #EEEEEE;
 }
 
+.image-edit-post-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: flex-end;
+}
 
-
-
+.image-edit-post-wrapper button{
+	width: 50%;
+	box-shadow: 0px 3px 15px rgba(0,0,0,0.2);	
+	border: 0;
+	background: ##CA1F1F;
+}
+	
+p.text-picture{
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 300;
+}
 
 
 

@@ -11,7 +11,6 @@
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
   <title></title>
 </head>
 <body>                              
@@ -25,13 +24,13 @@
         </div>
         <div class="profile text-white d-block mx-auto text-center bottom-border">LÊ QUỐC THÁI</div>     
       </div>
-      <li class="nav-item active">
-        <a href="#postContent">
+      <li class="nav-item">
+        <a href="post_content.html">
           <i class="fa fa-upload"></i>
           <span> Đăng bài viết</span> 
         </a>
       </li>
-      <li>
+      <li class = "active">
        <a href="#viewList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
         <i class="fa fa-eye-slash"></i>
         <span> Xem bài viết</span>         
@@ -46,8 +45,8 @@
        <li>
          <a href="view_denied_content.html">Bị từ chối</a>
        </li>
-       <li>
-         <a href="view_waiting_content.html">Chưa được duyệt</a>
+       <li class = "active">
+         <a href="#">Chưa được duyệt</a>
        </li>
      </ul> 
    </li>
@@ -101,49 +100,69 @@
   </div>
 </nav>
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button type="button" class="btn btn-secondary">
-      <i class="fa fa-flag-o"></i>
-    </button>
+<div class="row">
+  <div class="col-sm-6">
+    <div style="height: 250px; margin-bottom: 10px;" class="card">
+      <div class="card-body"> 
+        <div class="mb-3 d-flex justify-content-between">
+          <div class="pr-3">
+            <h2 style="font-size: 17px;" class="mb-1 h4 font-weight-bold">
+              <a class="text-dark" href="./article.html">Đề xuất tăng thu phí với điểm rửa xe, nhà hàng,
+              khách sạn</a>
+            </h2>
+            <p class ="text-picture">
+              Giải thích lý do, Bộ Tài chính cho rằng nước thải của cơ sở rửa và sửa chữa ô tô, xe máy;
+              nhà hàng, khách sạn có mức độ gây ô nhiễm môi trường cao hơn hộ gia đình bình thường.
+            </p>
+            <div class="card-text text-success small">
+              THỜI SỰ
+            </div>
+            <small class="text-muted">01/04/2019</small>
+          </div>
+          <div class = "image-edit-post-wrapper">
+            <img class="my-image" style="box-shadow: 0px 3px 15px rgba(0,0,0,0.2);" height="160"
+            src="./assets/img/thoisu-tintuc02.jpg">
+            <button type="button" class="btn btn-danger">
+              <a href="edit_waiting_content.html">Chỉnh sửa</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <input type="text" class="form-control" placeholder="Tiêu đề" aria-label="Username" aria-describedby="basic-addon1">
+
+  <div class="col-sm-6">
+    <div style="height: 250px; margin-bottom: 10px;" class="card">
+      <div class="card-body"> 
+        <div class="mb-3 d-flex justify-content-between">
+          <div class="pr-3">
+            <h2 style="font-size: 17px;" class="mb-1 h4 font-weight-bold">
+              <a class="text-dark" href="./article.html">Đề xuất tăng thu phí với điểm rửa xe, nhà hàng,
+              khách sạn</a>
+            </h2>
+            <p class ="text-picture">
+              Giải thích lý do, Bộ Tài chính cho rằng nước thải của cơ sở rửa và sửa chữa ô tô, xe máy;
+              nhà hàng, khách sạn có mức độ gây ô nhiễm môi trường cao hơn hộ gia đình bình thường.
+            </p>
+            <div class="card-text text-success small">
+              THỜI SỰ
+            </div>
+            <small class="text-muted">01/04/2019</small>
+          </div>
+          <div class = "image-edit-post-wrapper">
+            <img class="my-image" style="box-shadow: 0px 3px 15px rgba(0,0,0,0.2);" height="160"
+            src="./assets/img/thoisu-tintuc04.jpg">
+            <button style="width: 50%;" type="button" class="btn btn-danger">
+              <a href="edit_waiting_content.html">Chỉnh sửa</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button type="button" class="btn btn-secondary">
-      <i class="fa fa-folder-o"></i>
-    </button>
-  </div>
-  <input type="text" class="form-control" placeholder="Chuyên mục" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button type="button" class="btn btn-secondary">
-      <i class="fa fa-tags"></i>
-    </button>
-  </div>
-  <input type="text" class="form-control" placeholder="Gán nhãn" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <button type="button" class="btn btn-secondary">
-      <i class="fa fa-book"></i>
-    </button>
-  </div>
-  <input type="text" class="form-control" placeholder="Tóm tắt nội dung" aria-label="Username" aria-describedby="basic-addon1">
-</div>
-
-<form action="submit" method="post"> 
-  <textarea name="editor" cols="200" rows="10">123456789</textarea>
-  <div class = "submit">
-    <input type="submit" value="Đăng bài" name="submit_post">
-  </div>
-</form> 
-</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -156,8 +175,6 @@
     $('#sidebar').toggleClass('active');
   });
  });  
-
- CKEDITOR.replace('editor');
 </script>
 
 </body>

@@ -11,7 +11,8 @@
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-  <title></title>
+  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+  <title>Hiệu chỉnh bài viết bị từ chối</title>
 </head>
 <body>                              
  <div class="wrapper">
@@ -24,8 +25,8 @@
         </div>
         <div class="profile text-white d-block mx-auto text-center bottom-border">LÊ QUỐC THÁI</div>     
       </div>
-      <li class="nav-item active">
-        <a href="#postContent">
+      <li class="nav-item">
+        <a href="post_content.html">
           <i class="fa fa-upload"></i>
           <span> Đăng bài viết</span> 
         </a>
@@ -37,30 +38,30 @@
       </a>
       <ul class="collapse list-unstyled" id="viewList">
         <li>
-         <a href="#">Đã được duyệt</a>
+         <a href="view_censored_content.html">Đã được duyệt</a>
        </li>
        <li>
-         <a href="#">Đã xuất bản</a>
+         <a href="view_published_content.html">Đã xuất bản</a>
        </li>
        <li>
-         <a href="#">Bị từ chối</a>
+         <a href="view_denied_content.html">Bị từ chối</a>
        </li>
        <li>
-         <a href="#">Chưa được duyệt</a>
+         <a href="view_waiting_content.html">Chưa được duyệt</a>
        </li>
      </ul> 
    </li>
 
-   <li>
+   <li active>
      <a href="#editPost" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
       <i class="fa fa-pencil-square-o"></i>
       <span> Hiệu chỉnh</span>
     </a>
     <ul class="collapse list-unstyled" id="editPost">
       <li>
-       <a href="#">Bị từ chối</a>
+       <a href="edit_denied_content.html">Bị từ chối</a>
      </li>
-     <li>
+     <li active>
        <a href="#">Chưa được duyệt</a>
      </li>
    </ul> 
@@ -91,7 +92,7 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a style="font-family: arial; color: #EEEEEE; font-size: 18px;" class="nav-link" href="#"><b>Trang chủ</b></a>
+        <a style="font-family: arial; color: #EEEEEE; font-size: 18px;" class="nav-link" href="index.html"><b>Trang chủ</b></a>
       </li>
       <li class="nav-item">
         <a style="font-family: arial; color: #EEEEEE; font-size: 18px" class="nav-link" href="#"><b>Đăng xuất</b></a>
@@ -100,27 +101,53 @@
   </div>
 </nav>
 
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button type="button" class="btn btn-secondary">
+      <i class="fa fa-flag-o"></i>
+    </button>
   </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+  <input type="text" class="form-control" value="Vì sao Bộ GD lúng túng xử lý thí sinh gian lận thi cử?" aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button type="button" class="btn btn-secondary">
+      <i class="fa fa-folder-o"></i>
+    </button>
   </div>
+  <input type="text" class="form-control" value="Thời sự" aria-label="Username" aria-describedby="basic-addon1">
 </div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button type="button" class="btn btn-secondary">
+      <i class="fa fa-tags"></i>
+    </button>
+  </div>
+  <input type="text" class="form-control" value="Nóng hổi" aria-label="Username" aria-describedby="basic-addon1">
 </div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button type="button" class="btn btn-secondary">
+      <i class="fa fa-book"></i>
+    </button>
+  </div>
+  <input type="text" class="form-control" value="Sau gần 1 tháng công bố số thí sinh vi phạm nhưng đến giờ Bộ GD-ĐT và các trường đại học đều lúng túng trong việc xử lý những thí sinh này." aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<form action="submit" method="post"> 
+  <textarea name="editor" cols="200" rows="10">
+    Termsheet business model canvas user experience churn rate low hanging fruit backing iteration buyer seed money. Virality release launch party channels validation learning curve paradigm shift hypotheses conversion. Stealth leverage freemium venture startup business-to-business accelerator market.
+
+    Gen-z strategy long tail churn rate seed money channels user experience incubator startup partner network low hanging fruit direct mailing. Client backing success startup assets responsive web design burn rate A/B testing metrics first mover advantage conversion.
+    Freemium non-disclosure agreement lean startup bootstrapping holy grail ramen MVP iteration accelerator. Strategy market ramen leverage paradigm shift seed round entrepreneur crowdfunding social proof angel investor partner network virality.
+  </textarea>
+  <div class = "submit">
+    <input type="submit" value="Hiệu chỉnh" name="submit_post">
+  </div>
+</form> 
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -134,6 +161,8 @@
     $('#sidebar').toggleClass('active');
   });
  });  
+
+ CKEDITOR.replace('editor');
 </script>
 
 </body>
