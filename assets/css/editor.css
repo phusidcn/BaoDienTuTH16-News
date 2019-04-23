@@ -81,6 +81,10 @@ a, a:hover{
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
+#sidebar li.active{
+
+}
 #sidebar ul li a:hover {
 	background-color: #444;
 	border-radius: 5px;
@@ -217,7 +221,11 @@ p.text-picture{
 	font-weight: 300;
 }
 
-
+.content-table thead.tr{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 
 
