@@ -125,25 +125,7 @@
             </div>
 
             <!--Context Menu script-->
-            <script>
-                window.onload = function () {
-                    var $contextMenu = $("#contextMenu");
-
-                    $("body").on("contextmenu", "table tr", function (e) {
-                        $contextMenu.css({
-                            display: "block",
-                            left: e.pageX,
-                            top: e.pageY
-                        });
-                        return false;
-                    });
-
-                    $('html').click(function () {
-                        $contextMenu.hide();
-                    });
-
-                }
-            </script>
+            <script src="assets/js/context.js"></script>
 
             <table class="table table-striped">
                 <thead>
@@ -178,7 +160,7 @@
                 </div>
                 <div class="dropdown-item">
                     <i class="fa fa-edit fa-lg"></i>
-                    <a href="#">Thay đổi chủ đề</a>
+                    <a href="#">Thay đổi chuyên mục</a>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-item">
