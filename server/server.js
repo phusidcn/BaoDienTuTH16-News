@@ -38,6 +38,7 @@ mongoose.connect(configDB.url, {
 app.use(morgan('dev')) // log every requests to the console
 app.use(cookieParser()) // read cookies (need for auth)
 app.use(bodyParser())
+app.use(express.static('public'))
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}))   
 app.set('view engine', 'handlebars')    // set up handlebars for templating
@@ -51,7 +52,7 @@ app.use(passport.session())
 app.use(flash()) // flash messages
 
 // routes ====================================================
-// require('./app/routes')(app, passport)
+require('./app/routes')(app, passport)
 
 // Running server
 app.listen(PORT, () => {
