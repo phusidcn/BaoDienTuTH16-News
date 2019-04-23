@@ -5,10 +5,10 @@ body{
 }
 
 p{
-	/*font-family: 'Poppins', sans-serif;
+	font-family: 'Poppins', sans-serif;
 	font-size: 1.1em;
 	font-weight: 300;
-	line-height: 1.7em;*/
+	line-height: 1.7em;
 
 }
 a, a:hover{
@@ -46,6 +46,7 @@ a, a:hover{
 	min-width: 250px;
 	max-width: 250px;
 	background: #14919B;
+	/* background: linear-gradient(-90deg, #84CF6A, #16C0B0); */
 	color: black;
 	transition: all 0.3s;
 	box-shadow: 5px 7px 25px #999;
@@ -208,7 +209,7 @@ a.logOut, a.logOut:hover {
 	width: 50%;
 	box-shadow: 0px 3px 15px rgba(0,0,0,0.2);	
 	border: 0;
-	background: ##CA1F1F;
+	background: #CA1F1F;
 }
 	
 p.text-picture{
