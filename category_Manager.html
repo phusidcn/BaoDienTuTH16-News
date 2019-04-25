@@ -18,12 +18,13 @@
     <link
         href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'
         rel='stylesheet' type='text/css'>
-
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        
     <link rel="stylesheet" type="text/css" href="assets//js/jqcontextmenu.css" />
     <script type="text/javascript" src="/assets/js/jqcontextmenu.js"></script>
+    
     <title>Admin Page</title>
 </head>
 
@@ -40,7 +41,7 @@
                     <div class="profile text-white d-block mx-auto text-center bottom-border">Cu Hiệp</div>
                 </div>
                 <li class="nav-item" focus>
-                    <a href="manager_Category.html">
+                    <a href="category_Manager.html">
                         <i class="fa fa-upload"></i>
                         <span>Quản lí chuyên mục</span>
                     </a>
@@ -55,7 +56,7 @@
                             <a href="subscriber_Manager.html">Đọc giả</a>
                         </li>
                         <li>
-                            <a href="manager_Editor.html">Biên tập viên</a>
+                            <a href="editor_Manager.htmll">Biên tập viên</a>
                         </li>
                         <li>
                             <a href="reporter_Manager.html">Phóng viên</a>
@@ -70,7 +71,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="editPost">
                         <li>
-                            <a href="manager_Draft.html">Bản nháp</a>
+                            <a href="draft_Manager.html">Bản nháp</a>
                         </li>
                         <li>
                             <a href="posted_Manager.html">Xuất bản</a>
@@ -87,8 +88,8 @@
         </nav>
 
         <div class="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-info">
-             <button type="button" id="sidebarCollapse" class="btn btn-info">
+            <nav class="navbar navbar-expand-lg navbar-light" style="background: #ffd280">
+             <button type="button" id="sidebarCollapse" class="btn" style="background: #ffd280">
                <i class="fa fa-align-justify"></i> <span></span>
              </button>
            
@@ -103,53 +104,58 @@
              <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav ml-auto">
                  <li class="nav-item">
-                   <a style="font-family: arial; color: #EEEEEE; font-size: 18px;" class="nav-link" href="#"><b>Trang chủ</b></a>
+                   <a style="font-family: 'Poppins', sans-serif; color: #444; font-size: 18px;" class="nav-link" href="#"><b>Trang chủ</b></a>
                  </li>
                  <li class="nav-item">
-                   <a style="font-family: arial; color: #EEEEEE; font-size: 18px" class="nav-link" href="#"><b>Đăng xuất</b></a>
+                   <a style="font-family: 'Poppins', sans-serif; color: #444; font-size: 18px" class="nav-link" href="#"><b>Đăng xuất</b></a>
                  </li>
                </ul>
              </div>
            </nav>
+           
+           <div class="form-group" id="OperationBar">
+               <button type="button" class="mybtn"><span>Thêm chuyên mục mới</span></button>
+           </div>
 
+           <!--Script of Context menu-->
            <script src="assets/js/context.js"></script>
 
            <table class="table table-striped">
                <thead>
-                   <tr>
+                   <tr style="text-align:center;">
                        <th>STT</th>
-                       <th>Tựa bài viết</th>
-                       <th>Chuyên mục</th>
-                       <th>Tác giả</th>
+                       <th>Tên chuyên mục</th>
+                       <th>Số bài viết</th>
+                       <th>Biên tập viên</th>
                    </tr>
                </thead>
                <tbody>
-                   <tr>
+                   <tr style="text-align:center;">
                        <td>1</td>
-                       <td>Vấn nạn khai thác cát trái phép</td>
-                       <td>Hải sản</td>
-                       <td>Nguyễn Tiến Long</td>
+                       <td>Nông sản</td>
+                       <td>19</td>
+                       <td>Nguyễn Thị Nga</td>
                    </tr>
-                   <tr>
+                   <tr style="text-align:center;">
                        <td>2</td>
-                       <td>Các nuôi tôm nước ngọt hiệu quả</td>
                        <td>Hải sản</td>
-                       <td>Lê Ngọc Thành</td>
+                       <td>50</td>
+                       <td>Lê Nhọc Cường</td>
                    </tr>
                </tbody>
            </table>
 
-           <!--Context menu list-->
-           <div id="contextMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <!--Context menu list-->
+        <div id="contextMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item">
                     <i class="fa fa-align-center fa-lg"></i>
-                    <a href="#">Xem bài viết</a>
+                    <a href="#">Xem các bài viết trong chuyên mục</a>
                 </div>
                 <div class="dropdown-item">
                     <i class="fa fa-edit fa-lg"></i>
-                    <a href="#">Đăng bài</a>
+                    <a href="#">Thay đổi biên tập viên</a>
                 </div>
-            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

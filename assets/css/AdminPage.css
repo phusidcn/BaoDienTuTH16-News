@@ -151,8 +151,8 @@ ul.CTAs a {
 }
 
 a.editProfile {
-    background: #fff;
-    color: #000000;
+    background: #47748b;
+    color: #fff;
 }
 
 a.logOut,
@@ -165,7 +165,6 @@ a.logOut:hover {
     margin-left: 10px;
     margin-right: 10px;
     width: 100%;
-    /* padding: 10px; */
     min-height: 100vh;
     transition: all 0.3s;
 }
