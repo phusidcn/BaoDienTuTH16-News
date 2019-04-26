@@ -102,15 +102,7 @@ body {
     border-bottom: 1px solid #f4f2f2;
 }
 
-.description {
-    background-color: #fff;
-    box-shadow: 0 2rem 5rem rgba(0,0,0,.06);
-    padding: 3rem;
-    flex: 0 0 69%;
-    margin-right: 4.5rem;
-}
-
-.user-reviews {
+.posts {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -516,7 +508,28 @@ ul.tags li a:hover {
     margin-bottom: 3.5rem;
     position: relative;
     overflow: hidden;
+    /* display: flex; */
 }
+
+.review-content {
+    display: flex;
+}
+
+.skew-photo {
+    /* transform: skewX(25deg);
+    transform: skewY(25deg); */
+    transform: skew(20deg);
+    animation: skew 3s infinite;
+}
+
+@keyframes skew {
+    0% {
+      transform: skewX(20deg);
+    }
+    100% {
+      transform: skewX(-20deg);
+    }
+  }
 
 .review__text {
     margin-bottom: 2rem;
