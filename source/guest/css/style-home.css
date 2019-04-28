@@ -52,7 +52,7 @@ body {
     background-image: linear-gradient(to right bottom , #FADB5F, #F0B429);
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    min-height: 200vh;
 }
 
 
@@ -64,7 +64,7 @@ body {
     margin: 8rem auto;
     background-color:  #f4f2f2;
     box-shadow: 0 2rem 6rem rgba(0,0,0,.3);
-    min-height: 50rem;  
+    min-height: 150rem;  
     padding: 0;
 }
 
@@ -78,7 +78,7 @@ body {
     align-items: center;
 }
 
-.navbar {
+.my-navbar {
     font-size: 1.2rem;
     background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -89,6 +89,7 @@ body {
 .main-nav {
     list-style-type: none;
     display: none;
+    margin: 0;
 }
 
 .main-nav__link,
@@ -109,7 +110,7 @@ body {
     display: inline-block;
 }
 
-.navbar-toggle {
+.my-navbar-toggle {
     position: absolute;
     cursor: pointer; 
     right: 0;
@@ -158,11 +159,8 @@ body {
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding-right: 1.2rem;
     padding-left: 1.2rem;
     align-content: space-between;
-    /* flex-flow: column; */
-    /* flex-direction: column; */
 }
 
 .card-2 {
@@ -185,11 +183,81 @@ body {
     flex: 2;
 }
 
-
-.view-post {
+.main-gallery {
     flex: 1;
-    background-color: #2376ae;
+    padding-left: 1.2rem;
 }
+
+.carousel-inner {
+    background-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    padding: 2px;
+}
+
+.spanborder {
+    border-bottom: 1px solid #faf9f9;
+    margin-bottom: 2rem; 
+}
+  
+.spanborder p {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.44);
+    display: inline-block;
+    padding-bottom: 20px;
+    margin-bottom: -1px; 
+}
+
+.another-posts {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 4rem;
+}
+
+.list-posts {
+    flex: 2;
+    margin-right: 2rem;
+    flex-direction: column;
+}
+
+.list-post-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list-post-item__content {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+.list-post-item__image {
+    flex: 1;
+}
+
+.list-post-item__image img {
+    display: block;
+    width: 100%;
+}
+.new-posts {
+    flex: 1;
+}
+
+.new-post-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.new-post-item__number {
+    flex: 1;
+    font-size: 2.8rem;
+    text-align: center;
+    color: #777;
+}
+
+.new-post-item__content {
+    flex: 2;
+}
+
 /*------------------------------------*/
 .main-view {
     background-color: #fff;
@@ -371,10 +439,6 @@ ul.tags li a:hover {
 
 /*---------------------*/
 
-
-
-
-
 /* LEGAL */
 .legal {
     font-size: 1.2rem;
@@ -461,7 +525,7 @@ ul.tags li a:hover {
 
 .btn-follow {
     border: none;
-    color: #F7C948;
+    color: #2367AE;
     font-size: inherit;
     border-bottom: 1px solid currentColor;
     padding-bottom: 2px;
@@ -640,7 +704,7 @@ ul.tags li a:hover {
     text-transform: uppercase;
     border-radius: 100px;
     border: none;
-    background-image: linear-gradient(to right, #FADB5F , #F0B429);
+    background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);;
     color: #fff;
     position: relative;
     overflow: hidden;
@@ -666,7 +730,7 @@ ul.tags li a:hover {
 }
 
 .btn:hover {
-    background-image: linear-gradient(to left,#FADB5F , #F0B429);
+    background-image: linear-gradient(260deg, #2376ae 0%, #c16ecf 100%);
 }
 
 .btn:hover .btn__visible {
@@ -815,6 +879,17 @@ $bp-smallest: 31.25em; // 500px
         margin-bottom: 1rem;
     }
 
+    .another-posts {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-post-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
 
 /* $bp-smallest */
@@ -838,7 +913,7 @@ $bp-smallest: 31.25em; // 500px
 
 
 @media screen and (min-width: 768px) {
-    .navbar {
+    .my-navbar {
         display: flex;
         justify-content: space-between;
         padding-bottom: 0;
@@ -863,13 +938,14 @@ $bp-smallest: 31.25em; // 500px
         position: relative;
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     .logo-brand {
         margin-top: 0;
     }
 
-    .navbar-toggle {
+    .my-navbar-toggle {
        display: none;
     }
 
@@ -877,4 +953,5 @@ $bp-smallest: 31.25em; // 500px
     .main-nav__link:hover {
         color: rgba(255, 255, 255, 1);
     }
+
 }
