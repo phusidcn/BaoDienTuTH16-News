@@ -147,17 +147,54 @@
            <!--Context Menu list-->
            <div id="contextMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item">
-                    <i class="fa fa-align-center fa-lg"></i>
-                    <a href="#">Xem thông tin chi tiết</a>
+                    <a href="#" onclick="showModalInfo()">
+                        <i class="fa fa-align-center fa-lg"></i>
+                        <span>Xem thông tin chi tiết</span>
+                    </a>
                 </div>
                 <div class="dropdown-item">
-                    <i class="fa fa-edit fa-lg"></i>
-                    <a href="#">Thay đổi thông tin phóng viên</a>
+                    <a href="#" onclick="showModalChange()">
+                        <i class="fa fa-edit fa-lg"></i>
+                        <span>Thay đổi thông tin phóng viên</span>
+                    </a>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div class="dropdown-item">
-                    <i class="fa fa-trash fa-lg"></i>
-                    <a href="#">Xoá</a>
+                    <a href="#">
+                        <i class="fa fa-trash fa-lg"></i>
+                        <span>Xoá</span>
+                    </a>
+                </div>
+            </div>
+
+            <!--Modal info Content-->
+            <div id="infoModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="assets/img/avatar.jpg" alt="Card image cap">
+                        <div class="card-body">
+                          <h5 class="card-title" id="Name">Không tên</h5>
+                          <p class="card-text" id="Category">Không chủ đề</p>
+                          <p class="card-text" id="Birthday">Không ngày sinh</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+
+            <!--Modal change category-->
+            <div id="changeModal" class="modal">
+                <!--Modal content-->
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <form>
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Chuyên mục</label>
+                          <input id="categoryChange" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập chuyên mục">
+                        </div>
+                        <button type="button" class="btn btn-primary">Thay đổi</button>
+                      </form>
                 </div>
             </div>
 
@@ -178,8 +215,6 @@
                     $('#sidebar').toggleClass('active');
                 });
             });
-
-            CKEDITOR.replace('editor');
         </script>
 
 </body>
