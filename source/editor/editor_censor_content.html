@@ -6,31 +6,25 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="assets/css/reporter.css">
+  <link rel="stylesheet" href="../../assets/css/editor.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-  <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-  <title>Hiệu chỉnh bài viết bị từ chối</title>
+  <script type="text/javascript" src="../../ckeditor/ckeditor.js"></script>
+  <title></title>
 </head>
 <body>                              
  <div class="wrapper">
   <nav id="sidebar">
     <ul class="list-unstyled components">
-      <div style="color: black;" class="profile text-white text-center">Phóng viên báo MUTV</div>
+      <div style="color: black;" class="profile text-white text-center"><h5>Biên tập viên</h5></div>
       <div class = "avt-wrapper">
         <div class = "avt">
-          <img src="assets/img/thai.jpg">
+          <img src="../../assets/img/thai.jpg">
         </div>
         <div class="profile text-white d-block mx-auto text-center bottom-border">LÊ QUỐC THÁI</div>     
       </div>
-      <li class="nav-item">
-        <a href="post_content.html">
-          <i class="fa fa-upload"></i>
-          <span> Đăng bài viết</span> 
-        </a>
-      </li>
       <li>
        <a href="#viewList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
         <i class="fa fa-eye-slash"></i>
@@ -38,37 +32,19 @@
       </a>
       <ul class="collapse list-unstyled" id="viewList">
         <li>
-         <a href="view_censored_content.html">Đã được duyệt</a>
+         <a href="view_censored_content.html">Bản draft</a>
        </li>
        <li>
-         <a href="view_published_content.html">Đã xuất bản</a>
+         <a href="view_published_content.html">Bị từ chối</a>
        </li>
-       <li>
-         <a href="view_denied_content.html">Bị từ chối</a>
-       </li>
-       <li>
-         <a href="view_waiting_content.html">Chưa được duyệt</a>
+       <li> 
+         <a href="view_denied_content.html">Được duyệt</a>
        </li>
      </ul> 
    </li>
+ </ul>
 
-   <li active>
-     <a href="#editPost" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-      <i class="fa fa-pencil-square-o"></i>
-      <span> Hiệu chỉnh</span>
-    </a>
-    <ul class="collapse list-unstyled" id="editPost">
-      <li active>
-       <a href="#">Bị từ chối</a>
-     </li>
-     <li>
-       <a href="edit_waiting_content.html">Chưa được duyệt</a>
-     </li>
-   </ul> 
- </li>
-</ul>
-
-<ul class="list-unstyled CTAs">
+ <ul class="list-unstyled CTAs">
   <li>
    <a href="#" class="editProfile">Chỉnh sửa profile</a>
  </li>
@@ -101,6 +77,8 @@
   </div>
 </nav>
 
+<span class="font-weight-normal">Tên bài viết</span>
+<span class="text-danger">*</span>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button type="button" class="btn btn-secondary">
@@ -110,6 +88,8 @@
   <input type="text" class="form-control" value="Đề xuất tăng thu phí với điểm rửa xe, nhà hàng, khách sạn" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
+<span class="font-weight-normal">Chủ đề</span>
+<span class = "text-danger">*</span>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button type="button" class="btn btn-secondary">
@@ -119,6 +99,8 @@
   <input type="text" class="form-control" value="Thời sự" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
+<span class="font-weight-normal">Nhãn dán</span>
+<span class = "text-danger">*</span>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button type="button" class="btn btn-secondary">
@@ -128,6 +110,8 @@
   <input type="text" class="form-control" value="Nóng hổi" aria-label="Username" aria-describedby="basic-addon1">
 </div>
 
+<span class="font-weight-normal">Tóm tắt</span>
+<span class = "text-danger">*</span>
 <div class="input-group mb-3">
   <div class="input-group-prepend">
     <button type="button" class="btn btn-secondary">
@@ -135,6 +119,17 @@
     </button>
   </div>
   <input type="text" class="form-control" value="Giải thích lý do, Bộ Tài chính cho rằng nước thải của cơ sở rửa và sửa chữa ô tô, xe máy; nhà hàng, khách sạn có mức độ gây ô nhiễm môi trường cao hơn hộ gia đình bình thường." aria-label="Username" aria-describedby="basic-addon1">
+</div>
+
+<span class="font-weight-normal">Ngày tháng xuất bản</span>
+<span class = "text-danger">*</span>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <button type="button" class="btn btn-secondary">
+      <i class="fa fa-calendar-plus-o"></i>
+    </button>
+  </div>
+  <input type="date" class="form-control" aria-label="" aria-describedby="basic-addon1">
 </div>
 
 <form action="submit" method="post"> 
@@ -148,11 +143,34 @@
     Gen-z strategy long tail churn rate seed money channels user experience incubator startup partner network low hanging fruit direct mailing. Client backing success startup assets responsive web design burn rate A/B testing metrics first mover advantage conversion.
     Freemium non-disclosure agreement lean startup bootstrapping holy grail ramen MVP iteration accelerator. Strategy market ramen leverage paradigm shift seed round entrepreneur crowdfunding social proof angel investor partner network virality.
   </textarea>
+
   <div class = "submit">
-    <input type="submit" value="Hiệu chỉnh" name="submit_post">
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+      Duyệt bài viết
+    </button>
   </div>
 </form> 
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" id="exampleModalLabel">Bạn có muốn duyệt bài viết?</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="#">Đóng</a></button>
+        <button type="button" class="btn btn-info" data-dismiss="modal"><a href="#">Đồng ý</a></button>
+      </div>
+    </div>
+  </div>
 </div>
+
+</div>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -164,9 +182,13 @@
    $('#sidebarCollapse').on('click',function(){
     $('#sidebar').toggleClass('active');
   });
- });  
 
- CKEDITOR.replace('editor');
+   CKEDITOR.replace('editor');
+
+   $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  })
+ });  
 </script>
 
 </body>

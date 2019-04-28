@@ -27,45 +27,54 @@
     NAVBAR
     --------------------------------------->
     <nav class="navbar navbar-toggleable-md navbar-light bg-white navigation">
+
+        <!-- Begin Logo -->
+
+        <a class="navbar-brand" href="index.html">
+            <img src="assets/img/logo.png" alt="logo">
+        </a>
+
+        <!-- End Logo -->
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="container">
-            <!-- Begin Logo -->
-            <a class="navbar-brand" href="index.html">
-                <img src="assets/img/logo.png" alt="logo">
-            </a>
-            <!-- End Logo -->
-            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <!-- Begin Search -->
-                <form class="form-inline my-2 my-lg-0 ml-auto">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm">
-                    <span class="search-icon"><svg class="svgIcon-use" width="25" height="25" viewbox="0 0 25 25">
-                            <path
-                                d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z">
-                            </path>
-                        </svg></span>
-                </form>
-                <!-- End Search -->
-                <!-- Begin Menu -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Thành viên VIP</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color:#029E74" href="#">Đăng nhập</a>
-                    </li>
-                    <li class="nav-item highlight">
-                        <a class="nav-link"
-                            style="border: 1px solid #029E74; border-radius: 5px; color:#029E74; padding: 6px 25px;"
-                            href="#">Bắt đầu</a>
-                    </li>
-                </ul>
-                <!-- End Menu -->
-            </div>
+        <!-- <div class="container"> -->
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <!-- Begin Menu -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <!-- Begin Search -->
+                    <div class="search">
+                        <form class="form-inline my-2 my-lg-0 ml-auto">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Tìm kiếm" style="text-align:center;">
+                            <span class="search-icon"><svg class="svgIcon-use" width="25" height="25"
+                                    viewbox="0 0 25 25">
+                                    <path
+                                        d="M20.067 18.933l-4.157-4.157a6 6 0 1 0-.884.884l4.157 4.157a.624.624 0 1 0 .884-.884zM6.5 11c0-2.62 2.13-4.75 4.75-4.75S16 8.38 16 11s-2.13 4.75-4.75 4.75S6.5 13.62 6.5 11z">
+                                    </path>
+                                </svg></span>
+                        </form>
+                    </div>
+                    <!-- End Search -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Thành viên VIP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color:#029E74" href="/sign-in.html">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                        style="border: 1px solid #029E74; border-radius: 5px; color:#029E74;"
+                        href="#">Bắt đầu</a>
+                </li>
+            </ul>
+            <!-- End Menu -->
         </div>
+        <!-- </div> -->
+
     </nav>
     <!-- END NAVBAR -->
 
@@ -74,46 +83,48 @@
     --------------------------------------->
     <div class="sticky">
         <div class="container">
-            <ul class="mr-auto d-flex align-items-center main-div-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="./index.html">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="./guest_Category.html">Thời sự</a>
-                    <ul class="drop-nav">
-                        <li><a href="#">Tin tức</a></li>
-                        <li><a href="#">Pháp luật</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="./guest_Category.html">Kinh tế vĩ mô</a>
-                    <ul class="drop-nav">
-                        <li><a href="#">Tài chính</a></li>
-                        <li><a href="#">Chính sách</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="./guest_Category.html">Kinh doanh</a>
-                    <ul class="drop-nav">
-                        <li><a href="#">Quản trị</a></li>
-                        <li><a href="#">Nhân vật</a></li>
-                        <li><a href="#">Thương hiệu</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="./guest_Category.html">Công nghệ</a>
-                    <ul class="drop-nav">
-                        <li><a href="#">Doanh nghiệp</a></li>
-                        <li><a href="#">Startup</a></li>
-                        <li><a href="#">Khoa học</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="./guest_Category.html">Sống</a>
-                </li>
-            </ul>
+            <div class="topnav">
+                <ul class="d-flex align-items-center main-div-nav" style="margin:0;padding:0 20px;"> 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="./index.html">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="./guest_Category.html">Thời sự</a>
+                        <ul class="drop-nav">
+                            <li class="nav-item"><a class="nav-link" href="#">Tin tức</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Pháp luật</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="./guest_Category.html">Kinh tế </a>
+                        <ul class="drop-nav">
+                            <li class="nav-item"><a class="nav-link" href="#">Tài chính</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Chính sách</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="./guest_Category.html">Kinh doanh</a>
+                        <ul class="drop-nav">
+                            <li class="nav-item"><a class="nav-link" href="#">Quản trị</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Nhân vật</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Thương hiệu</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="./guest_Category.html">Công nghệ</a>
+                        <ul class="drop-nav">
+                            <li class="nav-item"><a class="nav-link" href="#">Doanh nghiệp</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Startup</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">Khoa học</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="./guest_Category.html">Sống</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <!-- END STICKY DIV -->
@@ -121,7 +132,7 @@
     <!--------------------------------------
     HEADER
     --------------------------------------->
-    <div class="main-header container pb-4">
+    <div class="main-header container pb-4 pt-4">
         <div class="row">
             <div class="col-lg-5">
                 <div class="card border-0 mb-4 box-shadow h-xl-300" style="font-family: 'Raleway', sans-serif;">
@@ -334,7 +345,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Hồi sinh sông Tô Lịch</a>
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Hồi sinh sông Tô Lịch</a>
                             </h2>
                             <p>
                                 Các chuyên gia Nhật Bản hứa hẹn khi đưa công nghệ mới vào cải tạo...
@@ -349,7 +361,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Phục hồi điểu tra vụ án Hoa hậu Phương
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Phục hồi điểu tra vụ án Hoa hậu Phương
                                     Nga</a>
                             </h2>
                             <p>
@@ -365,8 +378,9 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">NHNN đề xuất chỉ được nạp tiền vào ví điện tử
-                                    bằng 2 cách, giới hạn mức giao dịch 20 triệu/ngày và 100 triệu/tháng</a>
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">NHNN đề xuất chỉ được nạp tiền vào ví điện tử
+                                    </a>
                             </h2>
                             <p>
                                 Theo NHNN, việc quy định cụ thể về việc sử dụng Ví điện tử, hạn mức...
@@ -381,7 +395,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Chìa khóa tăng trưởng Chuyển đổi số</a>
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Chìa khóa tăng trưởng Chuyển đổi số</a>
                             </h2>
                             <p>
                                 Trong khi Việt Nam chỉ vừa chính thức xác định vai trò Chuyển đổi số...
@@ -396,7 +411,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Startup lo sợ lên Shark Tank bị sao chép mô
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Startup lo sợ lên Shark Tank bị sao chép mô
                                     hình</a>
                             </h2>
                             <p>
@@ -413,7 +429,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Hồi sinh sông Tô Lịch</a>
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Hồi sinh sông Tô Lịch</a>
                             </h2>
                             <p>
                                 Các chuyên gia Nhật Bản hứa hẹn khi đưa công nghệ mới vào cải tạo...
@@ -428,7 +445,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Phục hồi điểu tra vụ án Hoa hậu Phương
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Phục hồi điểu tra vụ án Hoa hậu Phương
                                     Nga</a>
                             </h2>
                             <p>
@@ -444,8 +462,9 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">NHNN đề xuất chỉ được nạp tiền vào ví điện tử
-                                    bằng 2 cách, giới hạn mức giao dịch 20 triệu/ngày và 100 triệu/tháng</a>
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">NHNN đề xuất chỉ được nạp tiền vào ví điện tử
+                                    </a>
                             </h2>
                             <p>
                                 Theo NHNN, việc quy định cụ thể về việc sử dụng Ví điện tử, hạn mức...
@@ -460,7 +479,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Chìa khóa tăng trưởng Chuyển đổi số</a>
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Chìa khóa tăng trưởng Chuyển đổi số</a>
                             </h2>
                             <p>
                                 Trong khi Việt Nam chỉ vừa chính thức xác định vai trò Chuyển đổi số...
@@ -475,7 +495,8 @@
                     <div class="mb-4 d-flex justify-content-between">
                         <div class="pr-3">
                             <h2 class="mb-1 h4 font-weight-bold">
-                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark" href="./article.html">Startup lo sợ lên Shark Tank bị sao chép mô
+                                <a style="font-family: 'Raleway', sans-serif;" class="text-dark"
+                                    href="./article.html">Startup lo sợ lên Shark Tank bị sao chép mô
                                     hình</a>
                             </h2>
                             <p>
@@ -562,7 +583,7 @@
                     </ol>
                     <hr>
                     <footer class="container">
-                        <div class="row" style="font-size:.8rem;">
+                        <div class="row" style="font-size:.8rem; text-align: center;">
                             <a href="#" class="mr-2">Giới thiệu &middot;</a>
                             <a href="#" class="mr-2">Liên hệ &middot;</a>
                             <a href="#" class="mr-2">Tuyển dụng &middot;</a>
