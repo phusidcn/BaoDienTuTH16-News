@@ -26,11 +26,75 @@ var item;
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal Info
-function showModalInfo() {
+function showModalInfo_Category() {
 	var modalInfo = document.getElementById('infoModal');
-	//var list = item.currentTarget.children;
-	//document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
-	//document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	var list = item.currentTarget.children;
+	if (document.getElementById("Name") != undefined) {
+		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
+	}
+	if (document.getElementById("Category") != undefined){
+		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
+	modalInfo.style.display = "block";
+}
+
+function showModalInfo_Subcriber() {
+	var modalInfo = document.getElementById('infoModal');
+	var list = item.currentTarget.children;
+	if (document.getElementById("Name") != undefined) {
+		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
+	}
+	if (document.getElementById("Category") != undefined){
+		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
+	modalInfo.style.display = "block";
+}
+
+function showModalInfo_Repoter() {
+	var modalInfo = document.getElementById('infoModal');
+	var list = item.currentTarget.children;
+	if (document.getElementById("Name") != undefined) {
+		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
+	}
+	if (document.getElementById("Category") != undefined){
+		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
+	modalInfo.style.display = "block";
+}
+
+function showModalInfo_Editor() {
+	var modalInfo = document.getElementById('infoModal');
+	var list = item.currentTarget.children;
+	if (document.getElementById("Name") != undefined) {
+		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
+	}
+	if (document.getElementById("Category") != undefined){
+		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
+	modalInfo.style.display = "block";
+}
+
+function showModalInfo_Posted() {
+	var modalInfo = document.getElementById('infoModal');
+	var list = item.currentTarget.children;
+	if (document.getElementById("Name") != undefined) {
+		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
+	}
+	if (document.getElementById("Category") != undefined){
+		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
+	modalInfo.style.display = "block";
+}
+
+function showModalInfo_Draft() {
+	var modalInfo = document.getElementById('infoModal');
+	var list = item.currentTarget.children;
+	if (document.getElementById("Name") != undefined) {
+		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
+	}
+	if (document.getElementById("Category") != undefined){
+		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
 	modalInfo.style.display = "block";
 }
 
@@ -52,6 +116,8 @@ function closeModal() {
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
+	var modalInfo = document.getElementById('infoModal');
+	var modalChange = document.getElementById('changeModal');
 	if (event.target == modalChange || event.target == modalInfo) {
 		closeModal();
 	}
