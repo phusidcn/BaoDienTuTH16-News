@@ -50,7 +50,7 @@ a:hover {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #14919B;
+    background: #ffd280;
     /* background: linear-gradient(-90deg, #84CF6A, #16C0B0); */
     color: black;
     transition: all 0.3s;
@@ -86,7 +86,7 @@ a:hover {
 }
 
 #sidebar ul li a:hover {
-    background-color: #444;
+    background-color: #47748b;
     border-radius: 5px;
 }
 
@@ -151,8 +151,8 @@ ul.CTAs a {
 }
 
 a.editProfile {
-    background: #fff;
-    color: #000000;
+    background: #47748b;
+    color: #fff;
 }
 
 a.logOut,
@@ -165,7 +165,6 @@ a.logOut:hover {
     margin-left: 10px;
     margin-right: 10px;
     width: 100%;
-    padding: 10px;
     min-height: 100vh;
     transition: all 0.3s;
 }
@@ -182,4 +181,117 @@ a.logOut:hover {
     #sidebarCollapse span {
         display: none;
     }
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    margin: 15% auto;
+    /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    display: flex;
+    justify-content: center;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.mybtn {
+    position: relative;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 12px;
+    border-width: 0;
+    outline: none;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #2ecc71;
+    color: #ecf0f1;
+    transition: background-color .3s;
+}
+
+.mybtn:hover,
+.mybtn:focus {
+    background-color: #27ae60;
+}
+
+.mybtn span {
+    display: block;
+    padding: 12px 24px;
+}
+
+.mybtn:before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    display: block;
+    width: 0;
+    padding-top: 0;
+
+    border-radius: 100%;
+
+    background-color: rgba(236, 240, 241, .3);
+
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.mybtn:active:before {
+    width: 120%;
+    padding-top: 120%;
+
+    transition: width .2s ease-out, padding-top .2s ease-out;
+}
+
+.mybtn.orange {
+    background-color: #e67e22;
+}
+
+.mybtn.orange:hover,
+.mybtn.orange:focus {
+    background-color: #d35400;
+}
+
+.mybtn.red {
+    background-color: #e74c3c;
+}
+
+.mybtn.red:hover,
+.mybtn.red:focus {
+    background-color: #c0392b;
 }
