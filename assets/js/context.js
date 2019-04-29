@@ -50,7 +50,7 @@ function showModalInfo_Subcriber() {
 	modalInfo.style.display = "block";
 }
 
-function showModalInfo_Repoter() {
+function showModalInfo_Reporter() {
 	var modalInfo = document.getElementById('infoModal');
 	var list = item.currentTarget.children;
 	if (document.getElementById("Name") != undefined) {
@@ -58,6 +58,9 @@ function showModalInfo_Repoter() {
 	}
 	if (document.getElementById("Category") != undefined){
 		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
+	if (document.getElementById("Birthday") != undefined){
+		document.getElementById("Birthday").innerHTML = 'Ngày sinh:' + list[4].innerHTML;
 	}
 	modalInfo.style.display = "block";
 }
@@ -68,14 +71,17 @@ function showModalInfo_Editor() {
 	if (document.getElementById("Name") != undefined) {
 		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
 	}
-	if (document.getElementById("Category") != undefined){
+	if (document.getElementById("Category") != undefined) {
 		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
+	}
+	if (document.getElementById("Birthday") != undefined) {
+		document.getElementById("Birthday").innerHTML = 'Ngày sinh:' + list[4].innerHTML;
 	}
 	modalInfo.style.display = "block";
 }
 
 function showModalInfo_Posted() {
-	var modalInfo = document.getElementById('infoModal');
+	/*var modalInfo = document.getElementById('infoModal');
 	var list = item.currentTarget.children;
 	if (document.getElementById("Name") != undefined) {
 		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
@@ -83,11 +89,11 @@ function showModalInfo_Posted() {
 	if (document.getElementById("Category") != undefined){
 		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
 	}
-	modalInfo.style.display = "block";
+	modalInfo.style.display = "block";*/
 }
 
 function showModalInfo_Draft() {
-	var modalInfo = document.getElementById('infoModal');
+	/*var modalInfo = document.getElementById('infoModal');
 	var list = item.currentTarget.children;
 	if (document.getElementById("Name") != undefined) {
 		document.getElementById("Name").innerHTML = 'Họ tên: ' + list[1].innerHTML + ' ' + list[2].innerHTML;
@@ -95,14 +101,52 @@ function showModalInfo_Draft() {
 	if (document.getElementById("Category") != undefined){
 		document.getElementById("Category").innerHTML = 'Chuyên mục:' + list[3].innerHTML;
 	}
-	modalInfo.style.display = "block";
+	modalInfo.style.display = "block";*/
 }
 
 // When the user clicks on the button, open the modal Change
-function showModalChange(){
+function showModalChange_Subcriber(){
+	var modalChange = document.getElementById('changeModal');
+	var list = item.currentTarget.children;
+	//document.getElementById('categoryChange').innerHTML = list[3].innerHTML;
+	modalChange.style.display = "block";
+}
+
+function showModalChange_Reporter(){
+	var modalChange = document.getElementById('changeModal');
+	var list = item.currentTarget.children;
+	//document.getElementById('categoryChange').innerHTML = list[3].innerHTML;
+	modalChange.style.display = "block";
+}
+
+function showModalChange_Editor(){
+	var modalChange = document.getElementById('changeModal');
+	var list = item.currentTarget.children;
+	document.getElementById('firstNameChange').innerHTML = list[1].innerHTML;
+	document.getElementById('lastNameChange').innerHTML = list[2].innerHTML;
+	document.getElementById('categoryChange').innerHTML = list[3].innerHTML;
+	document.getElementById('birthdayChange').innerHTML = list[4].innerHTML;
+	modalChange.style.display = "block";
+}
+
+function showModalChange_Draft(){
 	var modalChange = document.getElementById('changeModal');
 	var list = item.currentTarget.children;
 	document.getElementById('categoryChange').innerHTML = list[3].innerHTML;
+	modalChange.style.display = "block";
+}
+
+function showModalChange_Posted(){
+	var modalChange = document.getElementById('changeModal');
+	var list = item.currentTarget.children;
+	document.getElementById('categoryChange').innerHTML = list[3].innerHTML;
+	modalChange.style.display = "block";
+}
+
+function showModalChange_Category(){
+	var modalChange = document.getElementById('changeModal');
+	var list = item.currentTarget.children;
+	//document.getElementById('categoryChange').innerHTML = list[3].innerHTML;
 	modalChange.style.display = "block";
 }
 

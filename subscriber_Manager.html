@@ -149,14 +149,14 @@
            <!--Context Menu list-->
            <div id="contextMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item">
-                    <a href="#" onclick="showModalInfo()">
+                    <a href="#" onclick="showModalInfo_Subcriber()">
                         <i class="fa fa-align-center fa-lg"></i>
                         <span>Xem thông tin chi tiết</span>
                     </a>
                 </div>
                 <div class="dropdown-item">
-                    <a href="#" onclick="showModalChange()">
-                        <i class="fa fa-edit fa-lg"></i>
+                    <a href="#" onclick="showModalChange_Subcriber()">
+                        <i class="fa fa-plus-square fa-lg"></i>
                         <span>Gia hạn</span>
                     </a>
                 </div>
@@ -192,8 +192,8 @@
                     <span class="close" onclick="closeModal()">&times;</span>
                     <form>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Gia hạn:</label>
-                          <input id="categoryChange" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập thời hạn">
+                          <label for="expandSub">Gia hạn:</label>
+                          <input id="expandSub" class="form-control" placeholder="Nhập thời hạn">
                         </div>
                         <button type="button" class="btn btn-primary">Thay đổi</button>
                       </form>

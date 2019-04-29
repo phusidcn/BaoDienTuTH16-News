@@ -21,7 +21,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="assets//js/jqcontextmenu.css" />
     <title>Admin Page</title>
 </head>
 
@@ -129,6 +128,7 @@
                         <th>Họ</th>
                         <th>Tên</th>
                         <th>Chuyên mục quản lí</th>
+                        <th>Ngày sinh</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -137,12 +137,14 @@
                         <td>Mai Văn</td>
                         <td>Cường</td>
                         <td>Nông sản</td>
+                        <td>25/10/1989</td>
                     </tr>
                     <tr style="text-align:center;">
                         <td>2</td>
                         <td>Huỳnh Hữu</td>
                         <td>Nhân</td>
                         <td>Hải sản</td>
+                        <td>13/01/1993</td>
                     </tr>
                 </tbody>
             </table>
@@ -150,15 +152,15 @@
             <!--Context Menu list-->
             <div id="contextMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item">
-                    <a href="#" onclick="showModalInfo()">
+                    <a href="#" onclick="showModalInfo_Editor()">
                         <i class="fa fa-align-center fa-lg"></i>
                         <span>Xem thông tin chi tiết</span>
                     </a>
                 </div>
                 <div class="dropdown-item">
-                    <a href="#" onclick="showModalChange()">
+                    <a href="#" onclick="showModalChange_Editor()">
                         <i class="fa fa-edit fa-lg"></i>
-                        <span>Thay đổi chuyên đề</span>
+                        <span>Thay đổi thông tin</span>
                     </a>
                 </div>
                 <div class="dropdown-divider"></div>
@@ -193,8 +195,14 @@
                     <span class="close" onclick="closeModal()">&times;</span>
                     <form>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Chuyên mục</label>
-                          <input id="categoryChange" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập chuyên mục">
+                          <label for="firstNameChange">Họ</label>
+                          <input id="firstNameChange" class="form-control"  placeholder="Nhập họ">
+                          <label for="lastNameChange">Tên</label>
+                          <input id="lastNameChange" class="form-control"  placeholder="Nhập tên">
+                          <label for="categoryChange">Chuyên mục</label>
+                          <input id="categoryChange" class="form-control"  placeholder="Nhập chuyên mục">
+                          <label for="birthdayChange">Ngày sinh</label>
+                          <input id="birthdayChange" class="form-control"  placeholder="Nhập ngày sinh">
                         </div>
                         <button type="button" class="btn btn-primary">Thay đổi</button>
                       </form>

@@ -126,7 +126,8 @@
                        <th>STT</th>
                        <th>Họ</th>
                        <th>Tên</div>
-                       <th>Ngày hết hạn</th>
+                       <th>Chuyên mục</th>
+                       <th>Ngày sinh</th>
                    </tr>
                </thead>
                <tbody>
@@ -134,13 +135,15 @@
                        <td>1</td>
                        <td>Nguyễn Văn</td>
                        <td>Cường</td>
-                       <td>19/05/2018</td>
+                       <td>Hải sản</td>
+                       <td>12/06/1989</td>
                    </tr>
                    <tr style="text-align:center;">
                        <td>2</td>
                        <td>Lê Văn</td>
                        <td>Tứ</td>
-                       <td>24/12/2018</td>
+                       <td>Nông sản</td>
+                       <td>23/01/1978</td>
                    </tr>
                </tbody>
            </table>
@@ -148,13 +151,13 @@
            <!--Context Menu list-->
            <div id="contextMenu" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <div class="dropdown-item">
-                    <a href="#" onclick="showModalInfo()">
+                    <a href="#" onclick="showModalInfo_Reporter()">
                         <i class="fa fa-align-center fa-lg"></i>
                         <span>Xem thông tin chi tiết</span>
                     </a>
                 </div>
                 <div class="dropdown-item">
-                    <a href="#" onclick="showModalChange()">
+                    <a href="#" onclick="showModalChange_Reporter()">
                         <i class="fa fa-edit fa-lg"></i>
                         <span>Thay đổi thông tin phóng viên</span>
                     </a>
@@ -191,8 +194,14 @@
                     <span class="close" onclick="closeModal()">&times;</span>
                     <form>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Chuyên mục</label>
-                          <input id="categoryChange" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập chuyên mục">
+                          <label for="fistNameChange">Họ</label>
+                          <input id="fistNameChange" class="form-control" placeholder="Nhập họ">
+                          <label for="lastNameChange">Tên</label>
+                          <input id="lastNameChange" class="form-control" placeholder="Nhập tên">
+                          <label for="categoryChange">Chuyên mục</label>
+                          <input id="categoryChange" class="form-control" placeholder="Nhập chuyên mục">
+                          <label for="bỉthDayChange">Ngày sinh</label>
+                          <input id="bỉthDayChange" class="form-control" placeholder="Nhập ngày sinh">
                         </div>
                         <button type="button" class="btn btn-primary">Thay đổi</button>
                       </form>

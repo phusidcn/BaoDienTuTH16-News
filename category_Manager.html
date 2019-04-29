@@ -157,7 +157,7 @@
                     </a>
                 </div>
                 <div class="dropdown-item">
-                    <a href="#" onclick="showModalChange()">
+                    <a href="#" onclick="showModalChange_Category()">
                         <i class="fa fa-edit fa-lg"></i>
                         <span>Thay đổi biên tập viên</span>
                     </a>
@@ -170,9 +170,8 @@
                 <div class="modal-content">
                     <span class="close" onclick="closeModal()">&times;</span>
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="assets/img/avatar.jpg" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title" id="Name">Các bài viết trong chuyên đề</h5>
+                            <h5 class="card-title">Các bài viết trong chuyên đề</h5>
                             <table class="table table-striped">
                                 <thead>
                                   <tr>
@@ -215,8 +214,8 @@
                     <span class="close" onclick="closeModal()">&times;</span>
                     <form>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Biên tập viên</label>
-                          <input id="categoryChange" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nhập biên tập viên">
+                          <label for="editorChange">Biên tập viên</label>
+                          <input id="editorChange" class="form-control" placeholder="Nhập biên tập viên">
                         </div>
                         <button type="button" class="btn btn-primary">Thay đổi</button>
                       </form>
