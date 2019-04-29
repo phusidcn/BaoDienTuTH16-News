@@ -61,7 +61,7 @@ body {
 =====================*/
 .container {
     max-width: 120rem;
-    margin: 8rem auto;
+    margin: 5rem auto;
     background-color:  #f4f2f2;
     box-shadow: 0 2rem 6rem rgba(0,0,0,.3);
     min-height: 50rem;  
@@ -478,7 +478,88 @@ ul.tags li a:hover {
 }
 
 /************************/
-/* RECOMMEND */
+/* COMMEND */
+.comment-section{
+    list-style: none;
+    max-width: 800px;
+    width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+}
+
+.comment{
+    display: flex;
+    border-radius: 3px;
+    margin-bottom: 45px;
+    flex-wrap: wrap;
+}
+
+.comment.user-comment{
+    color:  #808080;
+}
+
+.comment.author-comment{
+    color:  #60686d;
+    justify-content: flex-end;
+}
+
+/* User and time info */
+
+.comment .info{
+    width: 17%;
+}
+
+.comment.user-comment .info{
+    text-align: right;
+}
+
+.comment.author-comment .info{
+    order: 3;
+}
+
+
+.comment .info a{	/* User name */
+    display: block;
+    text-decoration: none;
+    color: #656c71;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 10px 0 3px 0;
+}
+
+.comment .info span{	/* Time */
+    font-size: 11px;
+    color:  #9ca7af;
+}
+
+
+/* The user avatar */
+
+.comment .avatar{
+    width: 8%;
+}
+
+.comment.user-comment .avatar{
+    padding: 1rem 1.8rem 0 3px;
+}
+
+.comment.author-comment .avatar{
+    order: 2;
+    padding: 1rem 3px 0 1.8rem;
+}
+
+.comment .avatar img{
+    display: block;
+    border-radius: 50%;
+}
+
+.comment.user-comment .avatar img{
+    float: right;
+}
+
+/* The comment text */
 .recommend {
     font-size: 1.3rem;
     color: #999;
@@ -486,24 +567,91 @@ ul.tags li a:hover {
     align-items: center;
 }
 
-.recommend__count {
-    margin-right: auto;
+.comment p{
+    line-height: 1.5;
+    padding: 1.8rem 1.2rem;
+    width: 50%;
+    position: relative;
+    word-wrap: break-word;
 }
 
-.recommend__friends {
-    display: flex;
+.comment {
+    margin-bottom: 1.2rem;
 }
 
-.recommend__photo {
-    box-sizing: content-box;
-    height: 4rem;
-    width: 4rem;
+.comment.user-comment p{
+    background-color:  #f3f3f3;
+}
+
+.comment.author-comment p{
+    background-color:  #e2f8ff;
+    order: 1;
+}
+
+.user-comment p:after{
+    content: '';
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
     border-radius: 50%;
-    border: 3px solid #fff;
+    background-color: #ffffff;
+    border: 2px solid #f3f3f3;
+    left: -8px;
+    top: 1.8rem;
 }
 
-.recommend__photo:not(:last-child) {
-    margin-right: -2rem;
+.author-comment p:after{
+    content: '';
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 2px solid #e2f8ff;
+    right: -8px;
+    top: 1.8rem;
+}
+
+
+
+
+/* Comment form */
+
+.write-new{
+    margin: 2.5rem auto ;
+    width: 50%;
+}
+
+.write-new textarea{
+    color:  #444;
+    font: inherit;
+    outline: 0;
+    border-radius: 3px;
+    border: 1px solid #cecece;
+    background-color:  #fefefe;
+    box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.06);
+    overflow: auto;
+    width:100%;
+    min-height: 9rem;
+    padding: 1.6rem 2.2rem;
+}
+
+.write-new img{
+    border-radius: 50%;
+    margin-top: 15px;
+}
+
+.write-new button{
+    float:right;
+    background-color:  #87bae1;
+    box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    border: 0;
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1rem 2.5rem;
+    margin-top: 1.8rem;
 }
 /************************/
 
