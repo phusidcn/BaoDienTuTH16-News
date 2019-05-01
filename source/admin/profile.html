@@ -34,13 +34,13 @@
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="./profile.html">
                             <i class="material-icons">perm_contact_calendar</i>
                             <p>Profile</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="./writer.html">
                             <i class="material-icons">person</i>
                             <p>Phóng viên</p>
@@ -63,114 +63,67 @@
         </div>
 
         <!-- modal -->
-        <div class="modal fade" id="job-user">
+        <div class="modal fade" id="sign-out">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Xem thông tin</h4>
+                        <h4 class="modal-title">Want to leave?</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Company (disabled)</label>
-                                    <input type="text" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Username</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Email address</label>
-                                    <input type="email" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Fist Name</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Last Name</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Adress</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">City</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Country</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Postal Code</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                        </div>
+                        Press logout to leave
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Cập nhật</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Stay Here</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Logout</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="add-user">
+
+        <div class="modal fade" id="add-tag">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add User</h4>
+                        <h4 class="modal-title">Add Tag</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Username</label>
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label class="bmd-label-floating">Email address</label>
-                                    <input type="email" class="form-control">
-                                </div>
+                        <div class="row ml-3">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Tên tag</label>
+                                <input type="text" class="form-control">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm tag</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="edit-tag">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Edit Tag</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row ml-3">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Tên tag</label>
+                                <input type="text" class="form-control" value="Edit tag">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Edit tag</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- end of modal -->
-
 
         <div class="main-panel">
             <!-- Navbar -->
@@ -178,9 +131,9 @@
                 style="box-shadow: 0 2rem 6rem rgba(0,0,0,.3);">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="employee.html" style="font-size:1.5rem;font-weight:500;">
+                        <a class="navbar-brand" href="dashboard.html" style="font-size:1.5rem;font-weight:500;">
                             <strong>
-                                Phóng viên
+                                Thông tin cá nhân
                             </strong>
                         </a>
                     </div>
@@ -246,133 +199,121 @@
                 </div>
             </nav>
             <!-- End Navbar -->
+
+            <!-- Main content-->
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row mb-5" style="display:flex; justify-content:center;">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#add-user">
-                            <i class="material-icons">add</i>
-                            Thêm Phóng viên
-                        </button>
-                        <button class="btn btn-danger">
-                            <i class="material-icons">delete</i>
-                            Xóa Phóng viên
-                        </button>
-                    </div>
-                    <div class="row mb-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header card-header-warning">
+                                    <h4 class="card-title">Edit Profile</h4>
+                                    <p class="card-category">Complete your profile</p>
+                                </div>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Company (disabled)</label>
+                                                    <input type="text" class="form-control" disabled>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Username</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Email address</label>
+                                                    <input type="email" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Fist Name</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Last Name</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Adress</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">City</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Country</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating">Postal Code</label>
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>About Me</label>
+                                                    <div class="form-group">
+                                                        <label class="bmd-label-floating"> Lamborghini Mercy, Your chick
+                                                            she so thirsty, I'm in that two seat Lambo.</label>
+                                                        <textarea class="form-control" rows="5"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-warning pull-right">Update Profile</button>
+                                        <div class="clearfix"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-4">
-                            <div class="card card-profile card-common">
+                            <div class="card card-profile">
                                 <div class="card-avatar">
                                     <a href="#pablo">
                                         <img class="img" src="./assets/img/faces/quang.jpg" />
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
+                                    <h6 class="card-category text-gray">CEO / Co-Founder</h6>
                                     <h4 class="card-title">Quang Le</h4>
                                     <p class="card-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
+                                        IT Student in University of Science.
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, provident?
                                     </p>
-                                    <a href="#" data-toggle="modal" data-target="#job-user"
-                                        class="btn btn-warning btn-round">Xem thông tin</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-profile card-common">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="./assets/img/faces/thai.jpg" />
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                                    <h4 class="card-title">Thai Le</h4>
-                                    <p class="card-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                                    </p>
-                                    <a href="#" data-toggle="modal" data-target="#job-user"
-                                        class="btn btn-warning btn-round">Xem thông tin</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-profile card-common">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="./assets/img/faces/quang.jpg" />
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                                    <h4 class="card-title">Si Huynh</h4>
-                                    <p class="card-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                                    </p>
-                                    <a href="#" data-toggle="modal" data-target="#job-user"
-                                        class="btn btn-warning btn-round">Xem thông tin</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-4">
-                            <div class="card card-profile card-common">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="./assets/img/faces/quang.jpg" />
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                                    <h4 class="card-title">Quang Le</h4>
-                                    <p class="card-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                                    </p>
-                                    <a href="#" data-toggle="modal" data-target="#job-user"
-                                        class="btn btn-warning btn-round">Xem thông tin</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-profile card-common">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="./assets/img/faces/thai.jpg" />
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                                    <h4 class="card-title">Thai Le</h4>
-                                    <p class="card-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                                    </p>
-                                    <a href="#" data-toggle="modal" data-target="#job-user"
-                                        class="btn btn-warning btn-round">Xem thông tin</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card card-profile card-common">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="./assets/img/faces/quang.jpg" />
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                                    <h4 class="card-title">Si Huynh</h4>
-                                    <p class="card-description">
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                                    </p>
-                                    <a href="#" data-toggle="modal" data-target="#job-user"
-                                        class="btn btn-warning btn-round">Xem thông tin</a>
+                                    <a href="#pablo" class="btn btn-warning btn-round">Follow</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- End content-->
 
             <!-- Footer -->
             <footer class="footer">
@@ -411,6 +352,7 @@
                 </div>
             </footer>
             <!-- End Footer -->
+
         </div>
 
     </div>
@@ -455,7 +397,7 @@
     <!--  Notifications Plugin    -->
     <script src="./assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="./assets/js/material-dashboard.js" type="text/javascript"></script>
+
     <script>
         $(document).ready(function () {
             $().ready(function () {
@@ -627,6 +569,9 @@
             });
         });
     </script>
+
+    <script src="./assets/js/material-dashboard.js" type="text/javascript"></script>
+
 </body>
 
 </html>
