@@ -34,7 +34,7 @@
                             <p>Trang chủ</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="./writer.html">
                             <i class="material-icons">person</i>
                             <p>Phóng viên</p>
@@ -46,7 +46,7 @@
                             <p>Biên tập viên</p>
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="./premium-user.html">
                             <i class="material-icons">face</i>
                             <p>Độc giả</p>
@@ -57,7 +57,7 @@
         </div>
 
         <!-- modal -->
-        <div class="modal fade" id="info-user">
+        <div class="modal fade" id="job-user">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -134,6 +134,35 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="add-user">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Add User</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Username</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Email address</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- end of modal -->
 
 
@@ -143,9 +172,9 @@
                 style="box-shadow: 0 2rem 6rem rgba(0,0,0,.3);">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="premium-user.html" style="font-size:1.5rem;font-weight:500;">
+                        <a class="navbar-brand" href="employee.html" style="font-size:1.5rem;font-weight:500;">
                             <strong>
-                                Độc giả
+                                Phóng viên
                             </strong>
                         </a>
                     </div>
@@ -214,17 +243,13 @@
             <div class="content">
                 <div class="container-fluid">
                     <div class="row mb-5" style="display:flex; justify-content:center;">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#add-user">
                             <i class="material-icons">add</i>
-                            Thêm độc giả
+                            Thêm Phóng viên
                         </button>
                         <button class="btn btn-danger">
                             <i class="material-icons">delete</i>
-                            Xóa độc giả
-                        </button>
-                        <button class="btn btn-info">
-                            <i class="material-icons">date_range</i>
-                            Gia hạn tài khoản
+                            Xóa Phóng viên
                         </button>
                     </div>
                     <div class="row mb-3">
@@ -236,12 +261,12 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">premium user</h6>
+                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
                                     <h4 class="card-title">Quang Le</h4>
                                     <p class="card-description">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
                                     </p>
-                                    <a href="#" data-toggle="modal" data-target="#info-user"
+                                    <a href="#" data-toggle="modal" data-target="#job-user"
                                         class="btn btn-warning btn-round">Xem thông tin</a>
                                 </div>
                             </div>
@@ -254,12 +279,12 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">premium user</h6>
+                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
                                     <h4 class="card-title">Thai Le</h4>
                                     <p class="card-description">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
                                     </p>
-                                    <a href="#" data-toggle="modal" data-target="#info-user"
+                                    <a href="#" data-toggle="modal" data-target="#job-user"
                                         class="btn btn-warning btn-round">Xem thông tin</a>
                                 </div>
                             </div>
@@ -272,12 +297,12 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">premium user</h6>
+                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
                                     <h4 class="card-title">Si Huynh</h4>
                                     <p class="card-description">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
                                     </p>
-                                    <a href="#" data-toggle="modal" data-target="#info-user"
+                                    <a href="#" data-toggle="modal" data-target="#job-user"
                                         class="btn btn-warning btn-round">Xem thông tin</a>
                                 </div>
                             </div>
@@ -293,12 +318,12 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">premium user</h6>
+                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
                                     <h4 class="card-title">Quang Le</h4>
                                     <p class="card-description">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
                                     </p>
-                                    <a href="#" data-toggle="modal" data-target="#info-user"
+                                    <a href="#" data-toggle="modal" data-target="#job-user"
                                         class="btn btn-warning btn-round">Xem thông tin</a>
                                 </div>
                             </div>
@@ -311,12 +336,12 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">premium user</h6>
+                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
                                     <h4 class="card-title">Thai Le</h4>
                                     <p class="card-description">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
                                     </p>
-                                    <a href="#" data-toggle="modal" data-target="#info-user"
+                                    <a href="#" data-toggle="modal" data-target="#job-user"
                                         class="btn btn-warning btn-round">Xem thông tin</a>
                                 </div>
                             </div>
@@ -329,12 +354,12 @@
                                     </a>
                                 </div>
                                 <div class="card-body">
-                                    <h6 class="card-category text-gray">premium user</h6>
+                                    <h6 class="card-category text-gray">Phóng viên MUTV</h6>
                                     <h4 class="card-title">Si Huynh</h4>
                                     <p class="card-description">
                                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
                                     </p>
-                                    <a href="#" data-toggle="modal" data-target="#info-user"
+                                    <a href="#" data-toggle="modal" data-target="#job-user"
                                         class="btn btn-warning btn-round">Xem thông tin</a>
                                 </div>
                             </div>
