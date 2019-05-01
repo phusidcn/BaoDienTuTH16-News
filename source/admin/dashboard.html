@@ -28,40 +28,28 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="nav-item active  ">
+                    <li class="nav-item  active">
                         <a class="nav-link" href="./dashboard.html">
                             <i class="material-icons">dashboard</i>
                             <p>Trang chủ</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
+                        <a class="nav-link" href="./writer.html">
                             <i class="material-icons">person</i>
-                            <p>Nhân viên</p>
+                            <p>Phóng viên</p>
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="./user.html">
+                        <a class="nav-link" href="./editor.html">
+                            <i class="material-icons">supervisor_account</i>
+                            <p>Biên tập viên</p>
+                        </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="./premium-user.html">
                             <i class="material-icons">face</i>
                             <p>Độc giả</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./tables.html">
-                            <i class="material-icons">content_paste</i>
-                            <p>Bài viết</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./typography.html">
-                            <i class="material-icons">library_books</i>
-                            <p>Category</p>
-                        </a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="./icons.html">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Tags</p>
                         </a>
                     </li>
                 </ul>
@@ -86,14 +74,62 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="add-tag">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Tag</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row ml-3">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Tên tag</label>
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Thêm tag</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="edit-tag">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Tag</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row ml-3">
+                                <div class="form-group">
+                                    <label class="bmd-label-floating">Tên tag</label>
+                                    <input type="text" class="form-control" value="Edit tag">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Edit tag</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- end of modal -->
 
         <div class="main-panel">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top"
+                style="box-shadow: 0 2rem 6rem rgba(0,0,0,.3);">
                 <div class="container-fluid">
                     <div class="navbar-wrapper">
-                        <a class="navbar-brand" href="#pablo">Trang chủ</a>
+                        <a class="navbar-brand" href="dashboard.html" style="font-size:1.5rem;font-weight:500;">
+                            <strong>
+                                Trang chủ
+                            </strong>
+                        </a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -176,7 +212,7 @@
                                 <div class="card-footer">
                                     <div class="stats">
                                         <i class="material-icons text-danger">warning</i>
-                                        <a href="#pablo">Chờ duyệt</a>
+                                        <a href="#pablo">Draft</a>
                                     </div>
                                 </div>
                             </div>
@@ -274,11 +310,13 @@
                                                         <td>Thời sự</td>
                                                         <td class="td-actions text-right">
                                                             <button type="button" rel="tooltip" title="Add Tag"
-                                                                class="btn btn-success btn-link btn-sm">
+                                                                class="btn btn-success btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#add-tag">
                                                                 <i class="material-icons">add</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Edit Tag"
-                                                                class="btn btn-warning btn-link btn-sm">
+                                                                class="btn btn-warning btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#edit-tag">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Remove"
@@ -302,11 +340,13 @@
                                                         <td>Kinh tế</td>
                                                         <td class="td-actions text-right">
                                                             <button type="button" rel="tooltip" title="Add Tag"
-                                                                class="btn btn-success btn-link btn-sm">
+                                                                class="btn btn-success btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#add-tag">
                                                                 <i class="material-icons">add</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Edit Tag"
-                                                                class="btn btn-warning btn-link btn-sm">
+                                                                class="btn btn-warning btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#edit-tag">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Remove"
@@ -331,11 +371,13 @@
                                                         </td>
                                                         <td class="td-actions text-right">
                                                             <button type="button" rel="tooltip" title="Add Tag"
-                                                                class="btn btn-success btn-link btn-sm">
+                                                                class="btn btn-success btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#add-tag">
                                                                 <i class="material-icons">add</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Edit Tag"
-                                                                class="btn btn-warning btn-link btn-sm">
+                                                                class="btn btn-warning btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#edit-tag">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Remove"
@@ -360,11 +402,13 @@
                                                         </td>
                                                         <td class="td-actions text-right">
                                                             <button type="button" rel="tooltip" title="Add Tag"
-                                                                class="btn btn-success btn-link btn-sm">
+                                                                class="btn btn-success btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#add-tag">
                                                                 <i class="material-icons">add</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Edit Tag"
-                                                                class="btn btn-warning btn-link btn-sm">
+                                                                class="btn btn-warning btn-link btn-sm"
+                                                                data-toggle="modal" data-target="#edit-tag">
                                                                 <i class="material-icons">edit</i>
                                                             </button>
                                                             <button type="button" rel="tooltip" title="Remove"
@@ -457,7 +501,7 @@
                                             <th>Name</th>
                                             <th>Salary</th>
                                             <th>Country</th>
-                                            
+
                                         </thead>
                                         <tbody>
                                             <tr>
@@ -517,25 +561,25 @@
                                                 <td><span class="badge badge-success w-75 py-2">Xuất bản</span></td>
                                             </tr>
                                             <tr>
-                                                    <td>1</td>
-                                                    <td>Bài viết số 1</td>
-                                                    <td>Quang Le</td>
-                                                    <td>30/04/2019</td>
-                                                <td><span class="badge badge-danger w-75 py-2">Chờ duyệt</span></td>
+                                                <td>1</td>
+                                                <td>Bài viết số 1</td>
+                                                <td>Quang Le</td>
+                                                <td>30/04/2019</td>
+                                                <td><span class="badge badge-danger w-75 py-2">Draft</span></td>
                                             </tr>
                                             <tr>
-                                                    <td>1</td>
-                                                    <td>Bài viết số 1</td>
-                                                    <td>Quang Le</td>
-                                                    <td>30/04/2019</td>
+                                                <td>1</td>
+                                                <td>Bài viết số 1</td>
+                                                <td>Quang Le</td>
+                                                <td>30/04/2019</td>
                                                 <td><span class="badge badge-success w-75 py-2">Xuất bản</span></td>
                                             </tr>
                                             <tr>
-                                                    <td>1</td>
-                                                    <td>Bài viết số 1</td>
-                                                    <td>Quang Le</td>
-                                                    <td>30/04/2019</td>
-                                                <td><span class="badge badge-danger w-75 py-2">Chờ duyệt</span></td>
+                                                <td>1</td>
+                                                <td>Bài viết số 1</td>
+                                                <td>Quang Le</td>
+                                                <td>30/04/2019</td>
+                                                <td><span class="badge badge-danger w-75 py-2">Draft</span></td>
                                             </tr>
                                         </tbody>
                                     </table>

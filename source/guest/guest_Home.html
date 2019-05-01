@@ -18,6 +18,9 @@
 </head>
 
 <body>
+    <div id="particles-js">
+
+    </div>
     <div class="container">
         <header class="header">
             <img src="img/logo.png" alt="minimum logo" class="logo">
@@ -549,6 +552,7 @@
 
 
     <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         let mainNav = document.getElementById('js-menu');
         let navBarToggle = document.getElementById('js-navbar-toggle');
@@ -556,6 +560,10 @@
         navBarToggle.addEventListener('click', function () {
 
             mainNav.classList.toggle('active');
+        });
+
+        particlesJS.load('particles-js', 'particles.json', function () {
+            console.log('particles.json loaded...');
         });
 
     </script>
