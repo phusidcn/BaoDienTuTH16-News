@@ -46,7 +46,7 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Muli', sans-serif;
     font-weight: 400;
     line-height: 1.6;
     background-image: linear-gradient(to right bottom , #FADB5F, #F0B429);
@@ -98,18 +98,17 @@ body {
 .detail {
     font-size: 1.4rem;
     display: flex;
-    padding: 4.5rem;
+    /* padding: 4.5rem; */
     background-color: #faf9f9;
     border-bottom: 1px solid #f4f2f2;
 }
 
 .main-posts {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Muli', sans-serif;
     background-color: #fff;
     box-shadow: 0 2rem 5rem rgba(0,0,0,.06);
-    padding: 2rem;
+    padding: 2.5rem;
     flex: 0 0 69%;
-    margin-right: 4rem;
 }
 
 .spanborder {
@@ -156,7 +155,15 @@ body {
     font-weight: bolder;
 }
 
-.post-title:hover {
+.related-post-title {
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: #333;
+    font-weight: bolder;
+}
+
+.post-title:hover,
+.related-post-title:hover {
     text-decoration: none;
     color: #F0B429;
 }
@@ -869,6 +876,8 @@ $bp-smallest: 31.25em; // 500px
     }
     .detail {
         flex-direction: column;
+        align-content: center;
+        justify-content: center;
     }
     .description {
         margin-right: 0;
@@ -907,6 +916,8 @@ $bp-smallest: 31.25em; // 500px
     .related-post {
         display: flex;
         flex-direction: column;
+        align-content: center;
+        
     }
 }
 
