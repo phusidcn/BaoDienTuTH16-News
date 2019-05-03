@@ -31,10 +31,10 @@
       </a>
       <ul class="collapse list-unstyled" id="viewList">
         <li>
-         <a href="#">Bản draft</a>
+         <a href="editor_view_list_content.html">Bản draft</a>
        </li>
        <li>
-         <a href="editor_view_denied_content.html">Bị từ chối</a>
+         <a href="#">Bị từ chối</a>
        </li>
        <li>
          <a href="editor_view_censored_content.html">Được duyệt</a>
@@ -83,9 +83,7 @@
       <th scope="col" style="text-align: center; vertical-align: middle;">Tên bài viết</th>
       <th scope="col">Chuyên mục</th>
       <th scope="col">Tác giả</th>
-      <th scope="col">Xem</th>
-      <th scope="col">Duyệt</th>
-      <th scope="col">Từ chối</th>
+      <th scope="col">Trạng thái</th>
     </tr>
   </thead>
   <tbody>
@@ -95,47 +93,8 @@
       <td>Thời sự</td>
       <td>Lê Quốc Thái</td>
       <td>
-        <a href="editor_view_draft.html" target="_blank">
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-            <i class="fa fa-eye-slash"></i>
-          </button>
-        </a>
-      </td>
-      <td>
-        <a href="editor_censor_content.html">
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-info">
-            <i class="fa fa-check"></i>
-          </button>
-        </a>
-      </td>
-      <td>
-        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#tableModal">
-          <i class="fa fa-times"></i>
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row" style="text-align: center; vertical-align: middle;">2</th>
-      <td>Vì sao Bộ GD lúng túng xử lý thí sinh gian lận thi cử?</td>
-      <td>Giáo dục</td>
-      <td>Sĩ Huỳnh</td>
-      <td>
-        <a href="editor_view_draft.html" target="_blank">
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-            <i class="fa fa-eye-slash"></i>
-          </button>
-        </a>
-      </td>
-      <td>
-        <a href="editor_censor_content.html">
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-info">
-            <i class="fa fa-check"></i>
-          </button>
-        </a>
-      </td>
-      <td>
-        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#tableModal">
-          <i class="fa fa-times"></i>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tableModal">
+          <span>Bị từ chối</span>
         </button>
       </td>
     </tr>
@@ -145,22 +104,8 @@
       <td>Thời sự</td>
       <td>Quang Lê</td>
       <td>
-        <a href="editor_view_draft.html" target="_blank">
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-primary">
-            <i class="fa fa-eye-slash"></i>
-          </button>
-        </a>
-      </td>
-      <td>
-        <a href="editor_censor_content.html">
-          <button type="button" id="sidebarCollapse" class="btn btn-outline-info">
-            <i class="fa fa-check"></i>
-          </button>
-        </a>
-      </td>
-      <td>
-        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#tableModal">
-          <i class="fa fa-times"></i>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tableModal">
+          <span>Bị từ chối</span>
         </button>
       </td>
     </tr>
