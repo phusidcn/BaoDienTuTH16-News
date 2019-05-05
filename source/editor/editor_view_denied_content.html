@@ -11,7 +11,8 @@
 
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-  <title></title>
+  <link rel="shortcut icon" href="../../assets/img/logo-khtn.png" type="image/png">
+  <title>Editor page</title>
 </head>
 <body>                              
  <div class="wrapper">
@@ -45,14 +46,14 @@
 
  <ul class="list-unstyled CTAs">
   <li>
-   <a href="#" class="editProfile">Chỉnh sửa profile</a>
+   <a data-toggle="modal" data-target="#profile-user" href="#" class="editProfile">Chỉnh sửa profile</a>
  </li>
 </ul>
 </nav>
 
 <div class="content">
- <nav class="navbar navbar-expand-lg navbar-light bg-info">
-  <button type="button" id="sidebarCollapse" class="btn btn-info">
+ <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+  <button type="button" id="sidebarCollapse" class="btn btn-secondary">
     <i class="fa fa-align-justify"></i> <span></span>
   </button>
 
@@ -67,10 +68,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a style="font-family: arial; color: #EEEEEE; font-size: 18px;" class="nav-link" href="index.html"><b>Trang chủ</b></a>
+        <a style="font-family: arial; color: #EEEEEE; font-size: 18px;" class="nav-link" href="../guest/guest_Home.html"><b>Trang chủ</b></a>
       </li>
       <li class="nav-item">
-        <a style="font-family: arial; color: #EEEEEE; font-size: 18px" class="nav-link" href="#"><b>Đăng xuất</b></a>
+        <a data-toggle="modal" data-target="#logOut" style="font-family: arial; color: #EEEEEE; font-size: 18px" class="nav-link" href="#"><b>Đăng xuất</b></a>
       </li>
     </ul>
   </div>
@@ -112,24 +113,15 @@
   </tbody>
 </table>
 
-<div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Log out modal -->
+<div class="modal fade" id="logOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn từ chối bài viết?</h5>
+        <p class="modal-title" id="exampleModalLabel">Bạn có muốn đăng xuất?</p>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        <div class="input-group mb-3">
-          <div class="input-group-prepend">
-            <button type="button" class="btn btn-secondary">
-              <i class="fa fa-pencil"></i>
-            </button>
-          </div>
-          <input type="text" placeholder="Nguyên nhân từ chối" class="form-control" aria-label="" aria-describedby="basic-addon1">
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="#">Đóng</a></button>
@@ -138,6 +130,65 @@
     </div>
   </div>
 </div>
+
+<!-- modal -->
+<div class="modal fade" id="profile-user">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Xem thông tin</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form-group">
+              <label class="bmd-label-floating">Email</label>
+              <input type="text" class="form-control" value="lequocthai1998@gmail.com">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label class="bmd-label-floating">Mật khẩu</label>
+              <input type="password" class="form-control" value="123465789">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form-group">
+              <label class="bmd-label-floating">Họ và tên</label>
+              <input type="text" class="form-control" value="Lê Quốc Thái">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label class="bmd-label-floating">Ngày sinh</label>
+              <input type="date" class="form-control" value="1998-05-26">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-7">
+            <div class="form-group">
+              <label class="bmd-label-floating">Địa chỉ</label>
+              <input type="text" class="form-control" value="333 Lý Thái Tổ, quận 10, TPHCM">
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="form-group">
+              <label class="bmd-label-floating">Công ty</label>
+              <input type="text" class="form-control" value="ABC">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cập nhật</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -151,11 +202,11 @@
    $('#sidebarCollapse').on('click',function(){
     $('#sidebar').toggleClass('active');
   });
+
    $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus');
   })
  });
-
 </script>
 
 </body>

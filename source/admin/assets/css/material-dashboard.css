@@ -14493,7 +14493,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   border-left: 4px solid transparent;
 }
 
-.sidebar[data-background-color="black"] {
+#sidebar[data-background-color="black"] {
   background-color: #191919;
 }
 
