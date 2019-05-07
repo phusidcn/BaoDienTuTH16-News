@@ -1,7 +1,11 @@
 @import "https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700";
 body{
 	font-family: 'Muli', sans-serif;
-	background: #fafafa
+	background: #E3E0E0
+}
+
+p{
+	font-family: 'Arial', sans-serif;
 }
 
 a, a:hover{
@@ -11,7 +15,7 @@ a, a:hover{
 }
 .navbar{
 	padding: 15px 10px;
-	background: linear-gradient(to right bottom , #FADB5F, #F0B429);;
+	background: linear-gradient(to right bottom , #FADB5F, #F0B429);
 	border: none;
 	border-radius: 0;
 	margin-bottom: 10px;
@@ -38,7 +42,7 @@ a, a:hover{
 #sidebar {
 	min-width: 250px;
 	max-width: 250px;
-	background:  linear-gradient(to right bottom , #FADB5F, #F0B429);
+	background-image: linear-gradient(to right bottom , #FADB5F, #F0B429);
 	position: relative;
 	background-color: black;
 	color: black;
@@ -46,6 +50,14 @@ a, a:hover{
 	transition: all 0.3s;
 	box-shadow: 5px 7px 25px #999;
 }
+
+#sidebar:after {
+  content: "";
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0; 
+  pointer-events: none;
+}
+
 #sidebar.active{
 	margin-left: -250px;
 }
@@ -71,15 +83,18 @@ a, a:hover{
 
 #sidebar ul li a{
 	padding: 15px;
-	font-size: 1.1em;
+	font-size: 1.0em;
+	font-weight: 5px;
 	display: block;
 	margin-left: 10px;
 	margin-right: 10px;
-}
+	color: #060606;
 
+}
 #sidebar ul li a:hover {
 	background-color: #444;
 	border-radius: 5px;
+	color: #EEEEEE;
 }
 
 #sidebar ul li.active>a, a[aria-expanded="true"] {
@@ -120,7 +135,7 @@ a[data-toggle="collapse"] {
 .profile{
 	margin-bottom: 10px;
 	text-align: center; 
-	color: #EEEEEE;
+	color: black;
 }
 
 ul ul a {
@@ -159,13 +174,27 @@ a.logOut, a.logOut:hover {
 	transition: all 0.3s;
 }
 
-@media(maz-width:768px){
+@media only screen and (min-width:600px){
 	#sidebar{margin-left: -250px;}
 	#sidebar.active{
 		margin-left: 0px;
 	}
 	#sidebarCollapse span{
 		display: none;
+	}
+
+}
+
+@media only screen and (max-width:600px) {
+	.card-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+	}
+
+	.my-image {
+		height: 50%;
 	}
 }
 
@@ -177,10 +206,10 @@ a.logOut, a.logOut:hover {
 }
 
 .submit input{
-	background: #14919B;
+	background: #A6A8A8;
 	color: white;
 	border-style: outset;
-	border-color: #14919B;
+	border-color: #A6A8A8;
 	border-radius: 10px;
 	height: 50px;
 	width: 200px;
@@ -207,10 +236,15 @@ a.logOut, a.logOut:hover {
 	border: 0;
 	background: #CA1F1F;
 }
-	
+
 p.text-picture{
 	font-family: Arial, Helvetica, sans-serif;
-	font-weight: 300;
+}
+
+.card-flex {
+	display: flex;
+	justify-content: space-around;
+	height: 25rem;
 }
 
 

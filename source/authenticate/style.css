@@ -138,7 +138,7 @@ input[type="submit"]:active {
   padding: 40px;
   width: 300px;
   height: 400px;
-  background: url(./img/sign-up-form.jpg);
+  background: url(../../assets/img/sign-up-form.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 0 2px 2px 0;
