@@ -4,19 +4,7 @@ const router = express.Router()
 
 
 router.get('/', guestController.index)
-
-// app.get('/category', (req, res) => {
-//     res.render('guest/guestCategory')
-// })
-
-// app.get('/post', (req, res) => {
-//     res.render('guest/guestPost')
-// })
-
-// app.get('/login', (req, res) => {
-//     res.render('authenticate/authen', {
-//         layout: false
-//     })
-// })
+router.get('/category', guestController.showCategory)
+router.get('/post', guestController.showPost)
 
 module.exports = router
