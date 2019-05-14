@@ -1,4 +1,3 @@
-
 <nav class="my-navbar sticky">
     <span class="my-navbar-toggle" id="js-navbar-toggle">
         <i class="fa fa-bars" aria-hidden="true"></i>
@@ -866,3 +865,14 @@
         <span class="btn__invisible">Tài khoản VIP</span>
     </button>
 </div>
+
+<script>
+    let mainNav = document.getElementById('js-menu');
+    let navBarToggle = document.getElementById('js-navbar-toggle');
+
+    navBarToggle.addEventListener('click', function () {
+
+        mainNav.classList.toggle('active');
+    });
+
+</script>
