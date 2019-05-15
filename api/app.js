@@ -7,6 +7,7 @@ const bodyParser = require('body-parser')
 const config = require('./config')
 const errorHandler = require('./middleware/errorHandler')
 const guestRoutes = require('./routes/guest/index')
+const subscriberRoutes = require('./routes/subscriber/index')
 
 const app = express()
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', guestRoutes)
+app.use('/subscriber', subscriberRoutes)
 
 app.use(errorHandler)
 
