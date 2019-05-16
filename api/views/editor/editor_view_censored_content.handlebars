@@ -1,0 +1,144 @@
+<div class="content">
+    <nav class="navbar navbar-expand-lg">
+        <button type="button" id="sidebarCollapse" class="btn btn-secondary">
+            <i class="fa fa-align-justify"></i> <span></span>
+        </button>
+
+        <button class="navbar-toggler" type="button" data-target="#navbarNav" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a style="font-family: arial; color: #EEEEEE; font-size: 18px;" class="nav-link"
+                        href="../guest/guest_Home.html"><b>Trang chủ</b></a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="modal" data-target="#logOut"
+                        style="font-family: arial; color: #EEEEEE; font-size: 18px" class="nav-link" href="#"><b>Đăng
+                            xuất</b></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <table class="table table-striped content-table">
+        <thead>
+            <tr>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Số thứ tự</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Tên bài viết</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Chuyên mục</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Tác giả</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" style="text-align: center; vertical-align: middle;">1</th>
+                <td>Vì sao Bộ GD lúng túng xử lý thí sinh gian lận thi cử?</td>
+                <td>Giáo dục</td>
+                <td>Sĩ Huỳnh</td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tableModal">
+                        <span>Được duyệt</span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" style="text-align: center; vertical-align: middle;">2</th>
+                <td>Đề xuất tăng thu phí với điểm rửa xe, nhà hàng, khách sạn</td>
+                <td>Thời sự</td>
+                <td>Lê Quốc Thái</td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tableModal">
+                        <span>Được duyệt</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<!-- Log out modal -->
+<div class="modal fade" id="logOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="modal-title" id="exampleModalLabel">Bạn có muốn đăng xuất?</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="#">Đóng</a></button>
+                <button type="button" class="btn btn-info" data-dismiss="modal"><a href="#">Đồng ý</a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal -->
+<div class="modal fade" id="profile-user">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Xem thông tin</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Email</label>
+                            <input type="text" class="form-control" value="lequocthai1998@gmail.com">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Mật khẩu</label>
+                            <input type="password" class="form-control" value="123465789">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Họ và tên</label>
+                            <input type="text" class="form-control" value="Lê Quốc Thái">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Ngày sinh</label>
+                            <input type="date" class="form-control" value="1998-05-26">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Địa chỉ</label>
+                            <input type="text" class="form-control" value="333 Lý Thái Tổ, quận 10, TPHCM">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Công ty</label>
+                            <input type="text" class="form-control" value="ABC">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

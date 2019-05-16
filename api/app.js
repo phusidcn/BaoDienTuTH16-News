@@ -9,6 +9,7 @@ const errorHandler = require('./middleware/errorHandler')
 const guestRoutes = require('./routes/guest/index')
 const subscriberRoutes = require('./routes/subscriber/index')
 const adminRoutes = require('./routes/admin/index')
+const editorRoutes = require('./routes/editor/index')
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/', guestRoutes)
 app.use('/subscriber', subscriberRoutes)
 app.use('/admin', adminRoutes)
+app.use('/editor', editorRoutes)
 
 app.use(errorHandler)
 
