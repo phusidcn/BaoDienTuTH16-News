@@ -1,40 +1,32 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
+const cors = require('cors')
 const path = require('path')
 const bodyParser = require('body-parser')
 
+const config = require('./config')
 const errorHandler = require('./middleware/errorHandler')
+const guestRoutes = require('./routes/guest/index')
+const subscriberRoutes = require('./routes/subscriber/index')
+const adminRoutes = require('./routes/admin/index')
+
 const app = express()
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main'}))
-app.set('view engine', 'handlebars')
+app.use(cors())
 
-const PORT = 3000 || process.env.PORT
+app.engine('handlebars', exphbs({ defaultLayout: 'guest'}))
+app.set('view engine', 'handlebars')
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use('/', guestRoutes)
+app.use('/subscriber', subscriberRoutes)
+app.use('/admin', adminRoutes)
+
 app.use(errorHandler)
 
-app.get('/', (req, res) => {
-    res.render('guest/guestHome')
-})
-
-app.get('/category', (req, res) => {
-    res.render('guest/guestCategory')
-})
-
-app.get('/post', (req, res) => {
-    res.render('guest/guestPost')
-})
-
-app.get('/login', (req, res) => {
-    res.render('authenticate/authen', {
-        layout: false
-    })
-})
-
-app.listen(3000, () => {
-    console.log(`App running on PORT ${PORT}`)
+app.listen(config.port, () => {
+    console.log('Listening')
 })
