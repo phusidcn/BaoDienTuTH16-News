@@ -10,6 +10,7 @@ const guestRoutes = require('./routes/guest/index')
 const subscriberRoutes = require('./routes/subscriber/index')
 const adminRoutes = require('./routes/admin/index')
 const editorRoutes = require('./routes/editor/index')
+const writerRoutes = require('./routes/writer/index')
 
 const app = express()
 
@@ -26,6 +27,7 @@ app.use('/', guestRoutes)
 app.use('/subscriber', subscriberRoutes)
 app.use('/admin', adminRoutes)
 app.use('/editor', editorRoutes)
+app.use('/writer', writerRoutes)
 
 app.use(errorHandler)
 
