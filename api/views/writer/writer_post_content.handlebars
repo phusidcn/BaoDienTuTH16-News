@@ -24,52 +24,52 @@
         </div>
     </nav>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <button type="button" class="btn btn-secondary">
-                <i class="fa fa-flag-o"></i>
-            </button>
+    <form action="/writer/create" method="POST">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-flag-o"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Tiêu đề" aria-label="Username"
+                aria-describedby="basic-addon1">
         </div>
-        <input type="text" class="form-control" placeholder="Tiêu đề" aria-label="Username"
-            aria-describedby="basic-addon1">
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <button type="button" class="btn btn-secondary">
-                <i class="fa fa-folder-o"></i>
-            </button>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-folder-o"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Chuyên mục" aria-label="Username"
+                aria-describedby="basic-addon1">
         </div>
-        <input type="text" class="form-control" placeholder="Chuyên mục" aria-label="Username"
-            aria-describedby="basic-addon1">
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <button type="button" class="btn btn-secondary">
-                <i class="fa fa-tags"></i>
-            </button>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-tags"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Gán nhãn" aria-label="Username"
+                aria-describedby="basic-addon1">
         </div>
-        <input type="text" class="form-control" placeholder="Gán nhãn" aria-label="Username"
-            aria-describedby="basic-addon1">
-    </div>
-
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <button type="button" class="btn btn-secondary">
-                <i class="fa fa-book"></i>
-            </button>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-book"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Tóm tắt nội dung" aria-label="Username"
+                aria-describedby="basic-addon1">
         </div>
-        <input type="text" class="form-control" placeholder="Tóm tắt nội dung" aria-label="Username"
-            aria-describedby="basic-addon1">
-    </div>
 
-    <form action="submit" method="post">
         <textarea name="editor" cols="200" rows="10">123456789</textarea>
         <div class="submit">
             <input type="submit" value="Đăng bài" name="submit_post">
         </div>
     </form>
+
+
+
 
 </div>
 
@@ -151,6 +151,3 @@
         </div>
     </div>
 </div>
-
-
-

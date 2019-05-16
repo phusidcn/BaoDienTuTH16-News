@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const cors = require('cors')
 const path = require('path')
 const bodyParser = require('body-parser')
+const mongoose = require('mongoose')
 
 const config = require('./config')
 const errorHandler = require('./middleware/errorHandler')
@@ -15,6 +16,11 @@ const writerRoutes = require('./routes/writer/index')
 const app = express()
 
 app.use(cors())
+
+mongoose.Promise = global.Promise
+mongoose.connect(config.mongoURI, {
+    useNewUrlParser: true
+})
 
 app.engine('handlebars', exphbs({ defaultLayout: 'guest'}))
 app.set('view engine', 'handlebars')
