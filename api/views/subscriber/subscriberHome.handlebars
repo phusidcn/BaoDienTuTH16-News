@@ -1,990 +1,890 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="/css/subscriber.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="/img/logo-khtn.png" type="image/png">
-
-    <title>minimum &mdash; E-magazine for you 24/7 - Chi tiet bai viet</title>
-</head>
-
-<body>
-    <div class="modal fade" id="account-premium" style="font-family: 'Muli', sans-serif; font-size: 1.5rem;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Gia hạn tài khoản</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" style="width:15rem;">
-                    <div class="form-group">
-                        <label for="">Thời hạn</label>
-                        <select class="custom-select" name="" id="">
-                            <option selected>7 ngày</option>
-                            <option value="">15 ngày</option>
-                            <option value="">1 tháng</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button style="background: green; border-radius: 0; padding:.5rem 1rem;" type="button" class="btn"
-                        data-dismiss="modal">Kích hoạt</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <header class="header">
-            <a href="subscriber_Home.html">
-                <img src="/img/logo-khtn.png" alt="minimum logo" class="logo">
-            </a>
-
-            <form action="#" class="search">
-                <input type="text" class="search__input" placeholder="Tìm kiếm ...">
-
-                <button class="search__button">
-                    <svg class="search__icon">
-                        <use xlink:href="/img/symbol.svg#icon-magnifying-glass"></use>
-                    </svg>
-                </button>
-            </form>
-
-            <nav class="user-nav">
-                <div class="user-nav__icon-box">
-                    <svg class="user-nav__icon">
-                        <use xlink:href="/img/symbol.svg#icon-bookmark"></use>
-                    </svg>
-                    <span class="user-nav__notification">1</span>
-                </div>
-                <div class="user-nav__icon-box">
-                    <svg class="user-nav__icon">
-                        <use xlink:href="/img/symbol.svg#icon-mail"></use>
-                    </svg>
-                    <span class="user-nav__notification">1</span>
-                </div>
-                <div class="user-nav__user">
-                    <img src="/img/user.jpg" alt="User photo" class="user-nav__user-photo">
-                    <span class="user-nav__user-name">Quang</span>
-                </div>
-            </nav>
-        </header>
-        <nav class="my-navbar sticky">
-            <span class="my-navbar-toggle" id="js-navbar-toggle">
-                <i class="fa fa-bars" aria-hidden="true"></i>
-            </span>
-            <a href="./subscriber_Home.html" class="logo-brand">Minimum</a>
-            <ul class="main-nav" id="js-menu">
-                <li class="main-nav__item">
-                    <a href="subscriber_Category.html" class="main-nav__link">Thời sự</a>
-                    <ul class="submenu">
-                        <li><a href="subscriber_Category.html">Tin tức</a></li>
-                        <li><a href="subscriber_Category.html">Pháp luật</a></li>
-                    </ul>
-                </li>
-                <li class="main-nav__item">
-                    <a href="subscriber_Category.html" class="main-nav__link">Kinh doanh</a>
-                    <ul class="submenu">
-                        <li><a href="subscriber_Category.html">Hải sản</a></li>
-                        <li><a href="subscriber_Category.html">Nông sản</a></li>
-                    </ul>
-                </li>
-                <li class="main-nav__item">
-                    <a href="subscriber_Category.html" class="main-nav__link">Công nghệ</a>
-                    <ul class="submenu">
-                        <li><a href="subscriber_Category.html">Điện thoại</a></li>
-                        <li><a href="subscriber_Category.html">Laptop</a></li>
-                    </ul>
-                </li>
-                <li class="main-nav__item">
-                    <a href="subscriber_Category.html" class="main-nav__link">Sống</a>
-                </li>
-                <li class="main-nav__item">
-                    <a href="subscriber_Category.html" class="main-nav__link">Liên hệ</a>
-                </li>
+<nav class="my-navbar sticky">
+    <span class="my-navbar-toggle" id="js-navbar-toggle">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </span>
+    <a href="./subscriber_Home.html" class="logo-brand">Minimum</a>
+    <ul class="main-nav" id="js-menu">
+        <li class="main-nav__item">
+            <a href="subscriber_Category.html" class="main-nav__link">Thời sự</a>
+            <ul class="submenu">
+                <li><a href="subscriber_Category.html">Tin tức</a></li>
+                <li><a href="subscriber_Category.html">Pháp luật</a></li>
             </ul>
-        </nav>
-        <div class="content-post">
-            <div class="hot-post">
+        </li>
+        <li class="main-nav__item">
+            <a href="subscriber_Category.html" class="main-nav__link">Kinh doanh</a>
+            <ul class="submenu">
+                <li><a href="subscriber_Category.html">Hải sản</a></li>
+                <li><a href="subscriber_Category.html">Nông sản</a></li>
+            </ul>
+        </li>
+        <li class="main-nav__item">
+            <a href="subscriber_Category.html" class="main-nav__link">Công nghệ</a>
+            <ul class="submenu">
+                <li><a href="subscriber_Category.html">Điện thoại</a></li>
+                <li><a href="subscriber_Category.html">Laptop</a></li>
+            </ul>
+        </li>
+        <li class="main-nav__item">
+            <a href="subscriber_Category.html" class="main-nav__link">Sống</a>
+        </li>
+        <li class="main-nav__item">
+            <a href="subscriber_Category.html" class="main-nav__link">Liên hệ</a>
+        </li>
+    </ul>
+</nav>
+<div class="content-post">
+    <div class="hot-post">
+        <div>
+            <div class="premium">
+                Premium
+            </div>
+            <div class="hot-post__image">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content mt-3">
+                <h1 class="hot-post__content-title">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h1>
+                <p>
+                    Your attention was never the endgame
+                </p>
+
                 <div>
-                    <div class="premium">
-                        Premium
-                    </div>
-                    <div class="hot-post__image">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content mt-3">
-                        <h1 class="hot-post__content-title">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h1>
-                        <p>
-                            Your attention was never the endgame
-                        </p>
-
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
                 </div>
             </div>
-
-            <div class="hot-post-2">
-                <div class="card-2">
-                    <div class="premium-2">
-                        Premium
-                    </div>
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2">
-                        <h1 class="hot-post__content-title-2">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                The Dawn of the Reliance
-                            </a>
-                        </h1>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="premium-2">
-                        Premium
-                    </div>
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2">
-                        <h1 class="hot-post__content-title-2">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                The Dawn of the Reliance
-                            </a>
-                        </h1>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="premium-2">
-                        Premium
-                    </div>
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2">
-                        <h1 class="hot-post__content-title-2">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                The Dawn of the Reliance
-                            </a>
-                        </h1>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="main-gallery mr-3">
-                <div>
-                    <div id="my-carousel" class="carousel slide mb-3" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="card card-carousel">
-                                    <div
-                                        style="background-image: url(/img/thoisu-tintuc03.jpg); height: 15rem; background-size: cover; background-repeat: no-repeat;">
-                                    </div>
-                                    <div class="card-body px-5 pb-5 d-flex flex-column align-items-start"
-                                        style="padding-top: 1.5rem;">
-                                        <h1 class="hot-post__content-title-2">
-                                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                                The Dawn of the Reliance
-                                            </a>
-                                        </h1>
-                                        <p class="card-carousel-content">
-                                            Researchers have found an effective target in the brain for electrical
-                                            stimulation
-                                            to
-                                            improve mood in people suffering from depression.
-                                        </p>
-                                        <div>
-                                            <small class="d-block"><a class="text-success" href="./author.html"
-                                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                                </a></small>
-                                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i
-                                                    class="fa fa-newspaper-o" aria-hidden="true"></i></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card card-carousel">
-                                    <div
-                                        style="background-image: url(/img/thoisu-tintuc03.jpg); height: 15rem; background-size: cover; background-repeat: no-repeat;">
-                                    </div>
-                                    <div class="card-body px-5 pb-5 d-flex flex-column align-items-start"
-                                        style="padding-top: 1.5rem;">
-                                        <h1 class="hot-post__content-title-2">
-                                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                                The Dawn of the Reliance
-                                            </a>
-                                        </h1>
-                                        <p class="card-carousel-content">
-                                            Researchers have found an effective target in the brain for electrical
-                                            stimulation
-                                            to
-                                            improve mood in people suffering from depression.
-                                        </p>
-                                        <div>
-                                            <small class="d-block"><a class="text-success" href="./author.html"
-                                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                                </a></small>
-                                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i
-                                                    class="fa fa-newspaper-o" aria-hidden="true"></i></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card card-carousel">
-                                    <div
-                                        style="background-image: url(/img/thoisu-tintuc03.jpg); height: 15rem; background-size: cover; background-repeat: no-repeat;">
-                                    </div>
-                                    <div class="card-body px-5 pb-5 d-flex flex-column align-items-start"
-                                        style="padding-top: 1.5rem;">
-                                        <h1 class="hot-post__content-title-2">
-                                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                                The Dawn of the Reliance
-                                            </a>
-                                        </h1>
-                                        <p class="card-carousel-content">
-                                            Researchers have found an effective target in the brain for electrical
-                                            stimulation
-                                            to
-                                            improve mood in people suffering from depression.
-                                        </p>
-                                        <div>
-                                            <small class="d-block"><a class="text-success" href="./author.html"
-                                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                                </a></small>
-                                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i
-                                                    class="fa fa-newspaper-o" aria-hidden="true"></i></small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#my-carousel" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#my-carousel" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
-                    </div>
-
-                    <div class="row" style="float:right;">
-                        <div style="padding-right:5rem;font-size: 1.4rem;">
-                            <a style="color: #03a87c; text-transform: uppercase" href="#">Xem thêm >
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <hr>
-        <div class="another-posts">
-            <div class="list-posts">
-                <h4 class="top-cate-title display-5 spanborder" style="text-transform:uppercase;">
-                    <p>
-                        #Top 10 Chuyên Mục
-                    </p>
-                </h4>
-                <div class="list-post-item mb-5">
-                    <div class="list-post-item__content mr-3">
-                        <h1 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Itaque quasi animi vero magnam quas quis error
-                            architecto vel quaerat doloribus!
-                        </p>
-
-
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                    <div class="list-post-item__image">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                </div>
-                <div class="list-post-item mb-5">
-                    <div class="list-post-item__content mr-3">
-                        <h1 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Itaque quasi animi vero magnam quas quis error
-                            architecto vel quaerat doloribus!
-                        </p>
-
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                    <div class="list-post-item__image">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                </div>
-                <div class="list-post-item mb-5">
-                    <div class="list-post-item__content mr-3">
-                        <h1 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Itaque quasi animi vero magnam quas quis error
-                            architecto vel quaerat doloribus!
-                        </p>
-
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                    <div class="list-post-item__image">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                </div>
-                <div class="list-post-item mb-5">
-                    <div class="list-post-item__content mr-3">
-                        <h1 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Itaque quasi animi vero magnam quas quis error
-                            architecto vel quaerat doloribus!
-                        </p>
-
-
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                    <div class="list-post-item__image">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                </div>
-                <div class="list-post-item mb-5">
-                    <div class="list-post-item__content mr-3">
-                        <h1 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Itaque quasi animi vero magnam quas quis error
-                            architecto vel quaerat doloribus!
-                        </p>
-
-
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                    <div class="list-post-item__image">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="new-posts">
-                <h4 class="top-post-title display-5 spanborder" style="text-transform:uppercase;">
-                    <p>
-                        #Top 10 Bài viết
-                    </p>
-                </h4>
-                <div class="new-post-item mb-5">
-                    <div class="new-post-item__number">
-                        01
-                    </div>
-                    <div class="new-post-item__content">
-                        <h3 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h3>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="new-post-item mb-5">
-                    <div class="new-post-item__number">
-                        02
-                    </div>
-                    <div class="new-post-item__content">
-                        <h3 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h3>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="new-post-item mb-5">
-                    <div class="new-post-item__number">
-                        03
-                    </div>
-                    <div class="new-post-item__content">
-                        <h3 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h3>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="new-post-item mb-5">
-                    <div class="new-post-item__number">
-                        04
-                    </div>
-                    <div class="new-post-item__content">
-                        <h3 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h3>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="new-post-item mb-5">
-                    <div class="new-post-item__number">
-                        05
-                    </div>
-                    <div class="new-post-item__content">
-                        <h3 style="font-weight:500">
-                            <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
-                                <strong>The Dawn of the Reliance Economy</strong>
-                            </a>
-                        </h3>
-                        <div>
-                            <small class="d-block"><a class="text-success" href="./author.html"
-                                    style="text-transform:uppercase; font-weight:500">Thời sự
-                                </a></small>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <hr>
-        <div class="category">
-            <div class="category-item">
-                <h3>Thời sự</h3>
-                <div class="card mb-3">
-                    <div class="hover-container">
-                        <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
-                        <div class="middle">
-                            <div class="text">
-                                <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
-                                    Read more
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card-body">
-                        <h1 class="card-title">Thời sự 24h</h1>
-                        <h2 class="card-subtitle">02/05/2019</h2>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="category-item">
-                <h3>Kinh doanh</h3>
-                <div class="card mb-3">
-                    <div class="hover-container">
-                        <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
-                        <div class="middle">
-                            <div class="text">
-                                <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
-                                    Read more
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Thời sự 24h</h5>
-                        <h2 class="card-subtitle">02/05/2019</h2>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="category-item">
-                <h3>Công nghệ</h3>
-                <div class="card mb-3">
-                    <div class="hover-container">
-                        <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
-                        <div class="middle">
-                            <div class="text">
-                                <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
-                                    Read more
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Thời sự 24h</h5>
-                        <h2 class="card-subtitle">02/05/2019</h2>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category">
-            <div class="category-item">
-                <h3>Thời sự</h3>
-                <div class="card mb-3">
-                    <div class="hover-container">
-                        <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
-                        <div class="middle">
-                            <div class="text">
-                                <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
-                                    Read more
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title">Thời sự 24h</h1>
-                        <h2 class="card-subtitle">02/05/2019</h2>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="category-item">
-                <h3>Kinh doanh</h3>
-                <div class="card mb-3">
-                    <div class="hover-container">
-                        <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
-                        <div class="middle">
-                            <div class="text">
-                                <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
-                                    Read more
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Thời sự 24h</h5>
-                        <h2 class="card-subtitle">02/05/2019</h2>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="category-item">
-                <h3>Công nghệ</h3>
-                <div class="card mb-3">
-                    <div class="hover-container">
-                        <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
-                        <div class="middle">
-                            <div class="text">
-                                <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
-                                    Read more
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Thời sự 24h</h5>
-                        <h2 class="card-subtitle">02/05/2019</h2>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-2">
-                    <div class="hot-post__image-2">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="">
-                    </div>
-                    <div class="hot-post__content-2" style="text-align:center;">
-                        <h1 class="hot-post__content-title-2">
-                            The Dawn of the Reliance
-                        </h1>
-                        <div>
-                            <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
-                                    aria-hidden="true"></i></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <hr>
-        <div class="cta">
-            <h2 class="cta__book-now">
-                Gia hạn tài khoản Premium
-            </h2>
-            <button class="btn" data-toggle="modal" data-target="#account-premium">
-                <span class="btn__visible">Gia hạn</span>
-                <span class="btn__invisible">Tài khoản VIP</span>
-            </button>
         </div>
     </div>
 
+    <div class="hot-post-2">
+        <div class="card-2">
+            <div class="premium-2">
+                Premium
+            </div>
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2">
+                <h1 class="hot-post__content-title-2">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        The Dawn of the Reliance
+                    </a>
+                </h1>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="premium-2">
+                Premium
+            </div>
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2">
+                <h1 class="hot-post__content-title-2">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        The Dawn of the Reliance
+                    </a>
+                </h1>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="premium-2">
+                Premium
+            </div>
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2">
+                <h1 class="hot-post__content-title-2">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        The Dawn of the Reliance
+                    </a>
+                </h1>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- JavaScript -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        let mainNav = document.getElementById('js-menu');
-        let navBarToggle = document.getElementById('js-navbar-toggle');
+    <div class="main-gallery mr-3">
+        <div>
+            <div id="my-carousel" class="carousel slide mb-3" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="card card-carousel">
+                            <div
+                                style="background-image: url(/img/thoisu-tintuc03.jpg); height: 15rem; background-size: cover; background-repeat: no-repeat;">
+                            </div>
+                            <div class="card-body px-5 pb-5 d-flex flex-column align-items-start"
+                                style="padding-top: 1.5rem;">
+                                <h1 class="hot-post__content-title-2">
+                                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                                        The Dawn of the Reliance
+                                    </a>
+                                </h1>
+                                <p class="card-carousel-content">
+                                    Researchers have found an effective target in the brain for electrical
+                                    stimulation
+                                    to
+                                    improve mood in people suffering from depression.
+                                </p>
+                                <div>
+                                    <small class="d-block"><a class="text-success" href="./author.html"
+                                            style="text-transform:uppercase; font-weight:500">Thời sự
+                                        </a></small>
+                                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i
+                                            class="fa fa-newspaper-o" aria-hidden="true"></i></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card card-carousel">
+                            <div
+                                style="background-image: url(/img/thoisu-tintuc03.jpg); height: 15rem; background-size: cover; background-repeat: no-repeat;">
+                            </div>
+                            <div class="card-body px-5 pb-5 d-flex flex-column align-items-start"
+                                style="padding-top: 1.5rem;">
+                                <h1 class="hot-post__content-title-2">
+                                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                                        The Dawn of the Reliance
+                                    </a>
+                                </h1>
+                                <p class="card-carousel-content">
+                                    Researchers have found an effective target in the brain for electrical
+                                    stimulation
+                                    to
+                                    improve mood in people suffering from depression.
+                                </p>
+                                <div>
+                                    <small class="d-block"><a class="text-success" href="./author.html"
+                                            style="text-transform:uppercase; font-weight:500">Thời sự
+                                        </a></small>
+                                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i
+                                            class="fa fa-newspaper-o" aria-hidden="true"></i></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card card-carousel">
+                            <div
+                                style="background-image: url(/img/thoisu-tintuc03.jpg); height: 15rem; background-size: cover; background-repeat: no-repeat;">
+                            </div>
+                            <div class="card-body px-5 pb-5 d-flex flex-column align-items-start"
+                                style="padding-top: 1.5rem;">
+                                <h1 class="hot-post__content-title-2">
+                                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                                        The Dawn of the Reliance
+                                    </a>
+                                </h1>
+                                <p class="card-carousel-content">
+                                    Researchers have found an effective target in the brain for electrical
+                                    stimulation
+                                    to
+                                    improve mood in people suffering from depression.
+                                </p>
+                                <div>
+                                    <small class="d-block"><a class="text-success" href="./author.html"
+                                            style="text-transform:uppercase; font-weight:500">Thời sự
+                                        </a></small>
+                                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i
+                                            class="fa fa-newspaper-o" aria-hidden="true"></i></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#my-carousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#my-carousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
 
-        navBarToggle.addEventListener('click', function () {
+            <div class="row" style="float:right;">
+                <div style="padding-right:5rem;font-size: 1.4rem;">
+                    <a style="color: #03a87c; text-transform: uppercase" href="#">Xem thêm >
+                    </a>
+                </div>
+            </div>
+        </div>
 
-            mainNav.classList.toggle('active');
-        });
+    </div>
+</div>
+<hr>
+<div class="another-posts">
+    <div class="list-posts">
+        <h4 class="top-cate-title display-5 spanborder" style="text-transform:uppercase;">
+            <p>
+                #Top 10 Chuyên Mục
+            </p>
+        </h4>
+        <div class="list-post-item mb-5">
+            <div class="list-post-item__content mr-3">
+                <h1 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque quasi animi vero magnam quas quis error
+                    architecto vel quaerat doloribus!
+                </p>
 
-        particlesJS.load('particles-js', 'particles.json', function () {
-            console.log('particles.json loaded...');
-        });
 
-    </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+            <div class="list-post-item__image">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+        </div>
+        <div class="list-post-item mb-5">
+            <div class="list-post-item__content mr-3">
+                <h1 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque quasi animi vero magnam quas quis error
+                    architecto vel quaerat doloribus!
+                </p>
 
-</body>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+            <div class="list-post-item__image">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+        </div>
+        <div class="list-post-item mb-5">
+            <div class="list-post-item__content mr-3">
+                <h1 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque quasi animi vero magnam quas quis error
+                    architecto vel quaerat doloribus!
+                </p>
 
-</html>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+            <div class="list-post-item__image">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+        </div>
+        <div class="list-post-item mb-5">
+            <div class="list-post-item__content mr-3">
+                <h1 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque quasi animi vero magnam quas quis error
+                    architecto vel quaerat doloribus!
+                </p>
+
+
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+            <div class="list-post-item__image">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+        </div>
+        <div class="list-post-item mb-5">
+            <div class="list-post-item__content mr-3">
+                <h1 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque quasi animi vero magnam quas quis error
+                    architecto vel quaerat doloribus!
+                </p>
+
+
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+            <div class="list-post-item__image">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="new-posts">
+        <h4 class="top-post-title display-5 spanborder" style="text-transform:uppercase;">
+            <p>
+                #Top 10 Bài viết
+            </p>
+        </h4>
+        <div class="new-post-item mb-5">
+            <div class="new-post-item__number">
+                01
+            </div>
+            <div class="new-post-item__content">
+                <h3 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h3>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="new-post-item mb-5">
+            <div class="new-post-item__number">
+                02
+            </div>
+            <div class="new-post-item__content">
+                <h3 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h3>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="new-post-item mb-5">
+            <div class="new-post-item__number">
+                03
+            </div>
+            <div class="new-post-item__content">
+                <h3 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h3>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="new-post-item mb-5">
+            <div class="new-post-item__number">
+                04
+            </div>
+            <div class="new-post-item__content">
+                <h3 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h3>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="new-post-item mb-5">
+            <div class="new-post-item__number">
+                05
+            </div>
+            <div class="new-post-item__content">
+                <h3 style="font-weight:500">
+                    <a href="subscriber_Post.html" style="text-decoration:none; color: #333;">
+                        <strong>The Dawn of the Reliance Economy</strong>
+                    </a>
+                </h3>
+                <div>
+                    <small class="d-block"><a class="text-success" href="./author.html"
+                            style="text-transform:uppercase; font-weight:500">Thời sự
+                        </a></small>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<hr>
+<div class="category">
+    <div class="category-item">
+        <h3>Thời sự</h3>
+        <div class="card mb-3">
+            <div class="hover-container">
+                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
+                <div class="middle">
+                    <div class="text">
+                        <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <h1 class="card-title">Thời sự 24h</h1>
+                <h2 class="card-subtitle">02/05/2019</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                    the card's content.</p>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category-item">
+        <h3>Kinh doanh</h3>
+        <div class="card mb-3">
+            <div class="hover-container">
+                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
+                <div class="middle">
+                    <div class="text">
+                        <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Thời sự 24h</h5>
+                <h2 class="card-subtitle">02/05/2019</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                    the card's content.</p>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category-item">
+        <h3>Công nghệ</h3>
+        <div class="card mb-3">
+            <div class="hover-container">
+                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
+                <div class="middle">
+                    <div class="text">
+                        <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Thời sự 24h</h5>
+                <h2 class="card-subtitle">02/05/2019</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                    the card's content.</p>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="category">
+    <div class="category-item">
+        <h3>Thời sự</h3>
+        <div class="card mb-3">
+            <div class="hover-container">
+                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
+                <div class="middle">
+                    <div class="text">
+                        <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title">Thời sự 24h</h1>
+                <h2 class="card-subtitle">02/05/2019</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                    the card's content.</p>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category-item">
+        <h3>Kinh doanh</h3>
+        <div class="card mb-3">
+            <div class="hover-container">
+                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
+                <div class="middle">
+                    <div class="text">
+                        <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Thời sự 24h</h5>
+                <h2 class="card-subtitle">02/05/2019</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                    the card's content.</p>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="category-item">
+        <h3>Công nghệ</h3>
+        <div class="card mb-3">
+            <div class="hover-container">
+                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Category">
+                <div class="middle">
+                    <div class="text">
+                        <a href="subscriber_Post.html" style="text-decoration:none; color: #f4f4f4;">
+                            Read more
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Thời sự 24h</h5>
+                <h2 class="card-subtitle">02/05/2019</h2>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                    the card's content.</p>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+        <div class="card-2">
+            <div class="hot-post__image-2">
+                <img src="/img/thoisu-tintuc03.jpg" alt="">
+            </div>
+            <div class="hot-post__content-2" style="text-align:center;">
+                <h1 class="hot-post__content-title-2">
+                    The Dawn of the Reliance
+                </h1>
+                <div>
+                    <small class="text-muted">20/4/2019 &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                            aria-hidden="true"></i></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="cta">
+    <h2 class="cta__book-now">
+        Gia hạn tài khoản Premium
+    </h2>
+    <button class="btn" data-toggle="modal" data-target="#account-premium">
+        <span class="btn__visible">Gia hạn</span>
+        <span class="btn__invisible">Tài khoản VIP</span>
+    </button>
+</div>
+
+<script>
+    let mainNav = document.getElementById('js-menu');
+    let navBarToggle = document.getElementById('js-navbar-toggle');
+
+    navBarToggle.addEventListener('click', function () {
+
+        mainNav.classList.toggle('active');
+    });
+
+</script>

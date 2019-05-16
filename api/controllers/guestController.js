@@ -1,3 +1,9 @@
+
+exports.all = async (req, res, next) => {
+    req.app.locals.layout = 'guest'
+    next()
+}
+
 exports.index = async (req, res) => {
     try {
         await res.render('guest/guestHome')
