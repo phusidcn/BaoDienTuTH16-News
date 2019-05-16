@@ -5,9 +5,7 @@ exports.all = (req, res, next) => {
 
 exports.index = async (req, res) => {
     try {
-        await res.render('admin/dashboard', {
-            layout: false
-        })
+        await res.render('admin/dashboard')
     } catch (err) {
         console.log(err)
     }

@@ -1,345 +1,250 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="content">
+    <nav class="sidebar">
+        <ul class="side-nav">
+            <li class="side-nav__item side-nav__item--active">
+                <a href="#" class="side-nav__link">
+                    <svg class="side-nav__icon">
+                        <use xlink:href="/img/symbol.svg#icon-home"></use>
+                    </svg>
+                    <span>Thời sự</span>
+                </a>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            </li>
+            <li class="side-nav__item">
+                <a href="#" class="side-nav__link">
+                    <svg class="side-nav__icon">
+                        <use xlink:href="/img/symbol.svg#icon-open-book"></use>
+                    </svg>
+                    <span>Kinh doanh</span>
+                </a>
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+            </li>
+            <li class="side-nav__item">
+                <a href="#" class="side-nav__link">
+                    <svg class="side-nav__icon">
+                        <use xlink:href="/img/symbol.svg#icon-paper-plane"></use>
+                    </svg>
+                    <span>Công nghệ</span>
+                </a>
 
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style-post.css">
-    <link rel="shortcut icon" href="/img/logo-khtn.png" type="image/png">
+            </li>
+            <li class="side-nav__item">
+                <a href="#" class="side-nav__link">
+                    <svg class="side-nav__icon">
+                        <use xlink:href="/img/symbol.svg#icon-rss"></use>
+                    </svg>
+                    <span>Sống</span>
+                </a>
 
-    <title>minimum &mdash; E-magazine for you 24/7 - Chi tiet bai viet</title>
-</head>
+            </li>
+        </ul>
 
-<body>
-    <div class="modal fade" id="account-premium" style="font-family: 'Muli', sans-serif; font-size: 1.5rem;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Gia hạn tài khoản</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" style="width:15rem;">
-                    <div class="form-group">
-                        <label for="">Thời hạn</label>
-                        <select class="custom-select" name="" id="">
-                            <option selected>7 ngày</option>
-                            <option value="">15 ngày</option>
-                            <option value="">1 tháng</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button style="background: green; border-radius: 0; padding:.5rem 1rem;" type="button" class="btn"
-                        data-dismiss="modal">Kích hoạt</button>
-                </div>
+        <div class="legal">
+            &copy; 2019 Team Minimum
+        </div>
+    </nav>
+    <main class="main-view">
+        <div class="gallery">
+            <figure class="gallery__item">
+                <img src="/img/thoisu-tintuc03.jpg" alt="Photo of hotel 1" class="gallery__photo">
+            </figure>
+        </div>
+
+        <div class="overview">
+            <h1 class="overview__heading">
+                Bài báo Thời sự số 1
+            </h1>
+
+            <div class="overview__stars">
+                <svg class="overview__icon-star">
+                    <use xlink:href="/img/symbol.svg#icon-star"></use>
+                </svg>
+                <svg class="overview__icon-star">
+                    <use xlink:href="/img/symbol.svg#icon-star"></use>
+                </svg>
+                <svg class="overview__icon-star">
+                    <use xlink:href="/img/symbol.svg#icon-star"></use>
+                </svg>
+                <svg class="overview__icon-star">
+                    <use xlink:href="/img/symbol.svg#icon-star"></use>
+                </svg>
+                <svg class="overview__icon-star">
+                    <use xlink:href="/img/symbol.svg#icon-star"></use>
+                </svg>
+            </div>
+
+            <div class="overview__author">
+                <svg class="overview__icon-author">
+                    <use xlink:href="/img/symbol.svg#icon-location-pin"></use>
+                </svg>
+                <button class="btn-follow">Download</button>
+            </div>
+
+            <div class="overview__rating">
+                <div class="overview__rating-average">8.6</div>
+                <div class="overview__rating-count">100 likes</div>
             </div>
         </div>
-    </div>
-    <div class="container" style="padding: 0;">
-        <header class="header">
-            <a href="subscriber_Home.html">
-                <img src="/img/logo-khtn.png" alt="minimum logo" class="logo">
-            </a>
 
-            <form action="#" class="search">
-                <input type="text" class="search__input" placeholder="Tìm kiếm ...">
-
-                <button class="search__button">
-                    <svg class="search__icon">
-                        <use xlink:href="/img/symbol.svg#icon-magnifying-glass"></use>
-                    </svg>
-                </button>
-            </form>
-
-            <nav class="user-nav">
-                <div class="user-nav__icon-box">
-                    <svg class="user-nav__icon">
-                        <use xlink:href="/img/symbol.svg#icon-bookmark"></use>
-                    </svg>
-                    <span class="user-nav__notification">1</span>
-                </div>
-                <div class="user-nav__icon-box">
-                    <svg class="user-nav__icon">
-                        <use xlink:href="/img/symbol.svg#icon-mail"></use>
-                    </svg>
-                    <span class="user-nav__notification">1</span>
-                </div>
-                <div class="user-nav__user">
-                    <img src="/img/user.jpg" alt="User photo" class="user-nav__user-photo">
-                    <span class="user-nav__user-name">Quang</span>
-                </div>
-            </nav>
-        </header>
-        <div class="content">
-            <nav class="sidebar">
-                <ul class="side-nav">
-                    <li class="side-nav__item side-nav__item--active">
-                        <a href="#" class="side-nav__link">
-                            <svg class="side-nav__icon">
-                                <use xlink:href="/img/symbol.svg#icon-home"></use>
-                            </svg>
-                            <span>Thời sự</span>
-                        </a>
-
-                    </li>
-                    <li class="side-nav__item">
-                        <a href="#" class="side-nav__link">
-                            <svg class="side-nav__icon">
-                                <use xlink:href="/img/symbol.svg#icon-open-book"></use>
-                            </svg>
-                            <span>Kinh doanh</span>
-                        </a>
-
-                    </li>
-                    <li class="side-nav__item">
-                        <a href="#" class="side-nav__link">
-                            <svg class="side-nav__icon">
-                                <use xlink:href="/img/symbol.svg#icon-paper-plane"></use>
-                            </svg>
-                            <span>Công nghệ</span>
-                        </a>
-
-                    </li>
-                    <li class="side-nav__item">
-                        <a href="#" class="side-nav__link">
-                            <svg class="side-nav__icon">
-                                <use xlink:href="/img/symbol.svg#icon-rss"></use>
-                            </svg>
-                            <span>Sống</span>
-                        </a>
-
-                    </li>
+        <div class="detail">
+            <div class="description">
+                <p class="paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
+                    ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
+                    architecto voluptate.
+                </p>
+                <p class="paragraph">
+                    Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
+                    inventore iure aliquid aliquam.
+                </p>
+                <p class="paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
+                    ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
+                    architecto voluptate.
+                </p>
+                <p class="paragraph">
+                    Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
+                    inventore iure aliquid aliquam.
+                </p>
+                <p class="paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
+                    ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
+                    architecto voluptate.
+                </p>
+                <p class="paragraph">
+                    Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
+                    inventore iure aliquid aliquam.
+                </p>
+                <p class="paragraph">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
+                    ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
+                    architecto voluptate.
+                </p>
+                <p class="paragraph">
+                    Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
+                    inventore iure aliquid aliquam.
+                </p>
+                <ul class="list">
+                    <li class="list__item">Close to the beach</li>
+                    <li class="list__item">Breakfast included</li>
+                    <li class="list__item">Free airport shuttle</li>
+                    <li class="list__item">Free wifi in all rooms</li>
+                    <li class="list__item">Air conditioning and heating</li>
+                    <li class="list__item">Pets allowed</li>
+                    <li class="list__item">We speak all languages</li>
+                    <li class="list__item">Perfect for families</li>
                 </ul>
-
-                <div class="legal">
-                    &copy; 2019 Team Minimum
+                <!-- Begin Tags -->
+                <div>
+                    <ul class="tags">
+                        Tags:
+                        <li><a href="#">Sống</a></li>
+                        <li><a href="#">Phát triển bản thân</a></li>
+                        <li><a href="#">Suy ngẫm</a></li>
+                    </ul>
                 </div>
-            </nav>
-            <main class="main-view">
-                <div class="gallery">
-                    <figure class="gallery__item">
-                        <img src="/img/thoisu-tintuc03.jpg" alt="Photo of hotel 1" class="gallery__photo">
-                    </figure>
+                <!-- End Tags -->
+                <div class="recommend">
+                    <ul class="comment-section">
+                        <li class="comment user-comment">
+
+                            <a class="avatar" href="#">
+                                <img src="/img/user.jpg" width="35" alt="Profile Avatar" title="Thai Le" />
+                            </a>
+
+                            <p>Bình luận abc?</p>
+
+                        </li>
+
+                        <li class="comment author-comment">
+
+                            <a class="avatar" href="#">
+                                <img src="/img/user.jpg" width="35" alt="Profile Avatar" title="Si Huynh" />
+                            </a>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida sem
+                                sit amet molestie portitor.</p>
+
+                        </li>
+                        <li class="write-new">
+
+                            <form action="#" method="post">
+
+                                <textarea placeholder="Viết bình luận" name="comment"></textarea>
+
+                                <div>
+                                    <img src="/img/user.jpg" width="35" alt="Profile of Quang Le" title="Quang Le" />
+                                    <button type="submit">Submit</button>
+                                </div>
+
+                            </form>
+
+                        </li>
+
+                    </ul>
                 </div>
+            </div>
 
-                <div class="overview">
-                    <h1 class="overview__heading">
-                        Bài báo Thời sự số 1
-                    </h1>
-
-                    <div class="overview__stars">
-                        <svg class="overview__icon-star">
-                            <use xlink:href="/img/symbol.svg#icon-star"></use>
-                        </svg>
-                        <svg class="overview__icon-star">
-                            <use xlink:href="/img/symbol.svg#icon-star"></use>
-                        </svg>
-                        <svg class="overview__icon-star">
-                            <use xlink:href="/img/symbol.svg#icon-star"></use>
-                        </svg>
-                        <svg class="overview__icon-star">
-                            <use xlink:href="/img/symbol.svg#icon-star"></use>
-                        </svg>
-                        <svg class="overview__icon-star">
-                            <use xlink:href="/img/symbol.svg#icon-star"></use>
-                        </svg>
-                    </div>
-
-                    <div class="overview__author">
-                        <svg class="overview__icon-author">
-                            <use xlink:href="/img/symbol.svg#icon-location-pin"></use>
-                        </svg>
-                        <button class="btn-follow">Download</button>
-                    </div>
-
-                    <div class="overview__rating">
-                        <div class="overview__rating-average">8.6</div>
-                        <div class="overview__rating-count">100 likes</div>
-                    </div>
-                </div>
-
-                <div class="detail">
-                    <div class="description">
-                        <p class="paragraph">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
-                            ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
-                            architecto voluptate.
-                        </p>
-                        <p class="paragraph">
-                            Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
-                            inventore iure aliquid aliquam.
-                        </p>
-                        <p class="paragraph">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
-                            ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
-                            architecto voluptate.
-                        </p>
-                        <p class="paragraph">
-                            Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
-                            inventore iure aliquid aliquam.
-                        </p>
-                        <p class="paragraph">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
-                            ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
-                            architecto voluptate.
-                        </p>
-                        <p class="paragraph">
-                            Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
-                            inventore iure aliquid aliquam.
-                        </p>
-                        <p class="paragraph">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nisi dignissimos debitis
-                            ratione sapiente saepe. Accusantium cumque, quas, ut corporis incidunt deserunt quae
-                            architecto voluptate.
-                        </p>
-                        <p class="paragraph">
-                            Accusantium cumque, quas, ut corporis incidunt deserunt quae architecto voluptate delectus,
-                            inventore iure aliquid aliquam.
-                        </p>
-                        <ul class="list">
-                            <li class="list__item">Close to the beach</li>
-                            <li class="list__item">Breakfast included</li>
-                            <li class="list__item">Free airport shuttle</li>
-                            <li class="list__item">Free wifi in all rooms</li>
-                            <li class="list__item">Air conditioning and heating</li>
-                            <li class="list__item">Pets allowed</li>
-                            <li class="list__item">We speak all languages</li>
-                            <li class="list__item">Perfect for families</li>
-                        </ul>
-                        <!-- Begin Tags -->
-                        <div>
-                            <ul class="tags">
-                                Tags:
-                                <li><a href="#">Sống</a></li>
-                                <li><a href="#">Phát triển bản thân</a></li>
-                                <li><a href="#">Suy ngẫm</a></li>
-                            </ul>
+            <div class="user-reviews">
+                <figure class="review">
+                    <blockquote class="review__text">
+                        Bài thời sự số 2
+                    </blockquote>
+                    <img style="margin-bottom: 2rem;" src="/img/thoisu-tintuc03.jpg" alt="Photo of hotel 1"
+                        class="gallery__photo">
+                    <figcaption class="review__user">
+                        <img src="/img/user.jpg" alt="User 1" class="review__photo">
+                        <div class="review__user-box">
+                            <p class="review__user-name">Thái Lê</p>
+                            <p class="review__user-date">26/04/2019</p>
                         </div>
-                        <!-- End Tags -->
-                        <div class="recommend">
-                            <ul class="comment-section">
-                                <li class="comment user-comment">
+                        <div class="review__rating">7.8</div>
+                    </figcaption>
+                </figure>
 
-                                    <a class="avatar" href="#">
-                                        <img src="/img/user.jpg" width="35" alt="Profile Avatar"
-                                            title="Thai Le" />
-                                    </a>
-
-                                    <p>Bình luận abc?</p>
-
-                                </li>
-
-                                <li class="comment author-comment">
-
-                                    <a class="avatar" href="#">
-                                        <img src="/img/user.jpg" width="35" alt="Profile Avatar"
-                                            title="Si Huynh" />
-                                    </a>
-
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse gravida sem
-                                        sit amet molestie portitor.</p>
-
-                                </li>
-                                <li class="write-new">
-
-                                    <form action="#" method="post">
-
-                                        <textarea placeholder="Viết bình luận" name="comment"></textarea>
-
-                                        <div>
-                                            <img src="/img/user.jpg" width="35" alt="Profile of Quang Le"
-                                                title="Quang Le" />
-                                            <button type="submit">Submit</button>
-                                        </div>
-
-                                    </form>
-
-                                </li>
-
-                            </ul>
+                <figure class="review">
+                    <blockquote class="review__text">
+                        Bài thời sự số n
+                    </blockquote>
+                    <img style="margin-bottom: 2rem;" src="/img/thoisu-tintuc03.jpg" alt="Photo of hotel 1"
+                        class="gallery__photo">
+                    <figcaption class="review__user">
+                        <img src="/img/user.jpg" alt="User 1" class="review__photo">
+                        <div class="review__user-box">
+                            <p class="review__user-name">Sĩ Huỳnh</p>
+                            <p class="review__user-date">26/04/2019</p>
                         </div>
-                    </div>
+                        <div class="review__rating">9.3</div>
+                    </figcaption>
+                </figure>
+                <figure class="review">
+                    <blockquote class="review__text">
+                        Bài thời sự số n
+                    </blockquote>
+                    <img style="margin-bottom: 2rem;" src="/img/thoisu-tintuc03.jpg" alt="Photo of hotel 1"
+                        class="gallery__photo">
+                    <figcaption class="review__user">
+                        <img src="/img/user.jpg" alt="User 1" class="review__photo">
+                        <div class="review__user-box">
+                            <p class="review__user-name">Sĩ Huỳnh</p>
+                            <p class="review__user-date">26/04/2019</p>
+                        </div>
+                        <div class="review__rating">9.3</div>
+                    </figcaption>
+                </figure>
 
-                    <div class="user-reviews">
-                        <figure class="review">
-                            <blockquote class="review__text">
-                                Bài thời sự số 2
-                            </blockquote>
-                            <img style="margin-bottom: 2rem;" src="/img/thoisu-tintuc03.jpg"
-                                alt="Photo of hotel 1" class="gallery__photo">
-                            <figcaption class="review__user">
-                                <img src="/img/user.jpg" alt="User 1" class="review__photo">
-                                <div class="review__user-box">
-                                    <p class="review__user-name">Thái Lê</p>
-                                    <p class="review__user-date">26/04/2019</p>
-                                </div>
-                                <div class="review__rating">7.8</div>
-                            </figcaption>
-                        </figure>
-
-                        <figure class="review">
-                            <blockquote class="review__text">
-                                Bài thời sự số n
-                            </blockquote>
-                            <img style="margin-bottom: 2rem;" src="/img/thoisu-tintuc03.jpg"
-                                alt="Photo of hotel 1" class="gallery__photo">
-                            <figcaption class="review__user">
-                                <img src="/img/user.jpg" alt="User 1" class="review__photo">
-                                <div class="review__user-box">
-                                    <p class="review__user-name">Sĩ Huỳnh</p>
-                                    <p class="review__user-date">26/04/2019</p>
-                                </div>
-                                <div class="review__rating">9.3</div>
-                            </figcaption>
-                        </figure>
-                        <figure class="review">
-                            <blockquote class="review__text">
-                                Bài thời sự số n
-                            </blockquote>
-                            <img style="margin-bottom: 2rem;" src="/img/thoisu-tintuc03.jpg"
-                                alt="Photo of hotel 1" class="gallery__photo">
-                            <figcaption class="review__user">
-                                <img src="/img/user.jpg" alt="User 1" class="review__photo">
-                                <div class="review__user-box">
-                                    <p class="review__user-name">Sĩ Huỳnh</p>
-                                    <p class="review__user-date">26/04/2019</p>
-                                </div>
-                                <div class="review__rating">9.3</div>
-                            </figcaption>
-                        </figure>
-
-                        <button class="btn-follow">Xem tất cả<span>&rarr;</span></button>
-                    </div>
-                </div>
-
-                <div class="cta">
-                    <h2 class="cta__book-now">
-                        Gia hạn Tài khoản Premium
-                    </h2>
-                    <button class="btn" data-toggle="modal" data-target="#account-premium">
-                        <span class="btn__visible">Gia hạn</span>
-                        <span class="btn__invisible">Tài khoản VIP</span>
-                    </button>
-                </div>
-            </main>
+                <button class="btn-follow">Xem tất cả<span>&rarr;</span></button>
+            </div>
         </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-</body>
-
-</html>
+        <div class="cta">
+            <h2 class="cta__book-now">
+                Gia hạn Tài khoản Premium
+            </h2>
+            <button class="btn" data-toggle="modal" data-target="#account-premium">
+                <span class="btn__visible">Gia hạn</span>
+                <span class="btn__invisible">Tài khoản VIP</span>
+            </button>
+        </div>
+    </main>
+</div>
