@@ -11,8 +11,6 @@ router.get('/view-denied', writerController.viewDenied)
 router.get('/view-published', writerController.viewPublished)
 router.get('/view-waiting', writerController.viewWaiting)
 
-router.post('/create', (req, res) => {
-    res.send('WORK')
-})
+router.post('/create', writerController.store)
 
 module.exports = router
