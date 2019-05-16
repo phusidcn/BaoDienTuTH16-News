@@ -26,29 +26,17 @@
     </nav>
 
     <div class="row card-flex">
+        {{#each posts }}
         <div class="mb-3">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
+                    <p class="card-text">{{ title }}</p>
                 </div>
                 <a class="btn btn-danger" href="writer_edit_denied_content.html">Chưa duyệt</a>
             </div>
         </div>
-
-        <div class="mb-3">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                </div>
-                <a class="btn btn-danger" href="writer_edit_denied_content.html">Chưa duyệt</a>
-            </div>
-        </div>
+        {{/each}}
     </div>
 
     <!-- Log out modal -->
