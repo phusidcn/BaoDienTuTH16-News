@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs')
 
-const WriterSchema = new Schema({
+const AdminSchema = new Schema({
     id: {
         type: String,
         required: true
@@ -19,17 +19,29 @@ const WriterSchema = new Schema({
         type: String,
         required: true
     },
+    writer: {
+        type: Schema.Types.ObjectId,
+        ref: 'Writer'
+    },
+    editor: {
+        type: Schema.Types.ObjectId,
+        ref: 'Editor'
+    },
+    post: {
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }
 })
 
-WriterSchema.methods.encryptPassword = async password => {
+AdminSchema.methods.encryptPassword = async password => {
     const salt = await bcrypt.genSalt(5)
     const hash = await bcrypt.hash(password, salt)
     return hash
 }
 
-WriterSchema.methods.validPassword = async function (checkPassword) {
+AdminSchema.methods.validPassword = async function (checkPassword) {
     const result = await bcrypt.compare(checkPassword, this.password)
     return result
 }
 
-module.exports = mongoose.model('Writer', WriterSchema)
+module.exports = mongoose.model('Admin', AdminSchema)

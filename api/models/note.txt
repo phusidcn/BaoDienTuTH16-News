@@ -1,0 +1,72 @@
+Post: {
+    id: String,
+    title: String,
+    image: String,
+    linkYoutube: String,
+    subContent: String,
+    content: String,
+    createdAt: Date,
+    status: Boolean, 1: Duyet 2: Chua duyet 3: Xuat ban 4: Chua xuat ban 5: Bi tu choi
+    premium: Boolean,
+    category: Schema.Types.ObjectId, ref: Category
+    tag: Schema.Types.ObjectId, ref: Tag, 
+    writer: Schema.Types.ObjectId, ref: Writer,
+}
+
+Comment {
+    Id: String,
+    GuestID: String,
+    SubscriberID: String,
+    PostID: String,
+    Content: String
+}
+
+Category: {
+    Id: String,
+    name: String,
+}
+
+Tag: {
+    Id: String,
+    name: String
+}
+
+Guest: {
+    Id: String,
+    Name: String,
+    Email: String,
+    Password: String
+}
+
+Subscriber: {
+    Id: String,
+    Name: String,
+    Email: String,
+    Password: String,
+    Membership: String,
+}
+
+Writer: {
+    Id: String,
+    Username: String,
+    Email: String,
+    Password: String,
+}
+
+Editor: {
+    Id: String,
+    Username: String,
+    Email: String,
+    Password: String,
+    IdPost: Schema.Types.ObjectId, ref: Post
+}
+
+Admin: {
+    Id: String,
+    Username: String,
+    Email: String,
+    Password: String,
+    WriterID: Schema.Types.ObjectId, ref: Writer
+    EditorID: Schema.Types.ObjectId, ref: Editor
+    PostID: Schema.Types.ObjectId, ref: Post
+}

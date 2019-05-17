@@ -2,41 +2,50 @@ const moongoose = require('mongoose')
 const Schema = moongoose.Schema
 
 const PostSchema = new Schema({
+    id: {
+        type: String,
+        required: true
+    },
     title: {
         type: String,
         required: true
     },
     image: {
+        type: String
+    },
+    linkYoutube: {
+        type: String
+    },
+    subContent: {
         type: String,
-        // required: true
+        required: true
     },
     content: {
         type: String,
-        // required: true
+        required: true
     },
-    // category: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Category'
-    // },
-    // tag: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Tag'
-    // },
-    // writer: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Writer'
-    // },
-    // comment: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Comment'
-    // },
     createdAt: {
         type: Date,
         default: Date.now()
     },
     status: {
+        type: Number,
+        required: true
+    },
+    premium: {
         type: Boolean,
-        // required: true
+    },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
+    },
+    tag: {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag'
+    },
+    writer: {
+        type: Schema.Types.ObjectId,
+        ref: 'Writer'
     }
 })
 
