@@ -12,6 +12,7 @@ const subscriberRoutes = require('./routes/subscriber/index')
 const adminRoutes = require('./routes/admin/index')
 const editorRoutes = require('./routes/editor/index')
 const writerRoutes = require('./routes/writer/index')
+const commentRoutes = require('./routes/comments')
 
 const app = express()
 
@@ -29,11 +30,16 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 
+/* Khách vãn lai + Khách VIP */
 app.use('/', guestRoutes)
 app.use('/subscriber', subscriberRoutes)
+// app.use('/posts/:id/comments', commentRoutes)
+
+/* Nhân viên + Admin */
 app.use('/admin', adminRoutes)
 app.use('/editor', editorRoutes)
 app.use('/writer', writerRoutes)
+
 
 app.use(errorHandler)
 
