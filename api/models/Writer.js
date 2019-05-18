@@ -19,6 +19,12 @@ const WriterSchema = new Schema({
         type: String,
         required: true
     },
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Post'
+        }
+    ]
 })
 
 WriterSchema.methods.encryptPassword = async password => {

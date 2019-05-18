@@ -46,7 +46,13 @@ const PostSchema = new Schema({
     writer: {
         type: Schema.Types.ObjectId,
         ref: 'Writer'
-    }
+    },
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+        }
+    ]
 })
 
 module.exports = moongoose.model('Post', PostSchema)

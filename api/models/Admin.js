@@ -9,28 +9,31 @@ const AdminSchema = new Schema({
     },
     email: {
         type: String,
-        required: true
     },
     password: {
         type: String,
-        required: true
     },
     name: {
-        type: String,
-        required: true
+        type: String
     },
-    writer: {
-        type: Schema.Types.ObjectId,
-        ref: 'Writer'
-    },
-    editor: {
-        type: Schema.Types.ObjectId,
-        ref: 'Editor'
-    },
-    post: {
-        type: Schema.Types.ObjectId,
-        ref: 'Post'
-    }
+    writers: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Writer'
+        }
+    ],
+    editors: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Editor'
+        }
+    ],
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Post'
+        }
+    ]
 })
 
 AdminSchema.methods.encryptPassword = async password => {

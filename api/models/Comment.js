@@ -3,12 +3,10 @@ const Schema = moongoose.Schema
 
 const CommentSchema = new Schema({
     id: {
-        type: String,
-        required: true
+        type: String
     },
     Content: {
-        type: String,
-        required: true
+        type: String
     },
     guest: {
         type: Schema.Types.ObjectId,
