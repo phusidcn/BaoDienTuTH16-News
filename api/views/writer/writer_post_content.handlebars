@@ -24,7 +24,7 @@
         </div>
     </nav>
 
-    <form action="/writer/create" method="POST">
+    <form action="/writer/create" enctype="multipart/form-data" method="POST">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <button type="button" class="btn btn-secondary">
@@ -58,11 +58,14 @@
                     <i class="fa fa-book"></i>
                 </button>
             </div>
-            <input type="text" class="form-control" placeholder="Tóm tắt nội dung" id="content" name="content"
+            <input type="text" class="form-control" placeholder="Tóm tắt nội dung" id="shortContent" name="shortContent"
                 aria-describedby="basic-addon1">
         </div>
+        <div class="input-group mb-3">
+            <input required class="form-control" type="file" name="image" id="image">
+        </div>
 
-        <textarea name="editor" cols="200" rows="10">123456789</textarea>
+        <textarea name="content" cols="200" rows="10">Noi dung chi tiet</textarea>
         <div class="submit">
             <input type="submit" value="Đăng bài">
         </div>

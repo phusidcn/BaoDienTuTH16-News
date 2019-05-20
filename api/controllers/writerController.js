@@ -19,10 +19,14 @@ exports.store = async (req, res, next) => {
         validationHandler(req)
 
         let post = new Post()
+        post.image = req.file.image
         post.title = req.body.title
         post.category = req.body.category
         post.tag = req.body.tag
+        post.shortContent = req.body.shortContent
+        post.content = req.body.content
 
+        console.log(req.file)
         post = await post.save()
         res.redirect('/writer/view-waiting')
     } catch (error) {

@@ -8,11 +8,15 @@ const PostSchema = new Schema({
     },
     image: {
         type: String,
-        // required: true
+        required: true
+    },
+    shortContent: {
+        type: String,
+        required: true
     },
     content: {
         type: String,
-        // required: true
+        required: true
     },
     // category: {
     //     type: Schema.Types.ObjectId,
@@ -34,9 +38,14 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now()
     },
-    status: {
+    premium: {
         type: Boolean,
         // required: true
+    },
+    status: {
+        // 0: Chua Duyet , 1: Da duyet, 2: Bi tu choi
+        type: Number,
+        default: 0
     }
 })
 

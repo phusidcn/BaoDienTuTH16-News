@@ -1,4 +1,5 @@
 const express = require('express')
+const uploadImage = require('../../middleware/multer')
 const writerController = require('../../controllers/writerController')
 const router = express.Router()
 
@@ -11,6 +12,8 @@ router.get('/view-denied', writerController.viewDenied)
 router.get('/view-published', writerController.viewPublished)
 router.get('/view-waiting', writerController.viewWaiting)
 
-router.post('/create', writerController.store)
+router.post('/create',
+    uploadImage('posts').single('image'),
+    writerController.store)
 
 module.exports = router
