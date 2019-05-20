@@ -120,6 +120,7 @@
             </button>
         </div>
         <div class="row mb-3">
+            {{#each writers}}
             <div class="col-md-4">
                 <div class="card card-profile card-common">
                     <div class="card-avatar">
@@ -129,108 +130,17 @@
                     </div>
                     <div class="card-body">
                         <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                        <h4 class="card-title">Quang Le</h4>
+                        <h4 class="card-title">{{ name }}</h4>
                         <p class="card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
+                            {{email}}
                         </p>
                         <a href="#" data-toggle="modal" data-target="#job-user" class="btn btn-warning btn-round">Xem
                             thông tin</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-profile card-common">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="/img/thai.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                        <h4 class="card-title">Thai Le</h4>
-                        <p class="card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                        </p>
-                        <a href="#" data-toggle="modal" data-target="#job-user" class="btn btn-warning btn-round">Xem
-                            thông tin</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-profile card-common">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="/img/user.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                        <h4 class="card-title">Si Huynh</h4>
-                        <p class="card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                        </p>
-                        <a href="#" data-toggle="modal" data-target="#job-user" class="btn btn-warning btn-round">Xem
-                            thông tin</a>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
         </div>
 
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <div class="card card-profile card-common">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="/img/user.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                        <h4 class="card-title">Quang Le</h4>
-                        <p class="card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                        </p>
-                        <a href="#" data-toggle="modal" data-target="#job-user" class="btn btn-warning btn-round">Xem
-                            thông tin</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-profile card-common">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="/img/thai.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                        <h4 class="card-title">Thai Le</h4>
-                        <p class="card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                        </p>
-                        <a href="#" data-toggle="modal" data-target="#job-user" class="btn btn-warning btn-round">Xem
-                            thông tin</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-profile card-common">
-                    <div class="card-avatar">
-                        <a href="#pablo">
-                            <img class="img" src="/img/user.jpg" />
-                        </a>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-category text-gray">Phóng viên MUTV</h6>
-                        <h4 class="card-title">Si Huynh</h4>
-                        <p class="card-description">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, praesentium?
-                        </p>
-                        <a href="#" data-toggle="modal" data-target="#job-user" class="btn btn-warning btn-round">Xem
-                            thông tin</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

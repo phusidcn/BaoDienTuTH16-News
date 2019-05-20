@@ -6,10 +6,15 @@ const router = express.Router()
 router.all('/*', adminController.all)
 
 router.get('/', (req, res) => {
-    res.render('admin/writer/index')
+    Writer.find({}).then(writers => {
+        res.render('admin/writer/index', {
+            writers: writers
+        })
+    })
 })
 
 router.get('/create', (req, res) => {
+    
     res.render('admin/writer/create')
 })
 
