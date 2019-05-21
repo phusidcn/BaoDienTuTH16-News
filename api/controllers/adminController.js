@@ -1,3 +1,7 @@
+const Writer = require('../models/Writer')
+const Category = require('../models/Category')
+const Tag = require('../models/Tag')
+
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'admin'
     next()
@@ -9,36 +13,187 @@ exports.index = async (req, res) => {
     } catch (err) {
         console.log(err)
     }
-} 
+}
 
-exports.editor = async (req, res) => {
+/* ================== CATEGORY ========================= */
+exports.indexCategory = async (req, res) => {
     try {
-        await res.render('admin/editor')
-    } catch (err) {
-        console.log(err)
+        const categories = await Category.find({})
+        res.render('admin/category/index', {
+            categories: categories
+        })
+    } catch (error) {
+        console.log(error)
     }
 }
 
-exports.user = async (req, res) => {
+exports.createCategory = async (req, res) => {
     try {
-        await res.render('admin/premium-user')
-    } catch (err) {
-        console.log(err)
+        let newCategory = new Category()
+        newCategory.id = req.body.id
+        newCategory.name = req.body.name
+        newCategory = await newCategory.save()
+        res.redirect('/admin/category')
+    } catch (error) {
+        console.log(error)
     }
 }
 
-exports.profile = async (req, res) => {
+exports.editCategory = async (req, res) => {
     try {
-        await res.render('admin/profile')
-    } catch (err) {
-        console.log(err)
+        let foundCate = await Category.findOne({id: req.params.id})
+        res.render('admin/category/edit', {
+            category: foundCate
+        })
+    } catch (error) {
+        console.log(error)
     }
 }
 
-exports.writer = async (req, res) => {
+exports.updateCategory = async (req, res) => {
     try {
-        await res.render('admin/writer')
-    } catch (err) {
-        console.log(err)
+        let { id, name } = req.body
+        let foundCate = await Category.findOne({id: req.params.id})
+        foundCate.id = id
+        foundCate.name = name
+        await foundCate.save().then(updatedCate => {
+            res.redirect('/admin/category')
+        })        
+    } catch (error) {
+        console.log(error)
     }
 }
+
+exports.deleteCategory = async (req, res) => {
+    try {
+        const deletedCategory = await Category.remove({id: req.params.id})
+        res.redirect('/admin/category')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/* ===================================================== */
+
+/* ================== TAG ========================= */
+exports.indexTag = async (req, res) => {
+    try {
+        const tags = await Tag.find({})
+        res.render('admin/tag/index', {
+            tags: tags
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.createTag = async (req, res) => {
+    try {
+        let newTag = new Tag()
+        newTag.id = req.body.id
+        newTag.name = req.body.name
+        newTag = await newTag.save()
+        res.redirect('/admin/tag')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.editTag = async (req, res) => {
+    try {
+        let foundTag = await Tag.findOne({id: req.params.id})
+        res.render('admin/tag/edit', {
+            tag: foundTag
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateTag = async (req, res) => {
+    try {
+        let { id, name } = req.body
+        let foundTag = await Tag.findOne({id: req.params.id})
+        foundTag.id = id
+        foundTag.name = name
+        await foundTag.save().then(updatedTag => {
+            res.redirect('/admin/tag')
+        })        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deleteTag = async (req, res) => {
+    try {
+        const deletedTag = await Tag.remove({id: req.params.id})
+        res.redirect('/admin/tag')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/* ===================================================== */
+
+
+/* ================== WRITER ========================= */
+exports.indexWriter = async (req, res) => {
+    try {
+        const writers = await Writer.find({})
+        res.render('admin/writer/index', {
+            writers: writers
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.createWriter = async (req, res) => {
+    try {
+        let newWriter = new Writer()
+        newWriter.id = req.body.id
+        newWriter.name = req.body.username
+        newWriter.email = req.body.email
+        newWriter = await newWriter.save()
+        res.redirect('/admin/writer')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.editWriter = async (req, res) => {
+    try {
+        let foundWriter = await Writer.findOne({id: req.params.id})
+        res.render('admin/writer/edit', {
+            writer: foundWriter
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateWriter = async (req, res) => {
+    try {
+        let { id, username, email } = req.body
+        let foundWriter = await Writer.findOne({id: req.params.id})
+        foundWriter.id = id
+        foundWriter.name = username
+        foundWriter.email = email
+        await foundWriter.save().then(updatedWriter => {
+            res.redirect('/admin/writer')
+        })        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deleteWriter = async (req, res) => {
+    try {
+        const deletedWriter = await Writer.remove({id: req.params.id})
+        res.redirect('/admin/writer')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/* ==================================================== */
