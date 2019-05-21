@@ -9,6 +9,10 @@ const CategorySchema = new Schema({
     name: {
         type: String,
         required: true
+    },
+    createAt: {
+        type: Date,
+        default: Date.toDateString
     }
 })
 

@@ -17,10 +17,7 @@ const subscriberRoutes = require('./routes/subscriber/index')
 /* ADMIN */
 const adminRoutes = require('./routes/admin/index')
 const adminWritersRoutes = require('./routes/admin/writer')
-
-// const editorRoutes = require('./routes/editor/index')
-// const writerRoutes = require('./routes/writer/index')
-// const commentRoutes = require('./routes/comments')
+const adminCategoryRoutes = require('./routes/admin/category')
 
 const app = express()
 
@@ -51,10 +48,7 @@ app.use('/subscriber', subscriberRoutes)
 /* Nhân viên + Admin */
 app.use('/admin', adminRoutes)
 app.use('/admin/writer', adminWritersRoutes)
-
-
-// app.use('/editor', editorRoutes)
-// app.use('/writer', writerRoutes)
+app.use('/admin/category', adminCategoryRoutes)
 
 
 app.use(errorHandler)

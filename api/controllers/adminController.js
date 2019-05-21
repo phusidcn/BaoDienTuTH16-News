@@ -1,4 +1,5 @@
 const Writer = require('../models/Writer')
+const Category = require('../models/Category')
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'admin'
@@ -13,6 +14,33 @@ exports.index = async (req, res) => {
     }
 }
 
+/* ================== CATEGORY ========================= */
+exports.indexCategory = async (req, res) => {
+    try {
+        const categories = await Category.find({})
+        res.render('admin/category/index', {
+            categories: categories
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.createCategory = async (req, res) => {
+    try {
+        let newCategory = new Category()
+        newCategory.id = req.body.id
+        newCategory.name = req.body.name
+        newCategory = await newCategory.save()
+        res.redirect('/admin/category')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/* ===================================================== */
+
+/* ================== WRITER ========================= */
 exports.indexWriter = async (req, res) => {
     try {
         const writers = await Writer.find({})
@@ -70,5 +98,6 @@ exports.deleteWriter = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
-    
 }
+
+/* ==================================================== */

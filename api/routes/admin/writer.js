@@ -1,5 +1,4 @@
 const express = require('express')
-const Writer = require('../../models/Writer')
 const adminController = require('../../controllers/adminController')
 const router = express.Router()
 
