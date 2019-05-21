@@ -1,5 +1,6 @@
 const Writer = require('../models/Writer')
 const Category = require('../models/Category')
+const Tag = require('../models/Tag')
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'admin'
@@ -73,6 +74,67 @@ exports.deleteCategory = async (req, res) => {
 }
 
 /* ===================================================== */
+
+/* ================== TAG ========================= */
+exports.indexTag = async (req, res) => {
+    try {
+        const tags = await Tag.find({})
+        res.render('admin/tag/index', {
+            tags: tags
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.createTag = async (req, res) => {
+    try {
+        let newTag = new Tag()
+        newTag.id = req.body.id
+        newTag.name = req.body.name
+        newTag = await newTag.save()
+        res.redirect('/admin/tag')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.editTag = async (req, res) => {
+    try {
+        let foundTag = await Tag.findOne({id: req.params.id})
+        res.render('admin/tag/edit', {
+            tag: foundTag
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateTag = async (req, res) => {
+    try {
+        let { id, name } = req.body
+        let foundTag = await Tag.findOne({id: req.params.id})
+        foundTag.id = id
+        foundTag.name = name
+        await foundTag.save().then(updatedTag => {
+            res.redirect('/admin/tag')
+        })        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deleteTag = async (req, res) => {
+    try {
+        const deletedTag = await Tag.remove({id: req.params.id})
+        res.redirect('/admin/tag')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/* ===================================================== */
+
 
 /* ================== WRITER ========================= */
 exports.indexWriter = async (req, res) => {

@@ -18,6 +18,7 @@ const subscriberRoutes = require('./routes/subscriber/index')
 const adminRoutes = require('./routes/admin/index')
 const adminWritersRoutes = require('./routes/admin/writer')
 const adminCategoryRoutes = require('./routes/admin/category')
+const adminTagRoutes = require('./routes/admin/tag')
 
 const app = express()
 
@@ -49,6 +50,7 @@ app.use('/subscriber', subscriberRoutes)
 app.use('/admin', adminRoutes)
 app.use('/admin/writer', adminWritersRoutes)
 app.use('/admin/category', adminCategoryRoutes)
+app.use('/admin/tag', adminTagRoutes)
 
 
 app.use(errorHandler)
