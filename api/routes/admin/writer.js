@@ -13,10 +13,11 @@ router.get('/', (req, res) => {
     })
 })
 
-router.get('/create', (req, res) => {
-    
+/*
+ router.get('/create', (req, res) => {
     res.render('admin/writer/create')
 })
+*/
 
 router.post('/create', async (req, res) => {
     try {
@@ -32,5 +33,26 @@ router.post('/create', async (req, res) => {
 
 })
 
+router.get('/edit/:id', (req, res) => {
+    Writer.findOne({id: req.params.id})
+        .then(writer => {
+            res.render('admin/writer/edit', {
+                writer: writer
+            })
+        })
+})
+
+router.put('/edit/:id', (req, res) => {
+    Writer.findOne({id: req.params.id})
+        .then(writer => {
+            writer.id = req.body.id
+            writer.name = req.body.username
+            writer.email = req.body.email
+
+            writer.save().then(updatedWriter, () => {
+                res.redirect('/admin/writer')
+            })
+        })
+})
 
 module.exports = router

@@ -1,82 +1,5 @@
-<!-- modal -->
-<div class="modal fade" id="job-user">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Xem thông tin</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Company (disabled)</label>
-                            <input type="text" class="form-control" disabled>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Username</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Email address</label>
-                            <input type="email" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Fist Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Last Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Adress</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">City</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Country</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Postal Code</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Cập nhật</button>
-            </div>
-        </div>
-    </div>
-</div>
-{{!-- <div class="" id="add-user">
+
+<div class="modal fade" id="add-user" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -84,33 +7,32 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-3">
+                <div class="row ml-3">
+                    <form action="/admin/writer/create" method="POST">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Username</label>
-                            <input type="text" class="form-control">
+                            <label class="bmd-label-floating" for="id">ID</label>
+                            <input type="text" class="form-control" name="id" id="id">
                         </div>
-                    </div>
-                    <div class="col-md-4">
                         <div class="form-group">
-                            <label class="bmd-label-floating">Email address</label>
-                            <input type="email" class="form-control">
+                            <label class="bmd-label-floating" for="username">Username</label>
+                            <input type="text" class="form-control" name="username" id="username">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label class="bmd-label-floating" for="email">Email address</label>
+                            <input type="email" class="form-control" name="email" id="email">
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Thêm</button>
             </div>
         </div>
     </div>
-</div> --}}
-<!-- end of modal -->
+</div>
 
 <div class="content">
     <div class="container-fluid">
         <div class="row mb-5" style="display:flex; justify-content:center;">
-            <a class="btn btn-success" href="/admin/writer/create">
+            <a class="btn btn-success" href="/admin/writer/create" data-toggle="modal" data-target="#add-user">
                 <i class="material-icons">add</i>
                 Thêm Phóng viên
             </a>
@@ -134,7 +56,7 @@
                         <p class="card-description">
                             {{email}}
                         </p>
-                        <a href="#" data-toggle="modal" data-target="#job-user" class="btn btn-warning btn-round">Xem
+                        <a href="/admin/writer/edit/{{id}}" class="btn btn-warning btn-round">Xem
                             thông tin</a>
                     </div>
                 </div>

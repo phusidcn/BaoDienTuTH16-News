@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const cors = require('cors')
 const path = require('path')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 
 const config = require('./config')
@@ -40,7 +41,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(methodOverride('_method'))
 
 
 /* Khách vãn lai + Khách VIP */
