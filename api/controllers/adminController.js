@@ -38,6 +38,40 @@ exports.createCategory = async (req, res) => {
     }
 }
 
+exports.editCategory = async (req, res) => {
+    try {
+        let foundCate = await Category.findOne({id: req.params.id})
+        res.render('admin/category/edit', {
+            category: foundCate
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateCategory = async (req, res) => {
+    try {
+        let { id, name } = req.body
+        let foundCate = await Category.findOne({id: req.params.id})
+        foundCate.id = id
+        foundCate.name = name
+        await foundCate.save().then(updatedCate => {
+            res.redirect('/admin/category')
+        })        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deleteCategory = async (req, res) => {
+    try {
+        const deletedCategory = await Category.remove({id: req.params.id})
+        res.redirect('/admin/category')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 /* ===================================================== */
 
 /* ================== WRITER ========================= */

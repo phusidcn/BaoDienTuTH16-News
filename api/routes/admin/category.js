@@ -5,8 +5,8 @@ const router = express.Router()
 router.all('/*', adminController.all)
 router.get('/', adminController.indexCategory)
 router.post('/create', adminController.createCategory)
-// router.get('/edit/:id', adminController.editWriter)
-// router.put('/edit/:id', adminController.updateWriter)
-// router.delete('/:id', adminController.deleteWriter)
+router.get('/edit/:id', adminController.editCategory)
+router.put('/edit/:id', adminController.updateCategory)
+router.delete('/:id', adminController.deleteCategory)
 
 module.exports = router

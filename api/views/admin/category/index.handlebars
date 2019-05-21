@@ -65,9 +65,9 @@
                             <td>{{id}}</td>
                             <td>{{name}}</td>
                             <td>{{createAt}}</td>
-                            <td style="text-align: center;"><a href="/admin/category/edit/{{_id}}" class="btn btn-warning">Edit</a></td>
+                            <td style="text-align: center;"><a href="/admin/category/edit/{{id}}" class="btn btn-warning">Edit</a></td>
                             <td style="text-align: center;">
-                                <form action="/admin/category/{{_id}}?_method=DELETE" method="POST">
+                                <form action="/admin/category/{{id}}?_method=DELETE" method="POST">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
