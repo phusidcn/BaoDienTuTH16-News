@@ -43,6 +43,7 @@ const admin3Id = mongoose.Types.ObjectId()
 
 
 module.exports = {
+    //categories
     "categories": [
         {
             "_id": category1Id,
@@ -70,6 +71,8 @@ module.exports = {
             "createdAt": moment().toISOString()
         }
     ],
+
+    //tag
     "tags": [
         {
             "_id": tag1Id,
@@ -87,6 +90,8 @@ module.exports = {
             "category": category2Id
         }
     ],
+
+    //comments
     "comments": [
         {
             "_id": comment1Id,
@@ -107,6 +112,8 @@ module.exports = {
             "post": post3Id
         }
     ], 
+
+    //posts
     "posts": [
         {
             "_id": post1Id,
