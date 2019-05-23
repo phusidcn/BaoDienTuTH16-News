@@ -1,3 +1,5 @@
+const validationHandler = require('../validations/validationHandler')
+
 
 exports.all = async (req, res, next) => {
     req.app.locals.layout = 'editor'

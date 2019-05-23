@@ -13,7 +13,6 @@ const EditorSchema = new Schema({
     },
     password: {
         type: String,
-        required: true
     },
     name: {
         type: String,
@@ -26,6 +25,8 @@ const EditorSchema = new Schema({
         }
     ]
 })
+
+// cai form nay ong phai them may cai field tuong ung nha
 
 EditorSchema.methods.encryptPassword = async password => {
     const salt = await bcrypt.genSalt(5)
