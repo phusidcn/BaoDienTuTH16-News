@@ -1,6 +1,7 @@
 const Writer = require('../models/Writer')
 const Category = require('../models/Category')
 const Tag = require('../models/Tag')
+const Post = require('../models/Post')
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'admin'
@@ -75,7 +76,7 @@ exports.deleteCategory = async (req, res) => {
 
 /* ===================================================== */
 
-/* ================== TAG ========================= */
+/* ================== TAG ============================== */
 exports.indexTag = async (req, res) => {
     try {
         const tags = await Tag.find({})
@@ -128,6 +129,20 @@ exports.deleteTag = async (req, res) => {
     try {
         const deletedTag = await Tag.remove({id: req.params.id})
         res.redirect('/admin/tag')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/* ===================================================== */
+
+/* ====================== POST ========================= */
+exports.indexPost = async (req, res) => {
+    try {
+        const tags = await Tag.find({})
+        res.render('admin/tag/index', {
+            tags: tags
+        })
     } catch (error) {
         console.log(error)
     }

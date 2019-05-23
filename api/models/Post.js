@@ -46,11 +46,11 @@ const PostSchema = new Schema({
     // },
     createdAt: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     premium: {
         type: Boolean,
-        // required: true
+        required: true
     },
     status: {
         // 0: Chua Duyet , 1: Da duyet, 2: Bi tu choi

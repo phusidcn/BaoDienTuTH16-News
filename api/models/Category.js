@@ -12,7 +12,7 @@ const CategorySchema = new Schema({
     },
     createAt: {
         type: Date,
-        default: Date.toDateString
+        default: Date.now
     }
 })
 
