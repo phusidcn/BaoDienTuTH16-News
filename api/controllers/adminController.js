@@ -213,8 +213,6 @@ exports.indexEditor = async(req,res) => {
     }
 }
 
-// Ok roi do ok
-
 exports.createEditor = async (req, res) => {
     try {
         let newEditor = new Editor();
@@ -228,6 +226,7 @@ exports.createEditor = async (req, res) => {
         console.log(error);
     }
 }
+
 
 exports.editEditor = async (res, req) => {
     try {

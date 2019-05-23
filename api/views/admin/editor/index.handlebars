@@ -16,7 +16,7 @@
                             <label class="bmd-label-floating" for="name">Username</label>
                             <input type="text" class="form-control" name="name" id="name">
                         </div>
-                        
+
                         <div class="form-group">
                             <label class="bmd-label-floating" for="email">Email address</label>
                             <input type="email" class="form-control" name="email" id="email">
@@ -53,10 +53,10 @@
                             {{email}}
                         </p>
                         <div style="display:flex; justify-content:center">
-                        <a href="/admin/writer/edit/{{id}}" class="btn btn-info">
+                        <a href="/admin/editor/edit/{{id}}" class="btn btn-info">
                             <i class="material-icons">edit</i>
                             Xem</a>
-                        <form action="/admin/writer/{{id}}?_method=DELETE" method="POST">
+                        <form action="/admin/editor/{{id}}?_method=DELETE" method="POST">
                             <button class="btn btn-danger">
                                 <i class="material-icons">delete</i>
                                 Xóa
