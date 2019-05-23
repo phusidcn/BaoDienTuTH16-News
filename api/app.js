@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const cors = require('cors')
 const path = require('path')
 const bodyParser = require('body-parser')
+const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 
 const config = require('./config')
@@ -16,10 +17,8 @@ const subscriberRoutes = require('./routes/subscriber/index')
 /* ADMIN */
 const adminRoutes = require('./routes/admin/index')
 const adminWritersRoutes = require('./routes/admin/writer')
-
-// const editorRoutes = require('./routes/editor/index')
-// const writerRoutes = require('./routes/writer/index')
-// const commentRoutes = require('./routes/comments')
+const adminCategoryRoutes = require('./routes/admin/category')
+const adminTagRoutes = require('./routes/admin/tag')
 
 const app = express()
 
@@ -40,7 +39,7 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(methodOverride('_method'))
 
 
 /* Khách vãn lai + Khách VIP */
@@ -50,10 +49,8 @@ app.use('/subscriber', subscriberRoutes)
 /* Nhân viên + Admin */
 app.use('/admin', adminRoutes)
 app.use('/admin/writer', adminWritersRoutes)
-
-
-// app.use('/editor', editorRoutes)
-// app.use('/writer', writerRoutes)
+app.use('/admin/category', adminCategoryRoutes)
+app.use('/admin/tag', adminTagRoutes)
 
 
 app.use(errorHandler)
