@@ -29,7 +29,10 @@ router.post('/create', async (req, res) => {
     } catch (error) {
         console.log(error)
     }
+})
 
+router.get('/update/:id', (req, res) => {
+    res.send(req.params.id)
 })
 
 
