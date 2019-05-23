@@ -3,22 +3,25 @@ const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs')
 
 const EditorSchema = new Schema({
-    id: {
+    avatar: String,
+    name: {
         type: String,
-        required: true
+        required: true,
+        min: [6, 'Too short, min is 6 characters']
     },
-    email: {
-        type: String,
-        required: true
+    email: { type: String,
+        required: 'Email is Required',
+        lowercase: true,
+        unique: true,
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
     },
     password: {
         type: String,
-        required: true
+        min: [4, 'Too short, min is 4 characters'],
+        max: [32, 'Too long, max is 32 characters'],
+        required: 'Password is required'
     },
-    name: {
-        type: String,
-        required: true
-    },
+    info: String,
     posts: [
         {
             type: Schema.Types.ObjectId,

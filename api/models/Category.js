@@ -6,10 +6,7 @@ const CategorySchema = new Schema({
         type: String,
         required: true
     },
-    name: {
-        type: String,
-        required: true
-    },
+    name: String,
     createAt: {
         type: Date,
         default: Date.now
