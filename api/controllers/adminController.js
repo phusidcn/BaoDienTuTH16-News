@@ -2,6 +2,7 @@ const Writer = require('../models/Writer')
 const Category = require('../models/Category')
 const Tag = require('../models/Tag')
 const Post = require('../models/Post')
+const Editor = require('../models/Editor')
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'admin'
@@ -212,3 +213,70 @@ exports.deleteWriter = async (req, res) => {
 }
 
 /* ==================================================== */
+
+/* ===================EDITOR========================= */
+
+exports.indexEditor = async(req,res) => {
+    try {
+        const editors = await Editor.find({});
+        res.render('admin/editor/index',{
+            editors : editors
+        })
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+exports.createEditor = async (req, res) => {
+    try {
+        let newEditor = new Editor();
+        newEditor.id = req.body.id
+        newEditor.name = req.body.name
+        newEditor.email = req.body.email
+        newEditor = await newEditor.save()
+        res.redirect('/admin/editor');
+    }
+    catch (error){
+        console.log(error);
+    }
+}
+
+
+exports.editEditor = async (res, req) => {
+    try {
+        let foundEditor = Editor.findOne({id:req.param.id});
+        res.render('/admin/editor/edit', {
+            editor : foundEditor
+        })
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateEditor = async (req, res) => {
+    try {
+        let { id, username, email } = req.body
+        let foundEditor = await Editor.findOne({id: req.params.id})
+        foundEditor.id = id
+        foundEditor.name = username
+        foundEditor.email = email
+        await foundEdiotr.save().then(updatedEditor => {
+            res.redirect('/admin/editor')
+        })
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+
+exports.deleteEditor = async (req, res) => {
+    try {
+        const deletedEditor = await Editor.remove({id: req.params.id})
+        res.redirect('/admin/editor')
+    }
+    catch (error) {
+        console.log(error);
+    }
+}

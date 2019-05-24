@@ -19,7 +19,7 @@ const adminRoutes = require('./routes/admin/index')
 const adminWritersRoutes = require('./routes/admin/writer')
 const adminCategoryRoutes = require('./routes/admin/category')
 const adminTagRoutes = require('./routes/admin/tag')
-
+const adminEditorRoutes = require('./routes/admin/editor')
 const app = express()
 
 app.use(cors())
@@ -51,10 +51,12 @@ app.use('/admin', adminRoutes)
 app.use('/admin/writer', adminWritersRoutes)
 app.use('/admin/category', adminCategoryRoutes)
 app.use('/admin/tag', adminTagRoutes)
-
+app.use('/admin/editor',adminEditorRoutes)
 
 app.use(errorHandler)
 
 app.listen(config.port, () => {
     console.log('Listening')
 })
+
+// ong xai eslint hay gi ma check loi ghe v, bat cai web 

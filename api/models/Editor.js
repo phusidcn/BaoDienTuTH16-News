@@ -17,9 +17,14 @@ const EditorSchema = new Schema({
     },
     password: {
         type: String,
+    },
+    name: {
+        type: String,
+        required: true,
         min: [4, 'Too short, min is 4 characters'],
         max: [32, 'Too long, max is 32 characters'],
         required: 'Password is required'
+
     },
     info: String,
     posts: [
@@ -29,6 +34,8 @@ const EditorSchema = new Schema({
         }
     ]
 })
+
+// cai form nay ong phai them may cai field tuong ung nha
 
 EditorSchema.methods.encryptPassword = async password => {
     const salt = await bcrypt.genSalt(5)
