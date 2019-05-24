@@ -72,7 +72,7 @@ module.exports = {
         }
     ],
 
-    //tag
+    //tags
     "tags": [
         {
             "_id": tag1Id,
@@ -192,11 +192,8 @@ module.exports = {
         },
     ],
 
-
-    // Thái làm tiếp Writer, Editor, Guest, subscriber, với admin.
-
-    //writer
-    "writer":[
+    //writers
+    "writers":[
         {
             "_id": writer1Id,
             "email": "lequocthai1998@gmail.com",
@@ -229,8 +226,8 @@ module.exports = {
         }
     ],
 
-    //editor
-    "editor":[
+    //editors
+    "editors":[
         {
             "_id": editor1Id,
             "email": "lequocthai1998@gmail.com",
@@ -263,8 +260,8 @@ module.exports = {
         }
     ],
 
-    //guest
-    "guest":[
+    //guests
+    "guests":[
         {
             "_id": guest1Id,
             "email": "lequocthai1998@gmail.com",
@@ -294,8 +291,8 @@ module.exports = {
         }
     ],
 
-    //subscriber
-    "subscriber":[
+    //subscribers
+    "subscribers":[
         {
             "_id": subscriber1Id,
             "email": "lequocthai1998@gmail.com",
@@ -328,8 +325,8 @@ module.exports = {
         }
     ],
 
-    //admin
-    "admin":[
+    //admins
+    "admins":[
         {
             "_id": admin1Id,
             "email": "lequocthai1998@gmail.com",
