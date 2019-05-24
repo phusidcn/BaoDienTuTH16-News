@@ -322,7 +322,10 @@ module.exports = {
             "email": "lequocthai1998@gmail.com",
             "password": "gagtrxrz111",
             "userName": "Lê Quốc Tân",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
+            "writers": [writer1Id, writer2Id, writer3Id],
+            "editors": [editor1Id, editor2Id, editor3Id],
+            "posts": [post1Id, post2Id, post3Id, post4Id, post5Id]
         }
     ],
 }
