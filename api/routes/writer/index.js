@@ -7,7 +7,5 @@ router.get('/*', writerController.all)
 router.get('/', writerController.index)
 
 
-
-
 module.exports = router
 

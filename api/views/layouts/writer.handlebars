@@ -8,8 +8,12 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <link rel="stylesheet" href="/css/writer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link href="/css/material-dashboard.css" rel="stylesheet" />
 
   <script src="https://cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
   <link rel="shortcut icon" href="/img/logo-khtn.png" type="image/png">
@@ -20,7 +24,16 @@
   <div class="wrapper">
     {{> writer/sidebar }}
 
-    {{{ body }}}
+    <div class="main-panel">
+      <!-- Navbar -->
+      {{> writer/navbar }}
+      <!-- End Navbar -->
+
+      <!-- Main content-->
+      {{{ body }}}
+      <!-- End content-->
+
+    </div>
 
   </div>
 

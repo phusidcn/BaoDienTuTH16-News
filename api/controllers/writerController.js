@@ -8,7 +8,7 @@ exports.all = (req, res, next) => {
 
 exports.index = async (req, res) => {
     try {
-        await res.render('writer/writer_post_content')
+        await res.render('writer/index')
     } catch (err) {
         console.log(err)
     }

@@ -62,6 +62,7 @@ app.use('/admin/editor',adminEditorRoutes)
 
 /* Writer */
 app.use('/writer', writerRoutes)
+app.use('/writer/post', writerPostRoutes)
 
 app.use(errorHandler)
 
