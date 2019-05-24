@@ -75,15 +75,15 @@ class DB {
             await newGuest.save(() => {})
         })
 
-        await this.subscribers.forEach(async (subcriber) => {
-            const newSubscriber = new subcriber(subcriber)
+        await this.subscribers.forEach(async (subscriber) => {
+            const newSubscriber = new Subscriber(subscriber)
             await newSubscriber.save(() => {})
         })
     }
 
     async seedDb() {
-        await this.cleanDb();
-        await this.pushDataToDb();
+        await this.cleanDB();
+        await this.pushDataToDB();
     }
 }
 

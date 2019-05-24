@@ -12,7 +12,6 @@ const guestRoutes = require('./routes/guest/index')
 const subscriberRoutes = require('./routes/subscriber/index')
 
 
-
 /*======= */
 /* ADMIN */
 const adminRoutes = require('./routes/admin/index')
@@ -20,6 +19,14 @@ const adminWritersRoutes = require('./routes/admin/writer')
 const adminCategoryRoutes = require('./routes/admin/category')
 const adminTagRoutes = require('./routes/admin/tag')
 const adminEditorRoutes = require('./routes/admin/editor')
+
+/*======= */
+/* WRITER */
+
+
+/*======= */
+/*  */
+
 const app = express()
 
 app.use(cors())
@@ -46,12 +53,15 @@ app.use(methodOverride('_method'))
 app.use('/', guestRoutes)
 app.use('/subscriber', subscriberRoutes)
 
-/* Nhân viên + Admin */
+/* Admin */
 app.use('/admin', adminRoutes)
 app.use('/admin/writer', adminWritersRoutes)
 app.use('/admin/category', adminCategoryRoutes)
 app.use('/admin/tag', adminTagRoutes)
 app.use('/admin/editor',adminEditorRoutes)
+
+/* Writer */
+
 
 app.use(errorHandler)
 

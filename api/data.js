@@ -174,7 +174,7 @@ module.exports = {
             "premium": false,
             "status": 0,
             "category": category1Id,
-            "tags": [tag1Id, tag3],
+            "tags": [tag1Id, tag3Id],
             "writer": writer2Id,
             "comments": [comment1Id, comment3Id]
         },
