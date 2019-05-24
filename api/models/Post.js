@@ -28,10 +28,12 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
-    tag: {
-        type: Schema.Types.ObjectId,
-        ref: 'Tag'
-    },
+    tags: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Tag'
+        }
+    ],
     writer: {
         type: Schema.Types.ObjectId,
         ref: 'Writer'

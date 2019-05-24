@@ -21,7 +21,6 @@ const AdminSchema = new Schema({
         max: [32, 'Too long, max is 32 characters'],
         required: 'Password is required'
     },
-    info: String,
     writers: [
         {
             type: Schema.Types.ObjectId,

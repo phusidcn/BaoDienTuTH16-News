@@ -17,16 +17,13 @@ const EditorSchema = new Schema({
     },
     password: {
         type: String,
-    },
-    name: {
-        type: String,
         required: true,
         min: [4, 'Too short, min is 4 characters'],
         max: [32, 'Too long, max is 32 characters'],
         required: 'Password is required'
 
     },
-    info: String,
+    address: String,
     posts: [
         {
             type: Schema.Types.ObjectId,

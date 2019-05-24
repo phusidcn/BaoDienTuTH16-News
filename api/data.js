@@ -33,10 +33,17 @@ const subscriber1Id = mongoose.Types.ObjectId()
 const subscriber2Id = mongoose.Types.ObjectId()
 const subscriber3Id = mongoose.Types.ObjectId()
 
+const editor1Id = mongoose.Types.ObjectId()
+const editor2Id = mongoose.Types.ObjectId()
+const editor3Id = mongoose.Types.ObjectId()
 
+const admin1Id = mongoose.Types.ObjectId()
+const admin2Id = mongoose.Types.ObjectId()
+const admin3Id = mongoose.Types.ObjectId()
 
 
 module.exports = {
+    //categories
     "categories": [
         {
             "_id": category1Id,
@@ -64,23 +71,30 @@ module.exports = {
             "createdAt": moment().toISOString()
         }
     ],
+
+    //tags
     "tags": [
         {
             "_id": tag1Id,
             "name": "Football",
-            "category": category1Id
+            "category": category1Id,
+            "createdAt": moment().toISOString()
         },
         {
             "_id": tag2Id,
             "name": "Tennis",
-            "category": category1Id
+            "category": category1Id,
+            "createdAt": moment().toISOString()
         },
         {
             "_id": tag3Id,
             "name": "Vbiz",
-            "category": category2Id
+            "category": category2Id,
+            "createdAt": moment().toISOString()
         }
     ],
+
+    //comments
     "comments": [
         {
             "_id": comment1Id,
@@ -101,6 +115,8 @@ module.exports = {
             "post": post3Id
         }
     ], 
+
+    //posts
     "posts": [
         {
             "_id": post1Id,
@@ -113,7 +129,7 @@ module.exports = {
             "premium": false,
             "status": 0,
             "category": category1Id,
-            "tag": tag1Id,
+            "tags": [tag1Id, tag2Id],
             "writer": writer1Id,
             "comments": [comment1Id, comment2Id]
         },
@@ -128,7 +144,7 @@ module.exports = {
             "premium": false,
             "status": 0,
             "category": category1Id,
-            "tag": tag1Id,
+            "tags": [tag1Id. tag3Id],
             "writer": writer1Id,
             "comments": [comment1Id, comment3Id]
         },
@@ -143,7 +159,7 @@ module.exports = {
             "premium": false,
             "status": 0,
             "category": category1Id,
-            "tag": tag1Id,
+            "tags": [tag2Id, tag3Id],
             "writer": writer1Id,
             "comments": [comment1Id, comment3Id]
         },
@@ -158,8 +174,8 @@ module.exports = {
             "premium": false,
             "status": 0,
             "category": category1Id,
-            "tag": tag1Id,
-            "writer": writer1Id,
+            "tags": [tag1Id, tag3],
+            "writer": writer2Id,
             "comments": [comment1Id, comment3Id]
         },
         {
@@ -173,12 +189,143 @@ module.exports = {
             "premium": false,
             "status": 0,
             "category": category1Id,
-            "tag": tag1Id,
-            "writer": writer1Id,
+            "tags": [tag2Id, tag3Id],
+            "writer": writer3Id,
             "comments": [comment1Id, comment3Id]
         },
     ],
 
+    //writers
+    "writers":[
+        {
+            "_id": writer1Id,
+            "email": "lequocthai1998@gmail.com",
+            "password": "gagtrxrz111",
+            "name": "Lê Quốc Thái",
+            "address": "333 Lý Thái Tổ, P9, Q10",
+            "company": "HCMUS",
+            "posts": [post1Id, post2Id, post3Id],
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": writer2Id,
+            "email": "lequocduyquang@gmail.com",
+            "password": "123456789",
+            "userName": "Lê Quốc Duy Quang",
+            "birthday": "01/01/1998",
+            "address": "TPHCM",
+            "company": "UIT",
+            "posts": [post4Id],
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": writer3Id,
+            "email": "lequocthai@gmail.com",
+            "password": "gagtrxrz111",
+            "userName": "Huỳnh Lâm Phú Sĩ",
+            "birthday": "01/01/1998",
+            "address": "333 Lý Thái Tổ, P9, Q10",
+            "company": "BK",
+            "posts": [post5Id],
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        }
+    ],
 
-    // Thái làm tiếp Writer, Editor, Guest, Sucscriber, với admin.
+    //editors
+    "editors":[
+        {
+            "_id": editor1Id,
+            "email": "lequocthai1998@gmail.com",
+            "password": "gagtrxrz111",
+            "name": "Lê Quốc Sang",
+            "address": "333 Lý Thái Tổ, P9, Q10",
+            "posts": [post1Id, post2Id],
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": editor2Id,
+            "email": "lequocduyquang@gmail.com",
+            "password": "123456789",
+            "name": "Lê Quốc",
+            "address": "TPHCM",
+            "posts": [post3Id],
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": editor3Id,
+            "email": "lequoc@gmail.com",
+            "password": "gagtrxrz111",
+            "name": "Huỳnh Lâm Phú Sỹ",
+            "address": "333 Lý Thái Tổ, P9, Q10",
+            "posts": [post4Id, post5Id],
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        }
+    ],
+
+    //guests
+    "guests":[
+        {
+            "_id": guest1Id,
+            "email": "lequocthai1998@gmail.com",
+            "password": "gagtrxrz111",
+            "name": "Lê Văn Thái",
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": guest2Id,
+            "email": "lequocduyquang@gmail.com",
+            "password": "123456789",
+            "name": "Lê Duy Quang",
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": guest3Id,
+            "email": "lequocthai1998@gmail.com",
+            "password": "gagtrxrz111",
+            "name": "Huỳnh Phú Sĩ",
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        }
+    ],
+
+    //subscribers
+    "subscribers":[
+        {
+            "_id": subscriber1Id,
+            "email": "lequocthai1998@gmail.com",
+            "password": "gagtrxrz111",
+            "name": "Lê Quốc Quân",
+            "membership": "30",
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": subscriber2Id,
+            "email": "lequocduyquang@gmail.com",
+            "password": "123456789",
+            "name": "Lê Quốc Quang",
+            "membership": "3",
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        },
+        {
+            "_id": subscriber3Id,
+            "email": "lequoc@gmail.com",
+            "password": "gagtrxrz111",
+            "name": "Huỳnh Sĩ",
+            "membership": "10",
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
+        }
+    ],
+
+    //admins
+    "admins":[
+        {
+            "_id": admin1Id,
+            "email": "lequocthai1998@gmail.com",
+            "password": "gagtrxrz111",
+            "userName": "Lê Quốc Tân",
+            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
+            "writers": [writer1Id, writer2Id, writer3Id],
+            "editors": [editor1Id, editor2Id, editor3Id],
+            "posts": [post1Id, post2Id, post3Id, post4Id, post5Id]
+        }
+    ],
 }

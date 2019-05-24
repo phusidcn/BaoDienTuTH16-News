@@ -52,7 +52,7 @@ class DB {
 
         await this.posts.forEach(async (post) => {
             const newPost = new Post(post)
-            await newTag.save(() => {})
+            await newPost.save(() => {})
         })
 
         await this.admins.forEach(async (admin) => {
