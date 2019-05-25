@@ -24,8 +24,10 @@ const adminEditorRoutes = require('./routes/admin/editor')
 /* WRITER */
 const writerRoutes = require('./routes/writer/index')
 const writerPostRoutes = require('./routes/writer/post')
+
 /*======= */
-/*  */
+/* EDITOR */
+const editorRoutes = require('./routes/editor/index')
 
 const app = express()
 
@@ -63,6 +65,9 @@ app.use('/admin/editor',adminEditorRoutes)
 /* Writer */
 app.use('/writer', writerRoutes)
 app.use('/writer/post', writerPostRoutes)
+
+/* Editor */
+app.use('/editor', editorRoutes)
 
 app.use(errorHandler)
 
