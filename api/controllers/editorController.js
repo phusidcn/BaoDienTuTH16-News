@@ -8,7 +8,7 @@ exports.all = async (req, res, next) => {
 
 exports.index = async (req, res) => {
     try {
-        await res.render('editor/editor_censor_content')
+        await res.render('editor/editor_view_list_content')
     } catch (err) {
         console.log(err)
     }
@@ -33,6 +33,14 @@ exports.viewDenied = async (req, res) => {
 exports.viewDraft = async (req, res) => {
     try {
         await res.render('editor/editor_view_draft')
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+exports.censorContent = async (req, res) =>{
+    try {
+         await res.render('editor/editor_censor_content')
     } catch (err) {
         console.log(err)
     }
