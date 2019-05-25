@@ -5,6 +5,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
+const upload = require('express-fileupload')
 
 const config = require('./config')
 const errorHandler = require('./middleware/errorHandler')
@@ -51,7 +52,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride('_method'))
-
+app.use(upload())
 
 /* Khách vãn lai + Khách VIP */
 app.use('/', guestRoutes)
