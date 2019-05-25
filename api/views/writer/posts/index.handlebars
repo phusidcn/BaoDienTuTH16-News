@@ -38,7 +38,7 @@
                 <td><img height="75" width="75" class="img-responsive" src="/uploads/{{image}}" alt=""></td>
                 <td>{{title}}</td>
                 <td>{{status}}</td>
-                <td>{{ createdAt }}</td>
+                <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
                 <td><a href="/writer/post/edit/{{_id}}" class="btn btn-success">Edit</a></td>
                 <td>
                     <form action="/writer/post/{{_id}}?_method=DELETE" method="POST">
