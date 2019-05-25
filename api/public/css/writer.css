@@ -13,7 +13,24 @@ a:hover {
 
 .navbar {
   padding: 15px 10px;
-  background-color: #ffdb9a;
+  /* background-color: #ffdb9a; */
+  /* background-image: linear-gradient(
+    13deg,
+    #ffd280,
+    #ffdb9a 28%,
+    #ffe6b8 50%,
+    #fff1d6 75%,
+    #fff3dc
+  ); */
+
+  background-image: linear-gradient(
+    20deg,
+    #fff3dc,
+    #fff1d6 25%,
+    #ffe6b8 50%,
+    #ffdb9a 75%,
+    #ffd280
+  );
   border: none;
   border-radius: 0;
   margin-bottom: 10px;
@@ -44,6 +61,7 @@ textarea {
 
   width: 100%;
 }
+
 #sidebar {
   min-width: 250px;
   max-width: 250px;
@@ -126,8 +144,8 @@ a[data-toggle="collapse"] {
 }
 
 .avt-wrapper {
-  border-bottom: 1px solid #eeeeee;
-  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #47748b;
+  border-top: 1px solid #47748b;
   padding-top: 10px;
   margin-bottom: 10px;
 }
