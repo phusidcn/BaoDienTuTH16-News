@@ -31,6 +31,8 @@ const editorRoutes = require('./routes/editor/index')
 
 const app = express()
 
+const { select } = require('./helpers/handlebars-helpers')
+
 app.use(cors())
 
 mongoose.Promise = global.Promise
@@ -42,7 +44,7 @@ mongoose.connect(config.mongoURI, {
     console.log(error)
 })
 
-app.engine('handlebars', exphbs({ defaultLayout: 'guest'}))
+app.engine('handlebars', exphbs({ defaultLayout: 'guest', helpers: { select: select }}))
 app.set('view engine', 'handlebars')
 
 app.use(bodyParser.urlencoded({extended: true}))

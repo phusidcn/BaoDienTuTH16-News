@@ -26,15 +26,16 @@ router.post('/create', (req, res) => {
         category: req.body.category,
         status: req.body.status,
         tag: req.body.tag,
+        premium: req.body.premium,
         content: req.body.content
     });
 
     newPost.save()
         .then(savedPost => {
-            res.redirect('/writer/post');
+            res.redirect('/writer/post')
         })
         .catch(err => {
-            console.log(err);
+            console.log(err)
         });
 })
 
@@ -46,32 +47,33 @@ router.get('/edit/:id', (req, res) => {
             })
         })
         .catch(err => {
-            console.log(err);
-        });
-});
+            console.log(err)
+        })
+})
 
 router.put('/edit/:id', (req, res) => {
     Post.findOne({ _id: req.params.id })
         .then(post => {
-            post.title = req.body.title;
-            post.status = req.body.status;
-            post.content = req.body.content;
+            post.title = req.body.title
+            post.status = req.body.status
+            post.content = req.body.content
+            post.premium = req.body.premium
 
             post.save()
                 .then(updatedPost => {
-                    res.redirect('/writer/post');
+                    res.redirect('/writer/post')
                 })
                 .catch(err => {
-                    console.log(err);
-                });
-        });
-});
+                    console.log(err)
+                })
+        })
+})
 
 router.delete('/:id', (req, res) => {
     Post.deleteOne({ _id: req.params.id })
         .then(() => {
-            res.redirect('/writer/post');
-        });
-});
+            res.redirect('/writer/post')
+        })
+})
 
 module.exports = router
