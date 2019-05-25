@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const { isEmpty } = require('../../helpers/upload-helper')
 const Post = require('../../models/Post')
 
 router.all('/*', (req, res, next) => {
@@ -21,7 +22,16 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-    console.log(req.files)
+    if(!isEmpty(req.files)) {
+        let file = req.files.image
+        let filename = file.name
+    
+        file.mv('./public/uploads/' + filename, (err) => {
+            if(err) {
+                console.log(err)
+            }
+        })
+    }
     // const newPost = new Post({
     //     title: req.body.title,
     //     image: req.body.image
