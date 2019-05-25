@@ -6,7 +6,6 @@ exports.all = (req, res, next) => {
     next()
 }
 
-// Writer create post
 exports.index = async (req, res) => {
     try {
         await res.render('writer/index')
@@ -17,7 +16,7 @@ exports.index = async (req, res) => {
 
 exports.store = async (req, res, next) => {
     try {
-        // validationHandler(req)
+        validationHandler(req)
 
         let post = new Post()
         // post.image = req.file.image

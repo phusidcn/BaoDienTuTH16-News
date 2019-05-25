@@ -41,7 +41,7 @@ router.post('/create', (req, res) => {
 router.get('/edit/:id', (req, res) => {
     Post.findById(req.params.id)
         .then(post => {
-            res.render('admin/posts/edit', {
+            res.render('writer/posts/edit', {
                 post: post
             })
         })
@@ -50,53 +50,28 @@ router.get('/edit/:id', (req, res) => {
         });
 });
 
-// router.put('/edit/:id', (req, res) => {
-//     Post.findOne({ _id: req.params.id })
-//         .then(post => {
-//             if (req.body.allowComments) {
-//                 allowComments = true;
-//             } else {
-//                 allowComments = false;
-//             }
+router.put('/edit/:id', (req, res) => {
+    Post.findOne({ _id: req.params.id })
+        .then(post => {
+            post.title = req.body.title;
+            post.status = req.body.status;
+            post.content = req.body.content;
 
-//             post.title = req.body.title;
-//             post.status = req.body.status;
-//             if (!req.body.allowComments) {
-//                 post.allowComments = false;
-//             } else {
-//                 post.allowComments = true;
-//             }
-//             post.description = req.body.description;
-//             if (!isEmpty(req.files)) {
-//                 let file = req.files.file;
-//                 filename = Date.now() + '-' + file.name;
-//                 post.file = filename;
+            post.save()
+                .then(updatedPost => {
+                    res.redirect('/writer/post');
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        });
+});
 
-//                 file.mv('./public/uploads/' + filename, (err) => {
-//                     if (err) {
-//                         throw err;
-//                     }
-//                 });
-                
-//             }
-
-//             post.save()
-//                 .then(updatedPost => {
-//                     req.flash('success_message', `Post ${updatedPost} was successfully updated`);
-//                     res.redirect('/admin/posts');
-//                 })
-//                 .catch(err => {
-//                     console.log(err);
-//                 });
-//         });
-// });
-
-// router.delete('/:id', (req, res) => {
-//     Post.deleteOne({ _id: req.params.id })
-//         .then(() => {
-//             req.flash('success_message', 'Post was successfully deleted');
-//             res.redirect('/admin/posts');
-//         });
-// });
+router.delete('/:id', (req, res) => {
+    Post.deleteOne({ _id: req.params.id })
+        .then(() => {
+            res.redirect('/writer/post');
+        });
+});
 
 module.exports = router

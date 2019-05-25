@@ -39,9 +39,9 @@
                 <td>{{title}}</td>
                 <td>{{status}}</td>
                 <td>{{ createdAt }}</td>
-                <td><a href="/admin/posts/edit/{{_id}}" class="btn btn-success">Edit</a></td>
+                <td><a href="/writer/post/edit/{{_id}}" class="btn btn-success">Edit</a></td>
                 <td>
-                    <form action="/admin/posts/{{_id}}?_method=DELETE" method="POST">
+                    <form action="/writer/post/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>

@@ -9,8 +9,6 @@ exports.all = async (req, res, next) => {
 
 exports.index = (req, res) => {
     Post.find({})
-        .populate('category')
-        .populate('tag')
         .exec((errors, posts) => {
             if(errors) {
                 console.log(errors)
