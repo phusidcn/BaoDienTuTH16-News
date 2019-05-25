@@ -1,5 +1,10 @@
 <div class="content">
     <h4>Create Post</h4>
+    {{#each errors}}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {{/each}}
     <form action="/writer/post/create" method="POST" class="mt-3" enctype="multipart/form-data">
         <div class="input-group mb-3">
             <div class="input-group-prepend">

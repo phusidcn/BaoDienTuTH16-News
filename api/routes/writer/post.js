@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const { isEmpty } = require('../../helpers/upload-helper')
+const fs = require('fs')
+const { isEmpty, uploadDir } = require('../../helpers/upload-helper')
 const Post = require('../../models/Post')
 
 router.all('/*', (req, res, next) => {
@@ -22,33 +23,50 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-    if(!isEmpty(req.files)) {
-        let file = req.files.image
-        let filename = file.name
-    
-        file.mv('./public/uploads/' + filename, (err) => {
-            if(err) {
-                console.log(err)
-            }
-        })
-    }
-    // const newPost = new Post({
-    //     title: req.body.title,
-    //     image: req.body.image
-    //     category: req.body.category,
-    //     status: req.body.status,
-    //     tag: req.body.tag,
-    //     premium: req.body.premium,
-    //     content: req.body.content
-    // });
+    let errors = []
 
-    // newPost.save()
-    //     .then(savedPost => {
-    //         res.redirect('/writer/post')
-    //     })
-    //     .catch(err => {
-    //         console.log(err)
-    //     });
+    if(!req.body.title) {
+        errors.push({message: 'Please add title'})
+    }
+
+    if(!req.body.content) {
+        errors.push({message: 'Please add content'})
+    }
+
+    if(errors.length > 0) {
+        res.render('writer/posts/create', {
+            errors: errors
+        })
+    } else {   
+        let filename = ''
+        if(!isEmpty(req.files)) {
+            let file = req.files.image
+            filename = file.name + '-' + Date.now()
+            
+            file.mv('./public/uploads/' + filename, (err) => {
+                if(err) {
+                    console.log(err)
+                }
+            })
+        }
+        const newPost = new Post({
+            title: req.body.title,
+            image: filename,
+            category: req.body.category,
+            status: req.body.status,
+            tag: req.body.tag,
+            premium: req.body.premium,
+            content: req.body.content
+        })
+        
+        newPost.save()
+        .then(savedPost => {
+            res.redirect('/writer/post')
+        })
+        .catch(err => {
+            console.log(err)
+        });
+    }
 })
 
 router.get('/edit/:id', (req, res) => {
@@ -73,6 +91,7 @@ router.put('/edit/:id', (req, res) => {
 
             post.save()
                 .then(updatedPost => {
+                    req.flash('success_message', `Post ${updatedPost} was successfully updated`);
                     res.redirect('/writer/post')
                 })
                 .catch(err => {
@@ -83,8 +102,12 @@ router.put('/edit/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
     Post.deleteOne({ _id: req.params.id })
-        .then(() => {
-            res.redirect('/writer/post')
+        .then((post) => {
+            fs.unlink(uploadDir + post.image, (err) => {
+                post.remove()
+                req.flash('success_message', 'Post was successfully deleted');
+                res.redirect('/writer/post')
+            })
         })
 })
 

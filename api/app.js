@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const upload = require('express-fileupload')
+const flash = require('connect-flash')
+const session = require('express-session')
 
 const config = require('./config')
 const errorHandler = require('./middleware/errorHandler')
@@ -53,6 +55,18 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride('_method'))
 app.use(upload())
+
+app.use(session({
+    secret: 'lequocduyquang',
+    resave: true,
+    saveUninitialized: true
+}))
+app.use(flash())
+
+app.use((req, res, next) => {
+    res.locals.success_message = req.flash('success_message')
+    next()
+})
 
 /* Khách vãn lai + Khách VIP */
 app.use('/', guestRoutes)
