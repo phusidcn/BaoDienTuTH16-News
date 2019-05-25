@@ -24,16 +24,19 @@ const PostSchema = new Schema({
         type: Number,
         default: 0
     },
-    category: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category'
-    },
-    tags: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Tag'
-        }
-    ],
+    // De sau lam
+    // category: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Category'
+    // },
+    // tags: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Tag'
+    //     }
+    // ],
+    category: String,
+    tag: String,
     writer: {
         type: Schema.Types.ObjectId,
         ref: 'Writer'

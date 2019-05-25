@@ -9,62 +9,44 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link"
-                        href="/writer"><b>Trang chủ</b></a>
+                    <a class="nav-link" href="/writer"><b>Trang chủ</b></a>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="modal" data-target="#logOut"
-                     class="nav-link" href="#"><b>Đăng
+                    <a data-toggle="modal" data-target="#logOut" class="nav-link" href="#"><b>Đăng
                             xuất</b></a>
                 </li>
             </ul>
         </div>
     </nav>
-    {{!-- <div class="col-md-12">
-        <div class="card card-common">
-            <div class="card-header card-header-tabs card-header-info">
-                <div class="nav-tabs-navigation">
-                    <div class="nav-tabs-wrapper">
-                        <span class="nav-tabs-title">Quản lý:</span>
-                        <ul class="nav nav-tabs" data-tabs="tabs">
-                            <li class="nav-item">
-                                <a class="nav-link" href="#messages" data-toggle="tab">
-                                    <i class="material-icons">category</i> Category
-                                    <div class="ripple-container"></div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Created At</th>
-                            <th colspan="2"></th>
-                        </tr>
-                    </thead>
+    <h4>ALL POSTS</h4>
 
-                    <tbody>
-                        {{#each posts}}
-                        <tr>
-                            <td>{{id}}</td>
-                            <td>{{name}}</td>
-                            <td>{{createAt}}</td>
-                            <td style="text-align: center;"><a href="/admin/category/edit/{{id}}" class="btn btn-warning">Edit</a></td>
-                            <td style="text-align: center;">
-                                <form action="/admin/category/{{id}}?_method=DELETE" method="POST">
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div> --}}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <td>{{_id}}</td>
+                <td><img height="50" class="img-responsive" src="{{image}}" alt=""></td>
+                <td>{{title}}</td>
+                <td>{{status}}</td>
+                <td>{{ createdAt }}</td>
+                <td><a href="/admin/posts/edit/{{_id}}" class="btn btn-success">Edit</a></td>
+                <td>
+                    <form action="/admin/posts/{{_id}}?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
 </div>

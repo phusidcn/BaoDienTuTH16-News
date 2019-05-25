@@ -19,60 +19,19 @@
         </div>
     </nav>
 
-    <form action="/writer/create" enctype="multipart/form-data" method="POST">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-flag-o"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Tiêu đề" id="title" name="title"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-folder-o"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Chuyên mục" id="category" name="category"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-tags"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Gán nhãn" id="tag" name="tag"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-book"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Tóm tắt nội dung" id="shortContent" name="shortContent"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <input required class="form-control" type="file" name="image" id="image">
-        </div>
-        <textarea class="mb-3" name="editor" cols="150" rows="10">Noi dung chi tiet</textarea>
-        <div class="mt-3">
-            <button type="submit" class="btn-blue" value="">Đăng bài</button>
-        </div>
-    </form>
 
 
 
+
+    <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Fluid jumbotron</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+    </div>
 
 </div>
 
-<script>
-    CKEDITOR.replace('editor');
-</script>
 
 <!-- Log out modal -->
 <div class="modal fade" id="logOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

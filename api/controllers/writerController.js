@@ -6,6 +6,7 @@ exports.all = (req, res, next) => {
     next()
 }
 
+// Writer create post
 exports.index = async (req, res) => {
     try {
         await res.render('writer/index')
@@ -16,24 +17,23 @@ exports.index = async (req, res) => {
 
 exports.store = async (req, res, next) => {
     try {
-        validationHandler(req)
+        // validationHandler(req)
 
         let post = new Post()
-        post.image = req.file.image
+        // post.image = req.file.image
         post.title = req.body.title
         post.category = req.body.category
         post.tag = req.body.tag
-        post.shortContent = req.body.shortContent
         post.content = req.body.content
-
-        console.log(req.file)
-        post = await post.save()
-        res.redirect('/writer/view-waiting')
+        post = await post.save().then(() => {
+            res.redirect('/writer/post') 
+        })
     } catch (error) {
         next(error)
     }
 }
 
+// ==========================================
 exports.editDenied = async (req, res) => {
     try {
         await res.render('writer/writer_edit_denied_content')
