@@ -21,22 +21,24 @@ router.get('/create', (req, res) => {
 })
 
 router.post('/create', (req, res) => {
-    const newPost = new Post({
-        title: req.body.title,
-        category: req.body.category,
-        status: req.body.status,
-        tag: req.body.tag,
-        premium: req.body.premium,
-        content: req.body.content
-    });
+    console.log(req.files)
+    // const newPost = new Post({
+    //     title: req.body.title,
+    //     image: req.body.image
+    //     category: req.body.category,
+    //     status: req.body.status,
+    //     tag: req.body.tag,
+    //     premium: req.body.premium,
+    //     content: req.body.content
+    // });
 
-    newPost.save()
-        .then(savedPost => {
-            res.redirect('/writer/post')
-        })
-        .catch(err => {
-            console.log(err)
-        });
+    // newPost.save()
+    //     .then(savedPost => {
+    //         res.redirect('/writer/post')
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     });
 })
 
 router.get('/edit/:id', (req, res) => {
