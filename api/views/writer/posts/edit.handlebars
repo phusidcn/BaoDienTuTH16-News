@@ -16,8 +16,13 @@
                     <i class="fa fa-folder-o"></i>
                 </button>
             </div>
-            <input type="text" class="form-control" placeholder="Chuyên mục" id="category" name="category"
-                value="{{post.category}}" aria-describedby="basic-addon1">
+            <select name="category" id="category" class="form-control">
+                {{#select post.category}}
+                    {{#each categories}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -46,8 +51,8 @@
             </div>
             <select name="premium" id="premium" class="form-control">
                 {{#select post.premium}}
-                    <option value="true">True</option>
-                    <option value="false">False</option>
+                <option value="true">True</option>
+                <option value="false">False</option>
                 {{/select}}
             </select>
         </div>

@@ -12,6 +12,7 @@ router.all('/*', (req, res, next) => {
 
 router.get('/', (req, res) => {
     Post.find({})
+        .populate('category')
         .then(posts => {
             res.render('writer/posts/index', {
                 posts: posts
@@ -77,8 +78,11 @@ router.post('/create', (req, res) => {
 router.get('/edit/:id', (req, res) => {
     Post.findById(req.params.id)
         .then(post => {
-            res.render('writer/posts/edit', {
-                post: post
+            Category.find({}).then(categories => {
+                res.render('writer/posts/edit', {
+                    post: post,
+                    categories: categories
+                })
             })
         })
         .catch(err => {
@@ -93,6 +97,7 @@ router.put('/edit/:id', (req, res) => {
             post.status = req.body.status
             post.content = req.body.content
             post.premium = req.body.premium
+            post.category = req.body.category
 
             post.save()
                 .then(updatedPost => {
@@ -109,7 +114,6 @@ router.delete('/:id', (req, res) => {
     Post.deleteOne({ _id: req.params.id })
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
-                post.remove()
                 req.flash('success_message', 'Post was successfully deleted');
                 res.redirect('/writer/post')
             })
