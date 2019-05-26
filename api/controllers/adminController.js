@@ -31,9 +31,9 @@ exports.indexCategory = async (req, res) => {
 
 exports.createCategory = async (req, res) => {
     try {
-        let newCategory = new Category()
-        newCategory.id = req.body.id
-        newCategory.name = req.body.name
+        let newCategory = new Category({
+            name: req.body.name
+        })
         newCategory = await newCategory.save()
         res.redirect('/admin/category')
     } catch (error) {
@@ -43,7 +43,7 @@ exports.createCategory = async (req, res) => {
 
 exports.editCategory = async (req, res) => {
     try {
-        let foundCate = await Category.findOne({id: req.params.id})
+        let foundCate = await Category.findOne({_id: req.params._id})
         res.render('admin/category/edit', {
             category: foundCate
         })
@@ -54,9 +54,8 @@ exports.editCategory = async (req, res) => {
 
 exports.updateCategory = async (req, res) => {
     try {
-        let { id, name } = req.body
-        let foundCate = await Category.findOne({id: req.params.id})
-        foundCate.id = id
+        let { name } = req.body
+        let foundCate = await Category.findOne({_id: req.params._id})
         foundCate.name = name
         await foundCate.save().then(updatedCate => {
             res.redirect('/admin/category')
@@ -68,7 +67,7 @@ exports.updateCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
     try {
-        const deletedCategory = await Category.remove({id: req.params.id})
+        const deletedCategory = await Category.remove({_id: req.params._id})
         res.redirect('/admin/category')
     } catch (error) {
         console.log(error)
