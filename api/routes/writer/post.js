@@ -3,6 +3,7 @@ const router = express.Router()
 const fs = require('fs')
 const { isEmpty, uploadDir } = require('../../helpers/upload-helper')
 const Post = require('../../models/Post')
+const Category = require('../../models/Category')
 
 router.all('/*', (req, res, next) => {
     req.app.locals.layout = 'writer'
@@ -19,7 +20,11 @@ router.get('/', (req, res) => {
 })
 
 router.get('/create', (req, res) => {
-    res.render('writer/posts/create')
+    Category.find({}).then(categories => {
+        res.render('writer/posts/create', {
+            categories: categories
+        })
+    })
 })
 
 router.post('/create', (req, res) => {

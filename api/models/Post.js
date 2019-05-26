@@ -25,10 +25,10 @@ const PostSchema = new Schema({
         default: 0
     },
     // De sau lam
-    // category: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Category'
-    // },
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
+    },
     // tags: [
     //     {
     //         type: Schema.Types.ObjectId,

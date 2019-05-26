@@ -21,8 +21,11 @@
                     <i class="fa fa-folder-o"></i>
                 </button>
             </div>
-            <input required type="text" class="form-control" placeholder="Chuyên mục" id="category" name="category"
-                aria-describedby="basic-addon1">
+            <select name="cateogry" id="category" class="form-control">    
+                {{#each categories}}
+                    <option value="{{name}}">{{ name }}</option>
+                {{/each}}
+            </select>
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
