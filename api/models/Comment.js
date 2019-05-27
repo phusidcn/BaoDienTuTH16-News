@@ -2,16 +2,7 @@ const moongoose = require('mongoose')
 const Schema = moongoose.Schema
 
 const CommentSchema = new Schema({
-    id: {
-        type: String
-    },
-    Content: {
-        type: String
-    },
-    guest: {
-        type: Schema.Types.ObjectId,
-        ref: 'Guest'
-    },
+    content: String,
     subscriber: {
         type: Schema.Types.ObjectId,
         ref: 'Subscriber'

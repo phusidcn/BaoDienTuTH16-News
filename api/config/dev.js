@@ -1,5 +1,5 @@
 module.exports = {
     jwtSecret: 'supersecret',
-    mongoURI: 'mongodb://localhost:27017/minimum',
+    mongoURI: 'mongodb://localhost/minimum',
     port: 3000
 }

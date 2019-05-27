@@ -1,10 +1,6 @@
 <div class="content">
     <div class="container-fluid">
-        <form action="/admin/category/edit/{{category.id}}?_method=PUT" method="POST">
-            <div class="form-group">
-                <label for="id">ID</label>
-                <input type="text" class="form-control" name="id" id="id" value="{{category.id}}">
-            </div>
+        <form action="/admin/category/edit/{{category._id}}?_method=PUT" method="POST">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="{{category.name}}">
