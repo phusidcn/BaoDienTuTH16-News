@@ -1,5 +1,6 @@
 const express = require('express')
 const Guest = require('../../models/Guest')
+const bcrypt = require('bcryptjs')
 const guestController = require('../../controllers/guestController')
 const router = express.Router()
 
@@ -55,15 +56,26 @@ router.post('/register', (req, res) => {
             password: req.body.password
         })
 
-        newGuest.save().then(savedUser => {
-            res.send("OK")
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newGuest.password, salt, (err, hash) => {
+                newGuest.password = hash
+
+                newGuest.save().then(savedUser => {
+                    req.flash('success_message', 'You are registered successfully. Please Log in')
+                    res.redirect('/login')
+                })
+            })
         })
+
+        
     }
 
 })
 
 router.get('/login', (req, res) => {
-    res.send('GET /LOGIN')
+    res.render('guest/login', {
+        layout: false
+    })
 })
 router.post('/login', (req, res) => {
     res.send('POST /login')
