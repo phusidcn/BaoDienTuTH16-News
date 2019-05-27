@@ -1,4 +1,5 @@
 const moongoose = require('mongoose')
+const Category = require('../models/Category')
 const Schema = moongoose.Schema
 
 const PostSchema = new Schema({

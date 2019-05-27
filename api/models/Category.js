@@ -9,4 +9,4 @@ const CategorySchema = new Schema({
     }
 })
 
-module.exports = moongoose.model('Category', CategorySchema, 'category')
+module.exports = moongoose.model('Category', CategorySchema)

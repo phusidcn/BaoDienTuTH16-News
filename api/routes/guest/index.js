@@ -1,4 +1,5 @@
 const express = require('express')
+const Guest = require('../../models/Guest')
 const guestController = require('../../controllers/guestController')
 const router = express.Router()
 
@@ -9,19 +10,64 @@ router.get('/', guestController.index)
 // router.get('/post/:id', guestController.showPost)
 
 /* ----- */
-// router.get('/register', (req, res) => {
-//     res.send('GET /REGISTER')
-// })
-// router.post('/register', (req, res) => {
-//     res.send('POST /register')
-// })
+router.get('/register', (req, res) => {
+    res.render('guest/register', {
+        layout: false
+    })
+})
+router.post('/register', (req, res) => {
+    
 
-// router.get('/login', (req, res) => {
-//     res.send('GET /LOGIN')
-// })
-// router.post('/login', (req, res) => {
-//     res.send('POST /login')
-// })
+    let errors = []
+
+    if(!req.body.name) {
+        errors.push({
+            message: 'Please input your name'
+        })
+    }
+
+    if(!req.body.email) {
+        errors.push({
+            message: 'Please input your email'
+        })
+    }
+
+    if(!req.body.password) {
+        errors.push({
+            message: 'Please input your password'
+        })
+    }
+
+    if(req.body.password !== req.body.password2) {
+        errors.push({
+            message: 'Password not match'
+        })
+    }
+
+    if(errors.length > 0) {
+        res.render('guest/register', {
+            errors: errors
+        })
+    } else {
+        const newGuest = new Guest({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
+        })
+
+        newGuest.save().then(savedUser => {
+            res.send("OK")
+        })
+    }
+
+})
+
+router.get('/login', (req, res) => {
+    res.send('GET /LOGIN')
+})
+router.post('/login', (req, res) => {
+    res.send('POST /login')
+})
 
 // router.get('/profile', (req, res) => {
 //     res.send('GET /profile')

@@ -9,8 +9,9 @@ const GuestSchema = new Schema({
         required: true,
         min: [6, 'Too short, min is 6 characters']
     },
-    email: { type: String,
-        required: 'Email is Required',
+    email: { 
+        type: String,
+        required: true,
         lowercase: true,
         unique: true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
@@ -19,7 +20,7 @@ const GuestSchema = new Schema({
         type: String,
         min: [4, 'Too short, min is 4 characters'],
         max: [32, 'Too long, max is 32 characters'],
-        required: 'Password is required'
+        required: true
     }
 })
 
