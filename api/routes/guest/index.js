@@ -47,25 +47,36 @@ router.post('/register', (req, res) => {
 
     if(errors.length > 0) {
         res.render('guest/register', {
-            errors: errors
+            errors: errors,
+            name: req.body.name,
+            email: req.body.email
         })
     } else {
-        const newGuest = new Guest({
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password
-        })
-
-        bcrypt.genSalt(10, (err, salt) => {
-            bcrypt.hash(newGuest.password, salt, (err, hash) => {
-                newGuest.password = hash
-
-                newGuest.save().then(savedUser => {
-                    req.flash('success_message', 'You are registered successfully. Please Log in')
-                    res.redirect('/login')
+        Guest.findOne({email: req.body.email}).then(guest => {
+            if(!guest) {
+                const newGuest = new Guest({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password
                 })
-            })
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newGuest.password, salt, (err, hash) => {
+                        newGuest.password = hash
+        
+                        newGuest.save().then(savedUser => {
+                            req.flash('success_message', 'You are registered successfully. Please Log in')
+                            res.redirect('/login')
+                        })
+                    })
+                })
+            } else {
+                req.flash('error_message', 'Email is already registered')
+                res.redirect('/register')
+            }
         })
+        
+
+        
 
         
     }

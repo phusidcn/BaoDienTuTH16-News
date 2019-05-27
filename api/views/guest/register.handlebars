@@ -25,6 +25,11 @@
             Back To Home
         </a>
     </div>
+    {{#if error_message}}
+        <div class="alert alert-danger" style="text-align: center;">
+            {{error_message}}
+        </div>
+    {{/if}}
     <div id="login-box">
         <div class="left">
             <h1>Sign up</h1>
@@ -35,8 +40,8 @@
             {{/each}}
 
             <form action="/register" method="POST">
-                <input type="text" name="name" placeholder="Username" required />
-                <input type="text" name="email" placeholder="E-mail" required />
+                <input type="text" value="{{name}}" name="name" placeholder="Username" required />
+                <input type="text" value="{{email}}" name="email" placeholder="E-mail" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <input type="password" name="password2" placeholder="Retype password" required />
 

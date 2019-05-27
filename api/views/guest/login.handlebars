@@ -30,6 +30,11 @@
             {{success_message}}
         </div>
     {{/if}}
+    {{#if error_message}}
+        <div class="alert alert-danger" style="text-align: center;">
+            {{error_message}}
+        </div>
+    {{/if}}
     <div id="login-box">
         <div class="left">
             <h1>Sign In</h1>
