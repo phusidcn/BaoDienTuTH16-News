@@ -1,6 +1,8 @@
 const express = require('express')
 const Guest = require('../../models/Guest')
 const bcrypt = require('bcryptjs')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 const guestController = require('../../controllers/guestController')
 const router = express.Router()
 
@@ -74,13 +76,7 @@ router.post('/register', (req, res) => {
                 res.redirect('/register')
             }
         })
-        
-
-        
-
-        
     }
-
 })
 
 router.get('/login', (req, res) => {
@@ -88,8 +84,17 @@ router.get('/login', (req, res) => {
         layout: false
     })
 })
-router.post('/login', (req, res) => {
-    res.send('POST /login')
+
+passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
+    console.log(password)
+}))
+
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true
+    })(req, res, next)
 })
 
 // router.get('/profile', (req, res) => {
