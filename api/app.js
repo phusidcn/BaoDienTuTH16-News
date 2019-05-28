@@ -8,6 +8,8 @@ const mongoose = require('mongoose')
 const upload = require('express-fileupload')
 const flash = require('connect-flash')
 const session = require('express-session')
+const passport = require('passport')
+
 
 const config = require('./config')
 const errorHandler = require('./middleware/errorHandler')
@@ -62,6 +64,9 @@ app.use(session({
     saveUninitialized: true
 }))
 app.use(flash())
+
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use((req, res, next) => {
     res.locals.success_message = req.flash('success_message')
