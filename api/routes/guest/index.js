@@ -105,7 +105,7 @@ passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done
 }))
 
 passport.serializeUser((guest, done) => {
-    done(null, guest.id)
+    done(null, guest._id)
 })
 
 passport.deserializeUser((id, done) => {
