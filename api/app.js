@@ -100,5 +100,3 @@ app.use(errorHandler)
 app.listen(config.port, () => {
     console.log('Listening')
 })
-
-// ong xai eslint hay gi ma check loi ghe v, bat cai web 
