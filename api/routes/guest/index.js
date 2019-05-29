@@ -10,8 +10,9 @@ const router = express.Router()
 router.all('/*', guestController.all)
 router.get('/', guestController.index)
 
+router.get('/:id', guestController.showPost)
+
 // router.get('/category/:id', guestController.showCategory)
-// router.get('/post/:id', guestController.showPost)
 
 /* ----- */
 router.get('/register', (req, res) => {
