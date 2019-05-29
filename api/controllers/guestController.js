@@ -1,3 +1,4 @@
+const configs = require('../config')
 const Post = require('../models/Post')
 const Guest = require('../models/Guest')
 const Category = require('../models/Category')
@@ -6,6 +7,7 @@ const Tag = require('../models/Tag')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 exports.all = async (req, res, next) => {
     req.app.locals.layout = 'guest'
@@ -109,6 +111,15 @@ exports.logout = (req, res) => {
     res.redirect('/login')
 }
 
+exports.google = (req, res, next) => {
+    passport.authenticate('google', 
+        {scope: ['profile', 'email']})(req, res, next)
+}
+
+
+
+/* Passport Local */
+
 passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
     Guest.findOne({ email: email }).then(guest => {
         if(!guest) {
@@ -137,3 +148,15 @@ passport.deserializeUser((id, done) => {
         done(err, guest)
     })
 })
+
+/* Passport Google */
+passport.use(
+    new GoogleStrategy({
+        clientID: configs.googleClientID,
+        clientSecret: configs.googleClientSecret,
+        callbackURL: '/auth/google/callback'
+    }, (accessToken, refreshToken, profile, cb) => {
+        console.log(accessToken)
+        console.log(profile)
+    })
+)

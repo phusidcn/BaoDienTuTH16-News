@@ -1,9 +1,6 @@
 const express = require('express')
-const Guest = require('../../models/Guest')
-const bcrypt = require('bcryptjs')
-const passport = require('passport')
+const passport = require('passport')  
 const { userAuthenticated } = require('./../../helpers/authentication')
-const LocalStrategy = require('passport-local').Strategy
 const guestController = require('../../controllers/guestController')
 const router = express.Router()
 
@@ -23,5 +20,13 @@ router.get('/login', (req, res) => {
 router.post('/register', guestController.register)
 router.post('/login', guestController.login)
 router.get('/logout', guestController.logout)
+
+router.get('/auth/google', guestController.google)
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/');
+    });
 
 module.exports = router

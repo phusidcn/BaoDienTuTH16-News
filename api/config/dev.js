@@ -1,5 +1,7 @@
 module.exports = {
     jwtSecret: 'supersecret',
     mongoURI: 'mongodb://localhost/minimum',
+    googleClientID: '672674025045-ahrpo0151l2kkvrrscb5btdmrhmeihia.apps.googleusercontent.com',
+    googleClientSecret: '96NMIjaiZA3SuBDDJw3qT2RZ',
     port: 3000
 }
