@@ -2,6 +2,7 @@ const express = require('express')
 const Guest = require('../../models/Guest')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
+const { userAuthenticated } = require('./../../helpers/authentication')
 const LocalStrategy = require('passport-local').Strategy
 const guestController = require('../../controllers/guestController')
 const router = express.Router()
@@ -120,6 +121,11 @@ router.post('/login', (req, res, next) => {
         failureRedirect: '/login',
         failureFlash: true
     })(req, res, next)
+})
+
+router.get('/logout', (req, res) => {
+    req.logOut()
+    res.redirect('/login')
 })
 
 // router.get('/profile', (req, res) => {
