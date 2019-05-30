@@ -63,13 +63,13 @@ exports.register = (req, res) => {
         
                         newEditor.save().then(savedUser => {
                             req.flash('success_message', 'You are registered successfully. Please Log in')
-                            res.redirect('/login')
+                            res.redirect('/editor/login')
                         })
                     })
                 })
             } else {
                 req.flash('error_message', 'Email is already registered')
-                res.redirect('/register')
+                res.redirect('/editor/register')
             }
         })
     }
@@ -77,17 +77,17 @@ exports.register = (req, res) => {
 
 
 passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
-    Guest.findOne({ email: email }).then(guest => {
-        if(!guest) {
+    Editor.findOne({ email: email }).then(editor => {
+        if(!editor) {
             return done(null, false, { message: 'No guest found'})
         }
-        bcrypt.compare(password, guest.password, (err, matched) => {
+        bcrypt.compare(password, editor.password, (err, matched) => {
             if(err) {
                 return err
             }
 
             if(matched) {
-                return done(null, guest)
+                return done(null, editor)
             } else {
                 return done(null, false, { message: 'Incorrect password' })
             }
@@ -107,8 +107,8 @@ passport.deserializeUser((id, done) => {
 
 exports.login = (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/editor',
+        successRedirect: '/editor',
+        failureRedirect: '/editor/login',
         failureFlash: true
     })(req, res, next)
 }
