@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
 const GoogleStrategy = require('passport-google-oauth20').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 
 exports.all = async (req, res, next) => {
     req.app.locals.layout = 'guest'
@@ -116,6 +117,10 @@ exports.google = (req, res, next) => {
         {scope: ['profile', 'email']})(req, res, next)
 }
 
+exports.facebook = (req, res, next) => {
+    passport.authenticate('facebook')(req, res, next)
+}
+
 
 
 /* Passport Local */
@@ -158,5 +163,18 @@ passport.use(
     }, (accessToken, refreshToken, profile, cb) => {
         console.log(accessToken)
         console.log(profile)
+    })
+)
+
+/* Passport facebook */
+passport.use(
+    new FacebookStrategy({
+        clientID: configs.facebookClientID,
+        clientSecret: configs.facebookClientSecret,
+        callbackURL: '/auth/facebook/callback'
+    }, (accessToken, refreshToken, profile, cb) => {
+        Guest.create({ facebookId: profile.id }, (err, user) => {
+            return cb(err, user)
+        })
     })
 )

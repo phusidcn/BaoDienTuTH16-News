@@ -29,4 +29,12 @@ router.get('/auth/google/callback',
         res.redirect('/');
     });
 
+router.get('/auth/facebook', guestController.facebook)
+router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/')
+    }
+)
+
 module.exports = router
