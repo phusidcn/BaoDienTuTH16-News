@@ -1,7 +1,7 @@
 const validationHandler = require('../validations/validationHandler')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
-const { userAuthenticated } = require('./../../helpers/authentication')
+const Editor = require('./../models/Editor')
 const LocalStrategy = require('passport-local').Strategy
 
 
@@ -10,13 +10,13 @@ exports.all = async (req, res, next) => {
     next()
 }
 
-exports.register = async (req, res) => {
-    res.render('editor/register', {
+exports.index = (req, res) => {
+    res.render('editor/editor_view_list_content', {
         layout: false
     })
 }
 
-exports.registerSubmit = async (req, res) => {
+exports.register = (req, res) => {
     let errors = []
 
     if(!req.body.name) {
@@ -75,11 +75,6 @@ exports.registerSubmit = async (req, res) => {
     }
 }
 
-exports.login = async (req, res) => {
-    res.render('editor/login',{
-        layout: false
-    })
-}
 
 passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
     Guest.findOne({ email: email }).then(guest => {
@@ -100,44 +95,44 @@ passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done
     }) 
 }))
 
-passport.serializeUser((guest, done) => {
-    done(null, guest._id)
+passport.serializeUser((editor, done) => {
+    done(null, editor._id)
 })
 
 passport.deserializeUser((id, done) => {
-    Guest.findById(id, (err, guest) => {
-        done(err, guest)
+    Editor.findById(id, (err, editor) => {
+        done(err, editor)
     })
 })
 
-exports.loginPost = async (req, res) => {
+exports.login = (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: 'editor/',
+        failureRedirect: '/editor',
         failureFlash: true
     })(req, res, next)
 }
 
-exports.viewDraft = async (req, res) => {
-    try {
-        await res.render('editor/editor_view_draft')
-    } catch (err) {
-        console.log(err)
-    }
-}
+// exports.viewDraft = async (req, res) => {
+//     try {
+//         await res.render('editor/editor_view_draft')
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
-exports.censorContent = async (req, res) =>{
-    try {
-         await res.render('editor/editor_censor_content')
-    } catch (err) {
-        console.log(err)
-    }
-}
+// exports.censorContent = async (req, res) =>{
+//     try {
+//          await res.render('editor/editor_censor_content')
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
-exports.viewListContent = async (req, res) => {
-    try {
-        await res.render('editor/editor_view_list_content')
-    } catch (err) {
-        console.log(err)
-    }
-}
+// exports.viewListContent = async (req, res) => {
+//     try {
+//         await res.render('editor/editor_view_list_content')
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
