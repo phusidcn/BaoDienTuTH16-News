@@ -31,7 +31,7 @@
         </div>
     {{/if}}
     <div id="login-box">
-        <div class="left">
+        <div class="center">
             <h1>Sign up</h1>
             {{#each errors}}
                 <div class="alert alert-danger">
@@ -39,7 +39,7 @@
                 </div>
             {{/each}}
 
-            <form action="/register" method="POST">
+            <form action="/editor/register" method="POST">
                 <input type="text" value="{{name}}" name="name" placeholder="Username" required />
                 <input type="text" value="{{email}}" name="email" placeholder="E-mail" required />
                 <input type="password" name="password" placeholder="Password" required />
@@ -48,8 +48,6 @@
                 <input type="submit" name="signup_submit" value="Sign me up" />
             </form>
         </div>
-
-        <div class="or">OR</div>
     </div>
 </body>
 
