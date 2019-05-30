@@ -47,7 +47,8 @@ exports.register = (req, res) => {
         res.render('editor/register', {
             errors: errors,
             name: req.body.name,
-            email: req.body.email
+            email: req.body.email,
+            layout: false
         })
     } else {
         Editor.findOne({email: req.body.email}).then(editor => {

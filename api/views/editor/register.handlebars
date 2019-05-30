@@ -26,22 +26,23 @@
         </a>
     </div>
     {{#if error_message}}
-        <div class="alert alert-danger" style="text-align: center;">
-            {{error_message}}
-        </div>
+    <div class="alert alert-danger" style="text-align: center;">
+        {{error_message}}
+    </div>
     {{/if}}
+    {{#each errors}}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+    {{/each}}
     <div id="login-box">
         <div class="center">
             <h1>Sign up</h1>
-            {{#each errors}}
-                <div class="alert alert-danger">
-                    {{ message }}
-                </div>
-            {{/each}}
+
 
             <form action="/editor/register" method="POST">
                 <input type="text" value="{{name}}" name="name" placeholder="Username" required />
-                <input type="text" value="{{email}}" name="email" placeholder="E-mail" required />
+                <input type="email" value="{{email}}" name="email" placeholder="E-mail" required />
                 <input type="password" name="password" placeholder="Password" required />
                 <input type="password" name="password2" placeholder="Retype password" required />
 
