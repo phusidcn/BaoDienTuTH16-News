@@ -25,36 +25,31 @@
             Back To Home
         </a>
     </div>
-    {{#if error_message}}
-    <div class="alert alert-danger" style="text-align: center;">
-        {{error_message}}
-    </div>
+    {{#if success_message}}
+        <div class="alert alert-success" style="text-align: center;">
+            {{success_message}}
+        </div>
     {{/if}}
-    {{#each errors}}
-    <div class="alert alert-danger" style="text-align: center;">
-        {{ message }}
-    </div>
-    {{/each}}
+    {{#if error_message}}
+        <div class="alert alert-danger" style="text-align: center;">
+            {{error_message}}
+        </div>
+    {{/if}}
     <div id="login-box">
         <div class="left">
-            <h1>Sign up</h1>
+            <h1>Sign In</h1>
+            {{#each errors}}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+            {{/each}}
 
-            <form action="/register" method="POST">
-                <input type="text" value="{{name}}" name="name" placeholder="Username" required />
-                <input type="text" value="{{email}}" name="email" placeholder="E-mail" required />
-                <input type="password" value="{{password}}" name="password" placeholder="Password" required />
-                <input type="password" name="password2" placeholder="Retype password" required />
+            <form action="/login" method="POST">
+                <input type="text" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
 
-                <input type="submit" name="signup_submit" value="Sign me up" />
+                <input type="submit" name="signup_submit" value="Sign In" />
             </form>
-        </div>
-
-        <div class="right">
-            <span class="loginwith">Sign in with<br />social network</span>
-
-            <button class="social-signin facebook">Log in with facebook</button>
-            <button class="social-signin twitter">Log in with Twitter</button>
-            <button class="social-signin google">Log in with Google+</button>
         </div>
         <div class="or">OR</div>
     </div>

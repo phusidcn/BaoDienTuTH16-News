@@ -6,10 +6,6 @@ const CommentSchema = new Schema({
     subscriber: {
         type: Schema.Types.ObjectId,
         ref: 'Subscriber'
-    },
-    post: {
-        type: Schema.Types.ObjectId,
-        ref: 'Post'
     }
 })
 

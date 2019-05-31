@@ -11,9 +11,18 @@ router.all('/*', (req, res, next) => {
 })
 
 router.get('/', (req, res) => {
+    // Post.find({})
+    //     .populate('category')
+    //     .exec()
+    //     .then(posts => {
+    //         res.render('writer/posts/index', {
+    //             posts: posts
+    //         })
+    //     })
     Post.find({})
         .populate('category')
-        .then(posts => {
+        .exec((err, posts) => {
+            if(err) console.log(err)
             res.render('writer/posts/index', {
                 posts: posts
             })
@@ -67,6 +76,7 @@ router.post('/create', (req, res) => {
         
         newPost.save()
         .then(savedPost => {
+            // console.log(savedPost)
             res.redirect('/writer/post')
         })
         .catch(err => {

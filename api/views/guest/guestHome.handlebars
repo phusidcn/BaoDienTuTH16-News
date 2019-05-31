@@ -239,14 +239,14 @@
         <div class="list-post-item mb-5">
             <div class="list-post-item__content mr-3">
                 <h1 style="font-weight:500">
-                    <a href="/post" style="text-decoration:none; color: #333;">
+                    <a href=`/{{id}}` style="text-decoration:none; color: #333;">
                         <strong>{{title}}</strong>
                     </a>
                 </h1>
                 <p>
                     {{ content }}
                 </p>
-                <p>Tac gia: {{ writer }}</p>
+                <p>Tac gia: {{ writer.name }}</p>
                 <div>
                     {{#each tags}}
                     <small class="d-block"><a class="text-success" href="./author.html"
@@ -254,7 +254,7 @@
                             {{ name }}        
                         </a></small>
                     {{/each}}
-                    <small class="text-muted">{{ createdAt}} &middot; 5 phút đọc &middot; <i class="fa fa-star"
+                    <small class="text-muted">{{ generateTime createdAt "MMMM Do YYYY" }} &middot; 5 phút đọc &middot; <i class="fa fa-star"
                             aria-hidden="true"></i></small>
                 </div>
             </div>
@@ -760,10 +760,10 @@
     <h2 class="cta__book-now">
         Đăng kí để nhận những bài báo hot nhất
     </h2>
-    <button class="btn">
+    <a href="/register" type="button" class="btn">
         <span class="btn__visible">Đăng kí</span>
         <span class="btn__invisible">Tài khoản VIP</span>
-    </button>
+    </a>
 </div>
 
 <script>

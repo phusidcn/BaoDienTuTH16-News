@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/authen.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon"
+        href="https://courses.fit.hcmus.edu.vn/pluginfile.php/1/theme_essential/favicon/1548823047/logo-khtn-transparent.png"
+        type="image/png">
+
+    <title>minimum &mdash; E-magazine for you 24/7 - Sign Up</title>
+</head>
+
+<body>
+    <div class="back-to-home">
+        <a href="/" style="text-decoration:none;">
+            <img src="http://css3transition.com/demo/fixed-table-header/previous.svg" alt="">
+            Back To Home
+        </a>
+    </div>
+    {{#if success_message}}
+        <div class="alert alert-success" style="text-align: center;">
+            {{success_message}}
+        </div>
+    {{/if}}
+    {{#if error_message}}
+        <div class="alert alert-danger" style="text-align: center;">
+            {{error_message}}
+        </div>
+    {{/if}}
+    <div id="login-box">
+        <div class="center">
+            <h1>Sign In</h1>
+            {{#each errors}}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+            {{/each}}
+
+            <form action="/editor/login" method="POST">
+                <input type="text" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
+                <input type="submit" name="signup_submit" value="Sign In" />
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

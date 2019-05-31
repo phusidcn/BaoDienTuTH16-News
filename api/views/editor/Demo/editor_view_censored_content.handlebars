@@ -1,11 +1,12 @@
 <div class="content">
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <nav class="navbar navbar-expand-lg">
         <button type="button" id="sidebarCollapse" class="btn btn-secondary">
             <i class="fa fa-align-justify"></i> <span></span>
         </button>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-target="#navbarNav" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -24,43 +25,44 @@
         </div>
     </nav>
 
-    <div class="row card-flex">
-        <div class="mb-3">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                </div>
-                <a class="btn btn-danger" href="writer_edit_denied_content.handlebars">Chỉnh sửa</a>
-            </div>
-        </div>
 
-        <div class="mb-3">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                </div>
-                <a class="btn btn-danger" href="writer_edit_denied_content.handlebars">Chỉnh sửa</a>
-            </div>
-        </div>
+    <table class="table table-striped content-table">
+        <thead>
+            <tr>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Số thứ tự</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Tên bài viết</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Chuyên mục</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Tác giả</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" style="text-align: center; vertical-align: middle;">1</th>
+                <td>Vì sao Bộ GD lúng túng xử lý thí sinh gian lận thi cử?</td>
+                <td>Giáo dục</td>
+                <td>Sĩ Huỳnh</td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tableModal">
+                        <span>Được duyệt</span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" style="text-align: center; vertical-align: middle;">2</th>
+                <td>Đề xuất tăng thu phí với điểm rửa xe, nhà hàng, khách sạn</td>
+                <td>Thời sự</td>
+                <td>Lê Quốc Thái</td>
+                <td>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#tableModal">
+                        <span>Được duyệt</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-        <div class="mb-3">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/img/thoisu-tintuc03.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's
-                        content.</p>
-                </div>
-                <a class="btn btn-danger" href="writer_edit_denied_content.handlebars">Chỉnh sửa</a>
-            </div>
-        </div>
-    </div>
+
 </div>
 
 <!-- Log out modal -->
@@ -138,4 +140,5 @@
             </div>
         </div>
     </div>
+
 </div>

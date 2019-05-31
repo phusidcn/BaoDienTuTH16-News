@@ -1,82 +1,67 @@
 <div class="content">
     <nav class="navbar navbar-expand-lg">
-        <button type="button" id="sidebarCollapse" class="btn btn-blue">
+        <button type="button" id="sidebarCollapse" class="btn btn-secondary">
             <i class="fa fa-align-justify"></i> <span></span>
         </button>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-target="#navbarNav" data-toggle="collapse"
+            data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link"
+                    <a style="font-family: arial; color: #EEEEEE; font-size: 18px;" class="nav-link"
                         href="../guest/guest_Home.handlebars"><b>Trang chủ</b></a>
                 </li>
                 <li class="nav-item">
                     <a data-toggle="modal" data-target="#logOut"
-                     class="nav-link" href="#"><b>Đăng
+                        style="font-family: arial; color: #EEEEEE; font-size: 18px" class="nav-link" href="#"><b>Đăng
                             xuất</b></a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <form action="/writer/create" enctype="multipart/form-data" method="POST">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-flag-o"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Tiêu đề" id="title" name="title"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-folder-o"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Chuyên mục" id="category" name="category"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-tags"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Gán nhãn" id="tag" name="tag"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-book"></i>
-                </button>
-            </div>
-            <input type="text" class="form-control" placeholder="Tóm tắt nội dung" id="shortContent" name="shortContent"
-                aria-describedby="basic-addon1">
-        </div>
-        <div class="input-group mb-3">
-            <input required class="form-control" type="file" name="image" id="image">
-        </div>
-
-        <textarea name="content" cols="150" rows="10">Noi dung chi tiet</textarea>
-        <div>
-        <button type="submit" class="btn-blue" value="">Đăng bài</button>
-        </div>
-    </form>
-
-
-
+    <table class="table table-striped content-table">
+        <thead>
+            <tr>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Số thứ tự</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Tên bài viết</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Chuyên mục</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Tác giả</th>
+                <th scope="col" style="text-align: center; vertical-align: middle;">Trạng thái</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row" style="text-align: center; vertical-align: middle;">1</th>
+                <td>Đề xuất tăng thu phí với điểm rửa xe, nhà hàng, khách sạn</td>
+                <td>Thời sự</td>
+                <td>Lê Quốc Thái</td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tableModal">
+                        <span>Bị từ chối</span>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" style="text-align: center; vertical-align: middle;">3</th>
+                <td>Vì sao 5 cựu lãnh đạo liên quan dự án Gang thép Thái Nguyên bị bắt?</td>
+                <td>Thời sự</td>
+                <td>Quang Lê</td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tableModal">
+                        <span>Bị từ chối</span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
 </div>
-
-
 
 <!-- Log out modal -->
 <div class="modal fade" id="logOut" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -153,4 +138,5 @@
             </div>
         </div>
     </div>
+
 </div>
