@@ -3,6 +3,11 @@ const Category = require('../models/Category')
 const Tag = require('../models/Tag')
 const Post = require('../models/Post')
 const Editor = require('../models/Editor')
+const Admin = require('../models/Admin')
+
+const bcrypt = require('bcryptjs')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'admin'
@@ -16,6 +21,45 @@ exports.index = async (req, res) => {
         console.log(err)
     }
 }
+
+exports.login = (req, res, next) => { 
+    console.log('LOGIN')
+    passport.authenticate('local', {
+        successRedirect: '/admin',
+        failureRedirect: '/admin/login',
+        failureFlash: true
+    })(req, res, next)
+}
+
+
+passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
+    Admin.findOne({ email: email }).then(admin => {
+        if(!admin) {
+            return done(null, false, { message: 'No admin found'})
+        }
+        bcrypt.compare(password, admin.password, (err, matched) => {
+            if(err) {
+                return err
+            }
+
+            if(matched) {
+                return done(null, admin)
+            } else {
+                return done(null, false, { message: 'Incorrect password' })
+            }
+        })
+    }) 
+}))
+
+passport.serializeUser((admin, done) => {
+    done(null, admin._id)
+})
+
+passport.deserializeUser((id, done) => {
+    Admin.findById(id, (err, admin) => {
+        done(err, admin)
+    })
+})
 
 /* ================== CATEGORY ========================= */
 exports.indexCategory = async (req, res) => {
