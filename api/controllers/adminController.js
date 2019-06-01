@@ -22,8 +22,7 @@ exports.index = async (req, res) => {
     }
 }
 
-exports.login = (req, res, next) => { 
-    console.log('LOGIN')
+exports.login = (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/admin',
         failureRedirect: '/admin/login',

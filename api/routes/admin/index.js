@@ -5,14 +5,10 @@ const router = express.Router()
 router.all('/*', adminController.all)
 router.get('/', adminController.index)
 
-router.get('/login', async (req, res) => {
-    try {
-        await res.render('admin/login', {
-            layout: false
-        })
-    } catch (err) {
-        console.log(err)
-    }
+router.get('/login', (req, res) => {
+    res.render('admin/login', {
+        layout: false
+    })
 })
 
 router.post('/login', adminController.login)

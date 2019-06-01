@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const bcrypt = require('bcryptjs')
 
 const AdminSchema = new Schema({
     avatar: String,
@@ -40,16 +39,5 @@ const AdminSchema = new Schema({
         }
     ]
 })
-
-AdminSchema.methods.encryptPassword = async password => {
-    const salt = await bcrypt.genSalt(5)
-    const hash = await bcrypt.hash(password, salt)
-    return hash
-}
-
-AdminSchema.methods.validPassword = async function (checkPassword) {
-    const result = await bcrypt.compare(checkPassword, this.password)
-    return result
-}
 
 module.exports = mongoose.model('Admin', AdminSchema)
