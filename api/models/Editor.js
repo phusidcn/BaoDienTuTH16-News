@@ -20,7 +20,6 @@ const EditorSchema = new Schema({
         required: true,
         min: [4, 'Too short, min is 4 characters'],
         max: [32, 'Too long, max is 32 characters'],
-        required: 'Password is required'
     },
     address: String,
     posts: [

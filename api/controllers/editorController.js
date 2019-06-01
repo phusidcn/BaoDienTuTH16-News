@@ -5,15 +5,13 @@ const Editor = require('./../models/Editor')
 const LocalStrategy = require('passport-local').Strategy
 
 
-exports.all = async (req, res, next) => {
+exports.all = (req, res, next) => {
     req.app.locals.layout = 'editor'
     next()
 }
 
 exports.index = (req, res) => {
-    res.render('editor/editor_view_list_content', {
-        layout: false
-    })
+    res.render('editor/editor_view_list_content')
 }
 
 exports.register = (req, res) => {
@@ -97,7 +95,7 @@ passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done
 }))
 
 passport.serializeUser((editor, done) => {
-    done(null, editor._id)
+    done(null, editor.id)
 })
 
 passport.deserializeUser((id, done) => {

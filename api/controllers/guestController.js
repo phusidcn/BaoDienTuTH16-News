@@ -126,26 +126,27 @@ exports.facebook = (req, res, next) => {
 /* Passport Local */
 
 passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
-    Guest.findOne({ email: email }).then(guest => {
-        if(!guest) {
-            return done(null, false, { message: 'No guest found'})
-        }
-        bcrypt.compare(password, guest.password, (err, matched) => {
-            if(err) {
-                return err
-            }
+    // Guest.findOne({ email: email }).then(guest => {
+    //     if(!guest) {
+    //         return done(null, false, { message: 'No guest found'})
+    //     }
+    //     bcrypt.compare(password, guest.password, (err, matched) => {
+    //         if(err) {
+    //             return err
+    //         }
 
-            if(matched) {
-                return done(null, guest)
-            } else {
-                return done(null, false, { message: 'Incorrect password' })
-            }
-        })
-    }) 
+    //         if(matched) {
+    //             return done(null, guest)
+    //         } else {
+    //             return done(null, false, { message: 'Incorrect password' })
+    //         }
+    //     })
+    // }) 
+    console.log(email)
 }))
 
 passport.serializeUser((guest, done) => {
-    done(null, guest._id)
+    done(null, guest.id)
 })
 
 passport.deserializeUser((id, done) => {

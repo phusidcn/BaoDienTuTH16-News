@@ -1,9 +1,8 @@
 const express = require('express')
-const Writer = require('../../models/Writer')
 const writerController = require('../../controllers/writerController')
 const router = express.Router()
 
-router.get('/*', writerController.all)
+router.all('/*', writerController.all)
 
 router.get('/', writerController.index)
 
