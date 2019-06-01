@@ -4,6 +4,7 @@ const cors = require('cors')
 const path = require('path')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
+const morgan = require('morgan')
 const mongoose = require('mongoose')
 const upload = require('express-fileupload')
 const flash = require('connect-flash')
@@ -58,6 +59,7 @@ app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride('_method'))
 app.use(upload())
+app.use(morgan())
 
 app.use(session({
     secret: 'lequocduyquang',
