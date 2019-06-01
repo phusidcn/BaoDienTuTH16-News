@@ -24,6 +24,7 @@ const adminWritersRoutes = require('./routes/admin/writer')
 const adminCategoryRoutes = require('./routes/admin/category')
 const adminTagRoutes = require('./routes/admin/tag')
 const adminEditorRoutes = require('./routes/admin/editor')
+const adminPostRoutes = require('./routes/admin/post')
 
 /*======= */
 /* WRITER */
@@ -87,6 +88,7 @@ app.use('/admin/writer', adminWritersRoutes)
 app.use('/admin/category', adminCategoryRoutes)
 app.use('/admin/tag', adminTagRoutes)
 app.use('/admin/editor',adminEditorRoutes)
+app.use('/admin/post', adminPostRoutes)
 
 /* Writer */
 app.use('/writer', writerRoutes)

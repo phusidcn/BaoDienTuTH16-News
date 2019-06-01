@@ -29,12 +29,6 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
-    // tags: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'Tag'
-    //     }
-    // ],
     tag: String,
     writer: {
         type: Schema.Types.ObjectId,

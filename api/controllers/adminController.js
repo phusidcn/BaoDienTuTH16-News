@@ -22,7 +22,7 @@ exports.index = async (req, res) => {
     }
 }
 
-exports.login = (req, res, next) => {
+exports.login = (req, res) => {
     passport.authenticate('local', {
         successRedirect: '/admin',
         failureRedirect: '/admin/login',
@@ -134,7 +134,6 @@ exports.indexTag = async (req, res) => {
 exports.createTag = async (req, res) => {
     try {
         let newTag = new Tag()
-        newTag.id = req.body.id
         newTag.name = req.body.name
         newTag = await newTag.save()
         res.redirect('/admin/tag')
@@ -182,15 +181,48 @@ exports.deleteTag = async (req, res) => {
 /* ====================== POST ========================= */
 exports.indexPost = async (req, res) => {
     try {
-        const tags = await Tag.find({})
-        res.render('admin/tag/index', {
-            tags: tags
+        const posts = await Post.find({})
+        res.render('admin/post/index', {
+            posts: posts
         })
     } catch (error) {
         console.log(error)
     }
 }
 
+exports.editPost = async (req, res) => {
+    try {
+        let foundPost = await Post.findOne({id: req.params.id})
+        res.render('admin/post/edit', {
+            post: foundPost
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updatePost = async (req, res) => {
+    try {
+        let { name, status } = req.body
+        let foundPost = await Post.findOne({id: req.params.id})
+        foundPost.name = name
+        foundPost.status = status 
+        await foundPost.save().then(updatedPost => {
+            res.redirect('/admin/post')
+        })        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deletePost = async (req, res) => {
+    try {
+        const deletedPost = await Post.remove({id: req.params.id})
+        res.redirect('/admin/post')
+    } catch (error) {
+        console.log(error)
+    }
+}
 /* ===================================================== */
 
 
