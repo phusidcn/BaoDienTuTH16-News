@@ -22,14 +22,75 @@ exports.index = async (req, res) => {
     }
 }
 
-exports.login = (req, res) => {
+exports.register = (req, res) => {
+    let errors = []
+
+    if(!req.body.name) {
+        errors.push({
+            message: 'Please input your name'
+        })
+    }
+
+    if(!req.body.email) {
+        errors.push({
+            message: 'Please input your email'
+        })
+    }
+
+    if(!req.body.password) {
+        errors.push({
+            message: 'Please input your password'
+        })
+    }
+
+    if(req.body.password !== req.body.password2) {
+        errors.push({
+            message: 'Password not match'
+        })
+    }
+
+    if(errors.length > 0) {
+        res.render('admin/register', {
+            errors: errors,
+            name: req.body.name,
+            email: req.body.email,
+            layout: false
+        })
+    } else {
+        Admin.findOne({email: req.body.email}).then(admin => {
+            if(!admin) {
+                const newAdmin = new Admin({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password
+                })
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+                        newAdmin.password = hash
+        
+                        newAdmin.save().then(savedUser => {
+                            req.flash('success_message', 'You are registered successfully. Please Log in')
+                            res.redirect('/admin/login')
+                        })
+                    })
+                })
+            } else {
+                req.flash('error_message', 'Email is already registered')
+                res.redirect('/admin/register')
+            }
+        })
+    }
+}
+
+exports.login = (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/admin',
-        failureRedirect: '/admin/login',
+        successRedirect: '/admin/',
+        failureRedirect: '/admin/login/',
         failureFlash: true
     })(req, res, next)
 }
 
+/* Passport Local */
 
 passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
     Admin.findOne({ email: email }).then(admin => {

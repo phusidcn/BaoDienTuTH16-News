@@ -7,23 +7,19 @@ router.get('/*', writerController.all)
 
 router.get('/', writerController.index)
 
-router.get('/login', (req, res) => {
-    // res.render('home/register')
-})
-
 router.get('/register', (req, res) => {
-    // res.render('home/register')
+    res.render('writer/register', {
+        layout: false
+    })
+})
+router.get('/login', (req, res) => {
+    res.render('writer/login', {
+        layout: false
+    })
 })
 
-router.post('/register', (req, res) => {
-    // const newWriter = new Writer({
-    //     name: req.body.name,
-    //     email: req.body.email,
-    //     password: req.body.password
-    // })
-
-    // res.send('')
-})
+router.post('/register', writerController.register)
+router.post('/login', writerController.login)
 
 module.exports = router
 

@@ -10,7 +10,13 @@ router.get('/login', (req, res) => {
         layout: false
     })
 })
+router.get('/register', (req, res) => {
+    res.render('admin/register', {
+        layout: false
+    })
+})
 
 router.post('/login', adminController.login)
+router.post('/register', adminController.register)
 
 module.exports = router

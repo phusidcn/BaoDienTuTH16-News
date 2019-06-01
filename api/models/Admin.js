@@ -8,8 +8,9 @@ const AdminSchema = new Schema({
         required: true,
         min: [6, 'Too short, min is 6 characters']
     },
-    email: { type: String,
-        required: 'Email is Required',
+    email: { 
+        type: String,
+        required: true,
         lowercase: true,
         unique: true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]

@@ -2,94 +2,65 @@
 <html lang="en">
 
 <head>
-	<title>Login V2</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/fonts/iconic/css/material-design-iconic-font.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/vendor/animate/animate.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/vendor/css-hamburgers/hamburgers.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/vendor/animsition/css/animsition.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/vendor/select2/select2.min.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/vendor/daterangepicker/daterangepicker.css">
-	<!--===============================================================================================-->
-	<link rel="stylesheet" href="/css/login/util.css">
-	<link rel="stylesheet" href="/css/login/main.css">
-	<!--===============================================================================================-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/authen.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon"
+        href="https://courses.fit.hcmus.edu.vn/pluginfile.php/1/theme_essential/favicon/1548823047/logo-khtn-transparent.png"
+        type="image/png">
+
+    <title>minimum &mdash; E-magazine for you 24/7 - Sign Up</title>
 </head>
 
 <body>
-	{{#each errors}}
-	<div class="alert alert-danger">
-		{{ message }}
-	</div>
-	{{/each}}
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<form action="/admin/login" method="POST" class="login100-form validate-form">
-					<span class="login100-form-title p-b-26">
-						Admin Page
-					</span>
-					<span class="login100-form-title p-b-48">
-						<i class="zmdi zmdi-font"></i>
-					</span>
+    <div class="back-to-home">
+        <a href="/" style="text-decoration:none;">
+            <img src="http://css3transition.com/demo/fixed-table-header/previous.svg" alt="">
+            Back To Home
+        </a>
+    </div>
+    {{#if success_message}}
+        <div class="alert alert-success" style="text-align: center;">
+            {{success_message}}
+        </div>
+    {{/if}}
+    {{#if error_message}}
+        <div class="alert alert-danger" style="text-align: center;">
+            {{error_message}}
+        </div>
+    {{/if}}
+    <div id="login-box">
+        <div class="left">
+            <h1>Sign In</h1>
+            {{#each errors}}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+            {{/each}}
 
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="email" name="email">
-						<span class="focus-input100" data-placeholder="Email"></span>
-					</div>
+            <form action="/admin/login" method="POST">
+                <input type="text" name="email" placeholder="Email" required />
+                <input type="password" name="password" placeholder="Password" required />
 
-					<div class="wrap-input100 validate-input">
-						<span class="btn-show-pass">
-							<i class="zmdi zmdi-eye"></i>
-						</span>
-						<input class="input100" type="password" name="password">
-						<span class="focus-input100" data-placeholder="Password"></span>
-					</div>
+                <input type="submit" name="signup_submit" value="Sign In" />
+            </form>
+        </div>
 
-					<div class="container-login100-form-btn">
-						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button type="submit" class="login100-form-btn">
-								Login
-							</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+        <div class="right">
+            <span class="loginwith">Sign in with<br />social network</span>
 
-	<div id="dropDownSelect1"></div>
-
-	<!--===============================================================================================-->
-	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/vendor/animsition/js/animsition.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/vendor/bootstrap/js/popper.js"></script>
-	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/vendor/select2/select2.min.js"></script>
-	<!--===============================================================================================-->
-	<script src="/vendor/daterangepicker/moment.min.js"></script>
-	<script src="/vendor/daterangepicker/daterangepicker.js"></script>
-	<!--===============================================================================================-->
-	<script src="/vendor/countdowntime/countdowntime.js"></script>
-	<!--===============================================================================================-->
-	<script src="/js/login/main.js"></script>
-
+            <button class="social-signin facebook">Log in with facebook</button>
+            <button class="social-signin twitter">Log in with Twitter</button>
+            <button class="social-signin google">Log in with Google+</button>
+        </div>
+        <div class="or">OR</div>
+    </div>
 </body>
 
 </html>

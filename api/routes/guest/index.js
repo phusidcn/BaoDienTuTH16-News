@@ -1,6 +1,5 @@
 const express = require('express')
 const passport = require('passport')  
-const { userAuthenticated } = require('./../../helpers/authentication')
 const guestController = require('../../controllers/guestController')
 const router = express.Router()
 
