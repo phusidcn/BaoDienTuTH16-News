@@ -11,14 +11,6 @@ router.all('/*', (req, res, next) => {
 })
 
 router.get('/', (req, res) => {
-    // Post.find({})
-    //     .populate('category')
-    //     .exec()
-    //     .then(posts => {
-    //         res.render('writer/posts/index', {
-    //             posts: posts
-    //         })
-    //     })
     Post.find({})
         .populate('category')
         .exec((err, posts) => {

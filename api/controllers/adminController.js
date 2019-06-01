@@ -292,10 +292,20 @@ exports.deleteWriter = async (req, res) => {
 
 exports.indexEditor = async(req,res) => {
     try {
-        const editors = await Editor.find({});
-        res.render('admin/editor/index',{
-            editors : editors
-        })
+        // const editors = await Editor.find({});
+        // const categories = await Category.find({})
+        // res.render('admin/editor/index',{
+        //     editors : editors,
+        //     categories: categories
+        // })
+        Editor.find({})
+            .populate('category')
+            .exec((err, editors) => {
+                if(err) console.log(err)
+                res.render('admin/editor/index', {
+                    editors: editors
+                })
+            })
     }
     catch (error) {
         console.log(error)
@@ -305,9 +315,10 @@ exports.indexEditor = async(req,res) => {
 exports.createEditor = async (req, res) => {
     try {
         let newEditor = new Editor();
-        newEditor.id = req.body.id
+        newEditor.password = req.body.password
         newEditor.name = req.body.name
         newEditor.email = req.body.email
+        newEditor.category = req.body.category
         newEditor = await newEditor.save()
         res.redirect('/admin/editor');
     }
@@ -319,7 +330,7 @@ exports.createEditor = async (req, res) => {
 
 exports.editEditor = async (res, req) => {
     try {
-        let foundEditor = Editor.findOne({id:req.param.id});
+        let foundEditor = Editor.findOne({_id:req.params.id});
         res.render('/admin/editor/edit', {
             editor : foundEditor
         })
@@ -331,9 +342,8 @@ exports.editEditor = async (res, req) => {
 
 exports.updateEditor = async (req, res) => {
     try {
-        let { id, username, email } = req.body
+        let { username, email } = req.body
         let foundEditor = await Editor.findOne({id: req.params.id})
-        foundEditor.id = id
         foundEditor.name = username
         foundEditor.email = email
         await foundEdiotr.save().then(updatedEditor => {
