@@ -20,7 +20,7 @@ const PostSchema = new Schema({
     },
     premium: Boolean,
     status: {
-        // 0: Chua Duyet , 1: Da duyet, 2: Bi tu choi
+        // 0: Chua Duyet , 1: Da duyet, 2: Bi tu choi, 3: Xuat ban
         type: Number,
         default: 0
     },

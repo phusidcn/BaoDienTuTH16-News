@@ -10,7 +10,7 @@ exports.all = (req, res, next) => {
 }
 
 exports.index = (req, res) => {
-    res.render('editor/editor_view_list_content')
+    res.render('editor/index')
 }
 
 exports.register = (req, res) => {
@@ -113,26 +113,3 @@ exports.login = (req, res, next) => {
     })(req, res, next)
 }
 
-// exports.viewDraft = async (req, res) => {
-//     try {
-//         await res.render('editor/editor_view_draft')
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
-
-// exports.censorContent = async (req, res) =>{
-//     try {
-//          await res.render('editor/editor_censor_content')
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
-
-// exports.viewListContent = async (req, res) => {
-//     try {
-//         await res.render('editor/editor_view_list_content')
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }

@@ -20,6 +20,9 @@ const post2Id = mongoose.Types.ObjectId()
 const post3Id = mongoose.Types.ObjectId()
 const post4Id = mongoose.Types.ObjectId()
 const post5Id = mongoose.Types.ObjectId()
+const post6Id = mongoose.Types.ObjectId()
+const post7Id = mongoose.Types.ObjectId()
+const post8Id = mongoose.Types.ObjectId()
 
 const writer1Id = mongoose.Types.ObjectId()
 const writer2Id = mongoose.Types.ObjectId()
@@ -187,7 +190,52 @@ module.exports = {
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
             "premium": false,
-            "status": 0,
+            "status": 3,
+            "category": category1Id,
+            "tags": [tag2Id, tag3Id],
+            "writer": writer3Id,
+            "comments": [comment1Id, comment3Id]
+        },
+        {
+            "_id": post6Id,
+            "title": "Tin thoi su",
+            "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
+            "linkYoutube": "www.youtube.com",
+            "sucContent": "bla bla bla",
+            "content": "bla bla bla bla bla",
+            "createdAt": moment().toISOString(),
+            "premium": false,
+            "status": 1,
+            "category": category1Id,
+            "tags": [tag2Id, tag3Id],
+            "writer": writer3Id,
+            "comments": [comment1Id, comment3Id]
+        },
+        {
+            "_id": post7Id,
+            "title": "Tin the thao bong da",
+            "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
+            "linkYoutube": "www.youtube.com",
+            "sucContent": "bla bla bla",
+            "content": "bla bla bla bla bla",
+            "createdAt": moment().toISOString(),
+            "premium": false,
+            "status": 2,
+            "category": category1Id,
+            "tags": [tag2Id, tag3Id],
+            "writer": writer3Id,
+            "comments": [comment1Id, comment3Id]
+        },
+        {
+            "_id": post8Id,
+            "title": "Tin the thao bong da",
+            "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
+            "linkYoutube": "www.youtube.com",
+            "sucContent": "bla bla bla",
+            "content": "bla bla bla bla bla",
+            "createdAt": moment().toISOString(),
+            "premium": false,
+            "status": 4,
             "category": category1Id,
             "tags": [tag2Id, tag3Id],
             "writer": writer3Id,

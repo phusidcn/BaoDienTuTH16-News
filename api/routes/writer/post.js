@@ -4,23 +4,14 @@ const fs = require('fs')
 const { isEmpty, uploadDir } = require('../../helpers/upload-helper')
 const Post = require('../../models/Post')
 const Category = require('../../models/Category')
+const writerController = require('../../controllers/writerController')
 
-router.all('/*', (req, res, next) => {
-    req.app.locals.layout = 'writer'
-    next()
-})
+// router.all('/*', (req, res, next) => {
+//     req.app.locals.layout = 'writer'
+//     next()
+// })
 
-router.get('/', (req, res) => {
-    Post.find({})
-        .populate('category')
-        .exec((err, posts) => {
-            if(err) console.log(err)
-            res.render('writer/posts/index', {
-                posts: posts
-            })
-        })
-})
-
+router.get('/', writerController.post)
 router.get('/create', (req, res) => {
     Category.find({}).then(categories => {
         res.render('writer/posts/create', {
@@ -28,55 +19,7 @@ router.get('/create', (req, res) => {
         })
     })
 })
-
-router.post('/create', (req, res) => {
-    let errors = []
-
-    if(!req.body.title) {
-        errors.push({message: 'Please add title'})
-    }
-
-    if(!req.body.content) {
-        errors.push({message: 'Please add content'})
-    }
-
-    if(errors.length > 0) {
-        res.render('writer/posts/create', {
-            errors: errors
-        })
-    } else {   
-        let filename = ''
-        if(!isEmpty(req.files)) {
-            let file = req.files.image
-            filename = file.name + '-' + Date.now()
-            
-            file.mv('./public/uploads/' + filename, (err) => {
-                if(err) {
-                    console.log(err)
-                }
-            })
-        }
-        const newPost = new Post({
-            title: req.body.title,
-            image: filename,
-            category: req.body.category,
-            status: req.body.status,
-            tag: req.body.tag,
-            premium: req.body.premium,
-            content: req.body.content
-        })
-        
-        newPost.save()
-        .then(savedPost => {
-            // console.log(savedPost)
-            res.redirect('/writer/post')
-        })
-        .catch(err => {
-            console.log(err)
-        });
-    }
-})
-
+router.post('/create',writerController.create)
 router.get('/edit/:id', (req, res) => {
     Post.findById(req.params.id)
         .then(post => {
@@ -91,35 +34,23 @@ router.get('/edit/:id', (req, res) => {
             console.log(err)
         })
 })
+router.put('/edit/:id', writerController.edit)
+router.delete('/:id', writerController.delete)
 
-router.put('/edit/:id', (req, res) => {
-    Post.findOne({ _id: req.params.id })
+router.get('/approved', writerController.approvedPost)
+
+router.get('/waiting-approved', writerController.waitingApprovedPost)
+router.get('/waiting-approved/edit/:id', (req, res) => {
+    Post.findById(req.params.id)
         .then(post => {
-            post.title = req.body.title
-            post.status = req.body.status
-            post.content = req.body.content
-            post.premium = req.body.premium
-            post.category = req.body.category
-
-            post.save()
-                .then(updatedPost => {
-                    req.flash('success_message', `Post ${updatedPost} was successfully updated`);
-                    res.redirect('/writer/post')
+            Category.find({}).then(categories => {
+                res.render('writer/posts/edit-waiting-approved', {
+                    post: post,
+                    categories: categories
                 })
-                .catch(err => {
-                    console.log(err)
-                })
-        })
-})
-
-router.delete('/:id', (req, res) => {
-    Post.deleteOne({ _id: req.params.id })
-        .then((post) => {
-            fs.unlink(uploadDir + post.image, (err) => {
-                req.flash('success_message', 'Post was successfully deleted');
-                res.redirect('/writer/post')
             })
         })
 })
+router.put('/waiting-approved/edit/:id', writerController.editWaitingApproved)
 
 module.exports = router

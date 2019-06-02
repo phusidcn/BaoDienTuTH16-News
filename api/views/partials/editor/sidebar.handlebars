@@ -1,36 +1,38 @@
 <nav id="sidebar">
     <ul class="list-unstyled components">
-        <div style="color: black;" class="profile text-white text-center">
-            <h5>Biên tập viên</h5>
-        </div>
+        <div class="profile text-center">Phóng viên báo MUTV</div>
         <div class="avt-wrapper">
             <div class="avt">
                 <img src="/img/thai.jpg">
             </div>
-            <div class="profile text-white d-block mx-auto text-center bottom-border">LÊ QUỐC THÁI</div>
+            <div class="profile d-block mx-auto text-center bottom-border">LÊ QUỐC THÁI</div>
         </div>
-        <li class="active">
+        <li class="nav-item active">
+            <a href="/writer/post/create">
+                <i class="fa fa-upload"></i>
+                <span> Đăng bài viết</span>
+            </a>
+        </li>
+        <li>
             <a href="#viewList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-eye-slash"></i>
                 <span> Xem bài viết</span>
             </a>
+            <ul class="collapse list-unstyled" id="viewList">
+                <li>
+                    <a href="writer_view_censored_content.html">Đã được duyệt</a>
+                </li>
+                <li>
+                    <a href="writer_view_published_content.html">Đã xuất bản</a>
+                </li>
+                <li>
+                    <a href="writer_view_denied_content.html">Bị từ chối</a>
+                </li>
+                <li>
+                    <a href="writer_view_waiting_content.html">Chưa được duyệt</a>
+                </li>
+            </ul>
         </li>
-        <ul class="collapse list-unstyled" id="viewList">
-            <li>
-                <a href="/editor">Bản draft</a>
-            </li>
-            <li>
-                <a href="/editor/view-denied">Bị từ chối</a>
-            </li>
-            <li>
-            <li>
-            <li>
-                <a href="/editor/view-censored">Được duyệt</a>
-            </li>
-        </ul>
-    </ul>
-    </ul>
-    </li>
     </ul>
 
     <ul class="list-unstyled CTAs">

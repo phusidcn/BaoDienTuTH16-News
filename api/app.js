@@ -40,7 +40,7 @@ const app = express()
 
 const { select, generateTime } = require('./helpers/handlebars-helpers')
 
-app.use(cors())
+// app.use(cors())
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.mongoURI, {
@@ -75,7 +75,6 @@ app.use((req, res, next) => {
     res.locals.guest = req.user
     res.locals.success_message = req.flash('success_message')
     res.locals.error_message = req.flash('error_message')
-    res.locals.form_errors = req.flash('form_errors')
     res.locals.error = req.flash('error')
     next()
 })

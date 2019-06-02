@@ -20,5 +20,6 @@ router.get('/login', (req, res) => {
 router.post('/register', writerController.register)
 router.post('/login', writerController.login)
 
+
 module.exports = router
 

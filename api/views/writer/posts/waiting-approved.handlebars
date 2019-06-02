@@ -18,7 +18,7 @@
             </ul>
         </div>
     </nav>
-    <h4>ALL POSTS</h4>
+    <h4>WAITING APPROVED POSTS</h4>
 
     <table class="table table-bordered">
         <thead>
@@ -39,9 +39,9 @@
                 <td>{{category.name}}</td>
                 <td>{{status}}</td>
                 <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
-                <td><a href="/writer/post/edit/{{_id}}" class="btn btn-success">Edit</a></td>
+                <td><a href="/writer/post/waiting-approved/edit/{{_id}}" class="btn btn-success">Edit</a></td>
                 <td>
-                    <form action="/writer/post/{{_id}}?_method=DELETE" method="POST">
+                    <form action="/writer/post/waiting-approved/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
