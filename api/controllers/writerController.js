@@ -220,6 +220,18 @@ exports.approvedPost = (req, res) => {
         })
 }
 
+exports.publishedPost = (req, res) => {
+    const published_status = 3
+    Post.find({ status: published_status})
+        .populate('category')
+        .exec((err, posts) => {
+            if (err) console.log(err)
+            res.render('writer/posts/published', {
+                posts: posts
+            })
+        })
+}
+
 exports.waitingApprovedPost = (req, res) => {
     const waiting_approved_status = 0
     Post.find({ status: waiting_approved_status})
@@ -249,5 +261,57 @@ exports.editWaitingApproved = (req, res) => {
                 .catch(err => {
                     console.log(err)
                 })
+        })
+}
+
+exports.deleteWaitingApproved = (req, res) => {
+    Post.deleteOne({ _id: req.params.id })
+        .then((post) => {
+            fs.unlink(uploadDir + post.image, (err) => {
+                req.flash('success_message', 'Post was successfully deleted');
+                res.redirect('/writer/post/waiting-approved')
+            })
+        })
+}
+
+exports.rejectedPost = (req, res) => {
+    const rejected_status = 2
+    Post.find({ status: rejected_status})
+        .populate('category')
+        .exec((err, posts) => {
+            if (err) console.log(err)
+            res.render('writer/posts/rejected', {
+                posts: posts
+            })
+        })
+}
+
+exports.editRejected = (req, res) => {
+    Post.findOne({ _id: req.params.id })
+        .then(post => {
+            post.title = req.body.title
+            post.status = 2
+            post.content = req.body.content
+            post.premium = req.body.premium
+            post.category = req.body.category
+
+            post.save()
+                .then(updatedPost => {
+                    req.flash('success_message', `Post ${updatedPost} was successfully updated`);
+                    res.redirect('/writer/post/rejected')
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+}
+
+exports.deleteRejected = (req, res) => {
+    Post.deleteOne({ _id: req.params.id })
+        .then((post) => {
+            fs.unlink(uploadDir + post.image, (err) => {
+                req.flash('success_message', 'Post was successfully deleted');
+                res.redirect('/writer/post/rejected')
+            })
         })
 }
