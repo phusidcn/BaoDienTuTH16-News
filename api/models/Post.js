@@ -6,7 +6,6 @@ const PostSchema = new Schema({
     title: {
         type: String,
         required: true,
-        max: [100, 'Too long, max is 100 characters']
     },
     image: String,
     linkYoutube: String,

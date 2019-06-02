@@ -1,4 +1,3 @@
-const validationHandler = require('../validations/validationHandler')
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const Editor = require('./../models/Editor')
@@ -57,7 +56,9 @@ exports.register = (req, res) => {
                     password: req.body.password
                 })
                 bcrypt.genSalt(10, (err, salt) => {
+                    if(err) console.log(err)
                     bcrypt.hash(newEditor.password, salt, (err, hash) => {
+                        if(err) console.log(err)
                         newEditor.password = hash
         
                         newEditor.save().then(savedUser => {

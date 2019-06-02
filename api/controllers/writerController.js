@@ -56,7 +56,9 @@ exports.register = (req, res) => {
                     password: req.body.password
                 })
                 bcrypt.genSalt(10, (err, salt) => {
+                    if(err) console.log(err)
                     bcrypt.hash(newWriter.password, salt, (err, hash) => {
+                        if(err) console.log(err)
                         newWriter.password = hash
         
                         newWriter.save().then(savedUser => {
