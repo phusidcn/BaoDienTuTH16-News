@@ -12,7 +12,7 @@ exports.all = (req, res, next) => {
 exports.index = (req, res) => {
     res.render('editor/index')
 }
-
+ 
 exports.register = (req, res) => {
     let errors = []
 

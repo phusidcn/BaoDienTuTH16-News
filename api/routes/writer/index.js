@@ -1,18 +1,18 @@
 const express = require('express')
-const writerController = require('../../controllers/writerController')
 const router = express.Router()
+const writerController = require('../../controllers/writerController')
 
-router.all('/*', writerController.all)
-
-router.get('/', writerController.index)
+router.all('/*',writerController.all)
+router.get('/',writerController.index)
 
 router.get('/register', (req, res) => {
-    res.render('writer/register', {
+    res.render('writer/register',{
         layout: false
     })
 })
+
 router.get('/login', (req, res) => {
-    res.render('writer/login', {
+    res.render('writer/login',{
         layout: false
     })
 })
@@ -23,3 +23,4 @@ router.post('/login', writerController.login)
 
 module.exports = router
 
+module.exports = router
