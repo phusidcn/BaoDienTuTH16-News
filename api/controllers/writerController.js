@@ -5,7 +5,6 @@ const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 const Writer = require('./../models/Writer')
 const Post = require('./../models/Post')
 const Category = require('./../models/Category')
-const Writer = require('../models/Writer')
 const LocalStrategy = require('passport-local').Strategy
 
 exports.all = (req, res, next) => {
