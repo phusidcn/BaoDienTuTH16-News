@@ -11,6 +11,7 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 
+const app = express()
 
 const config = require('./config')
 const errorHandler = require('./middleware/errorHandler')
@@ -27,6 +28,14 @@ const adminTagRoutes = require('./routes/admin/tag')
 const adminEditorRoutes = require('./routes/admin/editor')
 const adminPostRoutes = require('./routes/admin/post')
 
+
+
+// Passport config
+require('./middleware/guestPassportJWT')(passport)
+require('./middleware/writerPassportJWT')(passport)
+require('./middleware/editorPassportJWT')(passport)
+
+
 /*======= */
 /* WRITER */
 const writerRoutes = require('./routes/writer/index')
@@ -36,11 +45,11 @@ const writerPostRoutes = require('./routes/writer/post')
 /* EDITOR */
 const editorRoutes = require('./routes/editor/index')
 
-const app = express()
+
 
 const { select, generateTime } = require('./helpers/handlebars-helpers')
 
-// app.use(cors())
+app.use(cors())
 
 mongoose.Promise = global.Promise
 mongoose.connect(config.mongoURI, {
@@ -51,44 +60,52 @@ mongoose.connect(config.mongoURI, {
     console.log(error)
 })
 
-app.engine('handlebars', exphbs({ defaultLayout: 'guest', helpers: { select: select, generateTime: generateTime }}))
+app.engine('handlebars', exphbs({ defaultLayout: 'guest', helpers: { select: select, generateTime: generateTime } }))
 app.set('view engine', 'handlebars')
 
-app.use(bodyParser.urlencoded({extended: true}))
+
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(methodOverride('_method'))
 app.use(upload())
-// app.use(morgan())
+app.use(morgan('dev'))
 
 app.use(session({
     secret: 'lequocduyquang',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { secure: true }
 }))
-app.use(flash())
+
 
 app.use(passport.initialize())
 app.use(passport.session())
+// app.use(editorPassport.initialize())
+// app.use(editorPassport.session())
+// app.use(writerPassport.initialize())
+// app.use(writerPassport.session())
+// app.use(guestPassport.initialize())
+// app.use(guestPassport.session())
 
-app.use((req, res, next) => {
-    res.locals.guest = req.user
-    res.locals.success_message = req.flash('success_message')
-    res.locals.error_message = req.flash('error_message')
+app.use(flash())
+
+
+app.use(function (req, res, next) {
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
     next()
 })
-
 /* Khách vãn lai + Khách VIP */
 app.use('/', guestRoutes)
-app.use('/subscriber', subscriberRoutes)
 
 /* Admin */
 app.use('/admin', adminRoutes)
 app.use('/admin/writer', adminWritersRoutes)
 app.use('/admin/category', adminCategoryRoutes)
 app.use('/admin/tag', adminTagRoutes)
-app.use('/admin/editor',adminEditorRoutes)
+app.use('/admin/editor', adminEditorRoutes)
 app.use('/admin/post', adminPostRoutes)
 
 /* Writer */

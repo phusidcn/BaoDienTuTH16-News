@@ -1,8 +1,6 @@
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const Editor = require('./../models/Editor')
-const LocalStrategy = require('passport-local').Strategy
-
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'editor'
@@ -14,96 +12,69 @@ exports.index = (req, res) => {
 }
  
 exports.register = (req, res) => {
+    const { name, email, password, password2 } = req.body
     let errors = []
 
-    if(!req.body.name) {
-        errors.push({
-            message: 'Please input your name'
-        })
+    if (!name || !email || !password || !password2) {
+        errors.push({ msg: 'Please enter all fields' });
     }
 
-    if(!req.body.email) {
-        errors.push({
-            message: 'Please input your email'
-        })
+    if (password != password2) {
+        errors.push({ msg: 'Passwords do not match' });
     }
 
-    if(!req.body.password) {
-        errors.push({
-            message: 'Please input your password'
-        })
+    if (password.length < 6) {
+        errors.push({ msg: 'Password must be at least 6 characters' });
     }
 
-    if(req.body.password !== req.body.password2) {
-        errors.push({
-            message: 'Password not match'
-        })
-    }
-
-    if(errors.length > 0) {
+    if (errors.length > 0) {
         res.render('editor/register', {
-            errors: errors,
-            name: req.body.name,
-            email: req.body.email,
+            errors,
+            name,
+            email,
+            password,
+            password2,
             layout: false
-        })
+        });
     } else {
-        Editor.findOne({email: req.body.email}).then(editor => {
-            if(!editor) {
-                const newEditor = new Editor({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password
-                })
-                bcrypt.genSalt(10, (err, salt) => {
-                    if(err) console.log(err)
-                    bcrypt.hash(newEditor.password, salt, (err, hash) => {
-                        if(err) console.log(err)
-                        newEditor.password = hash
-        
-                        newEditor.save().then(savedUser => {
-                            req.flash('success_message', 'You are registered successfully. Please Log in')
-                            res.redirect('/editor/login')
-                        })
-                    })
-                })
+        Editor.findOne({ email: email }).then(editor => {
+            if (editor) {
+                errors.push({ msg: 'Email already exists' });
+                res.render('editor/register', {
+                    errors,
+                    name,
+                    email,
+                    password,
+                    password2,
+                    layout:false
+                });
             } else {
-                req.flash('error_message', 'Email is already registered')
-                res.redirect('/editor/register')
+                const newEditor = new Editor({
+                    name,
+                    email,
+                    password
+                });
+
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newEditor.password, salt, (err, hash) => {
+                        if (err) throw err;
+                        newEditor.password = hash;
+                        newEditor
+                            .save()
+                            .then(editor => {
+                                req.flash(
+                                    'success_msg',
+                                    'You are now registered and can log in'
+                                );
+                                res.redirect('/editor/login');
+                            })
+                            .catch(err => console.log(err));
+                    });
+                });
             }
-        })
+        });
     }
 }
-
-
-passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
-    Editor.findOne({ email: email }).then(editor => {
-        if(!editor) {
-            return done(null, false, { message: 'No guest found'})
-        }
-        bcrypt.compare(password, editor.password, (err, matched) => {
-            if(err) {
-                return err
-            }
-
-            if(matched) {
-                return done(null, editor)
-            } else {
-                return done(null, false, { message: 'Incorrect password' })
-            }
-        })
-    }) 
-}))
-
-passport.serializeUser((editor, done) => {
-    done(null, editor.id)
-})
-
-passport.deserializeUser((id, done) => {
-    Editor.findById(id, (err, editor) => {
-        done(err, editor)
-    })
-})
 
 exports.login = (req, res, next) => {
     passport.authenticate('local', {

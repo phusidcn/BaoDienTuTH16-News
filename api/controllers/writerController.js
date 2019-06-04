@@ -2,11 +2,9 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const fs = require('fs')
 const { isEmpty, uploadDir } = require('../helpers/upload-helper')
-const Writer = require('./../models/Writer')
 const Post = require('./../models/Post')
 const Category = require('./../models/Category')
 const Writer = require('../models/Writer')
-const LocalStrategy = require('passport-local').Strategy
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'writer'
@@ -14,7 +12,7 @@ exports.all = (req, res, next) => {
 }
 
 exports.index = (req, res) => {
-    res.render('/writer/index',{
+    res.render('writer/index',{
         layout: false
     })
 }
@@ -22,103 +20,75 @@ exports.index = (req, res) => {
 /* ============== Authenticate =================*/
 
 exports.register = (req, res) => {
+    const { name, email, password, password2 } = req.body
     let errors = []
-    
-    if(!req.body.name) {
-        errors.push({
-            message: 'Please type your name'
-        })
+
+    if (!name || !email || !password || !password2) {
+        errors.push({ msg: 'Please enter all fields' });
     }
 
-    if (!req.body.email) {
-        errors.push({
-            message: 'Please type your email'
-        })
+    if (password != password2) {
+        errors.push({ msg: 'Passwords do not match' });
     }
 
-    if (!req.body.password) {
-        errors.push({
-            message: 'Please type your password'
-        })
-    }
-
-    if (req.body.password != req.body.password2) {
-        errors.push({
-            messqage: 'Please check your confirm password'
-        })
+    if (password.length < 6) {
+        errors.push({ msg: 'Password must be at least 6 characters' });
     }
 
     if (errors.length > 0) {
-        res.render('writer/register',{
-            errors: errors,
-            name: req.body.name,
-            email: req.body.email,
+        res.render('writer/register', {
+            errors,
+            name,
+            email,
+            password,
+            password2,
             layout: false
-        })
+        });
     } else {
-        Writer.findOne({email:req.body.email}).then(writer =>{
-            if (!writer) {
-                const newWriter = new Writer({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password
-                })
-                bcrypt.genSalt(10, (err, salt) =>{
-                    if (err) {
-                        consolse.log(err)
-                    }
-                    bcrypt.hash(newWriter.password, salt, (err, hash) =>{
-                        if (err) {
-                            console.log(err)
-                        }
-                        newWriter.password = hash
-                        newWriter.save().then(savedWriter =>{
-                            req.flash('success_message','You are registered')
-                            res.redirect('/writer/login')
-                        })
-                    })
-                })
+        Writer.findOne({ email: email }).then(writer => {
+            if (writer) {
+                errors.push({ msg: 'Email already exists' });
+                res.render('writer/register', {
+                    errors,
+                    name,
+                    email,
+                    password,
+                    password2,
+                    layout:false
+                });
             } else {
-                req.flash('error_message','Email is already registered by other user')
-                res.redirect('/writer/register')
+                const newWriter = new Writer({
+                    name,
+                    email,
+                    password
+                });
+
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newWriter.password, salt, (err, hash) => {
+                        if (err) throw err;
+                        newWriter.password = hash;
+                        newWriter
+                            .save()
+                            .then(writer => {
+                                req.flash(
+                                    'success_msg',
+                                    'You are now registered and can log in'
+                                );
+                                res.redirect('/writer/login');
+                            })
+                            .catch(err => console.log(err));
+                    });
+                });
             }
-        })
+        });
     }
 }
-
-passport.use(new LocalStrategy({ usernameField: 'email'},(email, password, done)=>{
-    Writer.findOne({email: email}).then (writer => {
-        if (!writer) {
-            return done(null, false, {message: 'No writer found'})
-        }
-        bcrypt.compare(password, writer.password, (err, matched) => {
-            if (err) {
-                return err
-            }
-            if (matched) {
-                return done(null, writer)
-            } else {
-                return done(null, false, {message: 'Incorrect password'})
-            }
-        })
-    })
-}))
-
-passport.serializeUser((writer, done) => {
-    done(null, writer.id)
-})
-
-passport.deserializeUser((id, done) => {
-    Writer.findById(id, (err, writer)=>{
-        done(err,writer)
-    })
-})
 
 exports.login = (req, res, next) => {
     passport.authenticate('local',{
         successRedirect: '/writer',
         failureRedirect: '/writer/login',
-        failureFlash: false
+        failureFlash: true
     })(req, res, next)
 }
 /* ======================================= */
