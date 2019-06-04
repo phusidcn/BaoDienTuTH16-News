@@ -12,9 +12,7 @@ exports.all = (req, res, next) => {
 }
 
 exports.index = (req, res) => {
-    res.render('writer/index',{
-        layout: false
-    })
+    res.render('writer/index')
 }
 
 /* ============== Authenticate =================*/
@@ -54,7 +52,7 @@ exports.register = (req, res) => {
                     email,
                     password,
                     password2,
-                    layout:false
+                    layout: false
                 });
             } else {
                 const newWriter = new Writer({
@@ -85,7 +83,7 @@ exports.register = (req, res) => {
 }
 
 exports.login = (req, res, next) => {
-    passport.authenticate('writerLocal',{
+    passport.authenticate('writerLocal', {
         successRedirect: '/writer',
         failureRedirect: '/writer/login',
         failureFlash: true
@@ -93,30 +91,38 @@ exports.login = (req, res, next) => {
 }
 /* ======================================= */
 
-exports.post = (req, res) => {
-    Post.find({})
-        .populate('category')
-        .exec((err, posts) => {
-            if (err) console.log(err)
-            res.render('writer/posts/index', {
-                posts: posts
+exports.post = async (req, res, next) => {
+    try {
+        await Post.find(
+            {
+                writer: { $in: [req.user.id] }
+            }
+        )
+            .populate('category')
+            .exec((err, posts) => {
+                if (err) console.log(err)
+                res.render('writer/posts/index', {
+                    posts: posts
+                })
             })
-        })
+    } catch (error) {
+        next(error)
+    }
+
 }
 
 exports.create = (req, res) => {
+    const { title, content } = req.body
     let errors = []
 
-    if (!req.body.title) {
-        errors.push({ message: 'Please add title' })
-    }
-
-    if (!req.body.content) {
-        errors.push({ message: 'Please add content' })
+    if (!title || !content) {
+        errors.push({ msg: 'Please add all fields' })
     }
 
     if (errors.length > 0) {
         res.render('writer/posts/create', {
+            title,
+            content,
             errors: errors
         })
     } else {
@@ -135,7 +141,7 @@ exports.create = (req, res) => {
             title: req.body.title,
             image: filename,
             category: req.body.category,
-            status: req.body.status,
+            status: 0,
             tag: req.body.tag,
             premium: req.body.premium,
             content: req.body.content
@@ -162,7 +168,7 @@ exports.edit = (req, res) => {
 
             post.save()
                 .then(updatedPost => {
-                    req.flash('success_message', `Post ${updatedPost} was successfully updated`);
+                    req.flash('success_msg', `Post ${updatedPost} was successfully updated`);
                     res.redirect('/writer/post')
                 })
                 .catch(err => {
@@ -175,7 +181,7 @@ exports.delete = (req, res) => {
     Post.deleteOne({ _id: req.params.id })
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
-                req.flash('success_message', 'Post was successfully deleted');
+                req.flash('success_msg', 'Post was successfully deleted');
                 res.redirect('/writer/post')
             })
         })
@@ -183,7 +189,7 @@ exports.delete = (req, res) => {
 
 exports.approvedPost = (req, res) => {
     const approved_status = 1
-    Post.find({ status: approved_status})
+    Post.find({ status: approved_status })
         .populate('category')
         .exec((err, posts) => {
             if (err) console.log(err)
@@ -195,7 +201,7 @@ exports.approvedPost = (req, res) => {
 
 exports.publishedPost = (req, res) => {
     const published_status = 3
-    Post.find({ status: published_status})
+    Post.find({ status: published_status })
         .populate('category')
         .exec((err, posts) => {
             if (err) console.log(err)
@@ -207,7 +213,7 @@ exports.publishedPost = (req, res) => {
 
 exports.waitingApprovedPost = (req, res) => {
     const waiting_approved_status = 0
-    Post.find({ status: waiting_approved_status})
+    Post.find({ status: waiting_approved_status })
         .populate('category')
         .exec((err, posts) => {
             if (err) console.log(err)
@@ -228,7 +234,7 @@ exports.editWaitingApproved = (req, res) => {
 
             post.save()
                 .then(updatedPost => {
-                    req.flash('success_message', `Post ${updatedPost} was successfully updated`);
+                    req.flash('success_msg', `Post ${updatedPost} was successfully updated`);
                     res.redirect('/writer/post/waiting-approved')
                 })
                 .catch(err => {
@@ -241,7 +247,7 @@ exports.deleteWaitingApproved = (req, res) => {
     Post.deleteOne({ _id: req.params.id })
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
-                req.flash('success_message', 'Post was successfully deleted');
+                req.flash('success_msg', 'Post was successfully deleted');
                 res.redirect('/writer/post/waiting-approved')
             })
         })
@@ -249,7 +255,7 @@ exports.deleteWaitingApproved = (req, res) => {
 
 exports.rejectedPost = (req, res) => {
     const rejected_status = 2
-    Post.find({ status: rejected_status})
+    Post.find({ status: rejected_status })
         .populate('category')
         .exec((err, posts) => {
             if (err) console.log(err)
@@ -270,7 +276,7 @@ exports.editRejected = (req, res) => {
 
             post.save()
                 .then(updatedPost => {
-                    req.flash('success_message', `Post ${updatedPost} was successfully updated`);
+                    req.flash('success_msg', `Post ${updatedPost} was successfully updated`);
                     res.redirect('/writer/post/rejected')
                 })
                 .catch(err => {
@@ -283,7 +289,7 @@ exports.deleteRejected = (req, res) => {
     Post.deleteOne({ _id: req.params.id })
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
-                req.flash('success_message', 'Post was successfully deleted');
+                req.flash('success_msg', 'Post was successfully deleted');
                 res.redirect('/writer/post/rejected')
             })
         })

@@ -8,6 +8,7 @@ const PostSchema = new Schema({
         required: true,
     },
     image: String,
+    liked: Number,
     linkYoutube: String,
     subContent: String,
     content: {

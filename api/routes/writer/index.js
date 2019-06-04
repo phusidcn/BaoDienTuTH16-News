@@ -1,17 +1,18 @@
 const express = require('express')
 const router = express.Router()
 const writerController = require('../../controllers/writerController')
+const { forwardAuthenticated, ensureAuthenticated } = require('../../helpers/writerAuth')
 
 router.all('/*',writerController.all)
-router.get('/',writerController.index)
+router.get('/', forwardAuthenticated, writerController.index)
 
-router.get('/register', (req, res) => {
+router.get('/register', forwardAuthenticated, (req, res) => {
     res.render('writer/register',{
         layout: false
     })
 })
 
-router.get('/login', (req, res) => {
+router.get('/login', forwardAuthenticated, (req, res) => {
     res.render('writer/login',{
         layout: false
     })
