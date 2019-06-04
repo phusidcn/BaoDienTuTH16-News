@@ -6,20 +6,15 @@ const WriterSchema = new Schema({
     avatar: String,
     name: {
         type: String,
-        required: true,
-        min: [6, 'Too short, min is 6 characters']
+        required: true
     },
-    email: { type: String,
-        required: 'Email is Required',
-        lowercase: true,
-        unique: true,
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+    email: { 
+        type: String,
+        required: true
     },
     password: {
         type: String,
-        min: [4, 'Too short, min is 4 characters'],
-        max: [32, 'Too long, max is 32 characters'],
-        required: 'Password is required'
+        required: true,
     },
     address: String,
     company: String,
@@ -30,16 +25,5 @@ const WriterSchema = new Schema({
         }
     ]
 })
-
-WriterSchema.methods.encryptPassword = async password => {
-    const salt = await bcrypt.genSalt(5)
-    const hash = await bcrypt.hash(password, salt)
-    return hash
-}
-
-WriterSchema.methods.validPassword = async function (checkPassword) {
-    const result = await bcrypt.compare(checkPassword, this.password)
-    return result
-}
 
 module.exports = mongoose.model('Writer', WriterSchema)

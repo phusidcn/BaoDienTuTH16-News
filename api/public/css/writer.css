@@ -13,16 +13,6 @@ a:hover {
 
 .navbar {
   padding: 15px 10px;
-  /* background-color: #ffdb9a; */
-  /* background-image: linear-gradient(
-    13deg,
-    #ffd280,
-    #ffdb9a 28%,
-    #ffe6b8 50%,
-    #fff1d6 75%,
-    #fff3dc
-  ); */
-
   background-image: linear-gradient(
     20deg,
     #fff3dc,
@@ -270,7 +260,7 @@ a.logOut:hover {
 }
 
 p.text-picture {
-  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 300;
 }
 
 .card-flex {

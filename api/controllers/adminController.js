@@ -3,6 +3,11 @@ const Category = require('../models/Category')
 const Tag = require('../models/Tag')
 const Post = require('../models/Post')
 const Editor = require('../models/Editor')
+const Admin = require('../models/Admin')
+
+const bcrypt = require('bcryptjs')
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
 
 exports.all = (req, res, next) => {
     req.app.locals.layout = 'admin'
@@ -16,6 +21,105 @@ exports.index = async (req, res) => {
         console.log(err)
     }
 }
+
+exports.register = (req, res) => {
+    let errors = []
+
+    if(!req.body.name) {
+        errors.push({
+            message: 'Please input your name'
+        })
+    }
+
+    if(!req.body.email) {
+        errors.push({
+            message: 'Please input your email'
+        })
+    }
+
+    if(!req.body.password) {
+        errors.push({
+            message: 'Please input your password'
+        })
+    }
+
+    if(req.body.password !== req.body.password2) {
+        errors.push({
+            message: 'Password not match'
+        })
+    }
+
+    if(errors.length > 0) {
+        res.render('admin/register', {
+            errors: errors,
+            name: req.body.name,
+            email: req.body.email,
+            layout: false
+        })
+    } else {
+        Admin.findOne({email: req.body.email}).then(admin => {
+            if(!admin) {
+                const newAdmin = new Admin({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password
+                })
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newAdmin.password, salt, (err, hash) => {
+                        newAdmin.password = hash
+        
+                        newAdmin.save().then(savedUser => {
+                            req.flash('success_message', 'You are registered successfully. Please Log in')
+                            res.redirect('/admin/login')
+                        })
+                    })
+                })
+            } else {
+                req.flash('error_message', 'Email is already registered')
+                res.redirect('/admin/register')
+            }
+        })
+    }
+}
+
+exports.login = (req, res, next) => {
+    passport.authenticate('local', {
+        successRedirect: '/admin/',
+        failureRedirect: '/admin/login/',
+        failureFlash: true
+    })(req, res, next)
+}
+
+/* Passport Local */
+
+passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
+    Admin.findOne({ email: email }).then(admin => {
+        if(!admin) {
+            return done(null, false, { message: 'No admin found'})
+        }
+        bcrypt.compare(password, admin.password, (err, matched) => {
+            if(err) {
+                return err
+            }
+
+            if(matched) {
+                return done(null, admin)
+            } else {
+                return done(null, false, { message: 'Incorrect password' })
+            }
+        })
+    }) 
+}))
+
+passport.serializeUser((admin, done) => {
+    done(null, admin.id)
+})
+
+passport.deserializeUser((id, done) => {
+    Admin.findById(id, (err, admin) => {
+        done(err, admin)
+    })
+})
 
 /* ================== CATEGORY ========================= */
 exports.indexCategory = async (req, res) => {
@@ -91,7 +195,6 @@ exports.indexTag = async (req, res) => {
 exports.createTag = async (req, res) => {
     try {
         let newTag = new Tag()
-        newTag.id = req.body.id
         newTag.name = req.body.name
         newTag = await newTag.save()
         res.redirect('/admin/tag')
@@ -139,15 +242,48 @@ exports.deleteTag = async (req, res) => {
 /* ====================== POST ========================= */
 exports.indexPost = async (req, res) => {
     try {
-        const tags = await Tag.find({})
-        res.render('admin/tag/index', {
-            tags: tags
+        const posts = await Post.find({})
+        res.render('admin/post/index', {
+            posts: posts
         })
     } catch (error) {
         console.log(error)
     }
 }
 
+exports.editPost = async (req, res) => {
+    try {
+        let foundPost = await Post.findOne({id: req.params.id})
+        res.render('admin/post/edit', {
+            post: foundPost
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updatePost = async (req, res) => {
+    try {
+        let { name, status } = req.body
+        let foundPost = await Post.findOne({id: req.params.id})
+        foundPost.name = name
+        foundPost.status = status 
+        await foundPost.save().then(updatedPost => {
+            res.redirect('/admin/post')
+        })        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deletePost = async (req, res) => {
+    try {
+        const deletedPost = await Post.remove({id: req.params.id})
+        res.redirect('/admin/post')
+    } catch (error) {
+        console.log(error)
+    }
+}
 /* ===================================================== */
 
 
@@ -217,10 +353,20 @@ exports.deleteWriter = async (req, res) => {
 
 exports.indexEditor = async(req,res) => {
     try {
-        const editors = await Editor.find({});
-        res.render('admin/editor/index',{
-            editors : editors
-        })
+        // const editors = await Editor.find({});
+        // const categories = await Category.find({})
+        // res.render('admin/editor/index',{
+        //     editors : editors,
+        //     categories: categories
+        // })
+        Editor.find({})
+            .populate('category')
+            .exec((err, editors) => {
+                if(err) console.log(err)
+                res.render('admin/editor/index', {
+                    editors: editors
+                })
+            })
     }
     catch (error) {
         console.log(error)
@@ -230,9 +376,10 @@ exports.indexEditor = async(req,res) => {
 exports.createEditor = async (req, res) => {
     try {
         let newEditor = new Editor();
-        newEditor.id = req.body.id
+        newEditor.password = req.body.password
         newEditor.name = req.body.name
         newEditor.email = req.body.email
+        newEditor.category = req.body.category
         newEditor = await newEditor.save()
         res.redirect('/admin/editor');
     }
@@ -244,7 +391,7 @@ exports.createEditor = async (req, res) => {
 
 exports.editEditor = async (res, req) => {
     try {
-        let foundEditor = Editor.findOne({id:req.param.id});
+        let foundEditor = Editor.findOne({_id:req.params.id});
         res.render('/admin/editor/edit', {
             editor : foundEditor
         })
@@ -256,9 +403,8 @@ exports.editEditor = async (res, req) => {
 
 exports.updateEditor = async (req, res) => {
     try {
-        let { id, username, email } = req.body
+        let { username, email } = req.body
         let foundEditor = await Editor.findOne({id: req.params.id})
-        foundEditor.id = id
         foundEditor.name = username
         foundEditor.email = email
         await foundEdiotr.save().then(updatedEditor => {

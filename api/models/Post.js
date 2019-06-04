@@ -6,7 +6,6 @@ const PostSchema = new Schema({
     title: {
         type: String,
         required: true,
-        max: [100, 'Too long, max is 100 characters']
     },
     image: String,
     linkYoutube: String,
@@ -21,7 +20,7 @@ const PostSchema = new Schema({
     },
     premium: Boolean,
     status: {
-        // 0: Chua Duyet , 1: Da duyet, 2: Bi tu choi
+        // 0: Chua Duyet , 1: Da duyet, 2: Bi tu choi, 3: Xuat ban
         type: Number,
         default: 0
     },
@@ -29,12 +28,6 @@ const PostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category'
     },
-    // tags: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: 'Tag'
-    //     }
-    // ],
     tag: String,
     writer: {
         type: Schema.Types.ObjectId,

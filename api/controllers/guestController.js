@@ -19,7 +19,7 @@ exports.index = (req, res) => {
     Post.find({})
         .populate('writer')
         .exec((errors, posts) => {
-            if(errors) {
+            if (errors) {
                 console.log(errors)
             }
             res.render('guest/guestHome', {
@@ -29,10 +29,10 @@ exports.index = (req, res) => {
 }
 
 exports.showPost = (req, res, next) => {
-    Post.findOne({id: req.params.id})
+    Post.findOne({ id: req.params.id })
         .populate('writer')
         .exec((err, post) => {
-            if(err) console.log(err)
+            if (err) console.log(err)
             res.render('guest/guestPost', {
                 post: post
             })
@@ -40,67 +40,72 @@ exports.showPost = (req, res, next) => {
 }
 
 exports.register = (req, res) => {
+    const { name, email, password, password2 } = req.body
     let errors = []
 
-    if(!req.body.name) {
-        errors.push({
-            message: 'Please input your name'
-        })
+    if (!name || !email || !password || !password2) {
+        errors.push({ msg: 'Please enter all fields' });
     }
 
-    if(!req.body.email) {
-        errors.push({
-            message: 'Please input your email'
-        })
+    if (password != password2) {
+        errors.push({ msg: 'Passwords do not match' });
     }
 
-    if(!req.body.password) {
-        errors.push({
-            message: 'Please input your password'
-        })
+    if (password.length < 6) {
+        errors.push({ msg: 'Password must be at least 6 characters' });
     }
 
-    if(req.body.password !== req.body.password2) {
-        errors.push({
-            message: 'Password not match'
-        })
-    }
-
-    if(errors.length > 0) {
+    if (errors.length > 0) {
         res.render('guest/register', {
-            errors: errors,
-            name: req.body.name,
-            email: req.body.email,
+            errors,
+            name,
+            email,
+            password,
+            password2,
             layout: false
-        })
+        });
     } else {
-        Guest.findOne({email: req.body.email}).then(guest => {
-            if(!guest) {
+        Guest.findOne({ email: email }).then(guest => {
+            if (guest) {
+                errors.push({ msg: 'Email already exists' });
+                res.render('guest/register', {
+                    errors,
+                    name,
+                    email,
+                    password,
+                    password2,
+                    layout:false
+                });
+            } else {
                 const newGuest = new Guest({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password
-                })
+                    name,
+                    email,
+                    password
+                });
+
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newGuest.password, salt, (err, hash) => {
-                        newGuest.password = hash
-        
-                        newGuest.save().then(savedUser => {
-                            req.flash('success_message', 'You are registered successfully. Please Log in')
-                            res.redirect('/login')
-                        })
-                    })
-                })
-            } else {
-                req.flash('error_message', 'Email is already registered')
-                res.redirect('/register')
+                        if (err) throw err;
+                        newGuest.password = hash;
+                        newGuest
+                            .save()
+                            .then(guest => {
+                                req.flash(
+                                    'success_msg',
+                                    'You are now registered and can log in'
+                                );
+                                res.redirect('/login');
+                            })
+                            .catch(err => console.log(err));
+                    });
+                });
             }
-        })
+        });
     }
 }
 
 exports.login = (req, res, next) => {
-    passport.authenticate('local', {
+    passport.authenticate('guestLocal', {
         successRedirect: '/',
         failureRedirect: '/login',
         failureFlash: true
@@ -112,9 +117,14 @@ exports.logout = (req, res) => {
     res.redirect('/login')
 }
 
+
+
+
+
+/************************************************ */
 exports.google = (req, res, next) => {
-    passport.authenticate('google', 
-        {scope: ['profile', 'email']})(req, res, next)
+    passport.authenticate('google',
+        { scope: ['profile', 'email'] })(req, res, next)
 }
 
 exports.facebook = (req, res, next) => {
@@ -125,34 +135,6 @@ exports.facebook = (req, res, next) => {
 
 /* Passport Local */
 
-passport.use(new LocalStrategy({ usernameField: 'email'}, (email, password, done) => {
-    Guest.findOne({ email: email }).then(guest => {
-        if(!guest) {
-            return done(null, false, { message: 'No guest found'})
-        }
-        bcrypt.compare(password, guest.password, (err, matched) => {
-            if(err) {
-                return err
-            }
-
-            if(matched) {
-                return done(null, guest)
-            } else {
-                return done(null, false, { message: 'Incorrect password' })
-            }
-        })
-    }) 
-}))
-
-passport.serializeUser((guest, done) => {
-    done(null, guest._id)
-})
-
-passport.deserializeUser((id, done) => {
-    Guest.findById(id, (err, guest) => {
-        done(err, guest)
-    })
-})
 
 /* Passport Google */
 passport.use(

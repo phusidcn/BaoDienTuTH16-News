@@ -1,29 +1,26 @@
 const express = require('express')
-const Writer = require('../../models/Writer')
-const writerController = require('../../controllers/writerController')
 const router = express.Router()
+const writerController = require('../../controllers/writerController')
 
-router.get('/*', writerController.all)
-
-router.get('/', writerController.index)
-
-router.get('/login', (req, res) => {
-    // res.render('home/register')
-})
+router.all('/*',writerController.all)
+router.get('/',writerController.index)
 
 router.get('/register', (req, res) => {
-    // res.render('home/register')
+    res.render('writer/register',{
+        layout: false
+    })
 })
 
-router.post('/register', (req, res) => {
-    // const newWriter = new Writer({
-    //     name: req.body.name,
-    //     email: req.body.email,
-    //     password: req.body.password
-    // })
-
-    // res.send('')
+router.get('/login', (req, res) => {
+    res.render('writer/login',{
+        layout: false
+    })
 })
+
+router.post('/register', writerController.register)
+router.post('/login', writerController.login)
+
 
 module.exports = router
 
+module.exports = router

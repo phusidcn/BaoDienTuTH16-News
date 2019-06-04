@@ -7,21 +7,14 @@ const EditorSchema = new Schema({
     name: {
         type: String,
         required: true,
-        min: [6, 'Too short, min is 6 characters']
     },
-    email: { type: String,
-        required: 'Email is Required',
-        lowercase: true,
-        unique: true,
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/]
+    email: { 
+        type: String,
+        required: true
     },
     password: {
         type: String,
-        required: true,
-        min: [4, 'Too short, min is 4 characters'],
-        max: [32, 'Too long, max is 32 characters'],
-        required: 'Password is required'
-
+        required: true
     },
     address: String,
     posts: [
@@ -29,20 +22,11 @@ const EditorSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Post'
         }
-    ]
+    ],
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
+    }
 })
-
-// cai form nay ong phai them may cai field tuong ung nha
-
-EditorSchema.methods.encryptPassword = async password => {
-    const salt = await bcrypt.genSalt(5)
-    const hash = await bcrypt.hash(password, salt)
-    return hash
-}
-
-EditorSchema.methods.validPassword = async function (checkPassword) {
-    const result = await bcrypt.compare(checkPassword, this.password)
-    return result
-}
 
 module.exports = mongoose.model('Editor', EditorSchema)

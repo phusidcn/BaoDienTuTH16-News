@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/authen.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon"
+        href="https://courses.fit.hcmus.edu.vn/pluginfile.php/1/theme_essential/favicon/1548823047/logo-khtn-transparent.png"
+        type="image/png">
+
+    <title>minimum &mdash; E-magazine for you 24/7 - Sign Up</title>
+</head>
+
+<body>
+    <div class="back-to-home">
+        <a href="/" style="text-decoration:none;">
+            <img src="http://css3transition.com/demo/fixed-table-header/previous.svg" alt="">
+            Back To Home
+        </a>
+    </div>
+    {{#if error_message}}
+    <div class="alert alert-danger" style="text-align: center;">
+        {{error_message}}
+    </div>
+    {{/if}}
+    {{#each errors}}
+    <div class="alert alert-danger" style="text-align: center;">
+        {{ message }}
+    </div>
+    {{/each}}
+    <div id="login-box">
+        <div class="left">
+            <h1>Sign up</h1>
+
+            <form action="/register" method="POST">
+                <input type="text" value="{{name}}" name="name" placeholder="Username" required />
+                <input type="text" value="{{email}}" name="email" placeholder="E-mail" required />
+                <input type="password" value="{{password}}" name="password" placeholder="Password" required />
+                <input type="password" name="password2" placeholder="Retype password" required />
+
+                <input type="submit" name="signup_submit" value="Sign me up" />
+            </form>
+        </div>
+
+        <div class="right">
+            <span class="loginwith">Sign in with<br />social network</span>
+
+            <button class="social-signin facebook">Log in with facebook</button>
+            <button class="social-signin twitter">Log in with Twitter</button>
+            <button class="social-signin google">Log in with Google+</button>
+        </div>
+        <div class="or">OR</div>
+    </div>
+</body>
+
+</html>
