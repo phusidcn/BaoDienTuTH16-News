@@ -45,7 +45,6 @@ const writerPostRoutes = require('./routes/writer/post')
 const editorRoutes = require('./routes/editor/index')
 
 
-
 const { select, generateTime } = require('./helpers/handlebars-helpers')
 
 app.use(cors())
@@ -80,12 +79,6 @@ app.use(session({
 
 app.use(passport.initialize())
 app.use(passport.session())
-// app.use(editorPassport.initialize())
-// app.use(editorPassport.session())
-// app.use(writerPassport.initialize())
-// app.use(writerPassport.session())
-// app.use(guestPassport.initialize())
-// app.use(guestPassport.session())
 
 app.use(flash())
 

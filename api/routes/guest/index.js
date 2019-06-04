@@ -1,5 +1,6 @@
 const express = require('express')
 const guestController = require('../../controllers/guestController')
+const { ensureAuthenticated, forwardAuthenticated } = require('../../helpers/guest-auth')
 const router = express.Router()
 
 router.all('/*', guestController.all)
