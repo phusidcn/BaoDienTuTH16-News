@@ -6,6 +6,7 @@ const Writer = require('../models/Writer');
 
 module.exports = function (passport) {
     passport.use(
+        'writerLocal',
         new LocalStrategy({ 
             usernameField: 'email',
         }, (email, password, done) => {

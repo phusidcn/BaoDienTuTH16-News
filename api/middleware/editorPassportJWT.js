@@ -6,6 +6,7 @@ const Editor = require('../models/Editor');
 
 module.exports = function (passport) {
     passport.use(
+        'editorLocal',
         new LocalStrategy({ 
             usernameField: 'email',
         }, (email, password, done) => {

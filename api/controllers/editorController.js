@@ -77,7 +77,7 @@ exports.register = (req, res) => {
 }
 
 exports.login = (req, res, next) => {
-    passport.authenticate('local', {
+    passport.authenticate('editorLocal', {
         successRedirect: '/editor',
         failureRedirect: '/editor/login',
         failureFlash: true

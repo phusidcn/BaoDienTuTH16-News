@@ -35,7 +35,6 @@ require('./middleware/guestPassportJWT')(passport)
 require('./middleware/writerPassportJWT')(passport)
 require('./middleware/editorPassportJWT')(passport)
 
-
 /*======= */
 /* WRITER */
 const writerRoutes = require('./routes/writer/index')
