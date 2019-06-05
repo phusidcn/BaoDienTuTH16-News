@@ -3,67 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="/css/subscriber.css">
-    <link rel="stylesheet" href="/css/style-category.css">
-    <link rel="stylesheet" href="/css/style-post.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="shortcut icon" href="/img/logo-khtn.png" type="image/png">
-
+    <!-- Title -->
     <title>minimum &mdash; E-magazine for you 24/7 - Chi tiet bai viet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/guest/style.css">
+
 </head>
 
 <body>
-    <div class="modal fade" id="account-premium" style="font-family: 'Muli', sans-serif; font-size: 1.5rem;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Gia hạn tài khoản</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body" style="width:15rem;">
-                    <div class="form-group">
-                        <label for="">Thời hạn</label>
-                        <select class="custom-select" name="" id="">
-                            <option selected>7 ngày</option>
-                            <option value="">15 ngày</option>
-                            <option value="">1 tháng</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button style="background: green; border-radius: 0; padding:.5rem 1rem;" type="button" class="btn"
-                        data-dismiss="modal">Kích hoạt</button>
-                </div>
-            </div>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
         </div>
     </div>
-    <div class="container">
 
-        {{> subscriber/header }}
+    {{> subscriber/v2/header }}
 
-        {{{ body }}}
+    {{{ body }}}
 
-        
-    </div>
+    {{> subscriber/v2/footer }}
 
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="/js/guest/jquery/jquery-2.2.4.min.js"></script>
 
-    <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <!-- Popper js -->
+    <script src="/js/guest/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/js/guest/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="/js/guest/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/js/guest/active.js"></script>
 
 </body>
 

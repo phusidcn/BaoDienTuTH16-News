@@ -15,6 +15,18 @@ exports.all = (req, res, next) => {
     next()
 }
 
+exports.about = (req, res) => {
+    res.render('subscriber/about')
+}
+
+exports.contact = (req, res) => {
+    res.render('subscriber/contact')
+}
+
+exports.singlePost = (req, res) => {
+    res.render('subscriber/subscriberPost')
+}
+
 exports.index = async (req, res) => {
     try {
         await res.render('subscriber/subscriberHome')
