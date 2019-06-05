@@ -4,16 +4,15 @@ const router = express.Router()
 
 router.all('/*', guestController.all)
 router.get('/', guestController.index)
+router.get('/about', guestController.about)
+router.get('/contact', guestController.contact)
+router.get('/post', guestController.singlePost)
 
 router.get('/register', (req, res) => {
-    res.render('guest/register', {
-        layout: false
-    })
+    res.render('guest/register')
 })
 router.get('/login', (req, res) => {
-    res.render('guest/login', {
-        layout: false
-    })
+    res.render('guest/login')
 })
 router.post('/register', guestController.register)
 router.post('/login', guestController.login)

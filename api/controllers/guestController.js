@@ -15,6 +15,18 @@ exports.all = async (req, res, next) => {
     next()
 }
 
+exports.about = (req, res) => {
+    res.render('guest/about')
+}
+
+exports.contact = (req, res) => {
+    res.render('guest/contact')
+}
+
+exports.singlePost = (req, res) => {
+    res.render('guest/guestPost')
+}
+
 exports.index = (req, res) => {
     Post.find({})
         .populate('writer')
@@ -62,7 +74,6 @@ exports.register = (req, res) => {
             email,
             password,
             password2,
-            layout: false
         });
     } else {
         Guest.findOne({ email: email }).then(guest => {
@@ -74,7 +85,6 @@ exports.register = (req, res) => {
                     email,
                     password,
                     password2,
-                    layout:false
                 });
             } else {
                 const newGuest = new Guest({
