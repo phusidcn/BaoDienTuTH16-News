@@ -107,6 +107,9 @@ app.use('/writer/post', writerPostRoutes)
 /* Editor */
 app.use('/editor', editorRoutes)
 
+/* Subscriber */
+app.use('/subscriber',subscriberRoutes)
+
 app.use(errorHandler)
 
 app.listen(config.port, () => {
