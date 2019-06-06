@@ -83,6 +83,7 @@ exports.register = (req, res) => {
 }
 
 exports.login = (req, res, next) => {
+    console.log(req.writer)
     passport.authenticate('writerLocal', {
         successRedirect: '/writer',
         failureRedirect: '/writer/login',

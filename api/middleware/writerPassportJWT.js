@@ -7,7 +7,7 @@ const Writer = require('../models/Writer');
 module.exports = function (passport) {
     passport.use(
         'writerLocal',
-        new LocalStrategy({ 
+        new LocalStrategy({
             usernameField: 'email',
         }, (email, password, done) => {
             // Match user
@@ -32,14 +32,24 @@ module.exports = function (passport) {
         })
     );
 
-    passport.serializeUser(function (user, done) {
-        done(null, user.id);
-    });
+    // passport.serializeUser(function (user, done) {
+    //     done(null, user.id);
+    // });
+
+    passport.serializeUser(function (writer, done) {
+        done(null, writer.id)
+    })
 
     passport.deserializeUser(function (id, done) {
-        Writer.findById(id, function (err, user) {
-            done(err, user);
+        Writer.findById(id, function (err, writer) {
+            done(err, writer);
         });
     });
+
+    // passport.deserializeUser(function (id, done) {
+    //     Writer.findById(id, function (err, user) {
+    //         done(err, user);
+    //     });
+    // });
 
 };

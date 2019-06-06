@@ -9,7 +9,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/writer"><b>Trang chủ</b></a>
+                    <a class="nav-link" href="/writer"><b>
+                        {{#if user }}
+                            {{ user.name }}
+                        {{else}}
+                            Trang Writer
+                        {{/if}}
+                    </b></a>
                 </li>
                 <li class="nav-item">
                     <a data-toggle="modal" data-target="#logOut" class="nav-link" href="#"><b>Đăng

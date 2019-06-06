@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const cors = require('cors')
 const path = require('path')
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 const methodOverride = require('method-override')
 const morgan = require('morgan')
 const mongoose = require('mongoose')
@@ -61,7 +62,7 @@ mongoose.connect(config.mongoURI, {
 app.engine('handlebars', exphbs({ defaultLayout: 'guest', helpers: { select: select, generateTime: generateTime } }))
 app.set('view engine', 'handlebars')
 
-
+app.use(cookieParser('lequocduyquang'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -73,7 +74,7 @@ app.use(session({
     secret: 'lequocduyquang',
     resave: true,
     saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: { secure:false }
 }))
 
 
@@ -84,6 +85,7 @@ app.use(flash())
 
 
 app.use(function (req, res, next) {
+    res.locals.user = req.user || null
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
     res.locals.error = req.flash('error')
