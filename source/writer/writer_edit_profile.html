@@ -93,7 +93,8 @@
     </nav>
     <form>
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
+          <label class="bmd-label-floating">Email</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <button type="button" class="btn btn-secondary">
@@ -105,7 +106,8 @@
           </div>
         </div>
 
-        <div class="col-md-5"> 
+        <div class="col-md-6">
+          <label class="bmd-label-floating">Password</label> 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <button type="button" class="btn btn-secondary">
@@ -118,7 +120,8 @@
       </div>
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
+          <label class="bmd-label-floating">User name</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <button type="button" class="btn btn-secondary">
@@ -130,19 +133,8 @@
           </div>
         </div>
 
-        <div class="col-md-3">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <button type="button" class="btn btn-secondary">
-                <i class="fa fa-file-image-o"></i>
-              </button>
-            </div>
-            <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
-            aria-describedby="basic-addon1" required>
-          </div>
-        </div>
-
-        <div class="col-md-5">
+        <div class="col-md-6">
+          <label class="bmd-label-floating">Birthday</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <button type="button" class="btn btn-secondary">
@@ -156,7 +148,38 @@
       </div>
 
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-6">
+          <label class="bmd-label-floating">Avatar</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-file-image-o"></i>
+              </button>
+            </div>
+            <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+            aria-describedby="basic-addon1" required>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label class="bmd-label-floating">Gender</label>
+          <div class="input-group mb-3">
+            <button type="button" class="btn btn-secondary">
+              <i class="fa fa-transgender"></i>
+            </button>
+            <select class="custom-select" id="genderInputGroup" name="Gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <label class="bmd-label-floating">Address</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <button type="button" class="btn btn-secondary">
@@ -168,7 +191,8 @@
           </div>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
+          <label class="bmd-label-floating">Company</label>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <button type="button" class="btn btn-secondary">
@@ -186,6 +210,7 @@
           <input type="submit" value="Edit" name="edit_profile">
         </div>
       </form>
+
     </form>
   </div>
 
