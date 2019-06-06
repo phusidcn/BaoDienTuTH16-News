@@ -21,7 +21,7 @@ router.get('/login', (req, res) => {
 
 router.post('/register', writerController.register)
 // router.post('/login', writerController.login)
-router.post('/login', forwardAuthenticated ,passport.authenticate('writerLocal'), (req, res) => {
+router.post('/login', passport.authenticate('writerLocal'), (req, res) => {
     // console.log(req.user)
     res.redirect('/writer')
 })

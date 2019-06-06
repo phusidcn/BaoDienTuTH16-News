@@ -42,4 +42,9 @@ const PostSchema = new Schema({
     ]
 })
 
+PostSchema.index({
+    title: 'text',
+    content: 'text'
+})
+
 module.exports = moongoose.model('Post', PostSchema)
