@@ -1,0 +1,64 @@
+<div class="content">
+    <h4 class="mt-3">Edit Post</h4>
+    <form action="/writer/post/rejected/edit/{{post._id}}?_method=PUT" method="POST">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-flag-o"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Tiêu đề" id="title" name="title" value="{{post.title}}"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-folder-o"></i>
+                </button>
+            </div>
+            <select name="category" id="category" class="form-control">
+                {{#select post.category}}
+                    {{#each categories}}
+                    <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-tags"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Gán nhãn" id="tag" name="tag" value="{{post.tag}}"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-book"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Tóm tắt nội dung" id="content" name="content"
+                value="{{post.content}}" aria-describedby="basic-addon1">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-book"></i>
+                </button>
+            </div>
+            <select name="premium" id="premium" class="form-control">
+                {{#select post.premium}}
+                <option value="true">True</option>
+                <option value="false">False</option>
+                {{/select}}
+            </select>
+        </div>
+        <textarea class="mb-3" name="editor" cols="150" rows="10">Noi dung chi tiet</textarea>
+        <div class="mt-3">
+            <button type="submit" class="btn-blue" value="">Cập nhật</button>
+        </div>
+    </form>
+</div>

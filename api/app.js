@@ -32,9 +32,7 @@ const adminPostRoutes = require('./routes/admin/post')
 
 
 // Passport config
-require('./middleware/guestPassportJWT')(passport)
-require('./middleware/writerPassportJWT')(passport)
-require('./middleware/editorPassportJWT')(passport)
+require('./middleware/passport')(passport)
 
 /*======= */
 /* WRITER */
@@ -62,7 +60,7 @@ mongoose.connect(config.mongoURI, {
 app.engine('handlebars', exphbs({ defaultLayout: 'guest', helpers: { select: select, generateTime: generateTime } }))
 app.set('view engine', 'handlebars')
 
-app.use(cookieParser('lequocduyquang'))
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname, 'public')))
@@ -73,8 +71,7 @@ app.use(morgan('dev'))
 app.use(session({
     secret: 'lequocduyquang',
     resave: true,
-    saveUninitialized: true,
-    cookie: { secure:false }
+    saveUninitialized: true
 }))
 
 

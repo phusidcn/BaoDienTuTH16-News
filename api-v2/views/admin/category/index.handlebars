@@ -1,0 +1,77 @@
+<div class="modal fade" id="add-category" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Category</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row ml-3">
+                    <form action="/admin/category/create" method="POST">
+                        <div class="form-group">
+                            <label class="bmd-label-floating" for="name">Name</label>
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="row mb-5" style="display:flex; justify-content:center;">
+        <a class="btn btn-success" href="/admin/category/create" data-toggle="modal" data-target="#add-category">
+            <i class="material-icons">add</i>
+            Thêm Thể loại
+        </a>
+    </div>
+    <div class="col-lg-12 col-md-12">
+        <div class="card card-common">
+            <div class="card-header card-header-tabs card-header-info">
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <span class="nav-tabs-title">Quản lý:</span>
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#messages" data-toggle="tab">
+                                    <i class="material-icons">category</i> Category
+                                    <div class="ripple-container"></div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Created At</th>
+                            <th colspan="2"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each categories}}
+                        <tr>
+                            <td>{{_id}}</td>
+                            <td>{{name}}</td>
+                            <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
+                            <td style="text-align: center;"><a href="/admin/category/edit/{{_id}}" class="btn btn-warning">Edit</a></td>
+                            <td style="text-align: center;">
+                                <form action="/admin/category/{{_id}}?_method=DELETE" method="POST">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

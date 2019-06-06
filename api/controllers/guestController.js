@@ -1,16 +1,16 @@
 const configs = require('../config')
 const Post = require('../models/Post')
 const Guest = require('../models/Guest')
+const User = require('../models/User')
 const Category = require('../models/Category')
 const Tag = require('../models/Tag')
 
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
-const LocalStrategy = require('passport-local').Strategy
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const FacebookStrategy = require('passport-facebook').Strategy
 
-exports.all = async (req, res, next) => {
+exports.all = (req, res, next) => {
     req.app.locals.layout = 'guest'
     next()
 }
@@ -28,20 +28,27 @@ exports.singlePost = (req, res) => {
 }
 
 exports.index = (req, res) => {
-    Post.find({})
-        .populate('writer')
-        .exec((errors, posts) => {
-            if (errors) {
-                console.log(errors)
-            }
-            res.render('guest/guestHome', {
-                posts: posts
-            })
-        })
+    console.log(req.user)
+    return res.render('guest/guestHome')
+    // Post
+    //     .find({})
+    //     .then(() => {
+    //         res.render('guest/guestHome')
+    //     })
+        // .populate('writer')
+        // .exec((errors, posts) => {
+        //     if (errors) {
+        //         console.log(errors)
+        //     }
+        //     res.render('guest/guestHome', {
+        //         posts: posts
+        //     })
+        // })
 }
 
 exports.showPost = (req, res, next) => {
-    Post.findOne({ id: req.params.id })
+    Post
+        .findOne({ id: req.params.id })
         .populate('writer')
         .exec((err, post) => {
             if (err) console.log(err)
@@ -52,19 +59,33 @@ exports.showPost = (req, res, next) => {
 }
 
 exports.register = (req, res) => {
-    const { name, email, password, password2 } = req.body
+    const { 
+        name, 
+        email, 
+        password, 
+        password2 
+    } = req.body
+
+    const userType = "Guest"
+
     let errors = []
 
     if (!name || !email || !password || !password2) {
-        errors.push({ msg: 'Please enter all fields' });
+        errors.push({ 
+            msg: 'Please enter all fields' 
+        });
     }
 
     if (password != password2) {
-        errors.push({ msg: 'Passwords do not match' });
+        errors.push({ 
+            msg: 'Passwords do not match' 
+        });
     }
 
     if (password.length < 6) {
-        errors.push({ msg: 'Password must be at least 6 characters' });
+        errors.push({ 
+            msg: 'Password must be at least 6 characters' 
+        });
     }
 
     if (errors.length > 0) {
@@ -76,30 +97,36 @@ exports.register = (req, res) => {
             password2,
         });
     } else {
-        Guest.findOne({ email: email }).then(guest => {
-            if (guest) {
-                errors.push({ msg: 'Email already exists' });
-                res.render('guest/register', {
-                    errors,
+        User
+            .findOne({ 
+                email: email,
+                typeUser: userType
+            })
+            .then(user => {
+                if (user) {
+                    errors.push({ msg: 'Email already exists' });
+                    res.render('guest/register', {
+                        errors,
+                        name,
+                        email,
+                        password,
+                        password2,
+                    });
+                } else {
+                const newUser = new User({
                     name,
                     email,
                     password,
-                    password2,
-                });
-            } else {
-                const newGuest = new Guest({
-                    name,
-                    email,
-                    password
+                    userType
                 });
 
                 bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newGuest.password, salt, (err, hash) => {
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err) throw err;
-                        newGuest.password = hash;
-                        newGuest
+                        newUser.password = hash;
+                        newUser
                             .save()
-                            .then(guest => {
+                            .then(user => {
                                 req.flash(
                                     'success_msg',
                                     'You are now registered and can log in'
@@ -115,7 +142,7 @@ exports.register = (req, res) => {
 }
 
 exports.login = (req, res, next) => {
-    passport.authenticate('guestLocal', {
+    passport.authenticate('local', {
         successRedirect: '/',
         failureRedirect: '/login',
         failureFlash: true

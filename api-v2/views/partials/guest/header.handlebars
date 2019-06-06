@@ -1,0 +1,48 @@
+<header class="header">
+    <a href="/">
+        <img src="/img/logo-khtn.png" alt="minimum logo" class="logo">
+    </a>
+
+    <form action="#" class="search">
+        <input type="text" class="search__input" placeholder="Tìm kiếm ...">
+
+        <button class="search__button">
+            <svg class="search__icon">
+                <use xlink:href="img/symbol.svg#icon-magnifying-glass"></use>
+            </svg>
+        </button>
+    </form>
+
+    <nav class="user-nav">
+        <div class="user-nav__icon-box">
+            <svg class="user-nav__icon">
+                <use xlink:href="/img/symbol.svg#icon-bookmark"></use>
+            </svg>
+            <span class="user-nav__notification">1</span>
+        </div>
+        <div class="user-nav__icon-box">
+            <svg class="user-nav__icon">
+                <use xlink:href="/img/symbol.svg#icon-mail"></use>
+            </svg>
+            <span class="user-nav__notification">1</span>
+        </div>
+        {{#if guest}}
+        <div class="user-nav__user">
+            <span class="user-nav__user-name text-success" style="width:400;">
+                <a style="text-decoration:none;" href="/login">{{guest.name}}</a>
+            </span>
+        </div>
+        <div class="user-nav__user">
+            <span class="user-nav__user-name text-success" style="width:400;">
+                <a style="text-decoration:none;" href="/logout">Logout</a>
+            </span>
+        </div>
+        {{else}}
+        <div class="user-nav__user">
+            <span class="user-nav__user-name text-success" style="width:400;">
+                <a style="text-decoration:none;" href="/login">Login</a>
+            </span>
+        </div>
+        {{/if}}
+    </nav>
+</header>

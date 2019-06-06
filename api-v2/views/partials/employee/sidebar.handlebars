@@ -1,0 +1,43 @@
+<nav id="sidebar">
+    <ul class="list-unstyled components">
+        <div class="profile text-center">{{#if user.role}}Phóng viên{{else}} Employee {{/if}} báo MUTV</div>
+        <div class="avt-wrapper">
+            <div class="avt">
+                <img src="/img/thai.jpg">
+            </div>
+            <div class="profile d-block mx-auto text-center bottom-border">{{user.name}}</div>
+        </div>
+        <li class="nav-item active">
+            <a href="/writer/post/create">
+                <i class="fa fa-upload"></i>
+                <span> Đăng bài viết</span>
+            </a>
+        </li>
+        <li>
+            <a href="#viewList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-eye-slash"></i>
+                <span> Xem bài viết</span>
+            </a>
+            <ul class="collapse list-unstyled" id="viewList">
+                <li>
+                    <a href="/writer/post/approved">Đã được duyệt</a>
+                </li>
+                <li>
+                    <a href="/writer/post/published">Đã xuất bản</a>
+                </li>
+                <li>
+                    <a href="/writer/post/rejected">Bị từ chối</a>
+                </li>
+                <li>
+                    <a href="/writer/post/waiting-approved">Chưa được duyệt</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+        <li>
+            <a data-toggle="modal" data-target="#profile-user" href="#" class="editProfile">Chỉnh sửa profile</a>
+        </li>
+    </ul>
+</nav>

@@ -101,7 +101,14 @@
                             </form>
                         </div>
                         <!-- Login -->
-                        <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                        
+                        <a href="login.html" class="login-btn">
+                            <i class="fa fa-user" aria-hidden="true">
+                                {{#if user}} 
+                                    {{ user.name }}
+                                {{/if}}
+                            </i></a>
+                        
                         <!-- Submit Video -->
                         <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Submit Video</span></a>

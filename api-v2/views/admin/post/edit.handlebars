@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="container-fluid">
+        <form action="/admin/post/edit/{{post.id}}?_method=PUT" method="POST">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" id="post" value="{{post.title}}">
+            </div>
+            <div class="form-group">
+                <select name="status" id="status" class="form-control">
+                    {{#select post.status}}
+                        <option value="0">0 - Chua duyet</option>
+                        <option value="1">1 - Da duyet</option>
+                        <option value="2">2 - Tu choi</option>
+                        <option value="3">3 - Xuat ban</option>
+                    {{/select}}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Cập nhật</button>
+        </form>
+    </div>
+</div>
