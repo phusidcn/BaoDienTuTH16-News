@@ -2,9 +2,6 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
-// const {
-//     writerForwardAuthenticated
-// } = require('../../helpers/auth')
 const User = require('../../models/User')
 
 router.get('/login', (req, res) => {

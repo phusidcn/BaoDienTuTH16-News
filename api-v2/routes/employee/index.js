@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { 
         writerEnsureAuthenticated,
-        writerForwardAuthenticated,
         editorEnsureAuthenticated,
     } = require('../../helpers/auth');
 
@@ -12,11 +11,11 @@ router.get('/*', (req, res, next) => {
     next()
 })
 
-router.get('/writers/dashboard' ,(req, res) => 
+router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => 
     res.render('employee/index')
 );
 
-router.get('/editors/dashboard', (req, res) => {
+router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
 

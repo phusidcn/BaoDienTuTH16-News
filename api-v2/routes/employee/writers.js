@@ -2,18 +2,15 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
-const {
-    writerForwardAuthenticated
-} = require('../../helpers/auth')
 const User = require('../../models/User')
 
-router.get('/login', writerForwardAuthenticated, (req, res) => {
+router.get('/login', (req, res) => {
     res.render('writer/login', {
         layout: false
     })
 })
 
-router.get('/register', writerForwardAuthenticated, (req, res) => {
+router.get('/register', (req, res) => {
     res.render('writer/register', {
         layout: false
     })
