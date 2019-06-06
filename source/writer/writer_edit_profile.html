@@ -92,73 +92,93 @@
       </div>
     </nav>
     <form>
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-envelope-o"></i>
-          </button>
+      <div class="row">
+        <div class="col-md-7">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-envelope-o"></i>
+              </button>
+            </div>
+            <input type="email" class="form-control" value="lequocthai1998@gmail.com" placeholder="Email" aria-label="Email"
+            aria-describedby="basic-addon1" required>
+          </div>
         </div>
-        <input type="email" class="form-control" value="lequocthai1998@gmail.com" placeholder="Email" aria-label="Email"
-        aria-describedby="basic-addon1" required>
+
+        <div class="col-md-5"> 
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-unlock"></i>
+              </button>
+            </div>
+            <input type="password" class="form-control" pattern=".{6,}" value="123456" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+          </div>
+        </div>
       </div>
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-unlock"></i>
-          </button>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-user-o"></i>
+              </button>
+            </div>
+            <input type="text" class="form-control" value="Lê Quốc Thái" placeholder="Username" aria-label="Username"
+            aria-describedby="basic-addon1" required>
+          </div>
         </div>
-        <input type="password" class="form-control" pattern=".{6,}" value="123456" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" required>
+
+        <div class="col-md-3">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-file-image-o"></i>
+              </button>
+            </div>
+            <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+            aria-describedby="basic-addon1" required>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-calendar-o"></i>
+              </button>
+            </div>
+            <input type="date" class="form-control" value="1998-05-26" placeholder="Birthday" aria-label="Birthday"
+            aria-describedby="basic-addon1" required>
+          </div>
+        </div>
       </div>
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-user-o"></i>
-          </button>
+      <div class="row">
+        <div class="col-md-7">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-address-book-o"></i>
+              </button>
+            </div>
+            <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
+            aria-describedby="basic-addon1" required>
+          </div>
         </div>
-        <input type="text" class="form-control" value="Lê Quốc Thái" placeholder="Username" aria-label="Username"
-        aria-describedby="basic-addon1" required>
-      </div>
 
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-calendar-o"></i>
-          </button>
+        <div class="col-md-5">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <button type="button" class="btn btn-secondary">
+                <i class="fa fa-building-o"></i>
+              </button>
+            </div>
+            <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
+            aria-describedby="basic-addon1" required>
+          </div>
         </div>
-        <input type="date" class="form-control" value="1998-05-26" placeholder="Birthday" aria-label="Birthday"
-        aria-describedby="basic-addon1" required>
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-file-image-o"></i>
-          </button>
-        </div>
-        <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
-        aria-describedby="basic-addon1" required>
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-address-book-o"></i>
-          </button>
-        </div>
-        <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
-        aria-describedby="basic-addon1" required>
-      </div>
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <button type="button" class="btn btn-secondary">
-            <i class="fa fa-building-o"></i>
-          </button>
-        </div>
-        <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
-        aria-describedby="basic-addon1" required>
       </div>
 
       <form action="submit" method="post">
