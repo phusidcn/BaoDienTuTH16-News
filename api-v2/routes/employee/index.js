@@ -8,7 +8,7 @@ const {
     
 const editorController = require('../../controllers/EditorController')
 const writerController = require('../../controllers/WriterController')
-
+const adminController  = require('../../controllers/AdminController')
 // Main Page
 router.get('/*', (req, res, next) => {
     req.app.locals.layout = 'employee'
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     res.render('employee/welcome')
 })
 
-// Trang thong tin ca nhan
+// Info Page
 
 router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => 
     res.render('employee/index')
@@ -35,7 +35,7 @@ router.get('/admins/dashboard', adminEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
 
-// Trang Nghiep vu
+// Business Page
 
 // WRITER ROUTES
 
@@ -61,5 +61,16 @@ router.delete('/writers/rejected/:id', writerController.deleteRejected)
 
 // EDITOR ROUTES
 router.get('/editors/draft', editorEnsureAuthenticated ,editorController.draft)
+
+// ADMIN ROUTES
+/**
+ * Category
+ */
+router.get('/admins/category', adminController.indexCategory)
+// router.post('/admins/cateogry/create', adminController.createCategory)
+// router.get('/admins/cateogry/edit/:_id', adminController.editCategory)
+// router.put('/admins/cateogry/edit/:_id', adminController.updateCategory)
+// router.delete('/admins/cateogry/:_id', adminController.deleteCategory)
+
 
 module.exports = router;

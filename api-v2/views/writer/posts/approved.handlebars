@@ -1,6 +1,7 @@
 <div class="content">
+    {{#ifvalue user.role equals="WRITER"}}
     <nav class="navbar navbar-expand-lg">
-        <h4>Minimum</h4>
+        <h4>Chào phóng viên</h4>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -9,15 +10,22 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/writer"><b>Trang chủ</b></a>
+                    <a class="nav-link" href="/writer"><b>
+                            {{#if user }}
+                            {{ user.name }}
+                            {{else}}
+                            Trang Writer
+                            {{/if}}
+                        </b></a>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="modal" data-target="#logOut" class="nav-link" href="#"><b>Đăng
+                    <a class="nav-link" href="/employee/writers/logout"><b>Đăng
                             xuất</b></a>
                 </li>
             </ul>
         </div>
     </nav>
+    {{/ifvalue}}
     <h4>APPROVED POSTS</h4>
 
     <table class="table table-bordered">
