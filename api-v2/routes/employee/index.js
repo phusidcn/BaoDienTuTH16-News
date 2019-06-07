@@ -31,5 +31,8 @@ router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
 router.get('/writers/index', writerEnsureAuthenticated ,writerController.index)
 router.get('/writers/create', writerEnsureAuthenticated ,writerController.indexCreate)
 router.post('/writers/create', writerController.create)
+router.get('/writers/edit/:id', writerController.indexUpdate)
+router.put('/writers/edit/:id', writerController.update)
+router.delete('/writers/delete/:id', writerController.delete)
 
 module.exports = router;

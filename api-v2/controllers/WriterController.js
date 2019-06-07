@@ -93,3 +93,66 @@ exports.create = (req, res) => {
             });
     }
 }
+
+exports.indexUpdate = (req, res) => {
+    Post
+        .findById(req.params.id)
+        .then(post => {
+            Category
+                .find({})
+                .then(categories => {
+                    res.render('writer/posts/edit', {
+                        post,
+                        categories
+                })
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+exports.update = (req, res) => {
+    const {
+        title,
+        status,
+        content,
+        premium,
+        category
+    } = req.body
+
+    Post
+        .findOne({ 
+            _id: req.params.id 
+        })
+        .then(post => {
+            post.title = title
+            post.status = status
+            post.content = content
+            post.premium = premium
+            post.category = category
+            
+            post
+                .save()
+                .then(updatedPost => {
+                    req.flash('success_msg', `Post ${updatedPost.title} was successfully updated`);
+                    res.redirect('/employee/writers/index')
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+}
+
+exports.delete = (req, res) => {
+    Post
+        .deleteOne({ 
+            _id: req.params.id 
+        })
+        .then((post) => {
+            fs.unlink(uploadDir + post.image, (err) => {
+                req.flash('success_msg', 'Post was successfully deleted');
+                res.redirect('/employee/writers/index')
+            })
+        })
+}

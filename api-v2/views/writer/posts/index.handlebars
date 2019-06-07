@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/writer"><b>Trang chủ</b></a>
+                    <a class="nav-link" href="/employee/writers/index"><b>Trang chủ</b></a>
                 </li>
                 <li class="nav-item">
                     <a data-toggle="modal" data-target="#logOut" class="nav-link" href="#"><b>Đăng
@@ -19,6 +19,24 @@
         </div>
     </nav>
     <h4>ALL POSTS</h4>
+
+    {{#if success_msg}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ success_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
 
     <table class="table table-bordered">
         <thead>
@@ -38,10 +56,10 @@
                 <td>{{title}}</td>
                 <td>{{category.name}}</td>
                 <td>{{status}}</td>
-                <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
-                <td><a href="/writer/post/edit/{{_id}}" class="btn btn-success">Edit</a></td>
+                <td>{{generateTime createdAt "MMMM Do YYYY" }}</td>
+                <td><a href="/employee/writers/edit/{{_id}}" class="btn btn-success">Edit</a></td>
                 <td>
-                    <form action="/writer/post/{{_id}}?_method=DELETE" method="POST">
+                    <form action="/employee/writers/delete/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
