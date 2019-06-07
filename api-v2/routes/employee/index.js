@@ -28,8 +28,8 @@ router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
 
 // WRITER ROUTES
 
-router.get('/writers/index', writerController.index)
-router.get('/writers/create', writerController.indexCreate)
+router.get('/writers/index', writerEnsureAuthenticated ,writerController.index)
+router.get('/writers/create', writerEnsureAuthenticated ,writerController.indexCreate)
 router.post('/writers/create', writerController.create)
 
 module.exports = router;

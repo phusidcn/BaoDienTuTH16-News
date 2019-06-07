@@ -10,9 +10,9 @@ exports.index = (req, res, next) => {
     try {
         Post
             .find({
-                // writer: {
-                //     $in: [req.user.id]
-                // }
+                writer: {
+                    $in: [req.user.id]
+                }
             })
             .populate('category')
             .exec((err, posts) => {
@@ -21,6 +21,7 @@ exports.index = (req, res, next) => {
                     posts
                 })
             })
+        console.log(req.user)
     } catch (err) {
         next(err)
     }
@@ -79,7 +80,8 @@ exports.create = (req, res) => {
             status: 0,
             tag: req.body.tag,
             premium: req.body.premium,
-            content: req.body.content
+            content: req.body.content,
+            writer: req.user.id
         })
 
         newPost.save()
