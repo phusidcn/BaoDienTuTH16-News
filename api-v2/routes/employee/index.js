@@ -24,7 +24,9 @@ router.get('/', (req, res) => {
 // Info Page
 
 router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => 
-    res.render('employee/index')
+    res.render('employee/index', {
+        layout: false
+    })
 );
 
 router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
@@ -67,10 +69,11 @@ router.get('/editors/draft', editorEnsureAuthenticated ,editorController.draft)
  * Category
  */
 router.get('/admins/category', adminController.indexCategory)
-// router.post('/admins/cateogry/create', adminController.createCategory)
-// router.get('/admins/cateogry/edit/:_id', adminController.editCategory)
-// router.put('/admins/cateogry/edit/:_id', adminController.updateCategory)
-// router.delete('/admins/cateogry/:_id', adminController.deleteCategory)
+router.get('/admins/category/create', adminController.indexCreateCategory)
+router.post('/admins/category/create', adminController.createCategory)
+router.get('/admins/category/edit/:id', adminController.indexUpdateCategory)
+router.put('/admins/category/edit/:id', adminController.updateCategory)
+router.delete('/admins/category/:id', adminController.deleteCategory)
 
 
 module.exports = router;
