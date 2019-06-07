@@ -35,4 +35,17 @@ router.get('/writers/edit/:id', writerController.indexUpdate)
 router.put('/writers/edit/:id', writerController.update)
 router.delete('/writers/delete/:id', writerController.delete)
 
+router.get('/writers/approved', writerController.approved)
+router.get('/writers/published', writerController.published)
+
+router.get('/writers/waiting', writerController.waiting)
+router.get('/writers/waiting/edit/:id', writerController.indexUpdateWaiting)
+router.put('/writers/waiting/edit/:id', writerController.updateWaiting)
+router.delete('/writers/waiting/:id', writerController.deleteWaiting)
+
+router.get('/writers/rejected', writerController.rejected)
+router.get('/writers/rejected/edit/:id', writerController.indexUpdateRejected)
+router.put('/writers/rejected/edit/:id', writerController.updateRejected)
+router.delete('/writers/rejected/:id', writerController.deleteRejected)
+
 module.exports = router;

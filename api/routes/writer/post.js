@@ -31,6 +31,11 @@ router.get('/edit/:id', (req, res) => {
 router.put('/edit/:id', writerController.edit)
 router.delete('/:id', writerController.delete)
 
+
+
+
+
+
 router.get('/approved', writerController.approvedPost)
 router.get('/published', writerController.publishedPost)
 

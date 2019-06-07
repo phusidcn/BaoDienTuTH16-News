@@ -77,7 +77,6 @@ exports.create = (req, res) => {
             image: filename,
             like: 0,
             category: req.body.category,
-            status: 0,
             tag: req.body.tag,
             premium: req.body.premium,
             content: req.body.content,
@@ -153,6 +152,178 @@ exports.delete = (req, res) => {
             fs.unlink(uploadDir + post.image, (err) => {
                 req.flash('success_msg', 'Post was successfully deleted');
                 res.redirect('/employee/writers/index')
+            })
+        })
+}
+
+exports.approved = (req, res) => {
+    const approved_status = 1
+    Post
+        .find({ 
+            status: approved_status,
+            writer: {
+                $in: [req.user.id]
+            }
+        })
+        .populate('category')
+        .exec((err, posts) => {
+            if (err) console.log(err)
+            res.render('writer/posts/approved', {
+                posts: posts
+            })
+        })
+}
+
+exports.published = (req, res) => {
+    const published_status = 3
+    Post
+        .find({ 
+            status: published_status,
+            writer: {
+                $in: [req.user.id]
+            } 
+        })
+        .populate('category')
+        .exec((err, posts) => {
+            if (err) console.log(err)
+            res.render('writer/posts/published', {
+                posts: posts
+            })
+        })
+}
+
+exports.waiting = (req, res) => {
+    const waiting_approved_status = 0
+    Post
+        .find({ 
+            status: waiting_approved_status,
+            writer: {
+                $in: [req.user.id]
+            } 
+        })
+        .populate('category')
+        .exec((err, posts) => {
+            if (err) console.log(err)
+            res.render('writer/posts/waiting-approved', {
+                posts: posts
+            })
+        })
+}
+
+exports.indexUpdateWaiting = (req, res) => {
+    Post
+        .findById(req.params.id)
+        .then(post => {
+            Category
+                .find({})
+                .then(categories => {
+                    res.render('writer/posts/edit-waiting-approved', {
+                        post,
+                        categories
+                })
+            })
+        })
+}
+
+exports.updateWaiting = (req, res) => {
+    Post
+        .findOne({ 
+            _id: req.params.id 
+        })
+        .then(post => {
+            post.title = req.body.title
+            post.status = 0
+            post.content = req.body.content
+            post.premium = req.body.premium
+            post.category = req.body.category
+            post.writer = req.user.id
+
+            post
+                .save()
+                .then(updatedPost => {
+                    req.flash('success_msg', `Post ${updatedPost} was successfully updated`);
+                    res.redirect('/employee/writers/waiting')
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+}
+
+exports.deleteWaiting = (req, res) => {
+    Post
+        .deleteOne({ _id: req.params.id })
+        .then((post) => {
+            fs.unlink(uploadDir + post.image, (err) => {
+                req.flash('success_msg', 'Post was successfully deleted');
+                res.redirect('/employee/writers/waiting')
+            })
+        })
+}
+
+exports.rejected = (req, res) => {
+    const rejected_status = 2
+    Post
+        .find({ 
+            status: rejected_status 
+        })
+        .populate('category')
+        .exec((err, posts) => {
+            if (err) console.log(err)
+            res.render('writer/posts/rejected', {
+                posts
+            })
+        })
+}
+
+exports.indexUpdateRejected = (req, res) => {
+    Post
+        .findById(req.params.id)
+        .then(post => {
+            Category
+                .find({})
+                .then(categories => {
+                    res.render('writer/posts/edit-rejected', {
+                        post,
+                        categories
+                    })
+                })
+            })
+}
+
+exports.updateRejected = (req, res) => {
+    Post
+        .findOne({ 
+            _id: req.params.id 
+        })
+        .then(post => {
+            post.title = req.body.title
+            post.status = 2
+            post.content = req.body.content
+            post.premium = req.body.premium
+            post.category = req.body.category
+
+            post
+                .save()
+                .then(updatedPost => {
+                    req.flash('success_msg', `Post ${updatedPost} was successfully updated`);
+                    res.redirect('/employee/writers/rejected')
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+}
+
+exports.deleteRejected = (req, res) => {
+    Post
+        .deleteOne({ 
+            _id: req.params.id 
+        })
+        .then((post) => {
+            fs.unlink(uploadDir + post.image, (err) => {
+                req.flash('success_msg', 'Post was successfully deleted');
+                res.redirect('/employee/writers/rejected')
             })
         })
 }
