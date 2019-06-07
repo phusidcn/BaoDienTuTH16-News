@@ -24,23 +24,26 @@ const post6Id = mongoose.Types.ObjectId()
 const post7Id = mongoose.Types.ObjectId()
 const post8Id = mongoose.Types.ObjectId()
 
-const writer1Id = mongoose.Types.ObjectId()
-const writer2Id = mongoose.Types.ObjectId()
-const writer3Id = mongoose.Types.ObjectId()
+const user1Id = mongoose.Types.ObjectId()
+const user2Id = mongoose.Types.ObjectId()
+const user3Id = mongoose.Types.ObjectId()
+const user4Id = mongoose.Types.ObjectId()
+const user5Id = mongoose.Types.ObjectId()
+const user6Id = mongoose.Types.ObjectId()
 
-const guest1Id = mongoose.Types.ObjectId()
-const guest2Id = mongoose.Types.ObjectId()
-const guest3Id = mongoose.Types.ObjectId()
+// const guest1Id = mongoose.Types.ObjectId()
+// const guest2Id = mongoose.Types.ObjectId()
+// const guest3Id = mongoose.Types.ObjectId()
 
-const subscriber1Id = mongoose.Types.ObjectId()
-const subscriber2Id = mongoose.Types.ObjectId()
-const subscriber3Id = mongoose.Types.ObjectId()
+// const subscriber1Id = mongoose.Types.ObjectId()
+// const subscriber2Id = mongoose.Types.ObjectId()
+// const subscriber3Id = mongoose.Types.ObjectId()
 
-const editor1Id = mongoose.Types.ObjectId()
-const editor2Id = mongoose.Types.ObjectId()
-const editor3Id = mongoose.Types.ObjectId()
+// const editor1Id = mongoose.Types.ObjectId()
+// const editor2Id = mongoose.Types.ObjectId()
+// const editor3Id = mongoose.Types.ObjectId()
 
-const admin1Id = mongoose.Types.ObjectId()
+// const admin1Id = mongoose.Types.ObjectId()
 
 
 module.exports = {
@@ -100,19 +103,19 @@ module.exports = {
         {
             "_id": comment1Id,
             "content": "bla bla bla",
-            "subscriber": subscriber1Id,
+            "subscriber": user3Id,
             "post": post1Id
         },
         {
             "_id": comment2Id,
             "content": "bla bla bla",
-            "subscriber": subscriber2Id,
+            "subscriber": user3Id,
             "post": post2Id
         },
         {
             "_id": comment3Id,
             "content": "bla bla bla",
-            "subscriber": subscriber3Id,
+            "subscriber": user3Id,
             "post": post3Id
         }
     ], 
@@ -124,6 +127,7 @@ module.exports = {
             "title": "Tin the thao bong da",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 100,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -131,7 +135,7 @@ module.exports = {
             "status": 0,
             "category": category1Id,
             "tags": [tag1Id, tag2Id],
-            "writer": writer1Id,
+            "writer": user1Id,
             "comments": [comment1Id, comment2Id]
         },
         {
@@ -139,6 +143,7 @@ module.exports = {
             "title": "Tin the thao bong da",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 110,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -146,7 +151,7 @@ module.exports = {
             "status": 0,
             "category": category1Id,
             "tags": [tag1Id. tag3Id],
-            "writer": writer1Id,
+            "writer": user1Id,
             "comments": [comment1Id, comment3Id]
         },
         {
@@ -154,6 +159,7 @@ module.exports = {
             "title": "Tin the thao bong da",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 120,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -161,7 +167,7 @@ module.exports = {
             "status": 0,
             "category": category1Id,
             "tags": [tag2Id, tag3Id],
-            "writer": writer1Id,
+            "writer": user1Id,
             "comments": [comment1Id, comment3Id]
         },
         {
@@ -169,6 +175,7 @@ module.exports = {
             "title": "Tin the thao bong da",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 130,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -176,7 +183,7 @@ module.exports = {
             "status": 0,
             "category": category1Id,
             "tags": [tag1Id, tag3Id],
-            "writer": writer2Id,
+            "writer": user2Id,
             "comments": [comment1Id, comment3Id]
         },
         {
@@ -184,6 +191,7 @@ module.exports = {
             "title": "Tin the thao bong da",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 200,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -191,7 +199,7 @@ module.exports = {
             "status": 3,
             "category": category1Id,
             "tags": [tag2Id, tag3Id],
-            "writer": writer3Id,
+            "writer": user1Id,
             "comments": [comment1Id, comment3Id]
         },
         {
@@ -199,6 +207,7 @@ module.exports = {
             "title": "Tin thoi su",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 300,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -206,7 +215,7 @@ module.exports = {
             "status": 1,
             "category": category1Id,
             "tags": [tag2Id, tag3Id],
-            "writer": writer3Id,
+            "writer": user2Id,
             "comments": [comment1Id, comment3Id]
         },
         {
@@ -214,6 +223,7 @@ module.exports = {
             "title": "Tin the thao bong da",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 220,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -221,7 +231,7 @@ module.exports = {
             "status": 2,
             "category": category1Id,
             "tags": [tag2Id, tag3Id],
-            "writer": writer3Id,
+            "writer": user2Id,
             "comments": [comment1Id, comment3Id]
         },
         {
@@ -229,6 +239,7 @@ module.exports = {
             "title": "Tin the thao bong da",
             "image": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
             "linkYoutube": "www.youtube.com",
+            "like": 200,
             "sucContent": "bla bla bla",
             "content": "bla bla bla bla bla",
             "createdAt": moment().toISOString(),
@@ -236,142 +247,60 @@ module.exports = {
             "status": 4,
             "category": category1Id,
             "tags": [tag2Id, tag3Id],
-            "writer": writer3Id,
+            "writer": user2Id,
             "comments": [comment1Id, comment3Id]
         },
     ],
 
-    //writers
-    "writers":[
+    // users
+    "users":[
         {
-            "_id": writer1Id,
+            "_id": user1Id,
             "email": "lequocthai1998@gmail.com",
             "password": "gagtrxrz111",
             "name": "Lê Quốc Thái",
-            "address": "333 Lý Thái Tổ, P9, Q10",
-            "company": "HCMUS",
-            "posts": [post1Id, post2Id, post3Id],
+            "role": "GUEST",
             "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
         },
         {
-            "_id": writer2Id,
+            "_id": user2Id,
             "email": "lequocduyquang@gmail.com",
             "password": "123456789",
             "name": "Lê Quốc Duy Quang",
-            "birthday": "01/01/1998",
-            "address": "TPHCM",
-            "company": "UIT",
-            "posts": [post4Id],
+            "role": "GUEST",
             "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
         },
         {
-            "_id": writer3Id,
+            "_id": user3Id,
             "email": "lequocthai@gmail.com",
             "password": "gagtrxrz111",
             "name": "Huỳnh Lâm Phú Sĩ",
-            "birthday": "01/01/1998",
-            "address": "333 Lý Thái Tổ, P9, Q10",
-            "company": "BK",
-            "posts": [post5Id],
+            "role": "SUBSCRIBER",
+            "membership": "1",
             "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        }
-    ],
-
-    //editors
-    "editors":[
+        },
         {
-            "_id": editor1Id,
+            "_id": user4Id,
             "email": "lequocthai1998@gmail.com",
             "password": "gagtrxrz111",
+            "role": "WRITER",
             "name": "Lê Quốc Sang",
             "address": "333 Lý Thái Tổ, P9, Q10",
+            "company": "HCMUS",
             "posts": [post1Id, post2Id],
             "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
         },
         {
-            "_id": editor2Id,
+            "_id": user5Id,
             "email": "lequocduyquang@gmail.com",
             "password": "123456789",
+            "role": "EDITOR",
             "name": "Lê Quốc",
             "address": "TPHCM",
-            "posts": [post3Id],
+            "categories": [category1Id, category2Id],
             "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
         },
-        {
-            "_id": editor3Id,
-            "email": "lequoc@gmail.com",
-            "password": "gagtrxrz111",
-            "name": "Huỳnh Lâm Phú Sỹ",
-            "address": "333 Lý Thái Tổ, P9, Q10",
-            "posts": [post4Id, post5Id],
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        }
+        
     ],
 
-    //guests
-    "guests":[
-        {
-            "_id": guest1Id,
-            "email": "lequocthai1998@gmail.com",
-            "password": "gagtrxrz111",
-            "name": "Lê Văn Thái",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        },
-        {
-            "_id": guest2Id,
-            "email": "lequocduyquang@gmail.com",
-            "password": "123456789",
-            "name": "Lê Duy Quang",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        },
-        {
-            "_id": guest3Id,
-            "email": "lequocthai1998@gmail.com",
-            "password": "gagtrxrz111",
-            "name": "Huỳnh Phú Sĩ",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        }
-    ],
-
-    //subscribers
-    "subscribers":[
-        {
-            "_id": subscriber1Id,
-            "email": "lequocthai1998@gmail.com",
-            "password": "gagtrxrz111",
-            "name": "Lê Quốc Quân",
-            "membership": "30",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        },
-        {
-            "_id": subscriber2Id,
-            "email": "lequocduyquang@gmail.com",
-            "password": "123456789",
-            "name": "Lê Quốc Quang",
-            "membership": "3",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        },
-        {
-            "_id": subscriber3Id,
-            "email": "lequoc@gmail.com",
-            "password": "gagtrxrz111",
-            "name": "Huỳnh Sĩ",
-            "membership": "10",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80"
-        }
-    ],
-
-    //admins
-    "admins":[
-        {
-            "_id": admin1Id,
-            "email": "lequocthai1998@gmail.com",
-            "password": "gagtrxrz111",
-            "name": "Lê Quốc Duy Quang",
-            "avatar": "https://images.unsplash.com/photo-1519999482648-25049ddd37b1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2452&q=80",
-            "writers": [writer1Id, writer2Id, writer3Id],
-            "editors": [editor1Id, editor2Id, editor3Id],
-            "posts": [post1Id, post2Id, post3Id, post4Id, post5Id]
-        }
-    ],
 }

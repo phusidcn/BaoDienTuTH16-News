@@ -4,11 +4,7 @@ const Tag = require('./models/Tag')
 const Comment = require('./models/Comment')
 const Post = require('./models/Post')
 
-const Admin = require('./models/Admin')
-const Writer = require('./models/Writer')
-const Editor = require('./models/Editor')
-const Guest = require('./models/Guest')
-const Subscriber = require('./models/Subscriber')
+const User = require('./models/User')
 
 const data = require('./data')
 const config = require('./config/dev')
@@ -19,12 +15,8 @@ class DB {
         this.tags = data.tags
         this.comments = data.comments
         this.posts = data.posts
-        this.admins = data.admins
-        this.writers = data.writers
-        this.editors = data.editors
-        this.guests = data.guests
-        this.subscribers = data.subscribers
-        this.models = [Category, Tag, Comment, Post, Admin, Writer, Editor, Guest, Subscriber]
+        this.users = data.users
+        this.models = [Category, Tag, Comment, Post, User]
     }
 
     async cleanDB () {
@@ -55,29 +47,9 @@ class DB {
             await newPost.save(() => {})
         })
 
-        await this.admins.forEach(async (admin) => {
-            const newAdmin = new Admin(admin)
-            await newAdmin.save(() => {})
-        })
-
-        await this.writers.forEach(async (writer) => {
-            const newWriter = new Writer(writer)
-            await newWriter.save(() => {})
-        })
-
-        await this.editors.forEach(async (editor) => {
-            const newEditor = new Editor(editor)
-            await newEditor.save(() => {})
-        })
-
-        await this.guests.forEach(async (guest) => {
-            const newGuest = new Guest(guest)
-            await newGuest.save(() => {})
-        })
-
-        await this.subscribers.forEach(async (subscriber) => {
-            const newSubscriber = new Subscriber(subscriber)
-            await newSubscriber.save(() => {})
+        await this.users.forEach(async (user) => {
+            const newUser = new User(user)
+            await newUser.save(() => {})
         })
     }
 

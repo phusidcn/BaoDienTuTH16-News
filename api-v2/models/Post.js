@@ -1,5 +1,4 @@
 const moongoose = require('mongoose')
-const Category = require('../models/Category')
 const Schema = moongoose.Schema
 
 const PostSchema = new Schema({
@@ -9,7 +8,7 @@ const PostSchema = new Schema({
     },
     views: Number,
     image: String,
-    liked: Number,
+    like: Number,
     linkYoutube: String,
     subContent: String,
     content: {
@@ -20,7 +19,10 @@ const PostSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    premium: Boolean,
+    premium: {
+        type: Boolean,
+        required: true
+    },
     status: {
         // 0: Chua Duyet , 1: Da duyet, 2: Bi tu choi, 3: Xuat ban
         type: Number,
@@ -31,6 +33,10 @@ const PostSchema = new Schema({
         ref: 'Category'
     },
     tag: String,
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
+    },
     writer: {
         type: Schema.Types.ObjectId,
         ref: 'User'

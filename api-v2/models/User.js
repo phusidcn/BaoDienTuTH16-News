@@ -16,6 +16,7 @@ const UserSchema = new Schema({
         required: true
     },
     role: String,
+    membership: String,
     guest: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -35,7 +36,19 @@ const UserSchema = new Schema({
     admin: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Post'
+        }
+    ],
+    category: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Category'
+        }
+    ]
 })
 
 module.exports = mongoose.model('User', UserSchema)
