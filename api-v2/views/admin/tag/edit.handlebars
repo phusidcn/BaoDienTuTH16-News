@@ -1,0 +1,44 @@
+<div class="content">
+    {{#ifvalue user.role equals="ADMIN"}}
+    <nav class="navbar navbar-expand-lg">
+        <h4>Chào Quản trị viên</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/writer"><b>
+                            {{#if user }}
+                            {{ user.name }}
+                            {{else}}
+                            Trang Quản trị
+                            {{/if}}
+                        </b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/employee/admins/logout"><b>Đăng
+                            xuất</b></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {{/ifvalue}}
+    <h4 class="mt-3">Edit Tag</h4>
+    <form action="/employee/admins/tag/edit/{{tag._id}}?_method=PUT" method="POST">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-flag-o"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Tên tag" id="title" name="name" value="{{tag.name}}"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn-blue" value="">Cập nhật</button>
+        </div>
+    </form>
+</div>

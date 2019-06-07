@@ -1,4 +1,3 @@
-
 {{#ifvalue user.role equals="WRITER"}}
 <nav id="sidebar">
     <ul class="list-unstyled components">
@@ -95,7 +94,7 @@
             <div class="profile d-block mx-auto text-center bottom-border">{{user.name}}</div>
         </div>
 
-        <li class="nav-item active">
+        <li class="nav-item">
             <a href="#viewList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                 <i class="fa fa-eye-slash"></i>
                 <span>Category</span>
@@ -108,14 +107,29 @@
                     <a href="/employee/admins/category/create">Tạo mới</a>
                 </li>
             </ul>
-        <li>
+        </li>
+
+        <li class="nav-item">
+            <a href="#viewList" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fa fa-eye-slash"></i>
+                <span>Tag</span>
+            </a>
+            <ul class="collapse list-unstyled" id="viewList">
+                <li>
+                    <a href="/employee/admins/tag/">Xem</a>
+                </li>
+                <li>
+                    <a href="/employee/admins/tag/create">Tạo mới</a>
+                </li>
+            </ul>
+        </li>
 
         <li class="nav-item active">
             <a href="#postContent">
                 <i class="fa fa-upload"></i>
                 <span>Quản lý Bài viết</span>
             </a>
-        <li>
+        </li>
 
     </ul>
 

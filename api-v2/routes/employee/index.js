@@ -75,5 +75,15 @@ router.get('/admins/category/edit/:id', adminController.indexUpdateCategory)
 router.put('/admins/category/edit/:id', adminController.updateCategory)
 router.delete('/admins/category/:id', adminController.deleteCategory)
 
+/**
+ * Tag
+ */
+router.get('/admins/tag', adminController.indexTag)
+router.get('/admins/tag/create', adminController.indexCreateTag)
+router.post('/admins/tag/create', adminController.createTag)
+router.get('/admins/tag/edit/:id', adminController.indexUpdateTag)
+router.put('/admins/tag/edit/:id', adminController.updateTag)
+router.delete('/admins/tag/:id', adminController.deleteTag)
+
 
 module.exports = router;

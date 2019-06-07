@@ -1,6 +1,9 @@
 const Category = require('../models/Category')
+const Tag = require('../models/Tag')
 
-/* ================== CATEGORY ========================= */
+/**
+ * CATEGORY
+ */
 exports.indexCategory = async (req, res) => {
     try {
         const categories = await Category.find({})
@@ -56,6 +59,78 @@ exports.deleteCategory = async (req, res) => {
     try {
         const deletedCategory = await Category.remove({_id: req.params.id})
         res.redirect('/employee/admins/category')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+/**
+ * TAG
+ */
+exports.indexTag = async (req, res) => {
+    try {
+        const tags = await Tag.find({}).populate('category')
+        res.render('admin/tag/index', {
+            tags
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.indexCreateTag = (req, res) => {
+    Category
+        .find({})
+        .then(categories => {
+            res.render('admin/tag/create', {
+                categories
+            })
+        })
+}
+
+exports.createTag = async (req, res) => {
+    try {
+        let newTag = new Tag({
+            name: req.body.name,
+            category: req.body.category
+        })
+        newTag = await newTag.save()
+        res.redirect('/employee/admins/tag')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.indexUpdateTag = async (req, res) => {
+    try {
+        let foundTag = await Tag.findOne({_id: req.params.id})
+        res.render('admin/tag/edit', {
+            tag: foundTag
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateTag = async (req, res) => {
+    try {
+        let { name, category } = req.body
+        let foundTag = await Tag.findOne({_id: req.params.id})
+        foundTag.name = name
+        foundTag.category = category
+        await foundTag.save().then(updatedTag => {
+            res.redirect('/employee/admins/tag')
+        })        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deleteTag = async (req, res) => {
+    try {
+        const deletedTag = await Tag.remove({_id: req.params.id})
+        res.redirect('/employee/admins/tag')
     } catch (error) {
         console.log(error)
     }
