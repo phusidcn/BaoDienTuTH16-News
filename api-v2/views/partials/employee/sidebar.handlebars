@@ -1,6 +1,8 @@
+
+{{#ifvalue user.role equals="WRITER"}}
 <nav id="sidebar">
     <ul class="list-unstyled components">
-        <div class="profile text-center">{{#if user.role}}Phóng viên{{else}} Employee {{/if}} báo MUTV</div>
+        <div class="profile text-center">Phóng viên báo MUTV</div>
         <div class="avt-wrapper">
             <div class="avt">
                 <img src="/img/thai.jpg">
@@ -41,3 +43,80 @@
         </li>
     </ul>
 </nav>
+
+{{/ifvalue}}
+
+
+{{#ifvalue user.role equals="EDITOR"}}
+<nav id="sidebar">
+    <ul class="list-unstyled components">
+        <div class="profile text-center">Biên tập viên báo MUTV</div>
+        <div class="avt-wrapper">
+            <div class="avt">
+                <img src="/img/thai.jpg">
+            </div>
+            <div class="profile d-block mx-auto text-center bottom-border">{{user.name}}</div>
+        </div>
+
+        <li class="nav-item active">
+            <a href="#postContent">
+                <i class="fa fa-upload"></i>
+                <span>Quản lý Chuyên mục</span>
+            </a>
+        <li>
+
+        <li class="nav-item active">
+            <a href="#postContent">
+                <i class="fa fa-download"></i>
+                <span>Quản lý Bài viết</span>
+            </a>
+        <li>
+
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+        <li>
+            <a data-toggle="modal" data-target="#profile-user" href="#" class="editProfile">Chỉnh sửa profile</a>
+        </li>
+    </ul>
+</nav>
+
+
+{{/ifvalue}}
+
+{{#ifvalue user.role equals="ADMIN"}}
+<nav id="sidebar">
+    <ul class="list-unstyled components">
+        <div class="profile text-center">Biên tập viên báo MUTV</div>
+        <div class="avt-wrapper">
+            <div class="avt">
+                <img src="/img/thai.jpg">
+            </div>
+            <div class="profile d-block mx-auto text-center bottom-border">{{user.name}}</div>
+        </div>
+
+        <li class="nav-item active">
+            <a href="#postContent">
+                <i class="fa fa-upload"></i>
+                <span>Quản lý Chuyên mục</span>
+            </a>
+        <li>
+
+        <li class="nav-item active">
+            <a href="#postContent">
+                <i class="fa fa-upload"></i>
+                <span>Quản lý Bài viết</span>
+            </a>
+        <li>
+
+    </ul>
+
+    <ul class="list-unstyled CTAs">
+        <li>
+            <a data-toggle="modal" data-target="#profile-user" href="#" class="editProfile">Chỉnh sửa profile</a>
+        </li>
+    </ul>
+</nav>
+
+
+{{/ifvalue}}

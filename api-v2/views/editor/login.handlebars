@@ -8,20 +8,30 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/4/journal/bootstrap.min.css" />
-    <title>Node.js & Passport Login App</title>
+    <title>Minimum</title>
 </head>
 
 <body>
-    {{#each errors}}
-    <div class="alert alert-danger" style="text-align: center;">
-        {{ msg }}
-    </div>
-    {{/each}}
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-6 m-auto">
                 <div class="card card-body">
                     <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
+                    {{#if error_msg }}
+                    <div class="alert alert-danger" style="text-align: center;">
+                        {{ error_msg }}
+                    </div>
+                    {{/if}}
+                    {{#if success_msg }}
+                    <div class="alert alert-success" style="text-align: center;">
+                        {{ success_msg }}
+                    </div>
+                    {{/if}}
+                    {{#each errors}}
+                    <div class="alert alert-danger" style="text-align: center;">
+                        {{ errors.msg }}
+                    </div>
+                    {{/each}}
                     <form action="/employee/editors/login" method="POST">
                         <div class="form-group">
                             <label for="email">Email</label>

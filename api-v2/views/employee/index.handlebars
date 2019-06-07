@@ -25,9 +25,120 @@
             </ul>
         </div>
     </nav>
+
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Email</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-envelope-o"></i>
+                        </button>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="basic-addon1" value="{{email}}">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Password</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-unlock"></i>
+                        </button>
+                    </div>
+                    <input type="password" class="form-control" pattern=".{6,}" placeholder="Password"
+                        aria-label="Password" aria-describedby="basic-addon1" value="{{password}}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label class="bmd-label-floating">User name</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-user-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="{{name}}" placeholder="Username"
+                        aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Avatar</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-file-image-o"></i>
+                        </button>
+                    </div>
+                    <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Gender</label>
+                <div class="input-group mb-3">
+                    <button type="button" class="btn btn-secondary">
+                        <i class="fa fa-transgender"></i>
+                    </button>
+                    <select class="custom-select" id="genderInputGroup" name="Gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Address</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-address-book-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Company</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-building-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+        </div>
+
+        <form action="submit" method="post">
+            <div class="submit">
+                <input type="submit" value="Edit" name="edit_profile">
+            </div>
+        </form>
+
+    </form>
     {{/ifvalue}}
 
     {{#ifvalue user.role equals="EDITOR"}}
+
     <nav class="navbar navbar-expand-lg">
         <h4>Chào Biên tập viên</h4>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -53,18 +164,252 @@
             </ul>
         </div>
     </nav>
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Email</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-envelope-o"></i>
+                        </button>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="basic-addon1" value="{{email}}">
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Password</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-unlock"></i>
+                        </button>
+                    </div>
+                    <input type="password" class="form-control" pattern=".{6,}" placeholder="Password"
+                        aria-label="Password" aria-describedby="basic-addon1" value="{{password}}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label class="bmd-label-floating">User name</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-user-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="{{name}}" placeholder="Username"
+                        aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Avatar</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-file-image-o"></i>
+                        </button>
+                    </div>
+                    <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Gender</label>
+                <div class="input-group mb-3">
+                    <button type="button" class="btn btn-secondary">
+                        <i class="fa fa-transgender"></i>
+                    </button>
+                    <select class="custom-select" id="genderInputGroup" name="Gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Address</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-address-book-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Company</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-building-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+        </div>
+
+        <form action="submit" method="post">
+            <div class="submit">
+                <input type="submit" value="Edit" name="edit_profile">
+            </div>
+        </form>
+
+    </form>
     {{/ifvalue}}
 
+    {{#ifvalue user.role equals="ADMIN"}}
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Fluid jumbotron</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <nav class="navbar navbar-expand-lg">
+        <h4>Chào Quản trị viên</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/writer"><b>
+                            {{#if user }}
+                            {{ user.name }}
+                            {{else}}
+                            Trang Editor
+                            {{/if}}
+                        </b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/employee/admins/logout"><b>Đăng
+                            xuất</b></a>
+                </li>
+            </ul>
         </div>
-    </div>
+    </nav>
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Email</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-envelope-o"></i>
+                        </button>
+                    </div>
+                    <input type="email" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="basic-addon1" value="{{email}}">
+                </div>
+            </div>
 
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Password</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-unlock"></i>
+                        </button>
+                    </div>
+                    <input type="password" class="form-control" pattern=".{6,}" placeholder="Password"
+                        aria-label="Password" aria-describedby="basic-addon1" value="{{password}}" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <label class="bmd-label-floating">User name</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-user-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="{{name}}" placeholder="Username"
+                        aria-label="Username" aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Avatar</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-file-image-o"></i>
+                        </button>
+                    </div>
+                    <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Gender</label>
+                <div class="input-group mb-3">
+                    <button type="button" class="btn btn-secondary">
+                        <i class="fa fa-transgender"></i>
+                    </button>
+                    <select class="custom-select" id="genderInputGroup" name="Gender">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Address</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-address-book-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label class="bmd-label-floating">Company</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-building-o"></i>
+                        </button>
+                    </div>
+                    <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
+                        aria-describedby="basic-addon1" required>
+                </div>
+            </div>
+        </div>
+
+        <form action="submit" method="post">
+            <div class="submit">
+                <input type="submit" value="Edit" name="edit_profile">
+            </div>
+        </form>
+
+    </form>
+    {{/ifvalue}}
 </div>
-
-
-
-

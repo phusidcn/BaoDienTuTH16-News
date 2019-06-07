@@ -69,19 +69,19 @@ app.use(function (req, res, next) {
     res.locals.user = req.user || null
     res.locals.success_msg = req.flash('success_msg')
     res.locals.error_msg = req.flash('error_msg')
-    res.locals.error = req.flash('error')
+    res.locals.errors = req.flash('error')
     next()
 })
 
 // Routes
-// app.use('/', require('./routes/index'))
-// app.use('/users', require('./routes/users'))
 app.use('/', require('./routes/guest/index'))
 app.use('/guests', require('./routes/guest/guests'))
 
 app.use('/employee', require('./routes/employee/index'))
 app.use('/employee/writers', require('./routes/employee/writers'))
 app.use('/employee/editors', require('./routes/employee/editors'))
+
+app.use('/employee/admins', require('./routes/employee/admins'))
 
 
 app.listen(config.port, 

@@ -3,6 +3,7 @@ const router = express.Router()
 const { 
         writerEnsureAuthenticated,
         editorEnsureAuthenticated,
+        adminEnsureAuthenticated,
     } = require('../../helpers/auth')
     
 const editorController = require('../../controllers/EditorController')
@@ -14,11 +15,10 @@ router.get('/*', (req, res, next) => {
     next()
 })
 
+
 // Welcome Page
 router.get('/', (req, res) => {
-    res.render('employee/welcome', {
-        layout: false
-    })
+    res.render('employee/welcome')
 })
 
 // Trang thong tin ca nhan
@@ -28,6 +28,10 @@ router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) =>
 );
 
 router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
+    res.render('employee/index')
+})
+
+router.get('/admins/dashboard', adminEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
 
