@@ -6,11 +6,11 @@ const passport = require('passport')
 const User = require('../../models/User')
 
 router.get('/login', (req, res) => {
-    res.render('writer/login')
+    res.render('guest/login')
 })
 
 router.get('/register', (req, res) => {
-    res.render('writer/register')
+    res.render('guest/register')
 })
 
 // Register
