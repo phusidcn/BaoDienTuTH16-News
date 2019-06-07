@@ -5,13 +5,20 @@ const {
         editorEnsureAuthenticated,
     } = require('../../helpers/auth')
     
-const Category = require('../../models/Category')
+const editorController = require('../../controllers/EditorController')
 const writerController = require('../../controllers/WriterController')
 
 // Main Page
 router.get('/*', (req, res, next) => {
     req.app.locals.layout = 'employee'
     next()
+})
+
+// Welcome Page
+router.get('/', (req, res) => {
+    res.render('employee/welcome', {
+        layout: false
+    })
 })
 
 // Trang thong tin ca nhan
@@ -47,5 +54,8 @@ router.get('/writers/rejected', writerController.rejected)
 router.get('/writers/rejected/edit/:id', writerController.indexUpdateRejected)
 router.put('/writers/rejected/edit/:id', writerController.updateRejected)
 router.delete('/writers/rejected/:id', writerController.deleteRejected)
+
+// EDITOR ROUTES
+router.get('/editors/draft', editorEnsureAuthenticated ,editorController.draft)
 
 module.exports = router;

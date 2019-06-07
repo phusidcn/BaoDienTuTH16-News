@@ -1,0 +1,70 @@
+<div class="content">
+    <nav class="navbar navbar-expand-lg">
+        <h4>Minimum</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/employee/editors/index"><b>Trang chủ</b></a>
+                </li>
+                <li class="nav-item">
+                    <a data-toggle="modal" data-target="#logOut" class="nav-link" href="#"><b>Đăng
+                            xuất</b></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <h4>ALL POSTS</h4>
+
+    {{#if success_msg}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ success_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <td><img height="75" width="75" class="img-responsive" src="/uploads/{{image}}" alt=""></td>
+                <td>{{title}}</td>
+                <td>{{category.name}}</td>
+                <td>{{status}}</td>
+                <td>{{generateTime createdAt "MMMM Do YYYY" }}</td>
+                <td><a href="/employee/writers/edit/{{_id}}" class="btn btn-success">Edit</a></td>
+                <td>
+                    <form action="/employee/writers/delete/{{_id}}?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,13 @@
+version: "3"
+services:
+  app:
+    build: .
+    environment:
+      DATABASE_URL: mongodb://localhost/minimum-v2
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/api-v2
+    working_dir: /api-v2/
+    

@@ -1,10 +1,7 @@
-const bcrypt = require('bcryptjs')
-const passport = require('passport')
 const fs = require('fs')
 const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 const Post = require('./../models/Post')
 const Category = require('./../models/Category')
-const Writer = require('../models/User')
 
 exports.index = (req, res, next) => {
     try {
