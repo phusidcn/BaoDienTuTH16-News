@@ -36,18 +36,18 @@
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-flag-o"></i>
+                    <i class="fa fa-folder-o"></i>
                 </button>
             </div>
             <input required type="text" class="form-control" placeholder="Tên tag" id="title" name="name"
                 aria-describedby="basic-addon1">
         </div>
         <div class="input-group mb-3">
-            <div class="input-group mb-3">
+            {{!-- <div class="input-group mb-3">
                 <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-flag-o"></i>
+                    <i class="fa fa-folder-o"></i>
                 </button>
-            </div>
+            </div> --}}
             <select name="category" id="category" class="form-control">
                 {{#each categories}}
                 <option value="{{id}}">{{ name }}</option>

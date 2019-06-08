@@ -33,7 +33,7 @@ exports.createCategory = async (req, res) => {
 
 exports.indexUpdateCategory = async (req, res) => {
     try {
-        let foundCate = await Category.findOne({_id: req.params.id})
+        let foundCate = await Category.findOne({ _id: req.params.id })
         res.render('admin/category/edit', {
             category: foundCate
         })
@@ -45,11 +45,11 @@ exports.indexUpdateCategory = async (req, res) => {
 exports.updateCategory = async (req, res) => {
     try {
         let { name } = req.body
-        let foundCate = await Category.findOne({_id: req.params.id})
+        let foundCate = await Category.findOne({ _id: req.params.id })
         foundCate.name = name
         await foundCate.save().then(updatedCate => {
             res.redirect('/employee/admins/category')
-        })        
+        })
     } catch (error) {
         console.log(error)
     }
@@ -57,7 +57,7 @@ exports.updateCategory = async (req, res) => {
 
 exports.deleteCategory = async (req, res) => {
     try {
-        const deletedCategory = await Category.remove({_id: req.params.id})
+        const deletedCategory = await Category.remove({ _id: req.params.id })
         res.redirect('/employee/admins/category')
     } catch (error) {
         console.log(error)
@@ -79,14 +79,15 @@ exports.indexTag = async (req, res) => {
     }
 }
 
-exports.indexCreateTag = (req, res) => {
-    Category
-        .find({})
-        .then(categories => {
-            res.render('admin/tag/create', {
-                categories
-            })
-        })
+exports.indexCreateTag = async (req, res) => {
+    try {
+        let categories = await Category.find({})
+        res.render('admin/tag/create', {
+            categories
+        })    
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 exports.createTag = async (req, res) => {
@@ -104,9 +105,11 @@ exports.createTag = async (req, res) => {
 
 exports.indexUpdateTag = async (req, res) => {
     try {
-        let foundTag = await Tag.findOne({_id: req.params.id})
+        let foundTag = await Tag.findOne({ _id: req.params.id }).populate('category')
+        let categories = await Category.find({})
         res.render('admin/tag/edit', {
-            tag: foundTag
+            tag: foundTag,
+            categories: categories
         })
     } catch (error) {
         console.log(error)
@@ -116,12 +119,12 @@ exports.indexUpdateTag = async (req, res) => {
 exports.updateTag = async (req, res) => {
     try {
         let { name, category } = req.body
-        let foundTag = await Tag.findOne({_id: req.params.id})
+        let foundTag = await Tag.findOne({ _id: req.params.id })
         foundTag.name = name
         foundTag.category = category
         await foundTag.save().then(updatedTag => {
             res.redirect('/employee/admins/tag')
-        })        
+        })
     } catch (error) {
         console.log(error)
     }
@@ -129,9 +132,15 @@ exports.updateTag = async (req, res) => {
 
 exports.deleteTag = async (req, res) => {
     try {
-        const deletedTag = await Tag.remove({_id: req.params.id})
+        const deletedTag = await Tag.remove({ _id: req.params.id })
         res.redirect('/employee/admins/tag')
     } catch (error) {
         console.log(error)
     }
 }
+
+/**
+ * POST
+ */
+
+ 

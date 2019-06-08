@@ -37,11 +37,20 @@
             <input type="text" class="form-control" placeholder="Tên tag" id="title" name="name" value="{{tag.name}}"
                 aria-describedby="basic-addon1">
         </div>
-        <select name="category" id="category" class="form-control">
-            {{#each categories}}
-            <option value="{{id}}">{{ name }}</option>
-            {{/each}}
-        </select>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-folder-o"></i>
+                </button>
+            </div>
+            <select name="category" id="category" class="form-control">
+                {{#select tag.category}}
+                    {{#each categories}}
+                    <option value="{{id}}">{{ name }}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
         <div class="mt-3">
             <button type="submit" class="btn-blue" value="">Cập nhật</button>
         </div>

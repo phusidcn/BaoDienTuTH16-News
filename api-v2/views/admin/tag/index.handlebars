@@ -50,6 +50,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Created At</th>
                 <th colspan="2"></th>
             </tr>
@@ -59,6 +60,7 @@
             {{#each tags}}
             <tr>
                 <td>{{name}}</td>
+                <td>{{category.name}}</td>
                 <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
                 <td style="text-align: center;"><a href="/employee/admins/tag/edit/{{_id}}" class="btn btn-warning">Edit</a>
                 </td>

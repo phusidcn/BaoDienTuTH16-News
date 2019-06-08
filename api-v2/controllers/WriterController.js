@@ -72,17 +72,19 @@ exports.create = (req, res) => {
         const newPost = new Post({
             title: req.body.title,
             image: filename,
+            status: 0,
             like: 0,
             category: req.body.category,
             tag: req.body.tag,
             premium: req.body.premium,
+            subContent: req.body.subContent,
             content: req.body.content,
             writer: req.user.id
         })
 
         newPost.save()
             .then(savedPost => {
-                res.redirect('/employee/writers/index')
+                res.redirect('/employee/writers/dashboard/index')
             })
             .catch(err => {
                 console.log(err)
@@ -132,7 +134,7 @@ exports.update = (req, res) => {
                 .save()
                 .then(updatedPost => {
                     req.flash('success_msg', `Post ${updatedPost.title} was successfully updated`);
-                    res.redirect('/employee/writers/index')
+                    res.redirect('/employee/writers/dashboard/index')
                 })
                 .catch(err => {
                     console.log(err)
@@ -148,7 +150,7 @@ exports.delete = (req, res) => {
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
                 req.flash('success_msg', 'Post was successfully deleted');
-                res.redirect('/employee/writers/index')
+                res.redirect('/employee/writers/dashboard/index')
             })
         })
 }
@@ -193,7 +195,7 @@ exports.waiting = (req, res) => {
     const waiting_approved_status = 0
     Post
         .find({ 
-            status: waiting_approved_status,
+            status: 0,
             writer: {
                 $in: [req.user.id]
             } 
