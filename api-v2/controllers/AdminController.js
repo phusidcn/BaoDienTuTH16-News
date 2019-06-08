@@ -25,7 +25,7 @@ exports.createCategory = async (req, res) => {
             name: req.body.name
         })
         newCategory = await newCategory.save()
-        res.redirect('/employee/admins/category')
+        res.redirect('/employee/admins/dashboard/category')
     } catch (error) {
         console.log(error)
     }
@@ -48,7 +48,7 @@ exports.updateCategory = async (req, res) => {
         let foundCate = await Category.findOne({ _id: req.params.id })
         foundCate.name = name
         await foundCate.save().then(updatedCate => {
-            res.redirect('/employee/admins/category')
+            res.redirect('/employee/admins/dashboard/category')
         })
     } catch (error) {
         console.log(error)
@@ -58,7 +58,7 @@ exports.updateCategory = async (req, res) => {
 exports.deleteCategory = async (req, res) => {
     try {
         const deletedCategory = await Category.remove({ _id: req.params.id })
-        res.redirect('/employee/admins/category')
+        res.redirect('/employee/admins/dashboard/category')
     } catch (error) {
         console.log(error)
     }
@@ -97,7 +97,7 @@ exports.createTag = async (req, res) => {
             category: req.body.category
         })
         newTag = await newTag.save()
-        res.redirect('/employee/admins/tag')
+        res.redirect('/employee/admins/dashboard/tag')
     } catch (error) {
         console.log(error)
     }
@@ -123,7 +123,7 @@ exports.updateTag = async (req, res) => {
         foundTag.name = name
         foundTag.category = category
         await foundTag.save().then(updatedTag => {
-            res.redirect('/employee/admins/tag')
+            res.redirect('/employee/admins/dashboard/tag')
         })
     } catch (error) {
         console.log(error)
@@ -133,7 +133,7 @@ exports.updateTag = async (req, res) => {
 exports.deleteTag = async (req, res) => {
     try {
         const deletedTag = await Tag.remove({ _id: req.params.id })
-        res.redirect('/employee/admins/tag')
+        res.redirect('/employee/admins/dashboard/tag')
     } catch (error) {
         console.log(error)
     }

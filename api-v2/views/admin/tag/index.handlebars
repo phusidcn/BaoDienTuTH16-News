@@ -62,10 +62,10 @@
                 <td>{{name}}</td>
                 <td>{{category.name}}</td>
                 <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
-                <td style="text-align: center;"><a href="/employee/admins/tag/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                <td style="text-align: center;"><a href="/employee/admins/dashboard/tag/edit/{{_id}}" class="btn btn-warning">Edit</a>
                 </td>
                 <td style="text-align: center;">
-                    <form action="/employee/admins/tag/{{_id}}?_method=DELETE" method="POST">
+                    <form action="/employee/admins/dashboard/tag/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>

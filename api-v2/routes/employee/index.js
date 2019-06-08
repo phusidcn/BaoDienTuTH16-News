@@ -25,9 +25,6 @@ router.get('/', (req, res) => {
 router.get('/writers/', writerEnsureAuthenticated, (req, res) => {
     res.render('employee/index')
 })
-// router.get('/writers/dashboard/', writerEnsureAuthenticated ,(req, res) => {
-//     res.render('employee/index')
-// })
 router.all('/writers/dashboard/*', writerEnsureAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'employee'
     next()    
@@ -36,16 +33,22 @@ router.all('/writers/dashboard/*', writerEnsureAuthenticated, (req, res, next) =
 router.get('/editors', editorEnsureAuthenticated, (req, res) => {
     res.render('employee/index')
 })
-router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
-    res.render('employee/index')
+router.all('/editors/dashboard/*', editorEnsureAuthenticated, (req, res, next) => {
+    req.app.locals.layout = 'employee'
+    next()    
 })
 
 
 router.get('/admins', adminEnsureAuthenticated, (req, res) => {
     res.render('employee/index')
 })
-router.get('/admins/dashboard', adminEnsureAuthenticated ,(req, res) => {
-    res.render('employee/index')
+
+// router.get('/admins/dashboard', adminEnsureAuthenticated ,(req, res) => {
+//     res.render('employee/index')
+// })
+router.all('/admins/dashboard/*', adminEnsureAuthenticated, (req, res, next) => {
+    req.app.locals.layout = 'employee'
+    next()    
 })
 
 // Business Page
@@ -75,28 +78,34 @@ router.put('/writers/dashboard/rejected/edit/:id', writerController.updateReject
 router.delete('/writers/dashboard/rejected/:id', writerController.deleteRejected)
 
 // EDITOR ROUTES
-router.get('/editors/draft', editorEnsureAuthenticated ,editorController.draft)
+router.get('/editors/dashboard', (req, res) => {
+    res.render('employee/index')
+})
+router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
 
 // ADMIN ROUTES
+router.get('/admins/dashboard', (req, res) => {
+    res.render('employee/index')
+})
 /**
  * Category
  */
-router.get('/admins/category', adminController.indexCategory)
-router.get('/admins/category/create', adminController.indexCreateCategory)
-router.post('/admins/category/create', adminController.createCategory)
-router.get('/admins/category/edit/:id', adminController.indexUpdateCategory)
-router.put('/admins/category/edit/:id', adminController.updateCategory)
-router.delete('/admins/category/:id', adminController.deleteCategory)
+router.get('/admins/dashboard/category', adminController.indexCategory)
+router.get('/admins/dashboard/category/create', adminController.indexCreateCategory)
+router.post('/admins/dashboard/category/create', adminController.createCategory)
+router.get('/admins/dashboard/category/edit/:id', adminController.indexUpdateCategory)
+router.put('/admins/dashboard/category/edit/:id', adminController.updateCategory)
+router.delete('/admins/dashboard/category/:id', adminController.deleteCategory)
 
 /**
  * Tag
  */
-router.get('/admins/tag', adminController.indexTag)
-router.get('/admins/tag/create', adminController.indexCreateTag)
-router.post('/admins/tag/create', adminController.createTag)
-router.get('/admins/tag/edit/:id', adminController.indexUpdateTag)
-router.put('/admins/tag/edit/:id', adminController.updateTag)
-router.delete('/admins/tag/:id', adminController.deleteTag)
+router.get('/admins/dashboard/tag', adminController.indexTag)
+router.get('/admins/dashboard/tag/create', adminController.indexCreateTag)
+router.post('/admins/dashboard/tag/create', adminController.createTag)
+router.get('/admins/dashboard/tag/edit/:id', adminController.indexUpdateTag)
+router.put('/admins/dashboard/tag/edit/:id', adminController.updateTag)
+router.delete('/admins/dashboard/tag/:id', adminController.deleteTag)
 
 /**
  * Post
