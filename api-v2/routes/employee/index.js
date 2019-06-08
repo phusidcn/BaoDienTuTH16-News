@@ -53,31 +53,33 @@ router.all('/admins/dashboard/*', adminEnsureAuthenticated, (req, res, next) => 
 router.get('/writers/dashboard', (req, res) => {
     res.render('employee/index')
 })
-router.get('/writers/dashboard/index', writerController.index)
-router.get('/writers/dashboard/create',  writerController.indexCreate)
-router.post('/writers/dashboard/create', writerController.create)
-router.get('/writers/dashboard/edit/:id', writerController.indexUpdate)
-router.put('/writers/dashboard/edit/:id', writerController.update)
-router.delete('/writers/dashboard/delete/:id', writerController.delete)
+router.get('/writers/index', writerEnsureAuthenticated ,writerController.index)
+router.get('/writers/create', writerEnsureAuthenticated ,writerController.indexCreate)
+router.post('/writers/create', writerEnsureAuthenticated, writerController.create) 
+router.get('/writers/edit/:id', writerController.indexUpdate)
+router.put('/writers/edit/:id', writerController.update)
+router.delete('/writers/delete/:id', writerController.delete)
 
-router.get('/writers/dashboard/approved', writerController.approved)
-router.get('/writers/dashboard/published', writerController.published)
+router.get('/writers/approved', writerController.approved)
+router.get('/writers/published', writerController.published)
 
-router.get('/writers/dashboard/waiting', writerController.waiting)
-router.get('/writers/dashboard/waiting/edit/:id', writerController.indexUpdateWaiting)
-router.put('/writers/dashboard/waiting/edit/:id', writerController.updateWaiting)
-router.delete('/writers/dashboard/waiting/:id', writerController.deleteWaiting)
+router.get('/writers/waiting', writerController.waiting)
+router.get('/writers/waiting/edit/:id', writerController.indexUpdateWaiting)
+router.put('/writers/waiting/edit/:id', writerController.updateWaiting)
+router.delete('/writers/waiting/:id', writerController.deleteWaiting)
 
-router.get('/writers/dashboard/rejected', writerController.rejected)
-router.get('/writers/dashboard/rejected/edit/:id', writerController.indexUpdateRejected)
-router.put('/writers/dashboard/rejected/edit/:id', writerController.updateRejected)
-router.delete('/writers/dashboard/rejected/:id', writerController.deleteRejected)
+router.get('/writers/rejected', writerController.rejected)
+router.get('/writers/rejected/edit/:id', writerController.indexUpdateRejected)
+router.put('/writers/rejected/edit/:id', writerController.updateRejected)
+router.delete('/writers/rejected/:id', writerController.deleteRejected)
 
 // EDITOR ROUTES
 router.get('/editors/dashboard', (req, res) => {
     res.render('employee/index')
 })
-router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
+router.get('/editors/draft', editorEnsureAuthenticated ,editorController.draft)
+router.delete('/editors/delete/:id', editorController.reject)
+router.get('/editors/edit/:id',editorEnsureAuthenticated, editorController.approved)
 
 // ADMIN ROUTES
 router.get('/admins/dashboard', (req, res) => {
