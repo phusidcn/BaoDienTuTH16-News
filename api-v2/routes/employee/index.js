@@ -42,10 +42,6 @@ router.all('/editors/dashboard/*', editorEnsureAuthenticated, (req, res, next) =
 router.get('/admins', adminEnsureAuthenticated, (req, res) => {
     res.render('employee/index')
 })
-
-// router.get('/admins/dashboard', adminEnsureAuthenticated ,(req, res) => {
-//     res.render('employee/index')
-// })
 router.all('/admins/dashboard/*', adminEnsureAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'employee'
     next()    
@@ -110,10 +106,9 @@ router.delete('/admins/dashboard/tag/:id', adminController.deleteTag)
 /**
  * Post
  */
-// router.get('/admins/post', adminController.indexPost)
-// router.get('/admins/post/:id', adminController.showPost)
-// router.get('/admins/post/edit/:id', adminController.indexUpdatePost)
-// router.post('/admins/post/edit/:id', adminController.updatePost)
-// router.delete('/admins/post/:id', adminController.deletePost)
+router.get('/admins/dashboard/post', adminController.indexPost)
+router.get('/admins/dashboard/post/edit/:id', adminController.indexUpdatePost)
+router.put('/admins/dashboard/post/edit/:id', adminController.updatePost)
+router.delete('/admins/dashboard/post/:id', adminController.deletePost)
 
 module.exports = router;

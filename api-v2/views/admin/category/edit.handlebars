@@ -27,6 +27,23 @@
     </nav>
     {{/ifvalue}}
     <h4 class="mt-3">Edit Category</h4>
+    {{#if success_msg}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ success_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
     <form action="/employee/admins/dashboard/category/edit/{{category._id}}?_method=PUT" method="POST">
         <div class="input-group mb-3">
             <div class="input-group-prepend">

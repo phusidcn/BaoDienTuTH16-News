@@ -1,5 +1,6 @@
 const Category = require('../models/Category')
 const Tag = require('../models/Tag')
+const Post = require('../models/Post')
 
 /**
  * CATEGORY
@@ -142,5 +143,48 @@ exports.deleteTag = async (req, res) => {
 /**
  * POST
  */
-
+exports.indexPost = async (req, res) => {
+    try {
+        const posts = await Post.find({}).populate('writer')
+        res.render('admin/post/index', {
+            posts
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
  
+exports.indexUpdatePost = async (req, res) => {
+    try {
+        let foundPost = await Post.findOne({ _id: req.params.id })
+        res.render('admin/post/edit', {
+            post: foundPost,
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updatePost = async (req, res) => {
+    try {
+        let { title, status } = req.body
+        let foundPost = await Post.findOne({ _id: req.params.id })
+        foundPost.title = title
+        foundPost.status = status
+        console.log(foundPost)
+        await foundPost.save().then(updatedPost => {
+            res.redirect('/employee/admins/dashboard/post')
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deletePost = async (req, res) => {
+    try {
+        const deletedPost = await Post.remove({ _id: req.params.id })
+        res.redirect('/employee/admins/dashboard/post')
+    } catch (error) {
+        console.log(error)
+    }
+}
