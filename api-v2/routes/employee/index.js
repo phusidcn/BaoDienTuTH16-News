@@ -24,9 +24,7 @@ router.get('/', (req, res) => {
 // Info Page
 
 router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => 
-    res.render('employee/index', {
-        layout: false
-    })
+    res.render('employee/index')
 );
 
 router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
