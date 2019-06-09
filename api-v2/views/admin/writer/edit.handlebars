@@ -26,8 +26,7 @@
         </div>
     </nav>
     {{/ifvalue}}
-    <h4>Bài viết</h4>
-
+    <h4 class="mt-3">Edit Category</h4>
     {{#if success_msg}}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{ success_msg }}
@@ -45,34 +44,27 @@
         </button>
     </div>
     {{/if}}
-    
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Author</th>
-                <th>Created At</th>
-                <th colspan="2"></th>
-            </tr>
-        </thead>
-
-        <tbody>
-            {{#each posts}}
-            <tr>
-                <td><img height="75" width="75" class="img-responsive" src="/uploads/{{image}}" alt=""></td>
-                <td>{{title}}</td>
-                <td>{{writer.name}}</td>
-                <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
-                <td style="text-align: center;"><a href="/employee/admins/dashboard/post/edit/{{_id}}" class="btn btn-warning">Edit</a>
-                </td>
-                <td style="text-align: center;">
-                    <form action="/employee/admins/dashboard/post/{{_id}}?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
+    <form action="/employee/admins/dashboard/writer/edit/{{writer._id}}?_method=PUT" method="POST">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-flag-o"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Tên phóng viên" id="name" name="name" value="{{writer.name}}"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button type="button" class="btn btn-secondary">
+                    <i class="fa fa-flag-o"></i>
+                </button>
+            </div>
+            <input type="text" class="form-control" placeholder="Email phóng viên" id="email" name="email" value="{{writer.email}}"
+                aria-describedby="basic-addon1">
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn-blue" value="">Cập nhật</button>
+        </div>
+    </form>
 </div>

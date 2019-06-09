@@ -1,6 +1,12 @@
 const Category = require('../models/Category')
 const Tag = require('../models/Tag')
 const Post = require('../models/Post')
+const User = require('../models/User')
+
+
+const bcrypt = require('bcryptjs')
+const fs = require('fs')
+const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 
 /**
  * CATEGORY
@@ -85,7 +91,7 @@ exports.indexCreateTag = async (req, res) => {
         let categories = await Category.find({})
         res.render('admin/tag/create', {
             categories
-        })    
+        })
     } catch (error) {
         console.log(error)
     }
@@ -153,7 +159,7 @@ exports.indexPost = async (req, res) => {
         console.log(error)
     }
 }
- 
+
 exports.indexUpdatePost = async (req, res) => {
     try {
         let foundPost = await Post.findOne({ _id: req.params.id })
@@ -184,6 +190,128 @@ exports.deletePost = async (req, res) => {
     try {
         const deletedPost = await Post.remove({ _id: req.params.id })
         res.redirect('/employee/admins/dashboard/post')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/**
+ * WRITER
+ */
+exports.indexWriter = async (req, res) => {
+    try {
+        const writers = await User.find({
+            role: 'WRITER'
+        })
+        res.render('admin/writer/index', {
+            writers
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.indexCreateWriter = async (req, res) => {
+    res.render('admin/writer/create')
+}
+
+exports.createWriter = async (req, res) => {
+    const {
+        name,
+        email,
+        password
+    } = req.body
+
+    let errors = []
+
+    if (!name || !email || !password) {
+        errors.push({
+            msg: 'Please add all fields'
+        })
+    }
+
+    if (errors.length > 0) {
+        res.render('admin/writer/create', {
+            name,
+            email,
+            password,
+            errors: errors
+        })
+    } else {
+        let filename = ''
+        if (!isEmpty(req.files)) {
+            let file = req.files.image
+            filename = file.name + '-' + Date.now()
+
+            file.mv('./public/uploads/' + filename, (err) => {
+                if (err) {
+                    console.log(err)
+                }
+            })
+        }
+        const newWriter = new User({
+            name: req.body.name,
+            avatar: filename,
+            role: 'WRITER',
+            email: req.body.email,
+            password: password
+        })
+
+        bcrypt
+            .genSalt(10, (err, salt) => {
+                bcrypt.hash(newWriter.password, salt, (err, hash) => {
+                    if (err) throw err
+                    newWriter.password = hash
+                    newWriter
+                        .save()
+                        .then(savedWriter => {
+                            req.flash(
+                                'success_msg',
+                                'You created writer successully'
+                            );
+                            res.redirect('/employee/admins/dashboard/writer')
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        });
+                })
+            })
+
+
+    }
+}
+
+exports.indexUpdateWriter = async (req, res) => {
+    try {
+        let foundWriter = await User.findOne({ _id: req.params.id })
+        res.render('admin/writer/edit', {
+            writer: foundWriter
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateWriter = async (req, res) => {
+    try {
+        let { name, email } = req.body
+        let foundWriter = await User.findOne({ _id: req.params.id })
+        foundWriter.name = name
+        foundWriter.email = email
+        await foundWriter
+            .save()
+            .then(updatedWriter => {
+                res.redirect('/employee/admins/dashboard/writer')
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deleteWriter = async (req, res) => {
+    try {
+        const deletedWriter = await User.remove({ _id: req.params.id })
+        res.redirect('/employee/admins/dashboard/writer')
     } catch (error) {
         console.log(error)
     }

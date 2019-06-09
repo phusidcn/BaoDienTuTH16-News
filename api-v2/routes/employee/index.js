@@ -38,7 +38,6 @@ router.all('/editors/dashboard/*', editorEnsureAuthenticated, (req, res, next) =
     next()    
 })
 
-
 router.get('/admins', adminEnsureAuthenticated, (req, res) => {
     res.render('employee/index')
 })
@@ -110,5 +109,16 @@ router.get('/admins/dashboard/post', adminController.indexPost)
 router.get('/admins/dashboard/post/edit/:id', adminController.indexUpdatePost)
 router.put('/admins/dashboard/post/edit/:id', adminController.updatePost)
 router.delete('/admins/dashboard/post/:id', adminController.deletePost)
+
+/**
+ * Writer
+ */
+router.get('/admins/dashboard/writer', adminController.indexWriter)
+router.get('/admins/dashboard/writer/create', adminController.indexCreateWriter)
+router.post('/admins/dashboard/writer/create', adminController.createWriter)
+router.get('/admins/dashboard/writer/edit/:id', adminController.indexUpdateWriter)
+router.put('/admins/dashboard/writer/edit/:id', adminController.updateWriter)
+router.delete('/admins/dashboard/writer/:id', adminController.deleteWriter)
+
 
 module.exports = router;

@@ -45,29 +45,26 @@
         </button>
     </div>
     {{/if}}
-    
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Image</th>
+                <th>Avatar</th>
                 <th>Name</th>
-                <th>Author</th>
-                <th>Created At</th>
+                <th>Email</th>
                 <th colspan="2"></th>
             </tr>
         </thead>
 
         <tbody>
-            {{#each posts}}
+            {{#each writers}}
             <tr>
-                <td><img height="75" width="75" class="img-responsive" src="/uploads/{{image}}" alt=""></td>
-                <td>{{title}}</td>
-                <td>{{writer.name}}</td>
-                <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
-                <td style="text-align: center;"><a href="/employee/admins/dashboard/post/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                <td><img height="75" width="75" class="img-responsive" src="/uploads/{{avatar}}" alt="Avatar"></td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td style="text-align: center;"><a href="/employee/admins/dashboard/writer/edit/{{_id}}" class="btn btn-warning">Edit</a>
                 </td>
                 <td style="text-align: center;">
-                    <form action="/employee/admins/dashboard/post/{{_id}}?_method=DELETE" method="POST">
+                    <form action="/employee/admins/dashboard/writer/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>
