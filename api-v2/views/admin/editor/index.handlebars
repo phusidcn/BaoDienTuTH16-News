@@ -26,7 +26,7 @@
         </div>
     </nav>
     {{/ifvalue}}
-    <h4>Phóng viên</h4>
+    <h4>Biên tập viên</h4>
 
     {{#if success_msg}}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -56,15 +56,15 @@
         </thead>
 
         <tbody>
-            {{#each writers}}
+            {{#each editors}}
             <tr>
                 <td><img height="75" width="75" class="img-responsive" src="/uploads/{{avatar}}" alt="Avatar"></td>
                 <td>{{name}}</td>
                 <td>{{email}}</td>
-                <td style="text-align: center;"><a href="/employee/admins/dashboard/writer/edit/{{_id}}" class="btn btn-warning">Edit</a>
+                <td style="text-align: center;"><a href="/employee/admins/dashboard/editor/edit/{{_id}}" class="btn btn-warning">Edit</a>
                 </td>
                 <td style="text-align: center;">
-                    <form action="/employee/admins/dashboard/writer/{{_id}}?_method=DELETE" method="POST">
+                    <form action="/employee/admins/dashboard/editor/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>

@@ -140,6 +140,13 @@ a[data-toggle="collapse"] {
   margin-bottom: 10px;
 }
 
+ul li {
+  text-transform: none;
+}
+.nav-link {
+  color: #324452;
+}
+
 .avt {
   display: flex;
   justify-content: center;

@@ -120,5 +120,15 @@ router.get('/admins/dashboard/writer/edit/:id', adminController.indexUpdateWrite
 router.put('/admins/dashboard/writer/edit/:id', adminController.updateWriter)
 router.delete('/admins/dashboard/writer/:id', adminController.deleteWriter)
 
+/**
+ * Editor
+ */
+router.get('/admins/dashboard/editor', adminController.indexEditor)
+router.get('/admins/dashboard/editor/create', adminController.indexCreateEditor)
+router.post('/admins/dashboard/editor/create', adminController.createEditor)
+router.get('/admins/dashboard/editor/edit/:id', adminController.indexUpdateEditor)
+router.put('/admins/dashboard/editor/edit/:id', adminController.updateEditor)
+router.delete('/admins/dashboard/editor/:id', adminController.deleteEditor)
+
 
 module.exports = router;

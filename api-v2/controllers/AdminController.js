@@ -316,3 +316,138 @@ exports.deleteWriter = async (req, res) => {
         console.log(error)
     }
 }
+
+
+/**
+ * EDITOR
+ */
+exports.indexEditor = async (req, res) => {
+    try {
+        const editors = await User.find({
+            role: 'EDITOR'
+        })
+        res.render('admin/editor/index', {
+            editors
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.indexCreateEditor = async (req, res) => {
+    Category
+        .find({})
+        .then(categories => {
+            res.render('admin/editor/create', {
+                categories
+            })
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+exports.createEditor = async (req, res) => {
+    const {
+        name,
+        email,
+        password,
+        category
+    } = req.body
+
+    let errors = []
+
+    if (!name || !email || !password || !category) {
+        errors.push({
+            msg: 'Please add all fields'
+        })
+    }
+
+    if (errors.length > 0) {
+        res.render('admin/editor/create', {
+            name,
+            email,
+            password,
+            category,
+            errors: errors
+        })
+    } else {
+        let filename = ''
+        if (!isEmpty(req.files)) {
+            let file = req.files.image
+            filename = file.name + '-' + Date.now()
+
+            file.mv('./public/uploads/' + filename, (err) => {
+                if (err) {
+                    console.log(err)
+                }
+            })
+        }
+        const newEdtior = new User({
+            name: req.body.name,
+            avatar: filename,
+            role: 'EDITOR',
+            category: req.body.category,
+            email: req.body.email,
+            password: password
+        })
+
+        bcrypt
+            .genSalt(10, (err, salt) => {
+                bcrypt.hash(newEdtior.password, salt, (err, hash) => {
+                    if (err) throw err
+                    newEdtior.password = hash
+                    newEdtior
+                        .save()
+                        .then(savedEditor => {
+                            req.flash(
+                                'success_msg',
+                                'You created writer successully'
+                            );
+                            res.redirect('/employee/admins/dashboard/editor')
+                        })
+                        .catch(err => {
+                            console.log(err)
+                        });
+                })
+            })
+
+
+    }
+}
+
+exports.indexUpdateEditor = async (req, res) => {
+    try {
+        let foundEditor = await User.findOne({ _id: req.params.id })
+        res.render('admin/editor/edit', {
+            editor: foundEditor
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateEditor = async (req, res) => {
+    try {
+        let { name, email } = req.body
+        let foundEditor = await User.findOne({ _id: req.params.id })
+        foundEditor.name = name
+        foundEditor.email = email
+        await foundEditor
+            .save()
+            .then(updatedEditor => {
+                res.redirect('/employee/admins/dashboard/editor')
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.deleteEditor = async (req, res) => {
+    try {
+        const deletedEditor = await User.remove({ _id: req.params.id })
+        res.redirect('/employee/admins/dashboard/editor')
+    } catch (error) {
+        console.log(error)
+    }
+}
