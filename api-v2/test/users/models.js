@@ -2,6 +2,7 @@ const utils = require('../utils')
 const should = require('should')
 
 const User = require('../../models/User')
+const UserToken = req
 
 describe('Users: models', function() {
     describe('#create()', function() {

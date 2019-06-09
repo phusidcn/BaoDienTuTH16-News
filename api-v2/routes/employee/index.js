@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 })
 
 // Info Page
-router.get('/writers/', writerEnsureAuthenticated, (req, res) => {
+router.get('/writers', writerEnsureAuthenticated, (req, res) => {
     res.render('employee/index')
 })
 router.all('/writers/dashboard/*', writerEnsureAuthenticated, (req, res, next) => {
@@ -49,7 +49,7 @@ router.all('/admins/dashboard/*', adminEnsureAuthenticated, (req, res, next) => 
 // Business Page
 
 // WRITER ROUTES
-router.get('/writers/dashboard', (req, res) => {
+router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
 router.get('/writers/dashboard/index', writerController.index)

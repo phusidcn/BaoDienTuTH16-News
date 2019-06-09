@@ -4,5 +4,12 @@ module.exports = {
         development: "mongodb://localhost/minimum-v2",
         test: "mongodb://localhost/minimum-v2-test"
     },
-    port: 3000
+    port: 3000,
+    mailer: {
+        auth: {
+            user: 'test@example.com',
+            pass: 'secret',
+        },
+        defaultFromAddress: 'First Last <test@examle.com>'
+    }
 }
