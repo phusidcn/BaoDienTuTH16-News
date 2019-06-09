@@ -8,6 +8,41 @@ const bcrypt = require('bcryptjs')
 const fs = require('fs')
 const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 
+exports.updateProfile = (req, res) => {
+    const {
+        email,
+        password,
+        name
+    } = req.body
+
+    User
+        .findOne({
+            _id: req.params.id
+        })
+        .then(admin => {
+            admin.email = email
+            admin.name = name
+            admin.password = password
+
+            bcrypt
+                .genSalt(10, (err, salt) => {
+                    bcrypt.hash(admin.password, salt, (err, hash) => {
+                        if (err) throw err
+                        admin.password = hash
+                        admin
+                            .save()
+                            .then(updatedAdmin => {
+                                req.flash('success_msg', `Account ${updatedAdmin.name} was successfully updated`);
+                                res.redirect('/employee/admins/dashboard/')
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
+                    })
+                })
+        })
+}
+
 /**
  * CATEGORY
  */

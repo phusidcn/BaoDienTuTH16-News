@@ -31,7 +31,9 @@ router.all('/writers/dashboard/*', writerEnsureAuthenticated, (req, res, next) =
 })
 
 router.get('/editors', editorEnsureAuthenticated, (req, res) => {
-    res.render('employee/index')
+    res.render('employee/index', {
+        writer: req.user
+    })
 })
 router.all('/editors/dashboard/*', editorEnsureAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'employee'
@@ -52,6 +54,7 @@ router.all('/admins/dashboard/*', adminEnsureAuthenticated, (req, res, next) => 
 router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
+router.put('/writers/dashboard/profile/:id', writerController.updateProfile)
 router.get('/writers/dashboard/index', writerController.index)
 router.get('/writers/dashboard/create',  writerController.indexCreate)
 router.post('/writers/dashboard/create', writerController.create)
@@ -73,16 +76,17 @@ router.put('/writers/dashboard/rejected/edit/:id', writerController.updateReject
 router.delete('/writers/dashboard/rejected/:id', writerController.deleteRejected)
 
 // EDITOR ROUTES
-// router.get('/editors/dashboard', (req, res) => {
-//     res.render('employee/index')
-// })
+router.get('/editors/dashboard', (req, res) => {
+    res.render('employee/index')
+})
+router.put('/editors/dashboard/profile/:id', editorController.updateProfile)
 // router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
 
 // ADMIN ROUTES
 router.get('/admins/dashboard', (req, res) => {
     res.render('employee/index')
 })
-
+router.put('/admins/dashboard/profile/:id', adminController.updateProfile)
 /**
  * Category
  */

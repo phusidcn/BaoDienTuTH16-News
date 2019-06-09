@@ -1,7 +1,7 @@
-<div class="content">
+<div class="content" style="font-family: 'Noto Sans JP'">
     {{#ifvalue user.role equals="WRITER"}}
     <nav class="navbar navbar-expand-lg">
-        <h4>Chào phóng viên</h4>
+        <h5>Chào {{user.name}}</h5>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,7 @@
         </div>
     </nav>
 
-    <form>
+    <form action="/employee/writers/dashboard/profile/{{user._id}}?_method=PUT" method="POST">
         <div class="row">
             <div class="col-md-6">
                 <label class="bmd-label-floating">Email</label>
@@ -36,8 +36,8 @@
                             <i class="fa fa-envelope-o"></i>
                         </button>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email" aria-label="Email"
-                        aria-describedby="basic-addon1" value="{{email}}">
+                    <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="basic-addon1" value="{{user.email}}">
                 </div>
             </div>
 
@@ -49,8 +49,8 @@
                             <i class="fa fa-unlock"></i>
                         </button>
                     </div>
-                    <input type="password" class="form-control" pattern=".{6,}" placeholder="Password"
-                        aria-label="Password" aria-describedby="basic-addon1" value="{{password}}" required>
+                    <input name="password" type="password" class="form-control" pattern=".{6,}" placeholder="Password"
+                        aria-label="Password" aria-describedby="basic-addon1" value="{{user.password}}" required>
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
                             <i class="fa fa-user-o"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-control" value="{{name}}" placeholder="Username"
+                    <input name="name" type="text" class="form-control" value="{{user.name}}" placeholder="Username"
                         aria-label="Username" aria-describedby="basic-addon1" required>
                 </div>
             </div>
@@ -79,8 +79,8 @@
                             <i class="fa fa-file-image-o"></i>
                         </button>
                     </div>
-                    <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
-                        aria-describedby="basic-addon1" required>
+                    <input type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
 
@@ -110,7 +110,7 @@
                         </button>
                     </div>
                     <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
-                        aria-describedby="basic-addon1" required>
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
 
@@ -123,16 +123,15 @@
                         </button>
                     </div>
                     <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
-                        aria-describedby="basic-addon1" required>
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
 
-        <form action="submit" method="post">
-            <div class="submit">
-                <input type="submit" value="Edit" name="edit_profile">
-            </div>
-        </form>
+        <button type="submit" class="btn-blue">
+            Edit Profile
+        </button>
+
 
     </form>
     {{/ifvalue}}
@@ -164,7 +163,7 @@
             </ul>
         </div>
     </nav>
-    <form>
+    <form action="/employee/editors/dashboard/profile/{{user._id}}?_method=PUT" method="POST">
         <div class="row">
             <div class="col-md-6">
                 <label class="bmd-label-floating">Email</label>
@@ -174,8 +173,8 @@
                             <i class="fa fa-envelope-o"></i>
                         </button>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email" aria-label="Email"
-                        aria-describedby="basic-addon1" value="{{email}}">
+                    <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="basic-addon1" value="{{user.email}}">
                 </div>
             </div>
 
@@ -187,8 +186,8 @@
                             <i class="fa fa-unlock"></i>
                         </button>
                     </div>
-                    <input type="password" class="form-control" pattern=".{6,}" placeholder="Password"
-                        aria-label="Password" aria-describedby="basic-addon1" value="{{password}}" required>
+                    <input name="password" type="password" class="form-control" pattern=".{6,}" placeholder="Password"
+                        aria-label="Password" aria-describedby="basic-addon1" value="{{user.password}}" required>
                 </div>
             </div>
         </div>
@@ -202,7 +201,7 @@
                             <i class="fa fa-user-o"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-control" value="{{name}}" placeholder="Username"
+                    <input name="name" type="text" class="form-control" value="{{user.name}}" placeholder="Username"
                         aria-label="Username" aria-describedby="basic-addon1" required>
                 </div>
             </div>
@@ -217,8 +216,8 @@
                             <i class="fa fa-file-image-o"></i>
                         </button>
                     </div>
-                    <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
-                        aria-describedby="basic-addon1" required>
+                    <input type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
 
@@ -248,7 +247,7 @@
                         </button>
                     </div>
                     <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
-                        aria-describedby="basic-addon1" required>
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
 
@@ -261,16 +260,15 @@
                         </button>
                     </div>
                     <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
-                        aria-describedby="basic-addon1" required>
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
 
-        <form action="submit" method="post">
-            <div class="submit">
-                <input type="submit" value="Edit" name="edit_profile">
-            </div>
-        </form>
+        <button type="submit" class="btn-blue">
+            Edit Profile
+        </button>
+
 
     </form>
     {{/ifvalue}}
@@ -302,7 +300,7 @@
             </ul>
         </div>
     </nav>
-    <form>
+    <form action="/employee/admins/dashboard/profile/{{user._id}}?_method=PUT" method="POST">
         <div class="row">
             <div class="col-md-6">
                 <label class="bmd-label-floating">Email</label>
@@ -312,8 +310,8 @@
                             <i class="fa fa-envelope-o"></i>
                         </button>
                     </div>
-                    <input type="email" class="form-control" placeholder="Email" aria-label="Email"
-                        aria-describedby="basic-addon1" value="{{email}}">
+                    <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
+                        aria-describedby="basic-addon1" value="{{user.email}}">
                 </div>
             </div>
 
@@ -325,8 +323,8 @@
                             <i class="fa fa-unlock"></i>
                         </button>
                     </div>
-                    <input type="password" class="form-control" pattern=".{6,}" placeholder="Password"
-                        aria-label="Password" aria-describedby="basic-addon1" value="{{password}}" required>
+                    <input name="password" type="password" class="form-control" pattern=".{6,}" placeholder="Password"
+                        aria-label="Password" aria-describedby="basic-addon1" value="{{user.password}}" required>
                 </div>
             </div>
         </div>
@@ -340,7 +338,7 @@
                             <i class="fa fa-user-o"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-control" value="{{name}}" placeholder="Username"
+                    <input name="name" type="text" class="form-control" value="{{user.name}}" placeholder="Username"
                         aria-label="Username" aria-describedby="basic-addon1" required>
                 </div>
             </div>
@@ -355,8 +353,8 @@
                             <i class="fa fa-file-image-o"></i>
                         </button>
                     </div>
-                    <input required type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
-                        aria-describedby="basic-addon1" required>
+                    <input type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
 
@@ -386,7 +384,7 @@
                         </button>
                     </div>
                     <input type="text" class="form-control" value="TPHCM" placeholder="Địa chỉ" aria-label="Address"
-                        aria-describedby="basic-addon1" required>
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
 
@@ -399,16 +397,15 @@
                         </button>
                     </div>
                     <input type="text" class="form-control" value="HCMUS" placeholder="Company" aria-label="Company"
-                        aria-describedby="basic-addon1" required>
+                        aria-describedby="basic-addon1">
                 </div>
             </div>
         </div>
 
-        <form action="submit" method="post">
-            <div class="submit">
-                <input type="submit" value="Edit" name="edit_profile">
-            </div>
-        </form>
+        <button type="submit" class="btn-blue">
+            Edit Profile
+        </button>
+
 
     </form>
     {{/ifvalue}}

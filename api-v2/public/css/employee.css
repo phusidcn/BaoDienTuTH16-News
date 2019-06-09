@@ -286,6 +286,7 @@ p.text-picture {
 }
 .btn-blue:hover {
   color: #fff !important;
+  cursor: pointer;
 }
 .btn-blue:focus {
   outline: 0;

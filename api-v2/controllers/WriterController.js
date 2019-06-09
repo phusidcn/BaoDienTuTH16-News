@@ -2,6 +2,43 @@ const fs = require('fs')
 const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 const Post = require('./../models/Post')
 const Category = require('./../models/Category')
+const User = require('../models/User')
+const bcrypt = require('bcryptjs')
+
+exports.updateProfile = (req, res) => {
+    const {
+        email,
+        password,
+        name
+    } = req.body
+
+    User
+        .findOne({
+            _id: req.params.id
+        })
+        .then(writer => {
+            writer.email = email
+            writer.name = name
+            writer.password = password
+
+            bcrypt
+                .genSalt(10, (err, salt) => {
+                    bcrypt.hash(writer.password, salt, (err, hash) => {
+                        if (err) throw err
+                        writer.password = hash
+                        writer
+                            .save()
+                            .then(updatedWriter => {
+                                req.flash('success_msg', `Account ${updatedWriter.name} was successfully updated`);
+                                res.redirect('/employee/writers/dashboard/')
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
+                    })
+                })
+        })
+}
 
 exports.index = (req, res, next) => {
     try {
@@ -13,7 +50,7 @@ exports.index = (req, res, next) => {
             })
             .populate('category')
             .exec((err, posts) => {
-                if(err) console.log(err)
+                if (err) console.log(err)
                 res.render('writer/posts/index', {
                     posts
                 })
@@ -31,23 +68,23 @@ exports.indexCreate = (req, res) => {
             res.render('writer/posts/create', {
                 categories
             })
-        }) 
+        })
         .catch(err => {
             console.log(err)
         })
 }
 
 exports.create = (req, res) => {
-    const { 
-        title, 
-        content 
+    const {
+        title,
+        content
     } = req.body
-    
+
     let errors = []
 
     if (!title || !content) {
-        errors.push({ 
-            msg: 'Please add all fields' 
+        errors.push({
+            msg: 'Please add all fields'
         })
     }
 
@@ -102,8 +139,8 @@ exports.indexUpdate = (req, res) => {
                     res.render('writer/posts/edit', {
                         post,
                         categories
+                    })
                 })
-            })
         })
         .catch(err => {
             console.log(err)
@@ -120,8 +157,8 @@ exports.update = (req, res) => {
     } = req.body
 
     Post
-        .findOne({ 
-            _id: req.params.id 
+        .findOne({
+            _id: req.params.id
         })
         .then(post => {
             post.title = title
@@ -129,7 +166,7 @@ exports.update = (req, res) => {
             post.content = content
             post.premium = premium
             post.category = category
-            
+
             post
                 .save()
                 .then(updatedPost => {
@@ -144,8 +181,8 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
     Post
-        .deleteOne({ 
-            _id: req.params.id 
+        .deleteOne({
+            _id: req.params.id
         })
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
@@ -158,7 +195,7 @@ exports.delete = (req, res) => {
 exports.approved = (req, res) => {
     const approved_status = 1
     Post
-        .find({ 
+        .find({
             status: approved_status,
             writer: {
                 $in: [req.user.id]
@@ -176,11 +213,11 @@ exports.approved = (req, res) => {
 exports.published = (req, res) => {
     const published_status = 3
     Post
-        .find({ 
+        .find({
             status: published_status,
             writer: {
                 $in: [req.user.id]
-            } 
+            }
         })
         .populate('category')
         .exec((err, posts) => {
@@ -194,11 +231,11 @@ exports.published = (req, res) => {
 exports.waiting = (req, res) => {
     const waiting_approved_status = 0
     Post
-        .find({ 
+        .find({
             status: 0,
             writer: {
                 $in: [req.user.id]
-            } 
+            }
         })
         .populate('category')
         .exec((err, posts) => {
@@ -219,15 +256,15 @@ exports.indexUpdateWaiting = (req, res) => {
                     res.render('writer/posts/edit-waiting-approved', {
                         post,
                         categories
+                    })
                 })
-            })
         })
 }
 
 exports.updateWaiting = (req, res) => {
     Post
-        .findOne({ 
-            _id: req.params.id 
+        .findOne({
+            _id: req.params.id
         })
         .then(post => {
             post.title = req.body.title
@@ -263,8 +300,8 @@ exports.deleteWaiting = (req, res) => {
 exports.rejected = (req, res) => {
     const rejected_status = 2
     Post
-        .find({ 
-            status: rejected_status 
+        .find({
+            status: rejected_status
         })
         .populate('category')
         .exec((err, posts) => {
@@ -287,13 +324,13 @@ exports.indexUpdateRejected = (req, res) => {
                         categories
                     })
                 })
-            })
+        })
 }
 
 exports.updateRejected = (req, res) => {
     Post
-        .findOne({ 
-            _id: req.params.id 
+        .findOne({
+            _id: req.params.id
         })
         .then(post => {
             post.title = req.body.title
@@ -316,8 +353,8 @@ exports.updateRejected = (req, res) => {
 
 exports.deleteRejected = (req, res) => {
     Post
-        .deleteOne({ 
-            _id: req.params.id 
+        .deleteOne({
+            _id: req.params.id
         })
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
