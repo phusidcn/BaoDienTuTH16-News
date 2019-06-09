@@ -73,15 +73,16 @@ router.put('/writers/dashboard/rejected/edit/:id', writerController.updateReject
 router.delete('/writers/dashboard/rejected/:id', writerController.deleteRejected)
 
 // EDITOR ROUTES
-router.get('/editors/dashboard', (req, res) => {
-    res.render('employee/index')
-})
-router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
+// router.get('/editors/dashboard', (req, res) => {
+//     res.render('employee/index')
+// })
+// router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
 
 // ADMIN ROUTES
 router.get('/admins/dashboard', (req, res) => {
     res.render('employee/index')
 })
+
 /**
  * Category
  */

@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "test": "node_modules/.bin/mocha -w",
     "dev": "nodemon app.js",
     "start": "node app.js"
   },
@@ -28,6 +29,8 @@
     "path": "^0.12.7"
   },
   "devDependencies": {
-    "nodemon": "^1.19.0"
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.0",
+    "should": "^13.2.3"
   }
 }

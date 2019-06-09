@@ -17,7 +17,7 @@ const {
 
 const app = express()
 
-const config = require('./config')
+const config = require('./config/config')
 
 require('./config/passport')(passport)
 
@@ -40,7 +40,7 @@ app.use(upload())
 app.use(morgan('dev'))
 
 mongoose.Promise = global.Promise
-mongoose.connect(config.mongoURI, 
+mongoose.connect(config.db.development, 
     { 
         useNewUrlParser: true 
     })
@@ -80,7 +80,6 @@ app.use('/guests', require('./routes/guest/guests'))
 app.use('/employee', require('./routes/employee/index'))
 app.use('/employee/writers', require('./routes/employee/writers'))
 app.use('/employee/editors', require('./routes/employee/editors'))
-
 app.use('/employee/admins', require('./routes/employee/admins'))
 
 

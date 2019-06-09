@@ -151,7 +151,7 @@ exports.deleteTag = async (req, res) => {
  */
 exports.indexPost = async (req, res) => {
     try {
-        const posts = await Post.find({}).populate('writer')
+        const posts = await Post.find({})
         res.render('admin/post/index', {
             posts
         })
