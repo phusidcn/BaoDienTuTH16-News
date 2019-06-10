@@ -99,6 +99,12 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
+    const writerEmail = req.body.email
+    const role = writerEmail.substring(0, writerEmail.lastIndexOf("@")-1)
+    if(role !== "writer") {
+        req.flash('error_msg', 'You are not writer')
+        return res.redirect('/employee/writers/login')
+    }
     passport.authenticate('local', {
         successRedirect: '/employee/writers/dashboard',
         failureRedirect: '/employee/writers/login',

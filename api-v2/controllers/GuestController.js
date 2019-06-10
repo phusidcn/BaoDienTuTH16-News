@@ -10,3 +10,12 @@ exports.index = async (req, res) => {
         categories
     })
 }
+
+exports.show = async (req, res) => {
+    // const foundPost = await Post.findById({
+    //     _id: req.params.id
+    // })
+    // res.render('guest/guestPost', {
+    //     foundPost
+    // })
+}
