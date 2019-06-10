@@ -179,6 +179,8 @@ exports.updateProfile = (req, res) => {
 
 exports.index = (req, res, next) => {
     try {
+        const pagination = req.query.pagination ? parseInt(req.query.pagination) : 10
+        const page = req.query.page ? parseInt(req.query.page) : 1
         Post
             .find({
                 writer: {
@@ -186,6 +188,9 @@ exports.index = (req, res, next) => {
                 }
             })
             .populate('category')
+            .sort({ createdAt: -1 })
+            .skip((page - 1) * pagination)
+            .limit(pagination)
             .exec((err, posts) => {
                 if (err) console.log(err)
                 res.render('writer/posts/index', {
