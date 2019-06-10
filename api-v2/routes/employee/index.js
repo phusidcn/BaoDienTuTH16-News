@@ -91,7 +91,7 @@ router.put('/writers/dashboard/rejected/edit/:id', writerController.updateReject
 router.delete('/writers/dashboard/rejected/:id', writerController.deleteRejected)
 
 // EDITOR ROUTES
-router.get('/editors/dashboard', (req, res) => {
+router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
 router.put('/editors/dashboard/profile/:id', editorController.updateProfile)
