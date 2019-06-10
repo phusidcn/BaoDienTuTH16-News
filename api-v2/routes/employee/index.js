@@ -54,6 +54,21 @@ router.all('/admins/dashboard/*', adminEnsureAuthenticated, (req, res, next) => 
 router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
+
+
+// router.get('/writers/forgot-password', (req, res) => {
+//     res.render('writer/forgot-password-email', {
+//         layout: false
+//     })
+// })
+// router.post('/writers/forgot-password', writerController.forgotPassword)
+// router.get('/writers/reset-password', (req, res) => {
+//     res.render('writer/reset-password-email', {
+//         layout: false
+//     })
+// })
+// router.post('/writers/reset-password', writerController.resetPassword)
+
 router.put('/writers/dashboard/profile/:id', writerController.updateProfile)
 router.get('/writers/dashboard/index', writerController.index)
 router.get('/writers/dashboard/create',  writerController.indexCreate)

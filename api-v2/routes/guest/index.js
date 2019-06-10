@@ -1,18 +1,8 @@
-const express = require('express');
-const router = express.Router();
-// const { 
-//         ensureAuthenticated, 
-//         forwardAuthenticated 
-//     } = require('../config/auth');
+const express = require('express')
+const router = express.Router()
+const guestController = require('../../controllers/GuestController')
 
 // Main Page
-router.get('/', (req, res) => res.render('guest/guestHome'));
+router.get('/', guestController.index)
 
-// Dashboard
-// router.get('/dashboard', ensureAuthenticated, (req, res) =>
-//     res.render('dashboard', {
-//         user: req.user
-//     })
-// );
-
-module.exports = router;
+module.exports = router
