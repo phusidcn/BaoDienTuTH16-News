@@ -62,12 +62,14 @@ exports.updateProfile = (req, res) => {
         })
 }
 
-exports.reject = (req, res) => {
+exports.rejected = (req, res) => {
     Post
         .findOne({
             _id: req.params.id
         })
         .then(post => {
+            console.log(post)
+            console.log(req.body.nntc)
             post.status = 2
             post.save()
             res.redirect('/employee/editors/dashboard/draft')
