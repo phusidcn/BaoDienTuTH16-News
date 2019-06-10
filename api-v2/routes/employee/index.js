@@ -95,7 +95,9 @@ router.get('/editors/dashboard', (req, res) => {
     res.render('employee/index')
 })
 router.put('/editors/dashboard/profile/:id', editorController.updateProfile)
-// router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
+router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
+router.get('/editors/dashboard/edit/:id',editorEnsureAuthenticated, editorController.approved)
+router.post('/editors/dashboard/accept/:id',editorController.accept)
 
 // ADMIN ROUTES
 router.get('/admins/dashboard', (req, res) => {

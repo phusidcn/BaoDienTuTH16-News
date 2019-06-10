@@ -3,6 +3,7 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const User = require('../../models/User')
+const editorController = require('../../controllers/EditorController')
 
 router.get('/login', (req, res) => {
     res.render('editor/login', {

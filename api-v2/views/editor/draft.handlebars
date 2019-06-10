@@ -1,0 +1,120 @@
+<div class="content">
+    {{#ifvalue user.role equals="EDITOR"}}
+    <nav class="navbar navbar-expand-lg">
+        <h4>Chào Biên tập viên</h4>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/writer"><b>
+                            {{#if user }}
+                            {{ user.name }}
+                            {{else}}
+                            Trang Writer
+                            {{/if}}
+                        </b></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/employee/editors/logout"><b>Đăng
+                            xuất</b></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {{/ifvalue}}
+    <h4>ALL DRAFT</h4>
+
+    {{#if success_msg}}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ success_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    {{#if error_msg}}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ error_msg }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {{/if}}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <td><img height="75" width="75" class="img-responsive" src="/uploads/{{image}}" alt=""></td>
+                <td>{{title}}</td>
+                <td>{{category.name}}</td>
+                <td>{{status}}</td>
+                <td>{{generateTime createdAt "MMMM Do YYYY" }}</td>
+                <td><a href="/employee/editors/dashboard/edit/{{_id}}" class="btn btn-success">Chỉnh sửa</a></td>
+                <td>
+                    <form action="/employee/editors/dashboard/delete/{{_id}}?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Từ chối</button>
+                    </form>
+                    <!--<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#tableModal">
+                        Delete
+                    </button>-->
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn từ chối bài viết?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <button type="button" class="btn btn-secondary">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                        </div>
+                        <input type="text" placeholder="Nguyên nhân từ chối" class="form-control" aria-label="" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="#">Chỉnh sửa</a></button>
+                    <!--<button type="button" class="btn btn-info" data-dismiss="modal"><a href="#">Đồng ý</a></button-->
+                    <form action="/employee/editors/delete/{{_id}}?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Từ chối</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function(){
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus');
+        })
+    });
+</script>
+
+</div>

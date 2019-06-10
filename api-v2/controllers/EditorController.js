@@ -5,21 +5,23 @@ const Post = require('./../models/Post')
 const Category = require('./../models/Category')
 const User = require('./../models/User')
 
-exports.draft = (req, res, next) => {
+exports.draft = async (req, res, next) => {
     try {
-        Post
+        const posts = await Post
             .find({
-                category: {
+                /*category: {
                     $in: [req.user.category]
-                }
-            })
-            .exec((err, posts) => {
-                if(err) console.log(err)
-                res.render('editor/posts/index', {
+                }*/
+            }).populate('category')
+
+            // .then((err, posts) => {
+                // console.log(posts)
+                // if(err) console.log(err)
+                res.render('editor/draft', {
                     posts
                 })
-            })
-        console.log(req.user)
+            
+        // console.log(req.user)
     } catch (err) {
         next(err)
     }
@@ -57,5 +59,68 @@ exports.updateProfile = (req, res) => {
                             })
                     })
                 })
+        })
+}
+
+exports.reject = (req, res) => {
+    Post
+        .findOne({
+            _id: req.params.id
+        })
+        .then(post => {
+            post.status = 2
+            post.save()
+            res.redirect('/employee/editors/dashboard/draft')
+        })
+        .catch(err => {
+            console.log(err)
+        })
+}
+
+exports.approved = (req, res) => {
+    Post
+        .findOne({
+            _id: req.params.id
+        })
+        .then(post => {
+            console.log(post)
+            res.render('editor/edit',{
+                post
+            })
+        })
+        .catch (err => {
+            console.log(err)
+        })
+}
+
+exports.accept = (req, res) => {
+    Post
+        .findOne({
+            _id: req.params.id
+        })
+        .then(post => {
+            let filename = ''
+            if (!isEmpty(req.files)) {
+            let file = req.files.image
+            filename = file.name + '-' + Date.now()
+
+            file.mv('./public/uploads/' + filename, (err) => {
+                if (err) {
+                    console.log(err)
+                }
+            })
+        }
+            post.content = req.body.editor
+            post.subContent = req.body.subContent
+            post.title = req.body.title
+            post.tag = req.body.tag
+            //if (req.body.image == )
+            //post.image = filename
+            post.status = 1
+            post.save()
+            res.redirect('/employee/editors/dashboard/draft')
+        })
+        .catch(err => {
+            console.log(err)
         })
 }
