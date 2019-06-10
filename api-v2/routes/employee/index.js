@@ -31,9 +31,7 @@ router.all('/writers/dashboard/*', writerEnsureAuthenticated, (req, res, next) =
 })
 
 router.get('/editors', editorEnsureAuthenticated, (req, res) => {
-    res.render('employee/index', {
-        writer: req.user
-    })
+    res.render('employee/index')
 })
 router.all('/editors/dashboard/*', editorEnsureAuthenticated, (req, res, next) => {
     req.app.locals.layout = 'employee'
@@ -51,23 +49,12 @@ router.all('/admins/dashboard/*', adminEnsureAuthenticated, (req, res, next) => 
 // Business Page
 
 // WRITER ROUTES
-router.get('/writers/dashboard', writerEnsureAuthenticated ,(req, res) => {
+router.get('/writers/dashboard/', writerEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
-
-
-// router.get('/writers/forgot-password', (req, res) => {
-//     res.render('writer/forgot-password-email', {
-//         layout: false
-//     })
-// })
-// router.post('/writers/forgot-password', writerController.forgotPassword)
-// router.get('/writers/reset-password', (req, res) => {
-//     res.render('writer/reset-password-email', {
-//         layout: false
-//     })
-// })
-// router.post('/writers/reset-password', writerController.resetPassword)
+router.get('/writers/dashboard/profile', (req, res) => {
+    res.render('employee/index')
+})
 
 router.put('/writers/dashboard/profile/:id', writerController.updateProfile)
 router.get('/writers/dashboard/index', writerController.index)
@@ -91,7 +78,10 @@ router.put('/writers/dashboard/rejected/edit/:id', writerController.updateReject
 router.delete('/writers/dashboard/rejected/:id', writerController.deleteRejected)
 
 // EDITOR ROUTES
-router.get('/editors/dashboard', editorEnsureAuthenticated ,(req, res) => {
+router.get('/editors/dashboard/', editorEnsureAuthenticated ,(req, res) => {
+    res.render('employee/index')
+})
+router.get('/editors/dashboard/profile', (req, res) => {
     res.render('employee/index')
 })
 router.put('/editors/dashboard/profile/:id', editorController.updateProfile)
@@ -101,9 +91,13 @@ router.post('/editors/dashboard/accept/:id',editorController.accept)
 router.delete('/editors/dashboard/rejected/:id',editorController.rejected)
 
 // ADMIN ROUTES
-router.get('/admins/dashboard', (req, res) => {
+router.get('/admins/dashboard/', adminEnsureAuthenticated ,(req, res) => {
     res.render('employee/index')
 })
+router.get('/admins/dashboard/profile', (req, res) => {
+    res.render('employee/index')
+})
+
 router.put('/admins/dashboard/profile/:id', adminController.updateProfile)
 /**
  * Category

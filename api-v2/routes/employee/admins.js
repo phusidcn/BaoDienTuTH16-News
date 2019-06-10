@@ -106,7 +106,7 @@ router.post('/login', (req, res, next) => {
         return res.redirect('/employee/admins/login')
     }
     passport.authenticate('local', {
-        successRedirect: '/employee/admins/dashboard',
+        successRedirect: '/employee/admins/dashboard/profile',
         failureRedirect: '/employee/admins/login',
         failureFlash: true
     })(req, res, next);

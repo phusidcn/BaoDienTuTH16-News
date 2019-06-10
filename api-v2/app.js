@@ -1,5 +1,5 @@
-const express   = require('express')
-const path    = require('path')
+const express = require('express')
+const path = require('path')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -9,10 +9,10 @@ const upload = require('express-fileupload')
 const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
-const { 
-    select, 
+const {
+    select,
     generateTime,
-    ifvalue 
+    ifvalue
 } = require('./helpers/handlebars-helpers')
 
 const app = express()
@@ -23,8 +23,8 @@ require('./config/passport')(passport)
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'guest',
-    helpers: { 
-        select: select, 
+    helpers: {
+        select: select,
         generateTime: generateTime,
         ifvalue: ifvalue
     }
@@ -40,9 +40,9 @@ app.use(upload())
 app.use(morgan('dev'))
 
 mongoose.Promise = global.Promise
-mongoose.connect(config.db.development, 
-    { 
-        useNewUrlParser: true 
+mongoose.connect(config.db.development,
+    {
+        useNewUrlParser: true
     })
     .then(
         () => console.log('MongoDB connect')
@@ -83,6 +83,6 @@ app.use('/employee/editors', require('./routes/employee/editors'))
 app.use('/employee/admins', require('./routes/employee/admins'))
 
 
-app.listen(config.port, 
+app.listen(config.port,
     () => console.log('Listening')
 )

@@ -167,7 +167,7 @@ exports.updateProfile = (req, res) => {
                             .save()
                             .then(updatedWriter => {
                                 req.flash('success_msg', `Account ${updatedWriter.name} was successfully updated`);
-                                res.redirect('/employee/writers/dashboard/')
+                                res.redirect('/employee/writers/dashboard/profile')
                             })
                             .catch(err => {
                                 console.log(err)
