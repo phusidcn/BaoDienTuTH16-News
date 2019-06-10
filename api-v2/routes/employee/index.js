@@ -98,6 +98,7 @@ router.put('/editors/dashboard/profile/:id', editorController.updateProfile)
 router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
 router.get('/editors/dashboard/edit/:id',editorEnsureAuthenticated, editorController.approved)
 router.post('/editors/dashboard/accept/:id',editorController.accept)
+router.delete('/editors/dashboard/rejected/:id',editorController.rejected)
 
 // ADMIN ROUTES
 router.get('/admins/dashboard', (req, res) => {

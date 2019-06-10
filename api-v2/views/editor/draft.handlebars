@@ -67,8 +67,39 @@
                 <td>{{generateTime createdAt "MMMM Do YYYY" }}</td>
                 <td><a href="/employee/editors/dashboard/edit/{{_id}}" class="btn btn-success">Chỉnh sửa</a></td>
                 <td>
-                    <form action="/employee/editors/dashboard/delete/{{_id}}?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-danger">Từ chối</button>
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#tableModal{{_id}}">Từ chối</button>
+                        <form action="/employee/editors/dashboard/rejected/{{_id}}?_method=DELETE" method="POST">
+                        <div class="modal fade" id="tableModal{{_id}}" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn từ chối bài viết?
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button type="button" class="btn btn-secondary">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                            </div>
+                                            <input type="text" name="nntc" placeholder="Nguyên nhân từ chối" class="form-control"
+                                                aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><a
+                                                href="#">Chỉnh sửa</a></button>
+                                        <button type="button" class="btn btn-info" data-dismiss="modal"><a href="#">Thôi</a></button>
+                                        <button type="submit" class="btn btn-danger">Từ chối</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                     <!--<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#tableModal">
                         Delete
@@ -79,42 +110,12 @@
         </tbody>
     </table>
 
-    <div class="modal fade" id="tableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn từ chối bài viết?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <button type="button" class="btn btn-secondary">
-                                <i class="fa fa-pencil"></i>
-                            </button>
-                        </div>
-                        <input type="text" placeholder="Nguyên nhân từ chối" class="form-control" aria-label="" aria-describedby="basic-addon1">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><a href="#">Chỉnh sửa</a></button>
-                    <!--<button type="button" class="btn btn-info" data-dismiss="modal"><a href="#">Đồng ý</a></button-->
-                    <form action="/employee/editors/delete/{{_id}}?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-danger">Từ chối</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<script>
-    $(document).ready(function(){
-        $('#myModal').on('shown.bs.modal', function () {
-            $('#myInput').trigger('focus');
-        })
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#myModal').on('shown.bs.modal', function () {
+                $('#myInput').trigger('focus');
+            })
+        });
+    </script>
 
 </div>
