@@ -75,20 +75,19 @@ app.use(function (req, res, next) {
 
 // Routes
 // caching disabled for every route
-app.use(function (req, res, next) {
-    if (!req.user)
-        res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-    next();
-});
+// app.use(function (req, res, next) {
+//     if (!req.user)
+//         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+//     next();
+// });
 
-app.use('/', require('./routes/guest/index'))
 app.use('/guests', require('./routes/guest/guests'))
-
 app.use('/employee', require('./routes/employee/index'))
 app.use('/employee/writers', require('./routes/employee/writers'))
 app.use('/employee/editors', require('./routes/employee/editors'))
 app.use('/employee/admins', require('./routes/employee/admins'))
 
+app.use('/', require('./routes/guest/index'))
 
 app.listen(config.port,
     () => console.log('Listening')

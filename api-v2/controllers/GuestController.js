@@ -11,22 +11,12 @@ exports.index = async (req, res, next) => {
             posts,
             categories
         })
+        // next()
     } catch (error) {
         next(error)
     }
 
 }
-
-// exports.index = (req, res) => {
-//     Post
-//         .find({})
-//         .then((err, posts) => {
-//             if(err) console.log(err)
-//             res.render('guest/guestHome', {
-//                 posts
-//             })
-//         })    
-// }
 
 exports.show = async (req, res, next) => {
     try {

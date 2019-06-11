@@ -6,6 +6,10 @@ const CategorySchema = new Schema({
     createAt: {
         type: Date,
         default: Date.now
+    },
+    subCategory: {
+        type: String,
+        ref: 'Category'
     }
 })
 

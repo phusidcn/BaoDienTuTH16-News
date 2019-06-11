@@ -64,7 +64,8 @@ exports.indexCreateCategory = (req, res) => {
 exports.createCategory = async (req, res) => {
     try {
         let newCategory = new Category({
-            name: req.body.name
+            name: req.body.name,
+            subCategory: req.body.subCate
         })
         newCategory = await newCategory.save()
         res.redirect('/employee/admins/dashboard/category')
