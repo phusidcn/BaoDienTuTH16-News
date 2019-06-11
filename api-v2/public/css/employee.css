@@ -4,12 +4,13 @@ body {
   font-family: "Noto Sans JP", sans-serif !important;
 }
 
-a:hover {
+/* a:hover {
   background: #fff;
   border: solid 1px #5894c7;
   text-decoration: none;
   transition: all 0.3s;
-}
+  padding: 2rem;
+} */
 
 .navbar {
   padding: 15px 10px;
@@ -293,3 +294,38 @@ p.text-picture {
   color: #fff !important;
   background-image: linear-gradient(76deg, #608099, #5894c7);
 }
+
+.box-role {
+  display: flex;
+  justify-content: space-around;
+}
+
+.writer {
+  padding: 4rem 4rem;
+  border-radius: .2rem;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background: #FDC830;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #F37335, #FDC830);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.editor {
+  padding: 4rem 4rem;
+  border-radius: .2rem;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background: #00b09b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #96c93d, #00b09b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #96c93d, #00b09b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.admin {
+  padding: 4rem 4rem;
+  border-radius: .2rem;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background: #ee0979;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ff6a00, #ee0979);  /* Chrome 10-25, Safari 5.1-6 */  
+  background: linear-gradient(to top, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+
+

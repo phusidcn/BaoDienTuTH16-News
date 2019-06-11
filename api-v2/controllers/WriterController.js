@@ -338,7 +338,7 @@ exports.approved = (req, res) => {
     const approved_status = 1
     Post
         .find({
-            status: approved_status,
+            status: 1,
             writer: {
                 $in: [req.user.id]
             }
@@ -356,13 +356,14 @@ exports.published = (req, res) => {
     const published_status = 3
     Post
         .find({
-            status: published_status,
+            status: 3,
             writer: {
                 $in: [req.user.id]
             }
         })
         .populate('category')
         .exec((err, posts) => {
+            console.log(posts)
             if (err) console.log(err)
             res.render('writer/posts/published', {
                 posts: posts
