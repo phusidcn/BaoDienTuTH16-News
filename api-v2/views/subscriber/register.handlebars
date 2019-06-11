@@ -29,7 +29,7 @@
                         <h5>Great to have you back!</h5>
                     </div>
 
-                    <form action="/subscriber/register" method="POST">
+                    <form action="/subscribers/register" method="POST">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="name" id="name" name="name" class="form-control" placeholder="Enter Name"
@@ -39,6 +39,11 @@
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
                                 value="{{email}}" />
+                        </div>
+                        <div class="form-group">
+                            <label for="membership">Date</label>
+                            <input type="name" id="membership" name="membership" class="form-control" placaeholder="Enter date"
+                            value="{{membership}}"/>
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>

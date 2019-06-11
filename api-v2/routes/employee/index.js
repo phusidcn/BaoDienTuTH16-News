@@ -157,5 +157,9 @@ router.get('/admins/dashboard/editor/edit/:id', adminController.indexUpdateEdito
 router.put('/admins/dashboard/editor/edit/:id', adminController.updateEditor)
 router.delete('/admins/dashboard/editor/:id', adminController.deleteEditor)
 
+/**
+ * Subscriber
+ */
+router.get('/admins/dashboard/subscriber',adminController.indexSubscriber)
 
 module.exports = router

@@ -487,3 +487,20 @@ exports.deleteEditor = async (req, res) => {
         console.log(error)
     }
 }
+
+/**
+ * SUBSCRIBER
+ */
+
+ exports.indexSubscriber = async (req, res) => {
+    try {
+        const editors = await User.find({
+            role: 'SUBSCRIBER'
+        })
+        res.render('admin/subscriber/index', {
+            subscribers
+        })
+    } catch (error) {
+        console.log(error)
+    }
+ }
