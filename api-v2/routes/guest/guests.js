@@ -5,6 +5,10 @@ const passport = require('passport')
 
 const User = require('../../models/User')
 
+router.get('/', (req, res) => {
+    res.redirect('/')
+})
+
 router.get('/login', (req, res) => {
     res.render('guest/login')
 })
@@ -57,7 +61,7 @@ router.post('/register', (req, res) => {
                     errors.push({ 
                         msg: 'Email already exists'
                     })
-                    res.render('writer/register', {
+                    res.render('guest/register', {
                         errors,
                         name,
                         email,

@@ -115,7 +115,7 @@ router.post('/login', (req, res, next) => {
 // Logout
 router.get('/logout', (req, res) => {
     req.logout();
-    req.flash('success_msg', 'You are logged out');
+    req.flash('success_msg', 'You are logged out');    
     res.redirect('/employee/writers/login');
 });
 
