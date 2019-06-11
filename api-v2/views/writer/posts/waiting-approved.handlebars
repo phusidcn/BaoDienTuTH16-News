@@ -26,7 +26,7 @@
         </div>
     </nav>
     {{/ifvalue}}
-    <h4>WAITING APPROVED POSTS</h4>
+    <h4 style="text-align: center;">WAITING APPROVED POSTS</h4>
 
     <table class="table table-bordered">
         <thead>
@@ -47,10 +47,13 @@
                 <td>{{category.name}}</td>
                 <td>{{status}}</td>
                 <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
-                <td><a href="/employee/writers/dashboard/waiting/edit/{{_id}}" class="btn btn-success">Edit</a></td>
+                <td><a href="/employee/writers/dashboard/waiting/edit/{{_id}}" class="btn btn-success">
+                <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></td>
                 <td>
                     <form action="/employee/writers/dashboard/waiting/{{_id}}?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"
+                                aria-hidden="true"></i> Delete</button>
                     </form>
                 </td>
             </tr>

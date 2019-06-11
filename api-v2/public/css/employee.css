@@ -1,30 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap");
 body {
-  color: #324452;
+  box-sizing: border-box;
+  color: #F6D55C;
   font-family: "Noto Sans JP", sans-serif !important;
 }
 
-/* a:hover {
-  background: #fff;
-  border: solid 1px #5894c7;
+a:hover {
   text-decoration: none;
   transition: all 0.3s;
-  padding: 2rem;
-} */
+}
 
 .navbar {
   padding: 15px 10px;
-  background-image: linear-gradient(
-    20deg,
-    #fff3dc,
-    #fff1d6 25%,
-    #ffe6b8 50%,
-    #ffdb9a 75%,
-    #ffd280
-  );
   border: none;
   border-radius: 0;
   margin-bottom: 10px;
+
 }
 
 .navbar-btn {
@@ -39,34 +30,41 @@ body {
   border-bottom: 1px dashed #ddd;
 }
 
+.input-group,
+#editor {
+  border-radius: .2rem;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
 .wrapper {
   display: flex;
   width: 100%;
   align-items: stretch;
+  color: #5894c7;
+  background: #FFEFBA;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 textarea {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-
+  height: 100%;
   width: 100%;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background-image: linear-gradient(
-    13deg,
-    #ffd280,
-    #ffdb9a 28%,
-    #ffe6b8 50%,
-    #fff1d6 75%,
-    #fff3dc
-  );
+  min-width: 15rem;
+  max-width: 15rem;
+  background: linear-gradient(90deg, #173F5F 0%, #20639B 100%);
   position: relative;
-  background-color: black;
-  color: black;
+  color: #173F5F;
   opacity: 0.88;
   width: 100%;
   transition: all 0.3s;
@@ -109,18 +107,18 @@ textarea {
   display: block;
   margin-left: 10px;
   margin-right: 10px;
-  color: #060606;
+  color: #F6D55C;
 }
 #sidebar ul li a:hover {
-  background-color: #5894c7;
+  background-color: #173F5F;
   border-radius: 5px;
-  color: #eeeeee;
+  color: #F6D55C;
 }
 
 #sidebar ul li.active > a,
 a[aria-expanded="true"] {
-  color: #1c1a1a;
-  background: #eeeeee;
+  color: #F6D55C;
+  background: #ED553B;
   opacity: 0.8;
 }
 a[data-toggle="collapse"] {
@@ -145,7 +143,7 @@ ul li {
   text-transform: none;
 }
 .nav-link {
-  color: #324452;
+  color: #F6D55C;
 }
 
 .avt {
@@ -163,13 +161,12 @@ ul li {
 .profile {
   margin-bottom: 10px;
   text-align: center;
-  color: black;
+  color: #F6D55C;
 }
 
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #eeeeee;
   color: #151313;
 }
 
@@ -188,7 +185,7 @@ a.editProfile {
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgba(96, 128, 153, 0.2);
   border: solid 1px #608099;
-  background-color: #fff;
+  background-color: #1A645D;
 }
 a.logOut,
 a.logOut:hover {
@@ -278,9 +275,10 @@ p.text-picture {
 }
 
 .btn-blue {
+  float: left;
   border-radius: 4px !important;
-  box-shadow: 0 4px 8px 0 rgba(96, 128, 153, 0.4) !important;
-  background-image: linear-gradient(76deg, #608099, #5894c7) !important;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background: #159957;
   color: #fff !important;
   border: 0px !important;
   padding: 10px 20px !important;
@@ -309,7 +307,19 @@ p.text-picture {
   background: linear-gradient(to top, #F37335, #FDC830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-.editor {
+table {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);  
+  text-align: center
+}
+
+table thead {
+  background: #F2994A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.editor-box {
   padding: 4rem 4rem;
   border-radius: .2rem;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -327,5 +337,11 @@ p.text-picture {
   background: linear-gradient(to top, #ff6a00, #ee0979); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+.btn-prepend {
+  color: #fff;
+  background: #F2994A;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #F2C94C, #F2994A);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #F2C94C, #F2994A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
 
