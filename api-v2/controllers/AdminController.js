@@ -494,7 +494,7 @@ exports.deleteEditor = async (req, res) => {
 
  exports.indexSubscriber = async (req, res) => {
     try {
-        const editors = await User.find({
+        const subscribers = await User.find({
             role: 'SUBSCRIBER'
         })
         res.render('admin/subscriber/index', {
