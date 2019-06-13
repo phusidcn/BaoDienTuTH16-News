@@ -49,8 +49,8 @@ const UserSchema = new Schema({
             ref: 'Category'
         }
     ],
-    // reset_password_token: String,
-    // reset_password_expired: Date
+    resetPasswordToken: String,
+    resetPasswordExpires: Date
 })
 
 module.exports = mongoose.model('User', UserSchema)
