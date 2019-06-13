@@ -47,10 +47,10 @@
                 <td>{{category.name}}</td>
                 <td>{{status}}</td>
                 <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
-                <td><a href="/writer/post/rejected/edit/{{_id}}" class="btn btn-success">
+                <td><a href="/employee/writers/dashboard/rejected/edit/{{_id}}" class="btn btn-success">
                 <i class="fa fa-pencil" aria-hidden="true"></i> Edit</a></td>
                 <td>
-                    <form action="/writer/post/rejected/{{_id}}?_method=DELETE" method="POST">
+                    <form action="/employee/writers/dashboard/rejected/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger">
                             <i class="fa fa-trash"
                                 aria-hidden="true"></i> Delete</button>

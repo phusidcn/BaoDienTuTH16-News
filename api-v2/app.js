@@ -74,12 +74,6 @@ app.use(function (req, res, next) {
 })
 
 // Routes
-// caching disabled for every route
-// app.use(function (req, res, next) {
-//     if (!req.user)
-//         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-//     next();
-// });
 app.use('/home', require('./routes/guest/index'))
 app.use('/guests', require('./routes/guest/guests'))
 app.use('/subscribers',require('./routes/subscriber/subscriber'))

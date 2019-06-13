@@ -421,7 +421,7 @@ exports.updateWaiting = (req, res) => {
                 .save()
                 .then(updatedPost => {
                     req.flash('success_msg', `Post ${updatedPost} was successfully updated`);
-                    res.redirect('/employee/writers/waiting')
+                    res.redirect('/employee/writers/dashboard/waiting')
                 })
                 .catch(err => {
                     console.log(err)
@@ -435,7 +435,7 @@ exports.deleteWaiting = (req, res) => {
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
                 req.flash('success_msg', 'Post was successfully deleted');
-                res.redirect('/employee/writers/waiting')
+                res.redirect('/employee/writers/dashboard/waiting')
             })
         })
 }
@@ -486,7 +486,7 @@ exports.updateRejected = (req, res) => {
                 .save()
                 .then(updatedPost => {
                     req.flash('success_msg', `Post ${updatedPost} was successfully updated`);
-                    res.redirect('/employee/writers/rejected')
+                    res.redirect('/employee/writers/dashboard/rejected')
                 })
                 .catch(err => {
                     console.log(err)
@@ -502,7 +502,7 @@ exports.deleteRejected = (req, res) => {
         .then((post) => {
             fs.unlink(uploadDir + post.image, (err) => {
                 req.flash('success_msg', 'Post was successfully deleted');
-                res.redirect('/employee/writers/rejected')
+                res.redirect('/employee/writers/dashboard/rejected')
             })
         })
 }
