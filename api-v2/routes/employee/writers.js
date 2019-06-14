@@ -27,7 +27,7 @@ router.get('/forgot', (req, res) => {
     })
 })
 
-router.post('/forgot', (req, res) => {
+router.post('/forgot', (req, res, next) => {
     async.waterfall([
         function (done) {
             crypto.randomBytes(20, (err, buf) => {
@@ -62,14 +62,14 @@ router.post('/forgot', (req, res) => {
             let smtpTransport = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'quangle.hcmus@gmail.com',
-                    pass: 'Duyquang!2006'
+                    user: 'phusidcn@gmail.com',
+                    pass: 'Aceofsky99669965'
                 }
             })
 
             let mailOptions = {
-                from: 'quangle.hcmus@gmail.com', // sender address
-                to: 'duyquangbtx@gmail.com', // list of receivers
+                from: 'phusidcn@gmail.com', // sender address
+                to: 'quangle.hcmus@gmail.com', // list of receivers
                 subject: 'Reset Password', // Subject line
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
