@@ -27,7 +27,7 @@ router.get('/forgot', (req, res) => {
     })
 })
 
-router.post('/forgot', (req, res, next) => {
+router.post('/forgot', (req, res) => {
     async.waterfall([
         function (done) {
             crypto.randomBytes(20, (err, buf) => {
@@ -62,14 +62,14 @@ router.post('/forgot', (req, res, next) => {
             let smtpTransport = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'phusidcn@gmail.com',
-                    pass: 'Aceofsky99669965'
+                    user: 'quangle.hcmus@gmail.com',
+                    pass: 'Duyquang!2006'
                 }
             })
 
             let mailOptions = {
-                from: 'phusidcn@gmail.com', // sender address
-                to: 'quangle.hcmus@gmail.com', // list of receivers
+                from: 'quangle.hcmus@gmail.com', // sender address
+                to: 'duyquangbtx@gmail.com', // list of receivers
                 subject: 'Reset Password', // Subject line
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -119,23 +119,26 @@ router.post('/reset/:token', (req, res) => {
                 }
 
                 if (req.body.password === req.body.confirm) {
-                   
+
                     user.password = req.body.password
                     user.resetPasswordToken = undefined
                     user.resetPasswordExpires = undefined
 
+
                     bcrypt
-                    .genSalt(10, (err, salt) => {
-                        bcrypt.hash(user.password, salt, (err, hash) => {
-                            if (err) throw err;
-                            user.password = hash;
+                        .genSalt(10, (err, salt) => {
+                            bcrypt.hash(user.password, salt, (err, hash) => {
+                                if (err) throw err;
+                                user.password = hash;
+                                console.log("After hash: ", user)
+                                user.save(function (err) {
+                                    req.logIn(user, function (err) {
+                                        done(err, user)
+                                    })
+                                })
+                            })
                         })
-                    })
-                    user.save(function (err) {
-                        req.logIn(user, function (err) {
-                            done(err, user)
-                        })
-                    })
+
                 } else {
                     req.flash("error_msg", "Passwords do not match.")
                     return res.redirect('/employee/writers/forgot')
@@ -255,12 +258,12 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
-    const writerEmail = req.body.email
-    const role = writerEmail.substring(0, writerEmail.lastIndexOf("@") - 1)
-    if (role !== "writer") {
-        req.flash('error_msg', 'You are not writer')
-        return res.redirect('/employee/writers/login')
-    }
+    // const writerEmail = req.body.email
+    // const role = writerEmail.substring(0, writerEmail.lastIndexOf("@") - 1)
+    // if (role !== "writer") {
+    //     req.flash('error_msg', 'You are not writer')
+    //     return res.redirect('/employee/writers/login')
+    // }
     passport.authenticate('local', {
         successRedirect: '/employee/writers/dashboard/profile',
         failureRedirect: '/employee/writers/login',

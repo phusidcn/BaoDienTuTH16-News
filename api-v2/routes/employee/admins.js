@@ -4,6 +4,11 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const User = require('../../models/User')
 
+const nodemailer = require('nodemailer')
+const crypto = require('crypto')
+const _ = require('lodash')
+const async = require('async')
+
 router.get('/login', (req, res) => {
     res.render('admin/login', {
         layout: false
@@ -138,14 +143,14 @@ router.post('/forgot', (req, res, next) => {
             let smtpTransport = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'phusidcn@gmail.com',
-                    pass: 'Aceofsky99669965'
+                    user: 'quangle.hcmus@gmail.com',
+                    pass: 'Quangle!2006'
                 }
             })
 
             let mailOptions = {
-                from: 'phusidcn@gmail.com', // sender address
-                to: 'quangle.hcmus@gmail.com', // list of receivers
+                from: 'quangle.hcmus@gmail.com', // sender address
+                to: 'duyquangbtx@gmail.com', // list of receivers
                 subject: 'Reset Password', // Subject line
                 text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
                     'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
