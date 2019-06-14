@@ -161,5 +161,6 @@ router.delete('/admins/dashboard/editor/:id', adminController.deleteEditor)
  * Subscriber
  */
 router.get('/admins/dashboard/subscriber',adminController.indexSubscriber)
+router.delete('/admins/dashboard/subscriber/ban/:id',adminController.banSubscriber)
 
 module.exports = router

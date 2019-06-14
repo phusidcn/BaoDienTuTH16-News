@@ -504,3 +504,18 @@ exports.deleteEditor = async (req, res) => {
         console.log(error)
     }
  }
+
+ exports.banSubscriber = async (req, res) => {
+     User
+        .findOne({
+            _id: req.params.id
+        })
+        .then (user => {
+            user.role = "GUEST"
+            user.save()
+            res.redirect('/employee/admins/dashboard/subscriber/')
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+ }
