@@ -3,7 +3,7 @@ const Schema = moongoose.Schema
 
 const CommentSchema = new Schema({
     content: String,
-    subscriber: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     }

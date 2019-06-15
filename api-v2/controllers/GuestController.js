@@ -80,7 +80,8 @@ exports.show = async (req, res, next) => {
         const categories = await Category.find({})
         res.render('guest/guestPost', {
             foundPost,
-            categories
+            categories,
+            user: req.user
         })
     } catch (error) {
         next(error)

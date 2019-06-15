@@ -30,6 +30,11 @@
                         {{ success_msg }}
                     </div>
                     {{/if}}
+                    {{#if error}}
+                    <div class="alert alert-danger" style="text-align: center;">
+                        {{ error }}
+                    </div>
+                    {{/if}}
                     {{#each errors}}
                     <div class="alert alert-danger" style="text-align: center;">
                         {{ msg }}

@@ -56,7 +56,8 @@ router.post('/register', (req, res) => {
             name,
             email,
             password,
-            password2
+            password2,
+            layout: false
         })
     } else {
         User
@@ -70,7 +71,8 @@ router.post('/register', (req, res) => {
                         name,
                         email,
                         password,
-                        password2
+                        password2,
+                        layout: false
                     })
                 } else {
                     const newUser = new User({

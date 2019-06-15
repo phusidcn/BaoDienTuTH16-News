@@ -17,6 +17,11 @@
     {{ msg }}
 </div>
 {{/each}}
+{{#if error}}
+<div class="alert alert-danger" style="text-align: center;">
+    {{ error }}
+</div>
+{{/if}}
 
 <!-- ##### Login Area Start ##### -->
 <div class="mag-login-area py-5">

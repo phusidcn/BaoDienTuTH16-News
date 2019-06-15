@@ -1,47 +1,37 @@
-# BaoDienTuTH16-News
-> E-magazine for people 
+<h1 align="center">Welcome to Minimum 👋</h1>
+<p>
+  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+</p>
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+> E-magazine NODE - EXPRESS 
 
-Đồ án cuối kì - Phát triển ứng dụng web-32
-
-## Installation
-
-Windows + iOS + Linux:
-```sh
-    npm install 
-```
-
-## Development 
+## Install
 
 ```sh
-    npm run dev 
+npm install
 ```
 
-## Release History
+## Usage
 
-* 06/05/2019
-    * DEADLINE: Frontend static website
+```sh
+npm run start
+```
 
-## Meta
-Le Quoc Duy Quang – duyquangbtx@gmail.com
+## Run tests
 
-Distributed under the Minimum license. See ``LICENSE`` for more information.
+```sh
+npm run test
+```
 
-[https://github.com/phusidcn/BaoDienTuTH16-News](https://github.com/lequocduyquang/)
+## Author
 
+👤 **lequocduyquang**
 
-### Danh sách Sinh Viên
-* 1/ Huỳnh Lâm Phú Sĩ
-* 2/ Lê Quốc Thái
-* 3/ Lê Quốc Duy Quang
+* Github: [@lequocduyquang](https://github.com/lequocduyquang)
 
-<!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki
+## Show your support
+
+Give a ⭐️ if this project helped you !
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

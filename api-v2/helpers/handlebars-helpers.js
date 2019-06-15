@@ -17,5 +17,13 @@ module.exports = {
         } else {
             return options.inverse(this)
         }
+    },
+
+    ifnotvalue: function(conditional, options) {
+        if(conditional === options.hash.notequals) {
+            return options.fn(this)
+        } else {
+            return options.inverse(this)
+        }
     }
 }
