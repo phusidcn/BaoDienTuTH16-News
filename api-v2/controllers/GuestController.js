@@ -18,6 +18,28 @@ exports.index = async (req, res, next) => {
 
 }
 
+exports.contact = async (req, res, next) => {
+    try {
+        const categories = await Category.find({})
+        res.render('guest/contact', {
+            categories
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
+exports.about = async (req, res, next) => {
+    try {
+        const categories = await Category.find({})
+        res.render('guest/about', {
+            categories
+        })
+    } catch (error) {
+        next(error)
+    }
+}
+
 exports.show = async (req, res, next) => {
     try {
         const foundPost = await Post.findOne({ id: req.params.id })

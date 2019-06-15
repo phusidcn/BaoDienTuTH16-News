@@ -74,9 +74,9 @@ app.use(function (req, res, next) {
 })
 
 // Routes
-app.use('/home', require('./routes/guest/index'))
-app.use('/guests', require('./routes/guest/guests'))
-app.use('/subscribers',require('./routes/subscriber/subscriber'))
+app.use('/home', require('./routes/customer/index'))
+app.use('/guests', require('./routes/customer/guests'))
+app.use('/subscribers',require('./routes/customer/subscribers'))
 app.use('/employee', require('./routes/employee/index'))
 app.use('/employee/writers', require('./routes/employee/writers'))
 app.use('/employee/editors', require('./routes/employee/editors'))

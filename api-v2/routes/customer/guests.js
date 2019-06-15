@@ -5,10 +5,6 @@ const passport = require('passport')
 
 const User = require('../../models/User')
 
-// router.get('/', (req, res) => {
-//     res.redirect('/')
-// })
-
 router.get('/login', (req, res) => {
     res.render('guest/login')
 })
