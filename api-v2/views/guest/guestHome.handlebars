@@ -10,7 +10,7 @@
                         <div class="post-content text-center">
                             <div class="post-meta" data-animation="fadeInUp" data-delay="100ms">
                                 <a href="#">{{ generateTime createdAt "MMMM Do YYYY"  }}</a>
-                                <a href="archive.html">{{ category.name }}</a>
+                                <a href="/home/category/{{category._id}}">{{ category.name }}</a>
                             </div>
                             <a href="video-post.html" class="post-title" data-animation="fadeInUp" data-delay="300ms">{{ title }}</a>
                             <a href="video-post.html" class="video-play" data-animation="bounceIn" data-delay="500ms"><i class="fa fa-play"></i></a>
@@ -35,11 +35,11 @@
             <div class="single-sidebar-widget p-30">
                 <!-- Section Title -->
                 <div class="section-heading">
-                    <h5>Most Popular</h5>
+                    <h5>Most View Posts</h5>
                 </div>
 
                 <!-- Single Blog Post -->
-                {{#each posts}}
+                {{#each arrMostViewPosts}}
                 <div class="single-blog-post d-flex">
                     <div class="post-thumbnail">
                         <img src="/uploads/{{image}}" alt="">
@@ -48,7 +48,7 @@
                         <a href="/{{_id}}" class="post-title">{{title}}</a>
                         <div class="post-meta d-flex justify-content-between">
                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
+                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>{{like}}</a>
                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
                         </div>
                     </div>
@@ -154,21 +154,12 @@
             <div class="trending-now-posts mb-30">
                 <!-- Section Title -->
                 <div class="section-heading">
-                    <h5>TRENDING NOW</h5>
+                    <h5>LATEST NOW</h5>
                 </div>
 
                 <div class="trending-post-slides owl-carousel">
                     <!-- Single Trending Post -->
-                    <div class="single-trending-post">
-                        <img src="img/bg-img/19.jpg" alt="">
-                        <div class="post-content">
-                            <a href="#" class="post-cata">Video</a>
-                            <a href="video-post.html" class="post-title">Big Savings On Gas While You Travel</a>
-                        </div>
-                    </div>
-
-                    <!-- Single Trending Post -->
-                    {{#each posts}}
+                    {{#each latestPosts}}
                     <div class="single-trending-post">
                         <img src="/uploads/{{image}}" alt="">
                         <div class="post-content">

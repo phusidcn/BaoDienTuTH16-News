@@ -9,6 +9,7 @@ router.all('/*', (req, res, next) => {
     next()
 })
 router.get('/', guestController.index)
+router.get('/category/:id', guestController.indexCategory)
 router.get('/contact', guestController.contact)
 router.get('/about', guestController.about)
 
