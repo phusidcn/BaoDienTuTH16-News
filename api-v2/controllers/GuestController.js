@@ -76,9 +76,11 @@ exports.about = async (req, res, next) => {
 
 exports.show = async (req, res, next) => {
     try {
-        const foundPost = await Post.findOne({ id: req.params.id })
+        const foundPost = await Post.findOne({ _id: req.params.id }).populate('category').populate('writer')
+        const categories = await Category.find({})
         res.render('guest/guestPost', {
-            foundPost
+            foundPost,
+            categories
         })
     } catch (error) {
         next(error)

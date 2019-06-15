@@ -51,11 +51,11 @@
                                     <a href="#">{{ generateTime createdAt "MMMM Do YYYY"  }}</a>
                                     <a href="#">{{category.name}}</a>
                                 </div>
-                                <a href="video-post.html" class="post-title">{{title}}</a>
+                                <a href="/home/{{id}}" class="post-title">{{title}}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta-2">
                                     <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{like}}</a>
                                     <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
                                 </div>
                                 <p>{{subContent}}</p>
@@ -106,20 +106,9 @@
 
                         <!-- Catagory Widget -->
                         <ul class="catagory-widgets">
-                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> Life
-                                        Style</span> <span>35</span></a></li>
-                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        Travel</span> <span>30</span></a></li>
-                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        Foods</span> <span>13</span></a></li>
-                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        Game</span> <span>06</span></a></li>
-                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        Sports</span> <span>28</span></a></li>
-                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                                        Football</span> <span>08</span></a></li>
-                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> TV
-                                        Show</span> <span>13</span></a></li>
+                            {{#each categories}}
+                            <li><a href="#"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i> {{name}}</span> <span>35</span></a></li>
+                            {{/each}}
                         </ul>
                     </div>
 

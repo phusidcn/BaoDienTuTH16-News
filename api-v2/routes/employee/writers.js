@@ -10,6 +10,9 @@ const _ = require('lodash')
 const async = require('async')
 
 router.get('/login', (req, res) => {
+    if(req.user) {
+        res.redirect('/employee/writers/dashboard/profile')
+    }
     res.render('writer/login', {
         layout: false
     })
@@ -258,13 +261,7 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
-    // const writerEmail = req.body.email
-    // const role = writerEmail.substring(0, writerEmail.lastIndexOf("@") - 1)
-    // if (role !== "writer") {
-    //     req.flash('error_msg', 'You are not writer')
-    //     return res.redirect('/employee/writers/login')
-    // }
-    passport.authenticate('local', {
+    passport.authenticate('writer-local', {
         successRedirect: '/employee/writers/dashboard/profile',
         failureRedirect: '/employee/writers/login',
         failureFlash: true

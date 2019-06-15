@@ -252,7 +252,7 @@ router.post('/reset/:token', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
-    passport.authenticate('local', {
+    passport.authenticate('editor-local', {
         successRedirect: '/employee/editors/dashboard/profile',
         failureRedirect: '/employee/editors/login',
         failureFlash: true

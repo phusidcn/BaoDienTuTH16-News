@@ -1,5 +1,5 @@
 <!-- ##### Breadcrumb Area Start ##### -->
-<section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/49.jpg);">
+<section class="breadcrumb-area bg-img bg-overlay" style="background-image: url(/uploads/{{foundPost.image}});">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <div class="col-12">
@@ -50,7 +50,7 @@
                         <!-- Post Meta -->
                         <div class="post-meta-2">
                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
+                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{foundPost.like}}</a>
                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
                         </div>
 
@@ -59,9 +59,7 @@
 
                         <div class="row">
                             <div class="col-12 col-lg-8">
-                                <p>Vivamus nisl metus, dictum sit amet porttitor sit amet, lobortis sit amet ipsum.
-                                    Mauris ut quam non magna gravida egestas. Sed rutrum sapien eget lorem bibendum
-                                    ullamcorper.</p>
+                                <p>{{foundPost.subContent}}</p>
                                 <ul>
                                     <li><i class="fa fa-check-circle-o" aria-hidden="true"></i> Duis blandit maximus
                                         tellus, sagittis volutpat tellus sandi.</li>
@@ -81,10 +79,7 @@
                             </div>
                         </div>
 
-                        <p>Mauris nisi arcu, consectetur convallis fringilla quis, posuere ac mauris. Ut in placerat
-                            lorem. Donec cursus malesuada nibhem, eget consectetur posuere sed. Suspendisse auctor nec
-                            diamet consectetur. Etiam ac maurised nisib tincidunt viverra. Sed nulla lacus, convallis
-                            vel nunc sed, fringilla venenatis neque.</p>
+                        {{foundPost.content}}
 
                         <blockquote>
                             <h6 class="quote-text">“Design is a funny word. Some people think design means how it looks.
@@ -93,13 +88,7 @@
                             <h6 class="quote-name">STEVE JOBS</h6>
                         </blockquote>
 
-                        <p>Phasellus laoreet mattis ultrices. Integer ex sem, ultrices eu sem in, laoreet vehicula
-                            ligula. Phasellus quistor blandit salah convallis augue. Sed velot dictum sapient. In
-                            pulvinar libero turpis. Quisque facilisis bigbang consenti. Nullam bendumaz, massan
-                            consequat in gravida porttitor, aguet lacus condimentum mauris, id blandit quam augue eget
-                            mana. Etiam denim jeans lacus, nascetur auge bibendum vel pulvinar viverra, mattis sit amet
-                            mi. Mauris fringilla, ex vitae maximus fringilla, neque sapien maximus justo, cursus risus
-                            neque sed nibh. Donec at urna eros scelerisque non nibh sed.</p>
+                        {{foundPost.content}}
 
                         <!-- Like Dislike Share -->
                         <div class="like-dislike-share my-5">
@@ -113,12 +102,11 @@
                         <!-- Post Author -->
                         <div class="post-author d-flex align-items-center">
                             <div class="post-author-thumb">
-                                <img src="img/bg-img/52.jpg" alt="">
+                                <img src="/uploads/{{foundPost.writer.avatar}}" alt="">
                             </div>
                             <div class="post-author-desc pl-4">
-                                <a href="#" class="author-name">Alan Shaerer</a>
-                                <p>Duis tincidunt turpis sodales, tincidunt nisi et, auctor nisi. Curabitur vulputate
-                                    sapien eu metus ultricies fermentum nec vel augue. Maecenas eget lacinia est.</p>
+                                <a href="#" class="author-name">{{foundPost.writer.name}}</a>
+                                <p>{{foundPost.writer.email}}</p>
                             </div>
                         </div>
                     </div>
@@ -128,66 +116,16 @@
                 <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
                     <!-- Section Title -->
                     <div class="section-heading">
-                        <h5>Related Post</h5>
+                        <h5>Related Tag</h5>
                     </div>
 
                     <div class="row">
                         <!-- Single Blog Post -->
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="single-blog-post style-4 mb-30">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/29.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="single-post.html" class="post-title">Dentists Are Smiling Over Painless
-                                        Veneer</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                    </div>
-                                </div>
+                                Kinh doanh
                             </div>
                         </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-blog-post style-4 mb-30">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/30.jpg" alt="">
-                                    <a href="video-post.html" class="video-play"><i class="fa fa-play"></i></a>
-                                    <span class="video-duration">09:27</span>
-                                </div>
-                                <div class="post-content">
-                                    <a href="single-post.html" class="post-title">Will The Democrats Be Able To
-                                        Reverse</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="col-12 col-md-6 col-lg-4">
-                            <div class="single-blog-post style-4 mb-30">
-                                <div class="post-thumbnail">
-                                    <img src="img/bg-img/28.jpg" alt="">
-                                </div>
-                                <div class="post-content">
-                                    <a href="single-post.html" class="post-title">A Guide To Rocky Mountain
-                                        Vacations</a>
-                                    <div class="post-meta d-flex">
-                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
-                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
@@ -209,7 +147,7 @@
                                 </div>
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
-                                    <a href="#" class="comment-date">27 Aug 2019</a>
+                                    <a href="#" class="comment-date"></a>
                                     <h6>Tomas Mandy</h6>
                                     <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
                                         adipisci velit, sed quia non numquam eius</p>

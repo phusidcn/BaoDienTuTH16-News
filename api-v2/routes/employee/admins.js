@@ -256,13 +256,7 @@ router.post('/reset/:token', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
-    const adminEmail = req.body.email
-    const role = adminEmail.substring(0, adminEmail.lastIndexOf("@") -1)
-    if(role !== "admin") {
-        req.flash('error_msg', 'You are not admin')
-        return res.redirect('/employee/admins/login')
-    }
-    passport.authenticate('local', {
+    passport.authenticate('admin-local', {
         successRedirect: '/employee/admins/dashboard/profile',
         failureRedirect: '/employee/admins/login',
         failureFlash: true
