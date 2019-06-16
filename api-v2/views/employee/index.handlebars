@@ -26,9 +26,9 @@
         </div>
     </nav>
 
-    <form action="/employee/writers/dashboard/profile/{{user._id}}?_method=PUT" method="POST">
+    <form action="/employee/writers/dashboard/profile/{{user._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <label class="bmd-label-floating">Email</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -38,19 +38,6 @@
                     </div>
                     <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
                         aria-describedby="basic-addon1" value="{{user.email}}">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <label class="bmd-label-floating">Password</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-prepend">
-                            <i class="fa fa-unlock"></i>
-                        </button>
-                    </div>
-                    <input name="password" type="password" class="form-control" pattern=".{6,}" placeholder="Password"
-                        aria-label="Password" aria-describedby="basic-addon1" value="{{user.password}}" required>
                 </div>
             </div>
         </div>
@@ -79,7 +66,7 @@
                             <i class="fa fa-file-image-o"></i>
                         </button>
                     </div>
-                    <input type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
+                    <input type="file" class="form-control" placeholder="Image" id="writerAvt" name="avatar"
                         aria-describedby="basic-addon1">
                 </div>
             </div>
@@ -165,9 +152,9 @@
             </ul>
         </div>
     </nav>
-    <form action="/employee/editors/dashboard/profile/{{user._id}}?_method=PUT" method="POST">
+    <form action="/employee/editors/dashboard/profile/{{user._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <label class="bmd-label-floating">Email</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -177,19 +164,6 @@
                     </div>
                     <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
                         aria-describedby="basic-addon1" value="{{user.email}}">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <label class="bmd-label-floating">Password</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-prepend">
-                            <i class="fa fa-unlock"></i>
-                        </button>
-                    </div>
-                    <input name="password" type="password" class="form-control" pattern=".{6,}" placeholder="Password"
-                        aria-label="Password" aria-describedby="basic-addon1" value="{{user.password}}" required>
                 </div>
             </div>
         </div>
@@ -218,8 +192,8 @@
                             <i class="fa fa-file-image-o"></i>
                         </button>
                     </div>
-                    <input type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
-                        aria-describedby="basic-addon1">
+                    <input type="file" class="form-control" placeholder="Image" id="editorAva" name="avatar"
+                        aria-describedby="basic-addon1" value="{{user.avatar}}">
                 </div>
             </div>
 
@@ -304,9 +278,9 @@
             </ul>
         </div>
     </nav>
-    <form action="/employee/admins/dashboard/profile/{{user._id}}?_method=PUT" method="POST">
+    <form action="/employee/admins/dashboard/profile/{{user._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <label class="bmd-label-floating">Email</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -316,19 +290,6 @@
                     </div>
                     <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
                         aria-describedby="basic-addon1" value="{{user.email}}">
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <label class="bmd-label-floating">Password</label>
-                <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-prepend">
-                            <i class="fa fa-unlock"></i>
-                        </button>
-                    </div>
-                    <input name="password" type="password" class="form-control" pattern=".{6,}" placeholder="Password"
-                        aria-label="Password" aria-describedby="basic-addon1" value="{{user.password}}" required>
                 </div>
             </div>
         </div>
@@ -357,8 +318,8 @@
                             <i class="fa fa-file-image-o"></i>
                         </button>
                     </div>
-                    <input type="file" class="form-control" placeholder="Image" id="writerAvt" name="image"
-                        aria-describedby="basic-addon1">
+                    <input type="file" class="form-control" placeholder="Image" id="adminAva" name="avatar" va
+                        aria-describedby="basic-addon1" value="{{user.avatar}}">
                 </div>
             </div>
 

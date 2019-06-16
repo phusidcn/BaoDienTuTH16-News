@@ -51,7 +51,8 @@
             <tr>
                 <th>Name</th>
                 <th>Created At</th>
-                <th colspan="2"></th>
+                <th>Subcategory</th>
+                <th colspan="2">Operation</th>
             </tr>
         </thead>
 
@@ -60,6 +61,7 @@
             <tr>
                 <td>{{name}}</td>
                 <td>{{ generateTime createdAt "MMMM Do YYYY" }}</td>
+                <td>{{subCategory}}</td>
                 <td style="text-align: center;"><a href="/employee/admins/dashboard/category/edit/{{_id}}" class="btn btn-warning">Edit</a>
                 </td>
                 <td style="text-align: center;">
