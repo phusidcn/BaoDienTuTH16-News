@@ -33,9 +33,11 @@
                                         {{name}}
                                     </a>
                                     <ul class="dropdown">
+                                        {{#each subCategory}}
                                         <li>
-                                            <a href="">{{subCategory}}</a>
+                                            <a href="">{{this}}</a>
                                         </li>
+                                        {{/each}}
                                     </ul>
                                 </li>
                                 {{/each}}
@@ -68,19 +70,25 @@
                         <a href="/employee/admins/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
+
                         {{#ifvalue user.role equals="WRITER"}}
                         <!-- Logout -->
                         <a href="/employee/writers/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
+
                         {{#ifvalue user.role equals="EDITOR"}}
                         <!-- Logout -->
                         <a href="/employee/editors/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
+
+                        {{#ifvalue user.role equals="GUEST"}}
                         <!-- Logout -->
                         <a href="/guests/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
+                        {{/ifvalue}}
+                        
                         {{else}}
                         <a href="/guests/login" class="login-btn">
                             <i class="fa fa-user" aria-hidden="true">

@@ -116,7 +116,9 @@ exports.indexAddSubCate = async (req, res) => {
 exports.addSubcategory = async (req, res) => {
     try {
         let foundCate = await Category.findOne({ _id: req.params.id })
-        foundCate.subCategory.push(req.body.subcate)
+        foundCate.subCategory.push({
+            content: req.body.subcate
+        })
         await foundCate.save().then(() => {
             res.redirect('/employee/admins/dashboard/category')
         })

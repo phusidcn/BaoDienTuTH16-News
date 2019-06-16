@@ -42,20 +42,6 @@
             <input required type="text" class="form-control" placeholder="Tên category" id="title" name="name"
                 aria-describedby="basic-addon1">
         </div>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-secondary">
-                    <i class="fa fa-flag-o"></i>
-                </button>
-            </div>
-            {{!-- <input type="text" class="form-control" placeholder="Subcategory" id="subCate" name="subCate"
-                aria-describedby="basic-addon1"> --}}
-            <select name="subCategory" id="subCategory" class="form-control">
-                {{#each subCategory}}
-                    <option value="{{id}}">{{ name }}</option>
-                {{/each}}
-            </select>
-        </div>
         <div class="mt-3">
             <button type="submit" class="btn-blue" value="">Tạo</button>
         </div>

@@ -43,9 +43,13 @@ exports.indexCategory = async (req, res, next) => {
                 $in: [req.params.id]
             }
         }).populate('category')
+        const foundCategory = await Category.findOne({
+            _id: req.params.id
+        })
         const categories = await Category.find({})
         res.render('guest/guestCategory', {
             posts,
+            foundCategory,
             categories
         })
     } catch (error) {
@@ -80,13 +84,16 @@ exports.show = async (req, res, next) => {
         const foundPost = await Post.findOne({ _id: req.params.id })
                     .populate('category')
                     .populate('writer')
-                    .populate('comments')
+                    .populate({
+                        path: 'comments',
+                        populate: { path: 'user', model: 'User' }
+                    })
         const categories = await Category.find({})
         console.log(foundPost)
         res.render('guest/guestPost', {
             foundPost,
             categories,
-            user: req.user
+            user: req.user,
         })
     } catch (error) {
         next(error)
@@ -108,7 +115,9 @@ exports.comment = (req, res, next) => {
 
                 post.comments.push(newComment)
                 post.save().then(savedPost => {
-                    res.redirect(`/home/${post.id}`)
+                    newComment.save().then(savedComment => {
+                        res.redirect(`/home/${post.id}`)
+                    })
                 })
             })
     } catch (error) {
