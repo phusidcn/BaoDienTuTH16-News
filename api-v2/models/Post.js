@@ -47,11 +47,8 @@ const PostSchema = new Schema({
             ref: 'Comment'
         }
     ]
-})
-
-PostSchema.index({
-    title: 'text',
-    content: 'text'
+}, {
+    usePushEach: true
 })
 
 module.exports = moongoose.model('Post', PostSchema)

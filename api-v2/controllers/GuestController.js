@@ -1,6 +1,7 @@
 const User = require('../models/User')
 const Category = require('../models/Category')
 const Post = require('../models/Post')
+const Comment = require('../models/Comment')
 const escapeRegex = require('../helpers/regex-escape')
 
 exports.index = async (req, res, next) => {
@@ -76,8 +77,12 @@ exports.about = async (req, res, next) => {
 
 exports.show = async (req, res, next) => {
     try {
-        const foundPost = await Post.findOne({ _id: req.params.id }).populate('category').populate('writer')
+        const foundPost = await Post.findOne({ _id: req.params.id })
+                    .populate('category')
+                    .populate('writer')
+                    .populate('comments')
         const categories = await Category.find({})
+        console.log(foundPost)
         res.render('guest/guestPost', {
             foundPost,
             categories,
@@ -86,5 +91,27 @@ exports.show = async (req, res, next) => {
     } catch (error) {
         next(error)
     }
+}
 
+exports.comment = (req, res, next) => {
+    try {
+        Post
+            .findOne({
+                _id: req.body.id
+            })
+            .then(post => {
+                // console.log(post)
+                const newComment = new Comment({
+                    user: req.user.id,
+                    content: req.body.content
+                })
+
+                post.comments.push(newComment)
+                post.save().then(savedPost => {
+                    res.redirect(`/home/${post.id}`)
+                })
+            })
+    } catch (error) {
+        next(error)
+    }
 }
