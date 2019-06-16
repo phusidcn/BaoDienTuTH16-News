@@ -37,21 +37,63 @@ exports.index = async (req, res, next) => {
 
 exports.indexCategory = async (req, res, next) => {
     try {
-        const posts = await Post.find({
-            status: 3,
-            category: {
-                $in: [req.params.id]
-            }
-        }).populate('category')
+        // const perPage = 10
+        // const page = req.query.page || 1
+
+        // const posts = await Post.find({
+        //     status: 3,
+        //     category: {
+        //         $in: [req.params.id]
+        //     }
+        // }).populate('category')
+        // .skip((perPage * page) - perPage)
+        // .limit(perPage)
+        // const foundCategory = await Category.findOne({
+        //     _id: req.params.id
+        // })
+        // const categories = await Category.find({})
+        
+        // Post.count().then(postCount => {
+
+        // })
+        // res.render('guest/guestCategory', {
+        //     posts,
+        //     foundCategory,
+        //     categories
+        // })
+        const perPage = 10
+        const page = req.query.page || 1
         const foundCategory = await Category.findOne({
             _id: req.params.id
         })
-        const categories = await Category.find({})
-        res.render('guest/guestCategory', {
-            posts,
-            foundCategory,
-            categories
-        })
+
+
+        Post
+            .find({
+                status: 3,
+                category: {
+                    $in: [req.params.id]
+                }
+            })
+            .skip((perPage * page) - perPage)
+            .limit(perPage)
+            .then(posts => {
+                Post
+                    .count()
+                    .then(postCount => {
+                        Category
+                            .find({})
+                            .then(categories => {
+                                res.render('guest/guestCategory', {
+                                    posts,
+                                    foundCategory,
+                                    categories,
+                                    current: parseInt(page),
+                                    pages: Math.ceil(postCount / perPage)
+                                })
+                            })
+                    })
+            })
     } catch (error) {
         next(error)
     }

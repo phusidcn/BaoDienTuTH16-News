@@ -13,7 +13,8 @@ const {
     select,
     generateTime,
     ifvalue,
-    ifnotvalue
+    ifnotvalue,
+    paginate
 } = require('./helpers/handlebars-helpers')
 
 const app = express()
@@ -28,7 +29,8 @@ app.engine('handlebars', exphbs({
         select: select,
         generateTime: generateTime,
         ifvalue: ifvalue,
-        ifnotvalue: ifnotvalue
+        ifnotvalue: ifnotvalue,
+        paginate: paginate
     }
 }))
 app.set('view engine', 'handlebars')
