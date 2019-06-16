@@ -102,6 +102,29 @@ exports.updateCategory = async (req, res) => {
     }
 }
 
+exports.indexAddSubCate = async (req, res) => {
+    try {
+        let foundCate = await Category.findOne({ _id: req.params.id })
+        res.render('admin/category/add', {
+            category: foundCate
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.addSubcategory = async (req, res) => {
+    try {
+        let foundCate = await Category.findOne({ _id: req.params.id })
+        foundCate.subCategory.push(req.body.subcate)
+        await foundCate.save().then(() => {
+            res.redirect('/employee/admins/dashboard/category')
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 exports.deleteCategory = async (req, res) => {
     try {
         const deletedCategory = await Category.remove({ _id: req.params.id })

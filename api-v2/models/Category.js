@@ -8,8 +8,7 @@ const CategorySchema = new Schema({
         default: Date.now
     },
     subCategory: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Category'
+        type: String
     }]
 })
 

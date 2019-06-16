@@ -117,6 +117,8 @@ router.get('/admins/dashboard/category/create', adminController.indexCreateCateg
 router.post('/admins/dashboard/category/create', adminController.createCategory)
 router.get('/admins/dashboard/category/edit/:id', adminController.indexUpdateCategory)
 router.put('/admins/dashboard/category/edit/:id', adminController.updateCategory)
+router.get('/admins/dashboard/category/:id/addsub', adminController.indexAddSubCate)
+router.post('/admins/dashboard/category/:id/addsub', adminController.addSubcategory)
 router.delete('/admins/dashboard/category/:id', adminController.deleteCategory)
 
 /**
