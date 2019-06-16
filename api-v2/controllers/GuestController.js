@@ -6,29 +6,54 @@ const escapeRegex = require('../helpers/regex-escape')
 
 exports.index = async (req, res, next) => {
     try {
-        let arrMostViewPosts = []
+        let noMatch = null
+        console.log(req.query.search)
+        if (req.query.search) {
+            
+            const regex = new RegExp(escapeRegex(req.query.search), 'gi')
 
-        const posts = await Post.find({
-            status: 3
-        }).populate('category')
-        const categories = await Category.find({})
-        const latestPosts = await Post.find({}).sort({
-            createdAt: -1
-        })
-        const mostViewsPosts = await Post.find({}).sort({
-            like: -1
-        })
-
-        for(let index = 0; index < 4; index++) {
-            arrMostViewPosts.push(mostViewsPosts[index])
+            Post
+                .find({ title: regex }, (err, allPosts) => {
+                    if(err) {
+                        console.log(err)
+                    } else {
+                        if(allPosts.length < 1) {
+                            noMatch = 'No posts match that query'
+                        }
+                        res.render('guest/guestHome', {
+                            posts: allPosts,
+                            noMatch: noMatch
+                        })
+                    }
+                })
         }
 
-        res.render('guest/guestHome', {
-            posts,
-            categories,
-            latestPosts,
-            arrMostViewPosts
-        })
+        else {
+            //========================================
+            let arrMostViewPosts = []
+
+            const posts = await Post.find({
+                status: 3
+            }).populate('category')
+            const categories = await Category.find({})
+            const latestPosts = await Post.find({}).sort({
+                createdAt: -1
+            })
+            const mostViewsPosts = await Post.find({}).sort({
+                like: -1
+            })
+
+            for (let index = 0; index < 4; index++) {
+                arrMostViewPosts.push(mostViewsPosts[index])
+            }
+
+            res.render('guest/guestHome', {
+                posts,
+                categories,
+                latestPosts,
+                arrMostViewPosts
+            })
+        }
     } catch (error) {
         next(error)
     }
@@ -36,31 +61,9 @@ exports.index = async (req, res, next) => {
 }
 
 exports.indexCategory = async (req, res, next) => {
+
     try {
-        // const perPage = 10
-        // const page = req.query.page || 1
-
-        // const posts = await Post.find({
-        //     status: 3,
-        //     category: {
-        //         $in: [req.params.id]
-        //     }
-        // }).populate('category')
-        // .skip((perPage * page) - perPage)
-        // .limit(perPage)
-        // const foundCategory = await Category.findOne({
-        //     _id: req.params.id
-        // })
-        // const categories = await Category.find({})
-        
-        // Post.count().then(postCount => {
-
-        // })
-        // res.render('guest/guestCategory', {
-        //     posts,
-        //     foundCategory,
-        //     categories
-        // })
+        //==============================================
         const perPage = 10
         const page = req.query.page || 1
         const foundCategory = await Category.findOne({
@@ -124,12 +127,12 @@ exports.about = async (req, res, next) => {
 exports.show = async (req, res, next) => {
     try {
         const foundPost = await Post.findOne({ _id: req.params.id })
-                    .populate('category')
-                    .populate('writer')
-                    .populate({
-                        path: 'comments',
-                        populate: { path: 'user', model: 'User' }
-                    })
+            .populate('category')
+            .populate('writer')
+            .populate({
+                path: 'comments',
+                populate: { path: 'user', model: 'User' }
+            })
         const categories = await Category.find({})
         console.log(foundPost)
         res.render('guest/guestPost', {
