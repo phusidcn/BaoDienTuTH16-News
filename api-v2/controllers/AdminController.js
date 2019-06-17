@@ -54,7 +54,8 @@ exports.changePass = (req, res) => {
     })
     .then(admin => {
         res.render('admin/changePassword',{
-            admin : admin
+            admin : admin,
+            layout: false
         })
     })
 }
@@ -62,9 +63,15 @@ exports.changePass = (req, res) => {
 
 exports.changePassApply = (req, res) => {
     let errors = []
-    if (req.body.newpass != req.body.confirmpass) {
+    if (req.body.newpass !== req.body.confirmpass) {
         errors.push({
             msg: "Please re-confirm your password"
+        })
+    }
+    let pass = req.body.newpass
+    if(pass.length < 6) {
+        errors.push({
+            msg: "Your new pass is too short"
         })
     }
     User
@@ -72,16 +79,19 @@ exports.changePassApply = (req, res) => {
         _id: req.params.id
     })
     .then(admin => {
+        console.log(admin)
         bcrypt.compare(req.body.oldpass, admin.password, (err, isMatch) => {
-            if (err) {
+            if (!isMatch) {
+                console.log(err)
                 errors.push({
                     msg: "please check your old password"
                 })
-                throw err;
             }
             if (errors.length > 0) {
                 res.render('admin/changePassword', {
-                    errors
+                    errors,
+                    admin,
+                    layout : false
                 })
             } else {
                 if (isMatch) {

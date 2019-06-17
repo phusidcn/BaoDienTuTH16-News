@@ -62,6 +62,74 @@ exports.updateProfile = (req, res) => {
         })
 }
 
+exports.changePass = (req, res) => {
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(editor => {
+        res.render('editor/changePassword',{
+            editor : editor,
+            layout : false
+        })
+    })
+}
+
+
+exports.changePassApply = (req, res) => {
+    let errors = []
+    if (req.body.newpass !== req.body.confirmpass) {
+        errors.push({
+            msg: "Please re-confirm your password"
+        })
+    }
+    let pass = req.body.newpass
+    if(pass.length < 6) {
+        errors.push({
+            msg: "Your new pass is too short"
+        })
+    }
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(editor => {
+        console.log(editor)
+        bcrypt.compare(req.body.oldpass, editor.password, (err, isMatch) => {
+            if (!isMatch) {
+                console.log(err)
+                errors.push({
+                    msg: "please check your old password"
+                })
+            }
+            if (errors.length > 0) {
+                res.render('editor/changePassword', {
+                    errors,
+                    editor,
+                    layout : false
+                })
+            } else {
+                if (isMatch) {
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(req.body.newpass, salt, (err, hash) => {
+                            if (err){
+                                errors.push({
+                                    msg: "Error"
+                                })
+                                throw err
+                            } else {
+                                editor.password = hash
+                                editor.save()
+                                res.redirect('/employee/editors/dashboard')
+                            }
+                        })
+                    })
+                }
+            }
+        })
+    })
+}
+
 exports.rejected = (req, res) => {
     Post
         .findOne({
