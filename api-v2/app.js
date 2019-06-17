@@ -12,8 +12,7 @@ const flash = require('connect-flash')
 const {
     select,
     generateTime,
-    ifvalue,
-    ifnotvalue
+    ifvalue
 } = require('./helpers/handlebars-helpers')
 
 const app = express()
@@ -27,8 +26,7 @@ app.engine('handlebars', exphbs({
     helpers: {
         select: select,
         generateTime: generateTime,
-        ifvalue: ifvalue,
-        ifnotvalue: ifnotvalue
+        ifvalue: ifvalue
     }
 }))
 app.set('view engine', 'handlebars')
@@ -61,13 +59,11 @@ app.use(session({
 }))
 
 // Passport middleware
-
 app.use(passport.initialize())
 app.use(passport.session())
 
 // Connect flash
 app.use(flash())
-
 
 app.use(function (req, res, next) {
     res.locals.user = req.user || null
