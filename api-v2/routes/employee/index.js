@@ -108,6 +108,9 @@ router.get('/admins/dashboard/profile', (req, res) => {
     res.render('employee/index')
 })
 
+router.get('/admins/dashboard/changePass/:id', adminController.changePass)
+router.post('/admins/dashboard/changePass/:id', adminController.changePassApply)
+
 router.put('/admins/dashboard/profile/:id', adminController.updateProfile)
 /**
  * Category

@@ -255,7 +255,6 @@ router.post('/reset/:token', (req, res) => {
     })
 })
 
-
 // Login
 router.post('/login', (req, res, next) => {
     passport.authenticate('admin-local', {

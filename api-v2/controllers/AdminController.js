@@ -47,6 +47,64 @@ exports.updateProfile = (req, res) => {
         })
 }
 
+exports.changePass = (req, res) => {
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(admin => {
+        res.render('admin/changePassword',{
+            admin : admin
+        })
+    })
+}
+
+
+exports.changePassApply = (req, res) => {
+    let errors = []
+    if (req.body.newpass != req.body.confirmpass) {
+        errors.push({
+            msg: "Please re-confirm your password"
+        })
+    }
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(admin => {
+        bcrypt.compare(req.body.oldpass, admin.password, (err, isMatch) => {
+            if (err) {
+                errors.push({
+                    msg: "please check your old password"
+                })
+                throw err;
+            }
+            if (errors.length > 0) {
+                res.render('admin/changePassword', {
+                    errors
+                })
+            } else {
+                if (isMatch) {
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(req.body.newpass, salt, (err, hash) => {
+                            if (err){
+                                errors.push({
+                                    msg: "Error"
+                                })
+                                throw err
+                            } else {
+                                admin.password = hash
+                                admin.save()
+                                res.redirect('/employee/admins/dashboard')
+                            }
+                        })
+                    })
+                }
+            }
+        })
+    })
+}
+
 /**
  * CATEGORY
  */
