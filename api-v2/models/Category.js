@@ -7,10 +7,9 @@ const CategorySchema = new Schema({
         type: Date,
         default: Date.now
     },
-    subCategory: {
-        type: String,
-        ref: 'Category'
-    }
+    subCategory: [{
+        type: String
+    }]
 })
 
 module.exports = moongoose.model('Category', CategorySchema)

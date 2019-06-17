@@ -121,7 +121,7 @@
                         <!-- Single Blog Post -->
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="single-blog-post style-4 mb-30">
-                                Kinh doanh
+                                <a href="#">{{foundPost.tag}}</a>
                             </div>
                         </div>
                     </div>
@@ -135,20 +135,18 @@
                     </div>
 
                     <ol>
-                        {{foundPost.comments.id}}
-                        {{!-- {{#each foundPost.comments}}
-                        <!-- Single Comment Area -->
+                        {{#each foundPost.comments}}
                         <li class="single_comment_area">
                             <!-- Comment Content -->
                             <div class="comment-content d-flex">
                                 <!-- Comment Author -->
                                 <div class="comment-author">
-                                    <img src="img/bg-img/55.jpg" alt="author">
+                                    <img src="/uploads/{{this.user.avatar}}" alt="user">
                                 </div>
                                 <!-- Comment Meta -->
                                 <div class="comment-meta">
-                                    <h6>{{id}}</h6>
-                                    <p>{{content}}</p>
+                                    <h4>{{this.user.name}}</h4>
+                                    <p>{{this.content}}</p>
                                     <div class="d-flex align-items-center">
                                         <a href="#" class="like">like</a>
                                         <a href="#" class="reply">Reply</a>
@@ -156,7 +154,7 @@
                                 </div>
                             </div>
                         </li>
-                        {{/each}} --}}
+                        {{/each}}
                     </ol>
                 </div>
 
@@ -172,12 +170,12 @@
                     <div class="contact-form-area">
                         <form action="/home/comment" method="POST">
                             <div class="row">
-                                
+
                                 <div class="col-12">
                                     <textarea name="content" class="form-control" id="message" cols="30" rows="10"
                                         placeholder="Message*" required></textarea>
 
-                                        <input type="hidden" name="id" value="{{foundPost.id}}">
+                                    <input type="hidden" name="id" value="{{foundPost.id}}">
                                 </div>
                                 <div class="col-12">
                                     <button class="btn mag-btn mt-30" type="submit">Submit Comment</button>
@@ -188,7 +186,7 @@
                 </div>
                 {{/if}}
             </div>
-            
+
 
             <!-- Sidebar Widget -->
             <div class="col-12 col-md-6 col-lg-5 col-xl-4">

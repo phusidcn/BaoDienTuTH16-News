@@ -11,9 +11,20 @@ const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 exports.updateProfile = (req, res) => {
     const {
         email,
-        password,
-        name
+        name,
     } = req.body
+
+    let filename = ''
+    if (!isEmpty(req.files)) {
+        let file = req.files.avatar
+        filename = file.name + '-' + Date.now()
+
+        file.mv('./public/uploads/' + filename, (err) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+    }
 
     User
         .findOne({
@@ -22,23 +33,16 @@ exports.updateProfile = (req, res) => {
         .then(admin => {
             admin.email = email
             admin.name = name
-            admin.password = password
+            admin.avatar = filename
 
-            bcrypt
-                .genSalt(10, (err, salt) => {
-                    bcrypt.hash(admin.password, salt, (err, hash) => {
-                        if (err) throw err
-                        admin.password = hash
-                        admin
-                            .save()
-                            .then(updatedAdmin => {
-                                req.flash('success_msg', `Account ${updatedAdmin.name} was successfully updated`);
-                                res.redirect('/employee/admins/dashboard/')
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            })
-                    })
+            admin
+                .save()
+                .then(updatedAdmin => {
+                    req.flash('success_msg', `Account ${updatedAdmin.name} was successfully updated`);
+                    res.redirect('/employee/admins/dashboard/')
+                })
+                .catch(err => {
+                    console.log(err)
                 })
         })
 }
@@ -91,6 +95,31 @@ exports.updateCategory = async (req, res) => {
         let foundCate = await Category.findOne({ _id: req.params.id })
         foundCate.name = name
         await foundCate.save().then(updatedCate => {
+            res.redirect('/employee/admins/dashboard/category')
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.indexAddSubCate = async (req, res) => {
+    try {
+        let foundCate = await Category.findOne({ _id: req.params.id })
+        res.render('admin/category/add', {
+            category: foundCate
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.addSubcategory = async (req, res) => {
+    try {
+        let foundCate = await Category.findOne({ _id: req.params.id })
+        foundCate.subCategory.push({
+            content: req.body.subcate
+        })
+        await foundCate.save().then(() => {
             res.redirect('/employee/admins/dashboard/category')
         })
     } catch (error) {
@@ -492,7 +521,7 @@ exports.deleteEditor = async (req, res) => {
  * SUBSCRIBER
  */
 
- exports.indexSubscriber = async (req, res) => {
+exports.indexSubscriber = async (req, res) => {
     try {
         const subscribers = await User.find({
             role: 'SUBSCRIBER'
@@ -503,19 +532,19 @@ exports.deleteEditor = async (req, res) => {
     } catch (error) {
         console.log(error)
     }
- }
+}
 
- exports.banSubscriber = async (req, res) => {
-     User
+exports.banSubscriber = async (req, res) => {
+    User
         .findOne({
             _id: req.params.id
         })
-        .then (user => {
+        .then(user => {
             user.role = "GUEST"
             user.save()
             res.redirect('/employee/admins/dashboard/subscriber/')
         })
-        .catch(err =>{
+        .catch(err => {
             console.log(err)
         })
- }
+}
