@@ -31,11 +31,10 @@ const PostSchema = new Schema({
         type: Number,
         default: 0
     },
-    category: {
+    tag: {
         type: Schema.Types.ObjectId,
-        ref: 'Category'
+        ref: 'Tag'
     },
-    tag: String,
     category: {
         type: Schema.Types.ObjectId,
         ref: 'Category'
