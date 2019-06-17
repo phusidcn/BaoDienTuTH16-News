@@ -39,17 +39,17 @@
             <div class="col-12 col-xl-8">
                 <div class="post-details-content bg-white mb-30 p-30 box-shadow">
                     <div class="blog-thumb mb-30">
-                        <img src="img/bg-img/50.jpg" alt="">
+                        <img src="/uploads/{{image}}" alt="">
                     </div>
                     <div class="blog-content">
                         <div class="post-meta">
                             <a href="#">{{generateTime foundPost.createdAt "MMMM Do YYYY" }}</a>
-                            <a href="archive.html">{{foundPost.category.name}}</a>
+                            <a href="#">{{foundPost.category.name}}</a>
                         </div>
                         <h4 class="post-title">{{ foundPost.title }}</h4>
                         <!-- Post Meta -->
                         <div class="post-meta-2">
-                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
+                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{foundPost.views}}</a>
                             <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{foundPost.like}}</a>
                             <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
                         </div>
@@ -81,12 +81,6 @@
                         <p>
                         {{{foundPost.content}}}
                         </p>
-                        <!--<blockquote>
-                            <h6 class="quote-text">“Design is a funny word. Some people think design means how it looks.
-                                But of course, if you dig deeper, it's really how it works. The design of the Mac wasn't
-                                what it looked like, although that was part of it.”</h6>
-                            <h6 class="quote-name">STEVE JOBS</h6>
-                        </blockquote>-->
 
                         <!-- Like Dislike Share -->
                         <div class="like-dislike-share my-5">
@@ -109,6 +103,38 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Related Post Area -->
+                    <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
+                        <!-- Section Title -->
+                        <div class="section-heading">
+                            <h5>Related Post</h5>
+                        </div>
+
+
+                        <div class="row">
+                            {{#each relatedPosts}}
+                            <!-- Single Blog Post -->
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="single-blog-post style-4 mb-30">
+                                    <div class="post-thumbnail">
+                                        <img src="/uploads/{{image}}" alt="">
+                                    </div>
+                                    <div class="post-content">
+                                        <a href="#" class="post-title">{{title}}</a>
+                                        <div class="post-meta d-flex">
+                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
+                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
+                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{/each}}
+
+                        </div>
+                    </div>
 
                 <!-- Related Post Area -->
                 <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
