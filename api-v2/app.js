@@ -12,13 +12,9 @@ const flash = require('connect-flash')
 const {
     select,
     generateTime,
-<<<<<<< HEAD
-    ifvalue
-=======
     ifvalue,
     ifnotvalue,
     paginate
->>>>>>> c1e69b53ef01a81472e729ab937723ce7fa7ffda
 } = require('./helpers/handlebars-helpers')
 
 const app = express()
@@ -32,13 +28,9 @@ app.engine('handlebars', exphbs({
     helpers: {
         select: select,
         generateTime: generateTime,
-<<<<<<< HEAD
-        ifvalue: ifvalue
-=======
         ifvalue: ifvalue,
         ifnotvalue: ifnotvalue,
         paginate: paginate
->>>>>>> c1e69b53ef01a81472e729ab937723ce7fa7ffda
     }
 }))
 app.set('view engine', 'handlebars')
