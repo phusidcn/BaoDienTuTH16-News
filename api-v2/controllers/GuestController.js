@@ -126,7 +126,11 @@ exports.about = async (req, res, next) => {
 
 exports.show = async (req, res, next) => {
     try {
-        const foundPost = await Post.findOne({ _id: req.params.id })
+        const foundPost = await Post.findOneAndUpdate({ _id: req.params.id }, {
+            $inc: {
+                views: 1
+            }
+        })
             .populate('category')
             .populate('writer')
             .populate({

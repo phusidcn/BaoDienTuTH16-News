@@ -6,7 +6,10 @@ const PostSchema = new Schema({
         type: String,
         required: true,
     },
-    views: Number,
+    views: {
+        type: Number,
+        default: 0
+    },
     image: String,
     like: Number,
     linkYoutube: String,
