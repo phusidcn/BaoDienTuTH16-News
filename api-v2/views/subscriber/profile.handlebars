@@ -34,6 +34,17 @@
         </div>
     </div>
 
+    <div class="row">
+        <div class="col-md-6">
+            <label for="startDay">Start Day:</label>
+            <p>{{ generateTime user.startDay "MMMM Do YYYY" }}</p>
+        </div>
+        <div class="col-md-6">
+            <label for="startDay">End Day:</label>
+            <p>{{ generateTime user.endDay "MMMM Do YYYY" }}</p>
+        </div>
+    </div>
+
     <div style="display:flex; justify-content:center;" class="mt-4">
         <button type="submit" style="text-align:center" class="btn btn-success mr-3">
             Update Profile

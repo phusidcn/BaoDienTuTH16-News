@@ -48,7 +48,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Avatar</th>
+                <th>Account</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th colspan="2"></th>
@@ -58,7 +58,7 @@
         <tbody>
             {{#each subscribers}}
             <tr>
-                <td><img height="75" width="75" class="img-responsive" src="/uploads/{{avatar}}" alt="Avatar"></td>
+                <td>{{ generateTime startDay "MMMM Do YYYY" }} - {{ generateTime endDay "MMMM Do YYYY" }}</td>
                 <td>{{name}}</td>
                 <td>{{email}}</td>
                 <td style="text-align: center;"><a href="/employee/admins/dashboard/subscriber/edit/{{_id}}"
@@ -75,20 +75,8 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Bạn có muốn ban người dùng này ?
                                         </h5>
                                     </div>
-                                    <div class="modal-body">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <button type="button" class="btn btn-secondary">
-                                                    <i class="fa fa-pencil"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><a
-                                                href="#">Chỉnh sửa</a></button>
-                                        <button type="button" class="btn btn-info" data-dismiss="modal"><a
-                                                href="#">Thôi</a></button>
+                                        <button type="button" class="btn btn-info" data-dismiss="modal">Thôi</a></button>
                                         <button type="submit" class="btn btn-danger">Ban</button>
                                     </div>
                                 </div>

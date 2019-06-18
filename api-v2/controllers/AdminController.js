@@ -2,11 +2,106 @@ const Category = require('../models/Category')
 const Tag = require('../models/Tag')
 const Post = require('../models/Post')
 const User = require('../models/User')
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(require('../config/config').sendGridID)
+const crypto = require('crypto')
 
 
 const bcrypt = require('bcryptjs')
 const fs = require('fs')
 const { isEmpty, uploadDir } = require('../helpers/upload-helper')
+
+exports.indexForgot = (req, res) => {
+    res.render('admin/forgot', {
+        layout: false
+    })
+}
+
+exports.putForgotPassword = async (req, res, next) => {
+    const token = await crypto.randomBytes(20).toString('hex')
+    const { email } = req.body
+    const user = await User.findOne({ email })
+    if (!user) {
+        return res.redirect('/employee/admins/forgot-password')
+    }
+    user.resetPasswordToken = token
+    user.resetPasswordExpires = Date.now() + 3600000
+    await user.save()
+
+    const msg = {
+        to: email,
+        from: 'Minimum Admin <duyquangbtx@gmail.com>',
+        subject: 'Minimum - Forgot Password / Reset',
+        text: `You are receiving this because you (or someone else)
+        have requested the reset of the password for your account.
+          Please click on the following link, or copy and paste it
+          into your browser to complete the process:
+          http://${req.headers.host}/employee/admins/reset/${token}
+          If you did not request this, please ignore this email and
+          your password will remain unchanged.`.replace(/		  /g, ''),
+    }
+    await sgMail.send(msg)
+    res.redirect('/employee/admins/forgot-password')
+}
+
+exports.getReset = async (req, res, next) => {
+    const { token } = req.params
+    const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() }
+    })
+
+    if (!user) {
+        return res.redirect('/employee/admins/forgot-password')
+    }
+
+    res.render('admin/reset', { token })
+}
+
+exports.putReset = async (req, res, next) => {
+    const { token } = req.params;
+    const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+        return res.redirect('/employee/admins/forgot-password');
+    }
+
+    if (req.body.password === req.body.confirm) {
+        user.password = req.body.password
+        user.resetPasswordToken = null
+        user.resetPasswordExpires = null
+        bcrypt
+        .genSalt(10, (err, salt) => {
+            bcrypt.hash(user.password, salt, (err, hash) => {
+                if (err) throw err;
+                user.password = hash;
+                console.log("After hash: ", user)
+                user.save(function (err) {
+                    req.logIn(user, function (err) {
+                        console.log(user)
+                    })
+                })
+            })
+        })
+    } else {
+        return res.redirect(`/employee/admins/reset/${token}`)
+    }
+
+    const msg = {
+        to: user.email,
+        from: 'Minimum Admin <duyquangbtx@gmail.com>',
+        subject: 'Minimum - Password Changed',
+        text: `Hello,
+		  This email is to confirm that the password for your account has just been changed.
+		  If you did not make this change, please hit reply and notify us at once.`.replace(/		  /g, '')
+    };
+
+    await sgMail.send(msg);
+    res.redirect('/employee/admins/login')
+}
 
 exports.updateProfile = (req, res) => {
     const {
@@ -615,4 +710,30 @@ exports.banSubscriber = async (req, res) => {
         .catch(err => {
             console.log(err)
         })
+}
+
+exports.indexUpdateSubscriber = async (req, res) => {
+    try {
+        let foundSubscriber = await User.findOne({ _id: req.params.id })
+        res.render('admin/subscriber/edit', {
+            subscriber: foundSubscriber
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+exports.updateSubscriber = async (req, res) => {
+    try {
+        let { endDay } = req.body
+        let foundSubscriber = await User.findOne({ _id: req.params.id })
+        foundSubscriber.endDay = endDay
+        await foundSubscriber
+            .save()
+            .then(updatedSubscriber => {
+                res.redirect('/employee/admins/dashboard/subscriber')
+            })
+    } catch (error) {
+        console.log(error)
+    }
 }
