@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const guestController = require('../../controllers/GuestController')
 const subscriberController = require('../../controllers/SubscriberController')
-
+const passport = require('passport')
 // Main Page
 router.all('/*', (req, res, next) => {
     req.app.locals.layout = 'guest'
@@ -17,6 +17,13 @@ router.post('/comment', guestController.comment)
 
 router.get('/:id', guestController.show)
 
-
+// router.get('/google', passport.authenticate('google', {
+//     scope: ['profile', 'email']
+// }))
+// router.get('/google/callback', passport.authenticate('google', {
+//     failureRedirect: '/'
+// }), (req, res) => {
+//     res.redirect('/home')
+// })
 
 module.exports = router

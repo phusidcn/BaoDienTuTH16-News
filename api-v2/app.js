@@ -79,6 +79,7 @@ app.use(function (req, res, next) {
 
 // Routes
 app.use('/home', require('./routes/customer/index'))
+app.use('/auth', require('./routes/customer/auth'))
 app.use('/guests', require('./routes/customer/guests'))
 app.use('/subscribers',require('./routes/customer/subscribers'))
 app.use('/employee', require('./routes/employee/index'))

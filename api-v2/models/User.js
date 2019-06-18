@@ -13,7 +13,7 @@ const UserSchema = new Schema({
     },
     password: {
         type: String,
-        required: true
+        // required: true
     },
     role: String,
     membership: String,
@@ -50,7 +50,10 @@ const UserSchema = new Schema({
         }
     ],
     resetPasswordToken: String,
-    resetPasswordExpires: Date
+    resetPasswordExpires: Date,
+    googleID: {
+        type: String
+    }
 })
 
 module.exports = mongoose.model('User', UserSchema)

@@ -45,11 +45,24 @@
                             <input type="password" id="password" name="password" class="form-control"
                                 placeholder="Enter Password" />
                         </div>
+                        {{!-- <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LeHXKkUAAAAAFvmjPUomE2mjTHKueZAfoQvRSND"></div>
+                            <br />
+                            <input type="submit" value="Submit">
+                        </div> --}}
                         <button type="submit" class="btn mag-btn mt-30">Login</button>
                     </form>
-                    <p class="lead mt-4">
-                        No Account? <a href="/guests/register">Register</a>
-                    </p>
+                    <div style="text-align: center; color:#fff;">
+                        <p class="lead mt-4">
+                            No Account? <a href="/guests/register">Register</a>
+                        </p>
+                        <a href="/auth/google" class="btn btn-block btn-social btn-google">
+                            <i class="fa fa-google"></i> Sign in with Google
+                        </a>
+                        <a id="google-button" class="btn btn-block btn-social btn-facebook">
+                            <i class="fa fa-facebook"></i> Sign in with Facebook
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

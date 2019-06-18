@@ -15,6 +15,7 @@
     "async": "^3.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "bootstrap-social": "^5.1.1",
     "ckeditor": "^4.11.4",
     "color": "^3.1.2",
     "colors": "^1.3.3",
@@ -36,8 +37,10 @@
     "nodemailer-express-handlebars": "^2.0.0",
     "owl.carousel": "^2.3.4",
     "passport": "^0.4.0",
+    "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "mocha": "^6.1.4",

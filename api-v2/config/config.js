@@ -11,5 +11,7 @@ module.exports = {
             pass: 'secret',
         },
         defaultFromAddress: 'First Last <test@examle.com>'
-    }
+    },
+    googleClientID: '672674025045-ahrpo0151l2kkvrrscb5btdmrhmeihia.apps.googleusercontent.com',
+    googleClientSecret: '96NMIjaiZA3SuBDDJw3qT2RZ' 
 }

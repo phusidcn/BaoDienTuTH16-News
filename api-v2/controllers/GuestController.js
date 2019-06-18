@@ -5,6 +5,7 @@ const Post = require('../models/Post')
 const Comment = require('../models/Comment')
 const escapeRegex = require('../helpers/regex-escape')
 
+
 exports.index = async (req, res, next) => {
     try {
         let noMatch = null
