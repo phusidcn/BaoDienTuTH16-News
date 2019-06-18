@@ -64,7 +64,7 @@ exports.changePassApply = (req, res) => {
     let errors = []
     if (req.body.newpass != req.body.confirmpass) {
         errors.push({
-            msg: "Please re-confirm your password"
+            msg: "Please re-confirm your new password"
         })
     }
     User
@@ -73,7 +73,7 @@ exports.changePassApply = (req, res) => {
     })
     .then(admin => {
         bcrypt.compare(req.body.oldpass, admin.password, (err, isMatch) => {
-            if (err) {
+            if (!isMatch) {
                 errors.push({
                     msg: "please check your old password"
                 })
@@ -81,7 +81,8 @@ exports.changePassApply = (req, res) => {
             }
             if (errors.length > 0) {
                 res.render('admin/changePassword', {
-                    errors
+                    errors,
+                    admin 
                 })
             } else {
                 if (isMatch) {
