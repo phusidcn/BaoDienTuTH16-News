@@ -5,6 +5,9 @@ const Category = require('../models/Category')
 const crypto = require('crypto')
 const Post = require('../models/Post')
 const escapeRegex = require('../helpers/regex-escape')
+const bcrypt = require('bcryptjs')
+const fs = require('fs')
+const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 
 exports.indexForgot = (req, res) => {
     res.render('subscriber/forgot')
@@ -346,4 +349,110 @@ exports.comment = (req, res, next) => {
     } catch (error) {
         next(error)
     }
+}
+
+exports.updateProfile = (req, res) => {
+    const {
+        email,
+        name,
+    } = req.body
+
+    let filename = ''
+    if (!isEmpty(req.files)) {
+        let file = req.files.avatar
+        filename = file.name + '-' + Date.now()
+
+        file.mv('./public/uploads/' + filename, (err) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+    }
+
+    User
+        .findOne({
+            _id: req.params.id
+        })
+        .then(subscriber => {
+            subscriber.email = email
+            subscriber.name = name
+            subscriber.avatar = filename
+
+            subscriber
+                .save()
+                .then(updatedSubscriber => {
+                    req.flash('success_msg', `Account ${updatedSubscriber.name} was successfully updated`);
+                    res.redirect('/subscribers/dashboard/profile')
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
+}
+
+exports.changePass = (req, res) => {
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(subscriber => {
+        res.render('subscriber/changePassword',{
+            subscriber : subscriber,
+            layout: false
+        })
+    })
+}
+
+
+exports.changePassApply = (req, res) => {
+    let errors = []
+    if (req.body.newpass !== req.body.confirmpass) {
+        errors.push({
+            msg: "Please re-confirm your new password"
+        })
+    }
+    let pass = req.body.newpass
+    if(pass.length < 6) {
+        errors.push({
+            msg: "Your new pass is too short"
+        })
+    }
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(subscriber => {
+        bcrypt.compare(req.body.oldpass, subscriber.password, (err, isMatch) => {
+            if (!isMatch) {
+                console.log(err)
+                errors.push({
+                    msg: "please check your old password"
+                })
+            }
+            if (errors.length > 0) {
+                res.render('subscriber/changePassword', {
+                    errors,
+                    subscriber,
+                    layout : false
+                })
+            } else {
+                if (isMatch) {
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(req.body.newpass, salt, (err, hash) => {
+                            if (err){
+                                errors.push({
+                                    msg: "Error"
+                                })
+                                throw err
+                            } else {
+                                subscriber.password = hash
+                                subscriber.save()
+                                res.redirect('/subscribers/dashboard/profile')
+                            }
+                        })
+                    })
+                }
+            }
+        })
+    })
 }

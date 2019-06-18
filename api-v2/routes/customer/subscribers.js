@@ -116,5 +116,15 @@ router.get('/logout', (req, res) => {
     res.redirect('/subscribers/login');
 });
 
+// Dashboard
+router.get('/dashboard/profile', (req, res) => {
+    res.render('subscriber/profile')
+})
+
+router.get('/dashboard/changePass/:id', subscriberController.changePass)
+router.post('/dashboard/changePass/:id', subscriberController.changePassApply)
+
+router.put('/dashboard/profile/:id', subscriberController.updateProfile)
+
 module.exports = router;
 

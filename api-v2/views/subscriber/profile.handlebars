@@ -1,0 +1,97 @@
+<nav class="navbar navbar-expand-lg">
+    <h4>Chào Mừng Bạn Đến Với Minimum</h4>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarToggleExternalContent" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/writer"><b>
+                        {{#if user }}
+                        {{ user.name }}
+                        {{else}}
+                        Trang Members
+                        {{/if}}
+                    </b></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/employee/admins/logout"><b>Đăng
+                        xuất</b></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<form action="/subscribers/dashboard/profile/{{user._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-12">
+            <label class="bmd-label-floating">Email</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-prepend">
+                        <i class="fa fa-envelope-o"></i>
+                    </button>
+                </div>
+                <input name="email" type="email" class="form-control" placeholder="Email" aria-label="Email"
+                    aria-describedby="basic-addon1" value="{{user.email}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <label class="bmd-label-floating">User name</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-prepend">
+                        <i class="fa fa-user-o"></i>
+                    </button>
+                </div>
+                <input name="name" type="text" class="form-control" value="{{user.name}}" placeholder="Username"
+                    aria-label="Username" aria-describedby="basic-addon1" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label class="bmd-label-floating">Avatar</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-prepend">
+                        <i class="fa fa-file-image-o"></i>
+                    </button>
+                </div>
+                <input type="file" class="form-control" placeholder="Image" id="adminAva" name="avatar" va
+                    aria-describedby="basic-addon1" value="{{user.avatar}}">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label class="bmd-label-floating">Gender</label>
+            <div class="input-group mb-3">
+                <button type="button" class="btn btn-prepend">
+                    <i class="fa fa-transgender"></i>
+                </button>
+                <select class="custom-select" id="genderInputGroup" name="Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div style="display:flex; justify-content:center;" class="mt-4">
+        <button type="submit" style="text-align:center" class="btn-blue mr-3">
+            Update Profile
+        </button>
+        <button type="button" style="text-align:center" class="btn-blue"
+            onclick="window.location.href='/subscribers/dashboard/changePass/{{user._id}}'">Đổi password</button>
+    </div>
+
+
+</form>
