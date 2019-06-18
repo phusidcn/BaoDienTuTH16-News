@@ -115,6 +115,7 @@ exports.index = async (req, res, next) => {
             Post
                 .find({
                     status: 3,
+                    preminum: false,
                     title: regex
                 }, (err, allPosts) => {
                     if (err) {
@@ -135,7 +136,8 @@ exports.index = async (req, res, next) => {
         else {
             //========================================
             const posts = await Post.find({
-                status: 3
+                status: 3,
+                preminum: false
             })
                 .populate('category')
                 .populate('tag')
@@ -144,7 +146,8 @@ exports.index = async (req, res, next) => {
             // 3-4 Most viewed Post
             let arrMostViewPosts = []
             const mostViewsPosts = await Post.find({
-                status: 3
+                status: 3,
+                preminum: false
             }).sort({
                 views: -1
             })
@@ -156,7 +159,8 @@ exports.index = async (req, res, next) => {
             // Most viewed Post by Category
             let arrMostViewOfCategory = []
             const mostViewsPostsCategory = await Post.find({
-                status: 3
+                status: 3,
+                preminum: false
             }).sort({
                 views: -1
             }).populate('category')
@@ -167,7 +171,8 @@ exports.index = async (req, res, next) => {
 
             // Latest Posts
             const latestPosts = await Post.find({
-                status: 3
+                status: 3,
+                preminum: false
             }).sort({
                 createdAt: -1
             })
@@ -202,6 +207,7 @@ exports.indexCategory = async (req, res, next) => {
         Post
             .find({
                 status: 3,
+                preminum: false,
                 category: {
                     $in: [req.params.id]
                 }
@@ -244,6 +250,7 @@ exports.indexTag = async (req, res, next) => {
         Post
             .find({
                 status: 3,
+                preminum: false,
                 tag: {
                     $in: [req.params.id]
                 }
@@ -311,6 +318,7 @@ exports.show = async (req, res, next) => {
         const relatedPosts = await Post
             .find({
                 status: 3,
+                preminum: false,
                 category: {
                     $in: [req.params.id]
                 }
