@@ -18,7 +18,6 @@ router.post('/register', (req, res) => {
     const { 
         name, 
         email,
-        membership, 
         password, 
         password2 
     } = req.body
@@ -48,7 +47,6 @@ router.post('/register', (req, res) => {
             errors,
             name,
             email,
-            membership,
             password,
             password2
         })
@@ -63,7 +61,6 @@ router.post('/register', (req, res) => {
                         errors,
                         name,
                         email,
-                        membership,
                         password,
                         password2
                     })
@@ -71,7 +68,6 @@ router.post('/register', (req, res) => {
                     const newUser = new User({
                         name,
                         email,
-                        membership,
                         password,
                         role: 'SUBSCRIBER'
                 });
@@ -101,7 +97,7 @@ router.post('/register', (req, res) => {
 // Login
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/home',
         failureRedirect: '/subscribers/login',
         failureFlash: true
     })(req, res, next);

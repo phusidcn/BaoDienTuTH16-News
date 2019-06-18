@@ -58,7 +58,7 @@
                             </form>
                         </div>
                         <!--Become a member-->
-                        <a href="#" class="login-btn">
+                        <a href="/subscribers/register" class="login-btn">
                             <i class="fa fa-user-plus" aria-hidden="true">
                                 VIP
                             </i>
@@ -74,19 +74,22 @@
 
                         {{#ifvalue user.role equals="ADMIN"}}
                         <!-- Logout -->
-                        <a href="/employee/admins/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
+                        <a href="/employee/admins/logout" class="submit-video"><span><i
+                                    class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
 
                         {{#ifvalue user.role equals="WRITER"}}
                         <!-- Logout -->
-                        <a href="/employee/writers/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
+                        <a href="/employee/writers/logout" class="submit-video"><span><i
+                                    class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
 
                         {{#ifvalue user.role equals="EDITOR"}}
                         <!-- Logout -->
-                        <a href="/employee/editors/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
+                        <a href="/employee/editors/logout" class="submit-video"><span><i
+                                    class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
 
@@ -95,7 +98,13 @@
                         <a href="/guests/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
-                        
+
+                        {{#ifvalue user.role equals="SUBSCRIBER"}}
+                        <!-- Logout -->
+                        <a href="/subscribers/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
+                            <span class="video-text">Logout</span></a>
+                        {{/ifvalue}}
+
                         {{else}}
                         <a href="/guests/login" class="login-btn">
                             <i class="fa fa-user" aria-hidden="true">

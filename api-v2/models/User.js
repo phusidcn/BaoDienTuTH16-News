@@ -56,6 +56,14 @@ const UserSchema = new Schema({
     },
     facebookID:{
         type: String
+    },
+    startDay: {
+        type: Date,
+        default: Date.now
+    },
+    endDay: {
+        type: Date,
+        default: new Date(+new Date() + 7*24*60*60*1000)
     }
 })
 
