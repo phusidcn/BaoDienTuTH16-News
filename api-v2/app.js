@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const dotenv = require('dotenv')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
@@ -18,6 +19,7 @@ const {
 } = require('./helpers/handlebars-helpers')
 
 const app = express()
+dotenv.config()
 
 const config = require('./config/config')
 

@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const keys = require('./config')
 const GoogleStrategy = require('passport-google-oauth20').Strategy
-
+const FacebookStrategy = require('passport-facebook').Strategy
 const User = require('../models/User')
 
 module.exports = function (passport) {
@@ -135,6 +135,35 @@ module.exports = function (passport) {
         // Check for existing user
         User.findOne({
             googleID: profile.id
+        }).then(user => {
+            if (user) {
+                done(null, user);``
+            } else {
+                // Create user
+                new User(newUser)
+                    .save()
+                    .then(user => done(null, user));
+            }
+        })
+    }))
+
+    passport.use(new FacebookStrategy({
+        clientID: keys.facebookClientID,
+        clientSecret: keys.facebookClientSecret,
+        callbackURL: '/auth/facebook/callback',
+    }, (accessToken, refreshToken, profile, done) => {
+        // console.log(profile)
+        const newUser = {
+            facebookID: profile.id,
+            name: profile.displayName,
+            password: '',
+            email: profile.displayName.toLowerCase().trim() + '@gmail.com',
+            role: 'GUEST',
+        }
+
+        // // Check for existing user
+        User.findOne({
+            facebookID: profile.id
         }).then(user => {
             if (user) {
                 done(null, user);``

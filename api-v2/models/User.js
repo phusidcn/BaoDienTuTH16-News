@@ -53,6 +53,9 @@ const UserSchema = new Schema({
     resetPasswordExpires: Date,
     googleID: {
         type: String
+    },
+    facebookID:{
+        type: String
     }
 })
 
