@@ -55,7 +55,7 @@ exports.getReset = async (req, res, next) => {
         return res.redirect('/employee/admins/forgot-password')
     }
 
-    res.render('admin/reset', { token })
+    res.render('admin/reset', { token, layout: false })
 }
 
 exports.putReset = async (req, res, next) => {
