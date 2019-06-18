@@ -4,14 +4,16 @@ const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 const Post = require('./../models/Post')
 const Category = require('./../models/Category')
 const User = require('./../models/User')
+const bcrypt = require('bcryptjs')
 
 exports.draft = async (req, res, next) => {
     try {
         const posts = await Post
             .find({
-                /*category: {
-                    $in: [req.user.category]
-                }*/
+                category: {
+                    $in: [req.user.category],
+                },
+                status: 0
             }).populate('category')
 
             // .then((err, posts) => {
@@ -30,9 +32,20 @@ exports.draft = async (req, res, next) => {
 exports.updateProfile = (req, res) => {
     const {
         email,
-        password,
-        name
+        name,
     } = req.body
+
+    let filename = ''
+    if (!isEmpty(req.files)) {
+        let file = req.files.avatar
+        filename = file.name + '-' + Date.now()
+
+        file.mv('./public/uploads/' + filename, (err) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+    }
 
     User
         .findOne({
@@ -41,23 +54,16 @@ exports.updateProfile = (req, res) => {
         .then(editor => {
             editor.email = email
             editor.name = name
-            editor.password = password
+            editor.avatar = filename
 
-            bcrypt
-                .genSalt(10, (err, salt) => {
-                    bcrypt.hash(editor.password, salt, (err, hash) => {
-                        if (err) throw err
-                        editor.password = hash
-                        editor
-                            .save()
-                            .then(updatedEditor => {
-                                req.flash('success_msg', `Account ${updatedEditor.name} was successfully updated`);
-                                res.redirect('/employee/editors/dashboard/')
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            })
-                    })
+            editor
+                .save()
+                .then(updatededitor => {
+                    req.flash('success_msg', `Account ${updatededitor.name} was successfully updated`);
+                    res.redirect('/employee/editors/dashboard/')
+                })
+                .catch(err => {
+                    console.log(err)
                 })
         })
 }
