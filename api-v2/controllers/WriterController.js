@@ -2,6 +2,7 @@ const fs = require('fs')
 const { isEmpty, uploadDir } = require('../helpers/upload-helper')
 const Post = require('./../models/Post')
 const Category = require('./../models/Category')
+const Tag = require('./../models/Tag')
 const User = require('../models/User')
 const bcrypt = require('bcryptjs')
 
@@ -138,8 +139,13 @@ exports.indexCreate = (req, res) => {
     Category
         .find({})
         .then(categories => {
-            res.render('writer/posts/create', {
-                categories
+            Tag
+            .find({})
+            .then(tags => {
+                res.render('writer/posts/create', {
+                    categories,
+                    tags
+                })
             })
         })
         .catch(err => {
@@ -179,6 +185,7 @@ exports.create = (req, res) => {
                 }
             })
         }
+        
         const newPost = new Post({
             title: req.body.title,
             image: filename,
@@ -191,6 +198,10 @@ exports.create = (req, res) => {
             content: req.body.content,
             writer: req.user.id
         })
+
+        if (newPost.tag != null) {
+            console.log(newPost)
+        }
 
         newPost.save()
             .then(savedPost => {

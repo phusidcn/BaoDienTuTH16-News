@@ -4,14 +4,19 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 const User = require('../../models/User')
 
+const Recaptcha = require('express-recaptcha').RecaptchaV3
+
 const nodemailer = require('nodemailer')
 const crypto = require('crypto')
 const _ = require('lodash')
 const async = require('async')
 
-router.get('/login', (req, res) => {
+var recaptcha = new Recaptcha('6LfOY6kUAAAAAEb0tAV8q62VbZHjAUEg0m4lvy0s', '6LfOY6kUAAAAAEC_jAzW-ff4Q5o5gGvHksNCE7Ha', {callback: 'cb'});
+
+router.get('/login', recaptcha.middleware.render ,(req, res) => {
     res.render('admin/login', {
-        layout: false
+        layout: false,
+        captcha: res.recaptcha
     })
 })
 
