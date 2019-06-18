@@ -9,9 +9,20 @@ const bcrypt = require('bcryptjs')
 exports.updateProfile = (req, res) => {
     const {
         email,
-        password,
-        name
+        name,
     } = req.body
+
+    let filename = ''
+    if (!isEmpty(req.files)) {
+        let file = req.files.avatar
+        filename = file.name + '-' + Date.now()
+
+        file.mv('./public/uploads/' + filename, (err) => {
+            if (err) {
+                console.log(err)
+            }
+        })
+    }
 
     User
         .findOne({
@@ -20,23 +31,16 @@ exports.updateProfile = (req, res) => {
         .then(writer => {
             writer.email = email
             writer.name = name
-            writer.password = password
+            writer.avatar = filename
 
-            bcrypt
-                .genSalt(10, (err, salt) => {
-                    bcrypt.hash(writer.password, salt, (err, hash) => {
-                        if (err) throw err
-                        writer.password = hash
-                        writer
-                            .save()
-                            .then(updatedWriter => {
-                                req.flash('success_msg', `Account ${updatedWriter.name} was successfully updated`);
-                                res.redirect('/employee/writers/dashboard/profile')
-                            })
-                            .catch(err => {
-                                console.log(err)
-                            })
-                    })
+            writer
+                .save()
+                .then(updatedwriter => {
+                    req.flash('success_msg', `Account ${updatedwriter.name} was successfully updated`);
+                    res.redirect('/employee/writers/dashboard/')
+                })
+                .catch(err => {
+                    console.log(err)
                 })
         })
 }
@@ -220,9 +224,14 @@ exports.indexUpdate = (req, res) => {
             Category
                 .find({})
                 .then(categories => {
-                    res.render('writer/posts/edit', {
-                        post,
-                        categories
+                    Tag
+                    .find({})
+                    .then(tags => {
+                        res.render('writer/posts/edit', {
+                            post,
+                            categories,
+                            tags
+                        })
                     })
                 })
         })
@@ -237,7 +246,8 @@ exports.update = (req, res) => {
         status,
         content,
         premium,
-        category
+        category,
+        tag
     } = req.body
 
     Post
@@ -250,6 +260,7 @@ exports.update = (req, res) => {
             post.content = content
             post.premium = premium
             post.category = category
+            post.tag = tag
 
             post
                 .save()
@@ -338,9 +349,14 @@ exports.indexUpdateWaiting = (req, res) => {
             Category
                 .find({})
                 .then(categories => {
-                    res.render('writer/posts/edit-waiting-approved', {
-                        post,
-                        categories
+                    Tag
+                    .find({})
+                    .then(tags => {
+                        res.render('writer/posts/edit-waiting-approved', {
+                            post,
+                            categories,
+                            tags
+                        })
                     })
                 })
         })
@@ -358,6 +374,7 @@ exports.updateWaiting = (req, res) => {
             post.premium = req.body.premium
             post.category = req.body.category
             post.writer = req.user.id
+            post.tag = req.body.tag
 
             post
                 .save()
@@ -404,9 +421,14 @@ exports.indexUpdateRejected = (req, res) => {
             Category
                 .find({})
                 .then(categories => {
-                    res.render('writer/posts/edit-rejected', {
-                        post,
-                        categories
+                    Tag
+                    .find({})
+                    .then(tags => {
+                        res.render('writer/posts/edit-rejected', {
+                            post,
+                            categories,
+                            tags
+                        })
                     })
                 })
         })
@@ -423,6 +445,7 @@ exports.updateRejected = (req, res) => {
             post.content = req.body.content
             post.premium = req.body.premium
             post.category = req.body.category
+            post.tag = req.body.tag
 
             post
                 .save()

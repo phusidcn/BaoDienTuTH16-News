@@ -57,8 +57,13 @@
                     <i class="fa fa-tags"></i>
                 </button>
             </div>
-            <input type="text" class="form-control" placeholder="Gán nhãn" id="tag" name="tag" value="{{post.tag}}"
-                aria-describedby="basic-addon1">
+            {{#each tags}}
+            <div class="mr-3">
+                <input type="checkbox" name="tag" value="{{_id}}">  {{name}}</br>
+            </div>
+            {{/each}}
+            <!--<input type="text" class="form-control" placeholder="Gán nhãn" id="tag" name="tag" value="{{post.tag}}"
+                aria-describedby="basic-addon1">-->
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -67,7 +72,7 @@
                 </button>
             </div>
             <input type="text" class="form-control" placeholder="Tóm tắt nội dung" id="content" name="content"
-                value="{{post.content}}" aria-describedby="basic-addon1">
+                value="{{post.subContent}}" aria-describedby="basic-addon1">
         </div>
 
         <div class="input-group mb-3">
@@ -83,7 +88,8 @@
                 {{/select}}
             </select>
         </div>
-        <textarea class="mb-3" name="editor" cols="150" rows="10">Noi dung chi tiet</textarea>
+
+        <textarea class="mb-3" name="editor" cols="150" rows="10">{{post.content}}</textarea>
         <div class="mt-3">
             <button type="submit" class="btn-blue" value="">Cập nhật</button>
         </div>
