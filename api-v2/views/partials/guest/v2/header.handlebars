@@ -41,8 +41,8 @@
                                     </ul>
                                 </li>
                                 {{/each}}
-                                <li><a href="/home/about">About</a></li>
-                                <li><a href="/home/contact">Contact</a></li>
+                                {{!-- <li><a href="/home/about">About</a></li>
+                                <li><a href="/home/contact">Contact</a></li> --}}
                             </ul>
                         </div>
                         <!-- Nav End -->
@@ -57,12 +57,7 @@
                                         aria-hidden="true"></i></button>
                             </form>
                         </div>
-                        <!--Become a member-->
-                        <a href="/subscribers/register" class="login-btn">
-                            <i class="fa fa-user-plus" aria-hidden="true">
-                                VIP
-                            </i>
-                        </a>
+                        
 
                         <!-- Login -->
                         {{#if user }}
@@ -94,6 +89,12 @@
                         {{/ifvalue}}
 
                         {{#ifvalue user.role equals="GUEST"}}
+                        <!--Become a member-->
+                        <a href="/subscribers/register" class="login-btn">
+                            <i class="fa fa-user-plus" aria-hidden="true">
+                                VIP
+                            </i>
+                        </a>
                         <!-- Logout -->
                         <a href="/guests/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
@@ -101,8 +102,7 @@
 
                         {{#ifvalue user.role equals="SUBSCRIBER"}}
                         <!-- Logout -->
-                        <a href="/subscribers/dashboard/profile">
-                        Cap nhat</a>
+                        <a href="/subscribers/dashboard/profile" class="login-btn">Profile</a>
                         <a href="/subscribers/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
                             <span class="video-text">Logout</span></a>
                         {{/ifvalue}}
