@@ -63,18 +63,12 @@
             <input required type="file" class="form-control" placeholder="Image" id="image" name="image"
                 aria-describedby="basic-addon1">
         </div>
-        <<div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button type="button" class="btn btn-prepend">
-                    <i class="fa fa-tags"></i>
-                </button>
-            </div>
+        {{!-- <div class="input-group mb-3"> --}}
             {{#each tags}}
-            <input class="mr-3" type="checkbox" name="tag" value="{{_id}}"/> {{name}}</br>
+            <input class="mr-3 mb-3" type="checkbox" name="tag" value="{{_id}}"> {{name}}
+            <br>
             {{/each}}
-            <!--<input required type="text" class="form-control" placeholder="Gán nhãn" id="tag" name="tag"
-                aria-describedby="basic-addon1">-->
-        </div>
+        {{!-- </div> --}}
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <button type="button" class="btn btn-prepend">
@@ -87,7 +81,7 @@
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <button type="button" class="btn btn-prepend">
-                    <i class="fa fa-book"></i>
+                    <i class="fa fa-money"></i>
                 </button>
             </div>
             <select name="premium" id="premium" class="form-control">

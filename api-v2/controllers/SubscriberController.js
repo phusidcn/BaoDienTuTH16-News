@@ -2,6 +2,7 @@ const sgMail = require('@sendgrid/mail')
 sgMail.setApiKey(require('../config/config').sendGridID)
 const User = require('../models/User')
 const Category = require('../models/Category')
+const Tag = require('../models/Tag')
 const crypto = require('crypto')
 const Post = require('../models/Post')
 const escapeRegex = require('../helpers/regex-escape')
@@ -99,7 +100,7 @@ exports.putReset = async (req, res, next) => {
     };
 
     await sgMail.send(msg);
-    res.redirect('/home')
+    res.redirect('/member')
 }
 
 exports.index = async (req, res, next) => {
@@ -146,6 +147,8 @@ exports.index = async (req, res, next) => {
             }).sort({
                 views: -1
             })
+            .populate('category')
+            .populate('tag')
 
             for (let index = 0; index < 4; index++) {
                 arrMostViewPosts.push(mostViewsPosts[index])
@@ -157,7 +160,9 @@ exports.index = async (req, res, next) => {
                 status: 3
             }).sort({
                 views: -1
-            }).populate('category')
+            })
+            .populate('category')
+            .populate('tag')
 
             for (let index = 0; index < 10; index++) {
                 arrMostViewOfCategory.push(mostViewsPostsCategory[index])
@@ -169,6 +174,8 @@ exports.index = async (req, res, next) => {
             }).sort({
                 createdAt: -1
             })
+            .populate('category')
+            .populate('tag')
 
 
             res.render('subscriber/subscriberHome', {
@@ -204,6 +211,8 @@ exports.indexCategory = async (req, res, next) => {
                     $in: [req.params.id]
                 }
             })
+            .populate('category')
+            .populate('tag')
             .skip((perPage * page) - perPage)
             .limit(perPage)
             .then(posts => {
@@ -237,6 +246,7 @@ exports.indexTag = async (req, res, next) => {
         const foundTag = await Tag.findOne({
             _id: req.params.id
         })
+        const categories = await Category.find({})
 
 
         Post
@@ -246,6 +256,7 @@ exports.indexTag = async (req, res, next) => {
                     $in: [req.params.id]
                 }
             })
+            .populate('category')
             .skip((perPage * page) - perPage)
             .limit(perPage)
             .then(posts => {
@@ -257,6 +268,7 @@ exports.indexTag = async (req, res, next) => {
                             .then(tags => {
                                 res.render('subscriber/subscriberTag', {
                                     posts,
+                                    categories,
                                     foundTag,
                                     tags,
                                     current: parseInt(page),
@@ -300,6 +312,7 @@ exports.show = async (req, res, next) => {
             }
         })
             .populate('category')
+            .populate('tag')
             .populate('writer')
             .populate({
                 path: 'comments',
@@ -342,7 +355,7 @@ exports.comment = (req, res, next) => {
                 post.comments.push(newComment)
                 post.save().then(savedPost => {
                     newComment.save().then(savedComment => {
-                        res.redirect(`/home/${post.id}`)
+                        res.redirect(`/member/${post.id}`)
                     })
                 })
             })

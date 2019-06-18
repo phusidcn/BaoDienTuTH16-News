@@ -54,9 +54,11 @@
                                 <a href="/home/{{id}}" class="post-title">{{title}}</a>
                                 <!-- Post Meta -->
                                 <div class="post-meta-2">
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 1034</a>
+                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
                                     <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> {{like}}</a>
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
+                                    {{#each tag}}
+                                        <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{name}}</a>
+                                    {{/each}}
                                 </div>
                                 <p>{{subContent}}</p>
                             </div>

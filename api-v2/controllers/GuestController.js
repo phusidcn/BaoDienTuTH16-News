@@ -151,6 +151,8 @@ exports.index = async (req, res, next) => {
             }).sort({
                 views: -1
             })
+            .populate('category')
+            .populate('tag')
 
             for (let index = 0; index < 4; index++) {
                 arrMostViewPosts.push(mostViewsPosts[index])
@@ -163,7 +165,9 @@ exports.index = async (req, res, next) => {
                 premium: false
             }).sort({
                 views: -1
-            }).populate('category')
+            })
+            .populate('category')
+            .populate('tag')
 
             for (let index = 0; index < 10; index++) {
                 arrMostViewOfCategory.push(mostViewsPostsCategory[index])
@@ -173,9 +177,13 @@ exports.index = async (req, res, next) => {
             const latestPosts = await Post.find({
                 status: 3,
                 premium: false
-            }).sort({
+            })
+            .populate('category')
+            .populate('tag')
+            .sort({
                 createdAt: -1
             })
+
 
 
             res.render('guest/guestHome', {
@@ -212,6 +220,8 @@ exports.indexCategory = async (req, res, next) => {
                     $in: [req.params.id]
                 }
             })
+            .populate('category')
+            .populate('tag')
             .skip((perPage * page) - perPage)
             .limit(perPage)
             .then(posts => {
@@ -245,6 +255,7 @@ exports.indexTag = async (req, res, next) => {
         const foundTag = await Tag.findOne({
             _id: req.params.id
         })
+        const categories = await Category.find({})
 
 
         Post
@@ -255,6 +266,7 @@ exports.indexTag = async (req, res, next) => {
                     $in: [req.params.id]
                 }
             })
+            .populate('category')
             .skip((perPage * page) - perPage)
             .limit(perPage)
             .then(posts => {
@@ -266,6 +278,7 @@ exports.indexTag = async (req, res, next) => {
                             .then(tags => {
                                 res.render('guest/guestTag', {
                                     posts,
+                                    categories,
                                     foundTag,
                                     tags,
                                     current: parseInt(page),
@@ -309,6 +322,7 @@ exports.show = async (req, res, next) => {
             }
         })
             .populate('category')
+            .populate('tag')
             .populate('writer')
             .populate({
                 path: 'comments',

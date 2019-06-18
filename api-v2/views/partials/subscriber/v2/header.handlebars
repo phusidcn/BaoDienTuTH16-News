@@ -1,5 +1,3 @@
-
-
 <!-- ##### Header Area Start ##### -->
 <header class="header-area">
 
@@ -10,7 +8,7 @@
             <nav class="classy-navbar justify-content-between" id="magNav">
 
                 <!-- Nav brand -->
-                <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+                <a href="/member" class="nav-brand">MM</a>
 
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
@@ -29,62 +27,22 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li><a href="archive.html">Archive</a></li>
-                                <li><a href="#">Pages</a>
+                                {{#each categories}}
+                                <li>
+                                    <a href="#">
+                                        {{name}}
+                                    </a>
                                     <ul class="dropdown">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="archive.html">Archive</a></li>
-                                        <li><a href="video-post.html">Single Video Post</a></li>
-                                        <li><a href="single-post.html">Single Post</a></li>
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="submit-video.html">Submit Video</a></li>
-                                        <li><a href="login.html">Login</a></li>
+                                        {{#each subCategory}}
+                                        <li>
+                                            <a href="">{{this}}</a>
+                                        </li>
+                                        {{/each}}
                                     </ul>
                                 </li>
-                                <li><a href="#">Mega</a>
-                                    <div class="megamenu">
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
-                                        <ul class="single-mega cn-col-4">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="archive.html">Archive</a></li>
-                                            <li><a href="video-post.html">Single Video Post</a></li>
-                                            <li><a href="single-post.html">Single Post</a></li>
-                                            <li><a href="about.html">About Us</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="login.html">Login</a></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <li><a href="about.html">About</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                {{/each}}
+                                {{!-- <li><a href="/home/about">About</a></li>
+                                <li><a href="/home/contact">Contact</a></li> --}}
                             </ul>
                         </div>
                         <!-- Nav End -->
@@ -93,18 +51,73 @@
                     <div class="top-meta-data d-flex align-items-center">
                         <!-- Top Search Area -->
                         <div class="top-search-area">
-                            <form action="index.html" method="post">
-                                <input type="search" name="top-search" id="topSearch"
-                                    placeholder="Search and hit enter...">
+                            <form action="/home" method="GET">
+                                <input type="search" name="search" id="topSearch" placeholder="Search and hit enter...">
                                 <button type="submit" class="btn"><i class="fa fa-search"
                                         aria-hidden="true"></i></button>
                             </form>
                         </div>
+                        
+
                         <!-- Login -->
-                        <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
-                        <!-- Submit Video -->
-                        <a href="submit-video.html" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
-                            <span class="video-text">Submit Video</span></a>
+                        {{#if user }}
+                        <a href="#" class="login-btn">
+                            <i class="fa fa-user" aria-hidden="true">
+                                {{ user.name }}
+                            </i>
+                        </a>
+
+                        {{#ifvalue user.role equals="ADMIN"}}
+                        <!-- Logout -->
+                        <a href="/employee/admins/logout" class="submit-video"><span><i
+                                    class="fa fa-cloud-upload"></i></span>
+                            <span class="video-text">Logout</span></a>
+                        {{/ifvalue}}
+
+                        {{#ifvalue user.role equals="WRITER"}}
+                        <!-- Logout -->
+                        <a href="/employee/writers/logout" class="submit-video"><span><i
+                                    class="fa fa-cloud-upload"></i></span>
+                            <span class="video-text">Logout</span></a>
+                        {{/ifvalue}}
+
+                        {{#ifvalue user.role equals="EDITOR"}}
+                        <!-- Logout -->
+                        <a href="/employee/editors/logout" class="submit-video"><span><i
+                                    class="fa fa-cloud-upload"></i></span>
+                            <span class="video-text">Logout</span></a>
+                        {{/ifvalue}}
+
+                        {{#ifvalue user.role equals="GUEST"}}
+                        <!--Become a member-->
+                        <a href="/subscribers/register" class="login-btn">
+                            <i class="fa fa-user-plus" aria-hidden="true">
+                                VIP
+                            </i>
+                        </a>
+                        <!-- Logout -->
+                        <a href="/guests/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
+                            <span class="video-text">Logout</span></a>
+                        {{/ifvalue}}
+
+                        {{#ifvalue user.role equals="SUBSCRIBER"}}
+                        <!-- Logout -->
+                        <a href="/subscribers/dashboard/profile" class="login-btn">Profile</a>
+                        <a href="/subscribers/logout" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
+                            <span class="video-text">Logout</span></a>
+                        {{/ifvalue}}
+
+                        {{else}}
+                        <a href="/guests/login" class="login-btn">
+                            <i class="fa fa-user" aria-hidden="true">
+                                Log In
+                            </i>
+                        </a>
+                        <!-- Logout -->
+                        <a href="/guests/register" class="submit-video"><span><i class="fa fa-cloud-upload"></i></span>
+                            <span class="video-text">Sign Up</span></a>
+
+                        {{/if}}
                     </div>
                 </div>
             </nav>

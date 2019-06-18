@@ -10,12 +10,10 @@
                     <div class="post-content text-center">
                         <div class="post-meta" data-animation="fadeInUp" data-delay="100ms">
                             <a href="#">{{ generateTime createdAt "MMMM Do YYYY"  }}</a>
-                            <a href="/home/category/{{category._id}}">{{ category.name }}</a>
+                            <a href="/member/category/{{category._id}}">{{ category.name }}</a>
                         </div>
-                        <a href="video-post.html" class="post-title" data-animation="fadeInUp"
+                        <a href="/member/{{id}}" class="post-title" data-animation="fadeInUp"
                             data-delay="300ms">{{ title }}</a>
-                        <a href="video-post.html" class="video-play" data-animation="bounceIn" data-delay="500ms"><i
-                                class="fa fa-play"></i></a>
                     </div>
                 </div>
             </div>
@@ -48,10 +46,12 @@
                     <img src="/uploads/{{image}}" alt="">
                 </div>
                 <div class="post-content">
-                    <a href="/home/{{_id}}" class="post-title">{{title}}</a>
+                    <a href="/member/{{_id}}" class="post-title">{{title}}</a>
                     <div class="post-meta d-flex justify-content-between">
                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                        <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{tag}}</a>
+                        {{#each tag}}
+                        <a href="/member/tag/{{id}}"><i class="fa fa-tag" aria-hidden="true"></i> {{name}}</a>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -82,8 +82,8 @@
                 <div class="single-trending-post">
                     <img src="/uploads/{{image}}" alt="">
                     <div class="post-content">
-                        <a href="#" class="post-cata">{{category.name}}</a>
-                        <a href="/home/{{id}}" class="post-title">{{title}}</a>
+                        <a href="/member/category/{{category._id}}" class="post-cata">{{category.name}}</a>
+                        <a href="/member/{{id}}" class="post-title">{{title}}</a>
                     </div>
                 </div>
                 {{/each}}
@@ -226,9 +226,9 @@
                     <div class="post-content">
                         <div class="post-meta">
                             <a href="#">{{ generateTime createdAt "MMMM Do YYYY"  }}</a>
-                            <a href="/home/category/{{category._id}}">{{ category.name }}</a>
+                            <a href="/member/category/{{category._id}}">{{ category.name }}</a>
                         </div>
-                        <a href="/home/{{id}}" class="post-title">
+                        <a href="/member/{{id}}" class="post-title">
                             {{title}}
                         </a>
                         <p>
@@ -240,7 +240,9 @@
                         <!-- Post Meta -->
                         <div class="post-meta pl-3">
                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                            <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{tag}}</a>
+                            {{#each tag}}
+                            <a href="/member/tag/{{id}}"><i class="fa fa-tag" aria-hidden="true"></i> {{name}}</a>
+                            {{/each}}
                         </div>
                         <!-- Share Info -->
                         <div class="share-info">
@@ -275,10 +277,12 @@
                             <img src="/uploads/{{image}}" alt="">
                         </div>
                         <div class="post-content">
-                            <a href="/home/{{id}}" class="post-title">{{title}}</a>
+                            <a href="/member/{{id}}" class="post-title">{{title}}</a>
                             <div class="post-meta d-flex">
                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                                <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{tag}}</a>
+                                {{#each tag}}
+                                <a href="/member/tag/{{id}}"><i class="fa fa-tag" aria-hidden="true"></i> {{name}}</a>
+                                {{/each}}
                             </div>
                         </div>
                     </div>
@@ -405,18 +409,16 @@
         </div>
 
         <!-- Sidebar Widget -->
+        <!-- Sidebar Widget -->
         <div class="single-sidebar-widget p-30">
             <!-- Section Title -->
             <div class="section-heading">
-                <h5>Newsletter</h5>
+                <h5>Become a Member</h5>
             </div>
 
             <div class="newsletter-form">
-                <p>Subscribe our newsletter gor get notification about new updates, information discount, etc.</p>
-                <form action="#" method="get">
-                    <input type="search" name="widget-search" placeholder="Enter your email">
-                    <button type="submit" class="btn mag-btn w-100">Subscribe</button>
-                </form>
+                <p>Hãy đăng kí tài khoản VIP để trải nghiệm tốt hơn nhé</p>
+                <a type="button" href="/subscribers/register" class="btn mag-btn w-100">Subscribe</a>
             </div>
 
         </div>
