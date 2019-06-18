@@ -36,6 +36,7 @@
     "mongodb": "^3.2.7",
     "mongoose": "^5.5.12",
     "morgan": "^1.9.1",
+    "node-cron": "^2.0.3",
     "nodemailer": "^6.2.1",
     "nodemailer-express-handlebars": "^2.0.0",
     "owl.carousel": "^2.3.4",

@@ -1,12 +1,14 @@
 const express = require('express')
 const router = express.Router()
 const subscriberController = require('../../controllers/SubscriberController')
+const {
+    subscriberEnsureAuthenticated
+} = require('../../helpers/auth')
 // Main Page
-router.all('/*', (req, res, next) => {
+router.all('/*', subscriberEnsureAuthenticated ,(req, res, next) => {
     req.app.locals.layout = 'subscriber'
     next()
 })
-
 
 // GUESTS
 router.get('/', subscriberController.index)

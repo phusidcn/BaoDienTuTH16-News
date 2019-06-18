@@ -20,5 +20,11 @@ module.exports = {
         req.flash('error_msg', 'Please log in to view that resource')
         res.redirect('/employee/admins/login')
     }, 
-
+    subscriberEnsureAuthenticated: function (req, res, next) {
+        if (req.isAuthenticated() && req.user.role === 'SUBSCRIBER') {
+            return next()
+        }
+        req.flash('error_msg', 'Please log in to view that resource')
+        res.redirect('/subscribers/login')
+    }, 
 }

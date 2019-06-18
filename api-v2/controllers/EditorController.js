@@ -5,9 +5,16 @@ const Post = require('./../models/Post')
 const Category = require('./../models/Category')
 const User = require('./../models/User')
 const bcrypt = require('bcryptjs')
+const cron = require('node-cron')
 
 exports.draft = async (req, res, next) => {
     try {
+        let task = cron.schedule('0 * * * *', () => {
+            alert('Publish bài viết nhé')
+        }, {
+            scheduled: false
+        })
+        task.start()
         const posts = await Post
             .find({
                 category: {
