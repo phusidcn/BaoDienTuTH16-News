@@ -12,10 +12,8 @@
                             <a href="#">{{ generateTime createdAt "MMMM Do YYYY"  }}</a>
                             <a href="/home/category/{{category._id}}">{{ category.name }}</a>
                         </div>
-                        <a href="video-post.html" class="post-title" data-animation="fadeInUp"
+                        <a href="/home/{{id}}" class="post-title" data-animation="fadeInUp"
                             data-delay="300ms">{{ title }}</a>
-                        <a href="video-post.html" class="video-play" data-animation="bounceIn" data-delay="500ms"><i
-                                class="fa fa-play"></i></a>
                     </div>
                 </div>
             </div>
@@ -51,7 +49,9 @@
                     <a href="/home/{{_id}}" class="post-title">{{title}}</a>
                     <div class="post-meta d-flex justify-content-between">
                         <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                        <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{tag}}</a>
+                        {{#each tag}}
+                        <a href="/home/tag/{{id}}"><i class="fa fa-tag" aria-hidden="true"></i> {{name}}</a>
+                        {{/each}}
                     </div>
                 </div>
             </div>
@@ -240,7 +240,9 @@
                         <!-- Post Meta -->
                         <div class="post-meta pl-3">
                             <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                            <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{tag}}</a>
+                            {{#each tag}}
+                            <a href="/home/tag/{{id}}"><i class="fa fa-tag" aria-hidden="true"></i> {{name}}</a>
+                            {{/each}}
                         </div>
                         <!-- Share Info -->
                         <div class="share-info">
@@ -278,7 +280,9 @@
                             <a href="/home/{{id}}" class="post-title">{{title}}</a>
                             <div class="post-meta d-flex">
                                 <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                                <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{tag}}</a>
+                                {{#each tag}}
+                                <a href="/home/tag/{{id}}"><i class="fa fa-tag" aria-hidden="true"></i> {{name}}</a>
+                                {{/each}}
                             </div>
                         </div>
                     </div>

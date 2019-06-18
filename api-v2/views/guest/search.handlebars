@@ -1,15 +1,13 @@
-
 {{#each posts}}
-<div style="display: flex; justify-content:center">
+<div style="display: flex; justify-content:center" class="mt-3">
     <div class="single-blog-post d-flex style-3 mb-30">
-        <div class="post-thumbnail">
-            <img src="/uploads/{{image}}" alt="">
-        </div>
-        <div class="post-content">
-            <a href="/home/{{id}}" class="post-title">{{title}}</a>
-            <div class="post-meta d-flex">
-                <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                <a href="#"><i class="fa fa-tag" aria-hidden="true"></i> {{tag}}</a>
+        <div class="card" style="width: 18rem; text-align:center">
+            <img class="card-img-top" src="/uploads/{{image}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="/home/{{id}}" class="post-title">{{title}}</a>
+                </h5>
+                <a href="/home/{{id}}" class="btn btn-primary">Read More</a>
             </div>
         </div>
     </div>

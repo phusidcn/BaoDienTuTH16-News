@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <p>
-                        {{{foundPost.content}}}
+                            {{{foundPost.content}}}
                         </p>
 
                         <!-- Like Dislike Share -->
@@ -90,7 +90,11 @@
                             <a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i> Share on
                                 Twitter</a>
                         </div>
-
+                        {{#each foundPost.tag}}
+                        <a href="#"><i class="fa fa-tag" aria-hidden="true"></i>
+                            {{name}}
+                        </a>
+                        {{/each}}
                         <!-- Post Author -->
                         <div class="post-author d-flex align-items-center">
                             <div class="post-author-thumb">
@@ -105,36 +109,36 @@
                 </div>
 
                 <!-- Related Post Area -->
-                    <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
-                        <!-- Section Title -->
-                        <div class="section-heading">
-                            <h5>Related Post</h5>
-                        </div>
+                <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
+                    <!-- Section Title -->
+                    <div class="section-heading">
+                        <h5>Related Post</h5>
+                    </div>
 
 
-                        <div class="row">
-                            {{#each relatedPosts}}
-                            <!-- Single Blog Post -->
-                            <div class="col-12 col-md-6 col-lg-4">
-                                <div class="single-blog-post style-4 mb-30">
-                                    <div class="post-thumbnail">
-                                        <img src="/uploads/{{image}}" alt="">
-                                    </div>
-                                    <div class="post-content">
-                                        <a href="#" class="post-title">{{title}}</a>
-                                        <div class="post-meta d-flex">
-                                            <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
-                                            <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
-                                            <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
-                                        </div>
+                    <div class="row">
+                        {{#each relatedPosts}}
+                        <!-- Single Blog Post -->
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <div class="single-blog-post style-4 mb-30">
+                                <div class="post-thumbnail">
+                                    <img src="/uploads/{{image}}" alt="">
+                                </div>
+                                <div class="post-content">
+                                    <a href="#" class="post-title">{{title}}</a>
+                                    <div class="post-meta d-flex">
+                                        <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> {{views}}</a>
+                                        <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 834</a>
+                                        <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 234</a>
                                     </div>
                                 </div>
                             </div>
-
-                            {{/each}}
-
                         </div>
+
+                        {{/each}}
+
                     </div>
+                </div>
 
                 <!-- Related Post Area -->
                 <div class="related-post-area bg-white mb-30 px-30 pt-30 box-shadow">
@@ -145,11 +149,13 @@
 
                     <div class="row">
                         <!-- Single Blog Post -->
+                        {{#each foundPost.tag}}
                         <div class="col-12 col-md-6 col-lg-4">
                             <div class="single-blog-post style-4 mb-30">
-                                <a href="#">{{foundPost.tag}}</a>
+                                <a href="#">{{name}}</a>
                             </div>
                         </div>
+                        {{/each}}
                     </div>
                 </div>
 
