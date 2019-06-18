@@ -125,7 +125,7 @@ module.exports = function (passport) {
 
         const newUser = {
             googleID: profile.id,
-            name: profile.name.givenName + '' + profile.name.familyName,
+            name: profile.name.givenName + ' ' + profile.name.familyName,
             password: '',
             role: 'GUEST',
             email: profile.emails[0].value,
@@ -137,7 +137,7 @@ module.exports = function (passport) {
             googleID: profile.id
         }).then(user => {
             if (user) {
-                done(null, user);
+                done(null, user);``
             } else {
                 // Create user
                 new User(newUser)

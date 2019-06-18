@@ -8,6 +8,7 @@ router.all('/*', (req, res, next) => {
     req.app.locals.layout = 'guest'
     next()
 })
+
 router.get('/', guestController.index)
 router.get('/category/:id', guestController.indexCategory)
 router.get('/tag/:id', guestController.indexTag)
@@ -17,13 +18,6 @@ router.post('/comment', guestController.comment)
 
 router.get('/:id', guestController.show)
 
-// router.get('/google', passport.authenticate('google', {
-//     scope: ['profile', 'email']
-// }))
-// router.get('/google/callback', passport.authenticate('google', {
-//     failureRedirect: '/'
-// }), (req, res) => {
-//     res.redirect('/home')
-// })
+
 
 module.exports = router

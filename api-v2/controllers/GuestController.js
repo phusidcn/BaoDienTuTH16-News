@@ -1,9 +1,107 @@
-const User = require('../models/User')
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(require('../config/config').sendGridID)
+const crypto = require('crypto')
+const bcrypt = require('bcryptjs')
+const util = require('util')
 const Category = require('../models/Category')
 const Tag = require('../models/Tag')
 const Post = require('../models/Post')
 const Comment = require('../models/Comment')
+const User = require('../models/User')
 const escapeRegex = require('../helpers/regex-escape')
+
+exports.indexForgot = (req, res) => {
+    res.render('guest/forgot')
+}
+
+exports.putForgotPassword = async (req, res, next) => {
+    const token = await crypto.randomBytes(20).toString('hex')
+    const { email } = req.body
+    const user = await User.findOne({ email })
+    if (!user) {
+        return res.redirect('/guests/forgot-password')
+    }
+    user.resetPasswordToken = token
+    user.resetPasswordExpires = Date.now() + 3600000
+    await user.save()
+
+    const msg = {
+        to: email,
+        from: 'Minimum Admin <duyquangbtx@gmail.com>',
+        subject: 'Minimum - Forgot Password / Reset',
+        text: `You are receiving this because you (or someone else)
+        have requested the reset of the password for your account.
+          Please click on the following link, or copy and paste it
+          into your browser to complete the process:
+          http://${req.headers.host}/guests/reset/${token}
+          If you did not request this, please ignore this email and
+          your password will remain unchanged.`.replace(/		  /g, ''),
+    }
+    await sgMail.send(msg)
+    res.redirect('/guests/forgot-password')
+}
+
+exports.getReset = async (req, res, next) => {
+    const { token } = req.params
+    const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() }
+    })
+
+    if (!user) {
+        return res.redirect('/guests/forgot-password')
+    }
+
+    res.render('guest/reset', { token })
+}
+
+exports.putReset = async (req, res, next) => {
+    const { token } = req.params;
+    const user = await User.findOne({
+        resetPasswordToken: token,
+        resetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+        return res.redirect('/guests/forgot-password');
+    }
+
+    if (req.body.password === req.body.confirm) {
+        user.password = req.body.password
+        user.resetPasswordToken = null
+        user.resetPasswordExpires = null
+        bcrypt
+        .genSalt(10, (err, salt) => {
+            bcrypt.hash(user.password, salt, (err, hash) => {
+                if (err) throw err;
+                user.password = hash;
+                console.log("After hash: ", user)
+                user.save(function (err) {
+                    req.logIn(user, function (err) {
+                        console.log(user)
+                    })
+                })
+            })
+        })
+        // await user.save()
+        // const login = util.promisify(req.login.bind(req))
+        // await login(user)
+    } else {
+        return res.redirect(`/guests/reset/${token}`)
+    }
+
+    const msg = {
+        to: user.email,
+        from: 'Minimum Admin <duyquangbtx@gmail.com>',
+        subject: 'Minimum - Password Changed',
+        text: `Hello,
+		  This email is to confirm that the password for your account has just been changed.
+		  If you did not make this change, please hit reply and notify us at once.`.replace(/		  /g, '')
+    };
+
+    await sgMail.send(msg);
+    res.redirect('/home')
+}
 
 
 exports.index = async (req, res, next) => {
@@ -15,9 +113,9 @@ exports.index = async (req, res, next) => {
             const regex = new RegExp(escapeRegex(req.query.search), 'gi')
 
             Post
-                .find({ 
+                .find({
                     status: 3,
-                    title: regex 
+                    title: regex
                 }, (err, allPosts) => {
                     if (err) {
                         console.log(err)
@@ -220,7 +318,7 @@ exports.show = async (req, res, next) => {
         const categories = await Category.find({})
         console.log(foundPost)
         res.render('guest/guestPost', {
-            relatedPosts,            
+            relatedPosts,
             foundPost,
             categories,
             user: req.user,

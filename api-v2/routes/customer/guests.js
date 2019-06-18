@@ -4,6 +4,12 @@ const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
 const User = require('../../models/User')
+const guestController = require('../../controllers/GuestController')
+
+router.get('/forgot-password', guestController.indexForgot)
+router.put('/forgot-password', guestController.putForgotPassword)
+router.get('/reset/:token', guestController.getReset)
+router.put('/reset/:token', guestController.putReset)
 
 router.get('/login', (req, res) => {
     res.render('guest/login')
