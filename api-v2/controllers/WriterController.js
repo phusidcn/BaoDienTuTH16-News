@@ -40,6 +40,74 @@ exports.updateProfile = (req, res) => {
         })
 }
 
+exports.changePass = (req, res) => {
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(writer => {
+        res.render('writer/changePassword',{
+            writer : writer,
+            layout : false
+        })
+    })
+}
+
+
+exports.changePassApply = (req, res) => {
+    let errors = []
+    if (req.body.newpass !== req.body.confirmpass) {
+        errors.push({
+            msg: "Please re-confirm your password"
+        })
+    }
+    let pass = req.body.newpass
+    if(pass.length < 6) {
+        errors.push({
+            msg: "Your new pass is too short"
+        })
+    }
+    User
+    .findOne({
+        _id: req.params.id
+    })
+    .then(writer => {
+        console.log(writer)
+        bcrypt.compare(req.body.oldpass, writer.password, (err, isMatch) => {
+            if (!isMatch) {
+                console.log(err)
+                errors.push({
+                    msg: "please check your old password"
+                })
+            }
+            if (errors.length > 0) {
+                res.render('writer/changePassword', {
+                    errors,
+                    writer,
+                    layout : false
+                })
+            } else {
+                if (isMatch) {
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(req.body.newpass, salt, (err, hash) => {
+                            if (err){
+                                errors.push({
+                                    msg: "Error"
+                                })
+                                throw err
+                            } else {
+                                writer.password = hash
+                                writer.save()
+                                res.redirect('/employee/writers/dashboard')
+                            }
+                        })
+                    })
+                }
+            }
+        })
+    })
+}
+
 exports.index = (req, res, next) => {
     try {
         const pagination = req.query.pagination ? parseInt(req.query.pagination) : 10

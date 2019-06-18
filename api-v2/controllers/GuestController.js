@@ -8,21 +8,25 @@ const escapeRegex = require('../helpers/regex-escape')
 exports.index = async (req, res, next) => {
     try {
         let noMatch = null
-        console.log(req.query.search)
+        const categories = await Category.find({})
         if (req.query.search) {
 
             const regex = new RegExp(escapeRegex(req.query.search), 'gi')
 
             Post
-                .find({ title: regex }, (err, allPosts) => {
+                .find({ 
+                    status: 3,
+                    title: regex 
+                }, (err, allPosts) => {
                     if (err) {
                         console.log(err)
                     } else {
                         if (allPosts.length < 1) {
                             noMatch = 'No posts match that query'
                         }
-                        res.render('guest/guestHome', {
+                        res.render('guest/search', {
                             posts: allPosts,
+                            categories,
                             noMatch: noMatch
                         })
                     }
@@ -40,7 +44,9 @@ exports.index = async (req, res, next) => {
             const tags = await Tag.find({})
             // 3-4 Most viewed Post
             let arrMostViewPosts = []
-            const mostViewsPosts = await Post.find({}).sort({
+            const mostViewsPosts = await Post.find({
+                status: 3
+            }).sort({
                 views: -1
             })
 
@@ -50,7 +56,9 @@ exports.index = async (req, res, next) => {
 
             // Most viewed Post by Category
             let arrMostViewOfCategory = []
-            const mostViewsPostsCategory = await Post.find({}).sort({
+            const mostViewsPostsCategory = await Post.find({
+                status: 3
+            }).sort({
                 views: -1
             }).populate('category')
 
@@ -58,20 +66,10 @@ exports.index = async (req, res, next) => {
                 arrMostViewOfCategory.push(mostViewsPostsCategory[index])
             }
 
-            // Top 10 posts theo category
-            // const lengthOfCategory = Category.countDocuments()
-            // for(let i = 0; i < lengthOfCategory; i++) {
-            //     let max = 0
-            //     for(let j = 0; j < posts.length; j++) {
-            //         if(posts[j].category === categories[i]) {
-            //             max = posts[j].views
-            //         }
-            //     }
-            // }
-
-
             // Latest Posts
-            const latestPosts = await Post.find({}).sort({
+            const latestPosts = await Post.find({
+                status: 3
+            }).sort({
                 createdAt: -1
             })
 

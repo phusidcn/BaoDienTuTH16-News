@@ -66,6 +66,9 @@ router.get('/writers/dashboard/profile', (req, res) => {
     res.render('employee/index')
 })
 
+router.get('/writers/dashboard/changePass/:id', writerController.changePass)
+router.post('/writers/dashboard/changePass/:id', writerController.changePassApply)
+
 router.put('/writers/dashboard/profile/:id', writerController.updateProfile)
 router.get('/writers/dashboard/index', writerController.index)
 router.get('/writers/dashboard/create',  writerController.indexCreate)
@@ -94,6 +97,10 @@ router.get('/editors/dashboard/', editorEnsureAuthenticated ,(req, res) => {
 router.get('/editors/dashboard/profile', (req, res) => {
     res.render('employee/index')
 })
+
+router.get('/editors/dashboard/changePass/:id', editorController.changePass)
+router.post('/editors/dashboard/changePass/:id', editorController.changePassApply)
+
 router.put('/editors/dashboard/profile/:id', editorController.updateProfile)
 router.get('/editors/dashboard/draft', editorEnsureAuthenticated ,editorController.draft)
 router.get('/editors/dashboard/edit/:id',editorEnsureAuthenticated, editorController.approved)
